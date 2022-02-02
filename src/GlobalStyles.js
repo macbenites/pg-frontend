@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 
 :root{
     --primary: #004643;
+    --text-color : #fffffe;
 }
 
 *{
@@ -13,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 html, body{
+    font-family: 'Roboto Condensed', sans-serif;
     background-color: var(--primary); 
 }
 

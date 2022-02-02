@@ -1,10 +1,16 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Wrapper } from "./Styles/Wrapper";
+import LandingPage from "./Components/LandingPage";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>FutApp</h1>
-      </header>
-    </div>
+    <Wrapper>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
+    </Wrapper>
   );
 }
 
