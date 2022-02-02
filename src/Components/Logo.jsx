@@ -1,5 +1,14 @@
 import React from "react";
+import { StyledLogo } from "../Styles/Logo";
+import logoBall from "../Assets/img/soccer-ball.svg";
 
-export const Logo = () => {
-  return <div></div>;
+const Logo = () => {
+  return (
+    <StyledLogo>
+      <img src={logoBall} alt="logo" />
+      <span>FutbolApp</span>
+    </StyledLogo>
+  );
 };
+
+export default Logo;
