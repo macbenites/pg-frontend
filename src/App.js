@@ -3,7 +3,9 @@ import { Wrapper, Container } from "./Styles/Wrapper";
 import LandingPage from "./Components/LandingPage";
 import Login from "./Components/Login";
 import Footer from "./Components/Footer";
+import Home from "./Components/Home";
 import SignIn from "./Components/SignIn";
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path = '/login' element = {<Login/>}/>
+            <Route path="/home" element={<Home/>}/>
           </Routes>
         </BrowserRouter>
       </Wrapper>
