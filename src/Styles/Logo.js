@@ -5,8 +5,8 @@ export const StyledLogo = styled.div`
   align-items: center;
   flex-wrap: nowrap;
   font-size: 1.3rem;
-  color: var(--text-color);
   span {
+    color: var(--text-color);
     margin-left: 0.5rem;
   }
   @media (max-width: 568px) {
