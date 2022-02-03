@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 html, body{
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--primary); 
 }
 
