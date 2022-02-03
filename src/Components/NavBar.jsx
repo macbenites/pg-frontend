@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { NavStyle , pNavStyle } from "../Styles/NavBar"
+import { NavStyle } from "../Styles/NavBar"
 
 function NavBar () {
 

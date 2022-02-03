@@ -1,0 +1,64 @@
+{
+    "usuario":[
+        {
+            "nombre" : "Juan",
+            "barrio" : "Caballito",
+            "correo_electronico" : "juan@frontend.com",
+            "imagen_perfil": "https://depor.com/resizer/fs6341yFcF5OecceJZ4e8eUGYKM=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/44J6Y6XGSFD3FLLI3T2REIRFHU.jpg", 
+            "contraseña": "juan123123",
+            "direccion": "Avenida 777",
+            "fecha_nacimiento": "01/01/01",
+            "posicion" : "delantero"
+        },
+        {
+            "nombre" : "Yeison",
+            "barrio" : "Palermo",
+            "correo_electronico" : "yeison@frontend.com",
+            "imagen_perfil": "https://eu-images.contentstack.com/v3/assets/bltcc7a7ffd2fbf71f5/blte002b5f67a4cd5a8/60dd28f276a3de39ad1aee79/918da727f3f3faa1831f875fbe4f34c7e0e537d8.jpg?auto=webp&fit=crop&format=jpg&height=800&quality=60&width=1200", 
+            "contraseña": "yeison123123",
+            "direccion": "calle 555",
+            "fecha_nacimiento": "02/02/02",
+            "posicion" : "mediocampista"
+        },
+        {
+            "nombre" : "Marlon",
+            "barrio" : "Flores",
+            "correo_electronico" : "marlon@frontend.com",
+            "imagen_perfil": "https://www.semana.com/resizer/OO0T1yAl2i7UTfErByLPKhVkXZM=/1200x675/filters:format(jpg):quality(50)//cloudfront-us-east-1.images.arcpublishing.com/semana/TQHLTL4GFBBSBNRM7YOJ5DQL5M.jpg", 
+            "contraseña": "marlon123123",
+            "direccion": "calle 123",
+            "fecha_nacimiento": "00/00/00",
+            "posicion" : "defensor"
+        },
+        {
+            "nombre" : "Bruno",
+            "barrio" : "Almagro",
+            "correo_electronico" : "bruno@frontend.com",
+            "imagen_perfil": "http://www.cariverplate.com.ar/imagenes/contenidos/2018-12/13777-armani.jpg", 
+            "contraseña": "bruno123123",
+            "direccion": "avenida 564",
+            "fecha_nacimiento": "02/02/99",
+            "posicion" : "Arquero"
+        }
+    ],
+    "partidos":[
+        {
+            "id_partidos": 1,
+            "fecha": "03/02/22",
+            "hora": 16,
+            "n_jugadores":10
+        },
+        {
+            "id_partidos": 2,
+            "fecha": "04/02/22",
+            "hora": 18,
+            "n_jugadores":14
+        },
+        {
+            "id_partidos": 3,
+            "fecha": "05/02/22",
+            "hora": 20,
+            "n_jugadores":22
+        }
+    ]
+}
