@@ -12,11 +12,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-<<<<<<< HEAD
             <Route path = '/login' element = {<Login/>}/>
-=======
             <Route path="/singin" element={<SingIn />} />
->>>>>>> 0f8225aaa4544d19b4e4a2af5f38aac2956b367f
           </Routes>
         </BrowserRouter>
       </Wrapper>
