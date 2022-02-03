@@ -1,5 +1,6 @@
 import { LandTop } from "../Styles/LandingPage";
 import Logo from "./Logo";
+import NavBar from "./NavBar";
 
 function LandingPage() {
   return (
@@ -8,6 +9,7 @@ function LandingPage() {
       {/* <Button />
       <Button /> 
       */}
+      <NavBar/>
     </LandTop>
   );
 }
