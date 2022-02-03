@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 function SignIn(){
     // const dispatch = useDispatch()
@@ -60,6 +62,7 @@ function SignIn(){
     return(
         <div>
             <Logo/>
+            <NavBar/>
             <h1>Creá tu cuenta</h1>
             <h4>Ya tenes tu cuenta? <Link to='/login'>Log In</Link></h4>
             <form>
@@ -85,6 +88,7 @@ function SignIn(){
                     <button type='submit' onClick={e => {handleClick(e)}}>Crear cuenta</button>
                 </div>
             </form>
+            <Footer/>
         </div>
     );
 };
