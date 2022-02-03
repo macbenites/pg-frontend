@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 
-function SingIn(){
+function SignIn(){
     // const dispatch = useDispatch()
     const navigate = useNavigate()
     const [input, setInput] = useState({
@@ -89,4 +89,4 @@ function SingIn(){
     );
 };
 
-export default SingIn;
+export default SignIn;
