@@ -12,58 +12,59 @@ export const LoginDiv = styled.div`
         font-family: Roboto;
         font-style: normal;
         margin-bottom: 7.9rem;
-        margin-top: 320px;
+        margin-top: 20rem;
         text-align: center;
         color: #E8E4E6;        
+    }
+
+    p{
+        color: #FFFFFF;
     }
 `
 
 
 export const InputDiv1 = styled.div`
-    width: 350px;
-    height: 60px;
+    width: 21.9rem;
+    height: 3.8rem;
     margin-bottom: 1rem;
-    margin-right: 2rem;
+    margin-right: 11.5rem;
     input{
         width: 100%;
         height: 100%;
         background-color: #206F6C;
         color: #FFFFFF;
         text-align: left;
-        border-radius: 10px;
-        border: none;
-        
+        border-radius: 0.6rem;
+        border: none;        
     }
 `
 
 export const BtnDiv = styled.div`
-    width: 350px;
-    height: 60px;
+    width: 21.9rem;
+    height: 3.8rem;
     margin-bottom: 1rem;
-    input{
+    button{
         width: 100%;
         height: 100%;
         background-color: #F9BC60;
         color: black;
-        text-align: left;
-        border-radius: 10px;
+        border-radius: 0.6rem;
         border: none;
-        
+        text-align: center;
     }
 `
 
 export const InputDiv2 = styled.div`
-    width: 350px;
-    height: 60px;
+    width: 21.9rem;
+    height: 3.8rem;
     margin-bottom: 1rem;
     input{
         width: 100%;
         height: 100%;
-        background-color: #206F6C;
+        background-color: #004643;
         color: #FFFFFF;
         text-align: left;
-        border-radius: 10px;
-        border-color: #FFFFFF
-        
+        border-radius: 0.6rem;
+        border: 1px solid #FFFFFF;        
     }
 `

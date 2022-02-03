@@ -3,7 +3,6 @@ import Logo from "./Logo";
 import { LoginDiv, InputDiv1, InputDiv2, BtnDiv } from "../Styles/Login.js";
 
 
-
 export default function Login(){
     return (
         <div>
@@ -11,7 +10,7 @@ export default function Login(){
                 <Logo />
             </div>
         <LoginDiv>            
-            <h3>Login to Your Account</h3>
+            <h3>Ingresa a tu cuenta</h3>
                 <form>
                     <div>
                         <InputDiv1>
@@ -20,9 +19,9 @@ export default function Login(){
                         <InputDiv1>
                             <input type= 'password' name= 'password' placeholder= 'Password'/>                   
                         </InputDiv1>                 
-                        <InputDiv1>     
-                            <button type= 'submit'>Login</button>
-                        </InputDiv1> 
+                        <BtnDiv>     
+                            <button type= 'submit'>Ingresar</button>
+                        </BtnDiv> 
                     </div>  
                     <p>/</p>
                     <div>
