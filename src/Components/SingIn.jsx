@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 
 function SingIn(){
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const navigate = useNavigate()
     const [input, setInput] = useState({
         name: '',
@@ -44,7 +44,7 @@ function SingIn(){
         
         else{
             e.preventDefault();
-            dispatch(createAccount(input));
+            // dispatch(createAccount(input));
             alert('Account created succesfully');
             navigate('/home');
         };
