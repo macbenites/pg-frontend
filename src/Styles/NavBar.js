@@ -1,17 +1,11 @@
 import styled from "styled-components";
+import { LinkTo } from "./LinkTo";
 
 export const NavStyle = styled.div`
-    display : flex;
-    flex-direction : row;
-    padding: 1rem 1rem;
-    p {
-        font-size: 0.8rem;
-        font-weight: 100;
-        padding-left: 25px;
-        color: white
-    }
-`
+  display: flex;
+  flex-direction: row;
+`;
 
-export const pNavStyle = styled.p`
-    padding: 1rem 1rem;
-`
+export const NavLink = styled(LinkTo)`
+  margin: 0 1.2rem;
+`;
