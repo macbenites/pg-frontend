@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  min-height: 100uvh;
+  min-height: 100vh;
   flex: 1;
   max-width: 1200px;
   width: 100%;
@@ -12,5 +12,5 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100uvh;
+  min-height: 100vh;
 `;
