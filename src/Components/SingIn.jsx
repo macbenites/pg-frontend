@@ -60,8 +60,8 @@ function SingIn(){
     return(
         <div>
             <Logo/>
-            <h1>Create new account</h1>
-            <h4>Already A Member? <Link to='/login'>Log In</Link></h4>
+            <h1>Creá tu cuenta</h1>
+            <h4>Ya tenes tu cuenta? <Link to='/login'>Log In</Link></h4>
             <form>
                 <div>
                     <input type='text' value={input.name} name='name' onChange={e => handleChange(e)}/>
@@ -82,7 +82,7 @@ function SingIn(){
                     <input type='text' value={input.password} name='password' onChange={e => handleChange(e)}/>
                 </div>
                 <div>
-                    <button type='submit' onClick={e => {handleClick(e)}}>Create Account</button>
+                    <button type='submit' onClick={e => {handleClick(e)}}>Crear cuenta</button>
                 </div>
             </form>
         </div>
