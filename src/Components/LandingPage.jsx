@@ -1,17 +1,15 @@
 import { LandTop } from "../Styles/LandingPage";
 import Logo from "./Logo";
 
-const Home = () => {
+function LandingPage() {
   return (
-    <div>
-      <LandTop>
-        <Logo />
-      </LandTop>
+    <LandTop>
+      <Logo />
       {/* <Button />
       <Button /> 
       */}
-    </div>
+    </LandTop>
   );
-};
+}
 
-export default Home;
+export default LandingPage;

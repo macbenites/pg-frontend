@@ -1,16 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Wrapper } from "./Styles/Wrapper";
+import { Wrapper, Container } from "./Styles/Wrapper";
 import LandingPage from "./Components/LandingPage";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
-    <Wrapper>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </BrowserRouter>
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Wrapper>
+      <Footer />
+    </Container>
   );
 }
 
