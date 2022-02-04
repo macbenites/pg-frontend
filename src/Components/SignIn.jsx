@@ -2,9 +2,7 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
-import { SignInDiv, InputSignName, InputSignUsername, InputSignNeighborhood, InputSignPosition, InputSignEmail, InputSignPassword, BtnCreate, LinkStyle } from "../Styles/SignIn";
+import { SignInDiv, InputSignName, InputSignUsername, InputSignNeighborhood, InputSignPosition, InputSignEmail, InputSignPassword, BtnCreate } from "../Styles/SignIn";
 
 function SignIn(){
     // const dispatch = useDispatch()
@@ -20,37 +18,37 @@ function SignIn(){
 
     function handleClick(e){
 
-        // if(input.name.length === 0){
-        //     alert('Complete your name before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.username.length === 0){
-        //     alert('Complete your username before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.neighborhood.length === 0){
-        //     alert('Complete your neighborhood before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.position.length === 0){
-        //     alert('Complete your position before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.email.length === 0){
-        //     alert('Complete your email before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.password.length === 0){
-        //     alert('Complete your password before creating the account');
-        //     e.preventDefault();
-        // }
+        if(input.name.length === 0){
+            alert('Complete su nombre antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.username.length === 0){
+            alert('Complete su usuario antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.neighborhood.length === 0){
+            alert('Complete su barrio antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.position.length === 0){
+            alert('Complete su posición antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.email.length === 0){
+            alert('Complete su mail antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.password.length === 0){
+            alert('Complete su contraseña antes de crear la cuenta');
+            e.preventDefault();
+        }
         
-        // else{
+        else{
             e.preventDefault();
             // dispatch(createAccount(input));
             alert('Cuenta creada con éxito');
             navigate('/home');
-        // };
+        };
     };
 
     function handleChange(e){
@@ -62,11 +60,10 @@ function SignIn(){
 
     return(
         <div>
-            <Logo/>
-            <NavBar/>
             <SignInDiv>
+            <Logo/>
             <h1>Creá tu cuenta</h1>
-            <h4>Ya tenes tu cuenta?<Link to='/login'>Log In</Link></h4>
+            <h4>Ya tenes tu cuenta?<Link to='/login'> Log In</Link></h4>
             <form>
                 <InputSignName>
                 <div>

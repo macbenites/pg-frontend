@@ -8,7 +8,6 @@ import { Button } from "../Styles/Button";
 import { LinkTo } from "../Styles/LinkTo";
 import imgLanding from "../Assets/img/img-landing.svg";
 import Logo from "./Logo";
-import NavBar from "./NavBar";
 
 function LandingPage() {
   return (
