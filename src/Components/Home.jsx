@@ -2,7 +2,7 @@ import React from "react"
 import Logo from "./Logo"
 import NavBar from "./NavBar"
 import Cards from "./Cards"
-import { HomeStyle , IntroStyle } from "../Styles/Home"
+import { HomeStyle , IntroStyle, CardsStyle } from "../Styles/Home"
 
 function Home () {
     return (
@@ -18,7 +18,23 @@ function Home () {
                 </div>
                 <input type="text" placeholder="Buscar..."/>
             </IntroStyle>
-            <Cards/>
+            <CardsStyle>
+                <div>
+                <Cards/> 
+                </div>
+                <div>
+                <Cards/>
+                </div>
+                <div>
+                <Cards/>
+                </div>
+                <div>
+                <Cards/>
+                </div>
+                <div>
+                <Cards/>
+                </div>
+            </CardsStyle>
         </div>
     )
 }

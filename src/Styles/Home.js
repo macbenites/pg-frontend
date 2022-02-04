@@ -38,3 +38,9 @@ export const IntroStyle = styled.div`
         border: none;
     }
 `
+
+export const CardsStyle = styled.div`
+display: flex;
+flex-direction: raw;
+justify-content: space-between;
+`
