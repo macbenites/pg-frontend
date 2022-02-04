@@ -17,8 +17,12 @@ export const LoginDiv = styled.div`
     color: #e8e4e6;
   }
 
-  p {
-    color: #ffffff;
+  span {
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
   }
 `;
 
@@ -31,7 +35,7 @@ export const InputDiv1 = styled.div`
     width: 100%;
     height: 100%;
     background-color: #206f6c;
-    color: #ffffff;
+    color: var(--text-color);
     text-align: left;
     border-radius: 0.6rem;
     border: none;
@@ -45,7 +49,7 @@ export const BtnDiv = styled.div`
   button {
     width: 100%;
     height: 100%;
-    background-color: #f9bc60;
+    background-color: var(--Links);
     color: black;
     border-radius: 0.6rem;
     border: none;
@@ -53,17 +57,24 @@ export const BtnDiv = styled.div`
   }
 `;
 
-export const InputDiv2 = styled.div`
+export const BtnNetworks = styled.div`
   width: 21.9rem;
   height: 3.8rem;
   margin-bottom: 1rem;
-  input {
+  button {
     width: 100%;
     height: 100%;
-    background-color: #004643;
-    color: #ffffff;
-    text-align: left;
+    background-color: var(--primary);
+    color: var(--text-color);
     border-radius: 0.6rem;
-    border: 1px solid #ffffff;
+    border: 2px solid white;
+    text-align: center;
+
+  }
+
+  span{    
+    justify-content: left;
+    align-items: center;
+    //margin-top: 0.3rem;
   }
 `;
