@@ -12,6 +12,7 @@ import {
   InputEmail,
   InputPassword,
   BtnSignIn,
+  ContainerSign,
 } from "../Styles/SignIn";
 
 function SignIn() {
@@ -62,8 +63,8 @@ function SignIn() {
 
   return (
     <div>
+      <Logo />
       <SignInDiv>
-        <Logo />
         <h4>Creá tu cuenta</h4>
         <h5>
           Ya tenes tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
