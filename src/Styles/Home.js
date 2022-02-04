@@ -28,11 +28,13 @@ export const IntroStyle = styled.div`
         font-size:18px;
     }
     input{
-        height: 49px;
+        height: 38px;
         width: 422.00030517578125px;
         left: 891px;
         top: 187px;
-        border-radius: 10px;
+        border-radius: 15px;
         margin-right: 2rem;
+        font-size: 15px;
+        border: none;
     }
 `

@@ -1,6 +1,7 @@
 import React from "react"
 import Logo from "./Logo"
 import NavBar from "./NavBar"
+import Cards from "./Cards"
 import { HomeStyle , IntroStyle } from "../Styles/Home"
 
 function Home () {
@@ -17,6 +18,7 @@ function Home () {
                 </div>
                 <input type="text" placeholder="Buscar..."/>
             </IntroStyle>
+            <Cards/>
         </div>
     )
 }
