@@ -18,7 +18,7 @@ function LandingPage() {
           <LinkTo to="/login">
             <Button primary>LogIn</Button>
           </LinkTo>
-          <LinkTo to="signin">
+          <LinkTo to="/signin">
             <Button>SignIn</Button>
           </LinkTo>
         </div>
