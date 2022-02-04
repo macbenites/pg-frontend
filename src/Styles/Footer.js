@@ -21,9 +21,7 @@ export const Container = styled.div`
   background-color: var(--secondary);
 `;
 export const Wave = styled.div`
-  img {
-    transform: translate(0, 5px);
-  }
+  margin-bottom: -10px;
 `;
 
 export const Foot = styled.footer`

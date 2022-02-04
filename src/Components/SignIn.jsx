@@ -2,21 +2,23 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+
 import { SignInDiv, InputSignName, InputSignUsername, InputSignNeighborhood, InputSignPosition, InputSignEmail, InputSignPassword, BtnCreate } from "../Styles/SignIn";
 
-function SignIn(){
-    // const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const [input, setInput] = useState({
-        name: '',
-        username: '',
-        neighborhood: '',
-        position: '',
-        email: '',
-        password: ''
-    });
 
-    function handleClick(e){
+function SignIn() {
+  // const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const [input, setInput] = useState({
+    name: "",
+    username: "",
+    neighborhood: "",
+    position: "",
+    email: "",
+    password: "",
+  });
+
+function handleClick(e){
 
         if(input.name.length === 0){
             alert('Complete su nombre antes de crear la cuenta');
@@ -51,12 +53,13 @@ function SignIn(){
         };
     };
 
-    function handleChange(e){
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        });
-    };
+
+  function handleChange(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  }
 
     return(
         <div>
@@ -105,5 +108,6 @@ function SignIn(){
         </div>
     );
 };
+
 
 export default SignIn;
