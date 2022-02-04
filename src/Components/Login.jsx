@@ -2,10 +2,18 @@ import React from "react";
 import Logo from "./Logo";
 import { LoginDiv, InputDiv1, BtnNetworks, BtnDiv } from "../Styles/Login.js";
 import SocialListLogin from "./SocialListLogin";
+import GoogleLogin from 'react-google-login';
 
 
 
 export default function Login(){
+
+    //742910100228-bf1uk5tddd041i1fvd8bjcg77fk7qkmo.apps.googleusercontent.com// credencial google
+
+    const responseGoogle = (response) => {
+        console.log(response);
+        console.log(response.profileObj);
+      }
     return (
         <div>
             <div>
@@ -28,7 +36,14 @@ export default function Login(){
                     <span>/</span>
                     <div>
                         <BtnNetworks>                         
-                            <button type= 'submit'><span><SocialListLogin /></span>Iniciar sesión con Google</button>                   
+                           {/*  <button type= 'submit'><span><SocialListLogin /></span>Iniciar sesión con Google</button>  */}
+                            <GoogleLogin
+                                clientId="742910100228-bf1uk5tddd041i1fvd8bjcg77fk7qkmo.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            />                  
                         </BtnNetworks>
                         <BtnNetworks>
                             <button type= 'submit'>Iniciar sesión con Facebook</button>                   
