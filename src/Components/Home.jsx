@@ -12,10 +12,10 @@ function Home () {
             </HomeStyle>
             <IntroStyle>
                 <div>
-                    <h4>Hello Yeison</h4>
-                    <p>Welcome Back</p>
+                    <h4>Hola Yeison</h4>
+                    <p>Bienvenido</p>
                 </div>
-                <input type="text" placeholder="Search..."/>
+                <input type="text" placeholder="Buscar..."/>
             </IntroStyle>
         </div>
     )

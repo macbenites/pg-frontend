@@ -29,7 +29,7 @@ h4{
 export const InputSignName = styled.div`
 input{
     display: flex;
-    width: 300px;
+    width: 620px;
     height: 50px;
     background-color: #206F6C;
     color: #FFFFFF;
@@ -45,7 +45,7 @@ input{
 export const InputSignUsername = styled.div`
 input{
     display: flex;
-    width: 300px;
+    width: 620px;
     height: 50px;
     background-color: #206F6C;
     color: #FFFFFF;
@@ -53,15 +53,15 @@ input{
     border-radius: 0.6rem;
     border: none;
     font-size: 15px;
-    margin-left: 600px;
-    margin-top: -53px        
+    margin-left: 280px;
+    margin-top: 15px;        
 }
 `
 
 export const InputSignNeighborhood = styled.div`
 input{
     display: flex;
-    width: 300px;
+    width: 620px;
     height: 50px;
     background-color: #206F6C;
     color: #FFFFFF;
@@ -77,7 +77,7 @@ input{
 export const InputSignPosition = styled.div`
 input{
     display: flex;
-    width: 300px;
+    width: 620px;
     height: 50px;
     background-color: #206F6C;
     color: #FFFFFF;
@@ -85,8 +85,8 @@ input{
     border-radius: 0.6rem;
     border: none;
     font-size: 15px;
-    margin-left: 600px; 
-    margin-top: -53px        
+    margin-left: 280px; 
+    margin-top: 15px;        
 }
 `
 
