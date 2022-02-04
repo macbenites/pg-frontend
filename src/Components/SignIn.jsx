@@ -2,9 +2,7 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
-import { SignInDiv, InputSignName, InputSignUsername, InputSignNeighborhood, InputSignPosition, InputSignEmail, InputSignPassword, BtnCreate, LinkStyle } from "../Styles/SignIn";
+import { SignInDiv, InputSignName, InputSignUsername, InputSignNeighborhood, InputSignPosition, InputSignEmail, InputSignPassword, BtnCreate } from "../Styles/SignIn";
 
 function SignIn(){
     // const dispatch = useDispatch()
@@ -62,11 +60,10 @@ function SignIn(){
 
     return(
         <div>
-            <Logo/>
-            <NavBar/>
             <SignInDiv>
+            <Logo/>
             <h1>Creá tu cuenta</h1>
-            <h4>Ya tenes tu cuenta?<Link to='/login'>Log In</Link></h4>
+            <h4>Ya tenes tu cuenta?<Link to='/login'> Log In</Link></h4>
             <form>
                 <InputSignName>
                 <div>

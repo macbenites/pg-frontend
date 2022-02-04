@@ -23,6 +23,9 @@ h4{
     display: flex;
     color: #E8E4E6; 
     margin-left: 280px;
+    Link{
+        color: white;
+    }
 };
 `
 
