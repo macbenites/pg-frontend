@@ -1,138 +1,67 @@
 import styled from "styled-components";
+import { InputForm } from "../Styles/reusable/Input";
+import { LinkTo } from "../Styles/reusable/LinkTo";
+import { Button } from "../Styles/reusable/Button";
 
 export const SignInDiv = styled.div`
-form{
-    display: flex;
-    flex-direction: column;
-};
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(50px, auto);
+    grid-gap: 10px;
+    grid-template-areas:
+      "name username"
+      "barrio position"
+      "email email"
+      "password password"
+      "button button";
+  }
 
-h1{
-    font-weight: 800;
-    font-size: 2.5rem;
-    font-style: normal;
-    display: flex;
-    color: #E8E4E6;
-    margin-left: 280px;  
-};
+  h4 {
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    font-size: 3.75rem;
+    margin: 2rem 0;
+    color: var(--text-color);
+  }
 
-h4{
+  h5 {
     font-weight: 200;
     font-size: 1rem;
     font-style: normal;
-    margin-bottom: rem;
-    display: flex;
-    color: #E8E4E6; 
-    margin-left: 280px;
-};
-`
+    color: #e8e4e6;
+  }
+`;
 
-export const InputSignName = styled.div`
-input{
-    display: flex;
-    width: 620px;
-    height: 50px;
-    background-color: #206F6C;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 0.6rem;
-    border: none;
-    font-size: 15px;
-    margin-left: 280px;
-    margin-top: 50px        
-}
-`
+export const InputName = styled(InputForm)`
+  grid-area: name;
+`;
 
-export const InputSignUsername = styled.div`
-input{
-    display: flex;
-    width: 620px;
-    height: 50px;
-    background-color: #206F6C;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 0.6rem;
-    border: none;
-    font-size: 15px;
-    margin-left: 280px;
-    margin-top: 15px;        
-}
-`
+export const InputUser = styled(InputForm)`
+  grid-area: username;
+`;
 
-export const InputSignNeighborhood = styled.div`
-input{
-    display: flex;
-    width: 620px;
-    height: 50px;
-    background-color: #206F6C;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 0.6rem;
-    border: none;
-    font-size: 15px;
-    margin-left: 280px;  
-    margin-top: 15px        
-}
-`
+export const InputBarrio = styled(InputForm)`
+  grid-area: barrio;
+`;
 
-export const InputSignPosition = styled.div`
-input{
-    display: flex;
-    width: 620px;
-    height: 50px;
-    background-color: #206F6C;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 0.6rem;
-    border: none;
-    font-size: 15px;
-    margin-left: 280px; 
-    margin-top: 15px;        
-}
-`
+export const InputPosition = styled(InputForm)`
+  grid-area: position;
+`;
 
-export const InputSignEmail = styled.div`
-input{
-    display: flex;
-    width: 620px;
-    height: 50px;
-    background-color: #206F6C;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 0.6rem;
-    border: none;
-    font-size: 15px;
-    margin-left: 280px; 
-    margin-top: 15px
-}
-`
+export const InputEmail = styled(InputForm)`
+  grid-area: email;
+`;
 
-export const InputSignPassword = styled.div`
-input{
-    display: flex;
-    width: 620px;
-    height: 50px;
-    background-color: #206F6C;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 0.6rem;
-    border: none;
-    font-size: 15px;
-    margin-left: 280px; 
-    margin-top: 15px
-}
-`
+export const InputPassword = styled(InputForm)`
+  grid-area: password;
+`;
 
-export const BtnCreate = styled.div`
-button{
-    width: 620px;
-    height: 50px;
-    background-color: #F9BC60;
-    color: black;
-    border-radius: 0.6rem;
-    border: none;
-    text-align: center;
-    margin-left: 280px;
-    margin-top: 15px;
-    font-size: 15px;
-}
-`
+export const BtnSignIn = styled(Button)`
+  width: 100%;
+  grid-area: button;
+`;
+
+export const LinkToSignIn = styled(LinkTo)`
+  color: var(--tertiary);
+`;
