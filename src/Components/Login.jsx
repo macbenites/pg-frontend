@@ -3,17 +3,28 @@ import Logo from "./Logo";
 import { LoginDiv, InputDiv1, BtnNetworks, BtnDiv } from "../Styles/Login.js";
 import SocialListLogin from "./SocialListLogin";
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 
 
 export default function Login(){
 
     //742910100228-bf1uk5tddd041i1fvd8bjcg77fk7qkmo.apps.googleusercontent.com// credencial google
+    //658093002098339 -- creedencial Facebook
 
     const responseGoogle = (response) => {
         console.log(response);
         console.log(response.profileObj);
-      }
+    }
+
+    const responseFacebook = (response) => {
+        console.log(response);
+    }
+
+    const componentClicked = () => {
+        console.log("logueado")
+    }
+
     return (
         <div>
             <div>
@@ -46,7 +57,16 @@ export default function Login(){
                             />                  
                         </BtnNetworks>
                         <BtnNetworks>
-                            <button type= 'submit'>Iniciar sesión con Facebook</button>                   
+                            {/* <button type= 'submit'>Iniciar sesión con Facebook</button>     */}    
+                            <FacebookLogin
+                                appId="658093002098339"
+                                autoLoad={false}
+                                fields="name,email,picture"
+                                onClick={componentClicked}
+                                callback={responseFacebook} 
+                                icon="fa-facebook"
+                                textButton="Ingresa con facebook"
+                            />           
                         </BtnNetworks>                 
                         <BtnNetworks>
                             <button type= 'submit'>Iniciar sesión con GitHub</button>
