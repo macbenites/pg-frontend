@@ -1,16 +1,14 @@
-import { Link } from "react-router-dom"
-import { NavStyle , pNavStyle } from "../Styles/NavBar"
+import { NavStyle, NavLink } from "../Styles/NavBar";
 
-function NavBar () {
-
-    return (
-        <NavStyle>
-            <Link to="/home"><p>Home</p></Link>
-            <Link to="/reverse"><p>Reserve</p></Link>
-            <Link to="/about"><p>About</p></Link>
-            <Link to="/products"><p>Products</p></Link>
-        </NavStyle>
-    )
+function NavBar() {
+  return (
+    <NavStyle>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/reverse">Reserve</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/products">Products</NavLink>
+    </NavStyle>
+  );
 }
 
-export default NavBar
+export default NavBar;

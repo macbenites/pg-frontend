@@ -2,8 +2,11 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
+import { SignInDiv, InputSignName, InputSignUsername, InputSignNeighborhood, InputSignPosition, InputSignEmail, InputSignPassword, BtnCreate, LinkStyle } from "../Styles/SignIn";
 
-function SingIn(){
+function SignIn(){
     // const dispatch = useDispatch()
     const navigate = useNavigate()
     const [input, setInput] = useState({
@@ -60,33 +63,50 @@ function SingIn(){
     return(
         <div>
             <Logo/>
+            <NavBar/>
+            <SignInDiv>
             <h1>Creá tu cuenta</h1>
-            <h4>Ya tenes tu cuenta? <Link to='/login'>Log In</Link></h4>
+            <h4>Ya tenes tu cuenta?<Link to='/login'>Log In</Link></h4>
             <form>
+                <InputSignName>
                 <div>
-                    <input type='text' value={input.name} name='name' onChange={e => handleChange(e)}/>
+                    <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} placeholder='Nombre'/>
                 </div>
+                </InputSignName>
+                <InputSignUsername>
                 <div>
-                    <input type='text' value={input.username} name='username' onChange={e => handleChange(e)}/>
+                    <input type='text' value={input.username} name='username' onChange={e => handleChange(e)} placeholder='Usuario'/>
                 </div>
+                </InputSignUsername>
+                <InputSignNeighborhood>
                 <div>
-                    <input type='text' value={input.neighborhood} name='neighborhood' onChange={e => handleChange(e)}/>
+                    <input type='text' value={input.neighborhood} name='neighborhood' onChange={e => handleChange(e)} placeholder='Barrio'/>
                 </div>
+                </InputSignNeighborhood>
+                <InputSignPosition>
                 <div>
-                    <input type='text' value={input.position} name='position' onChange={e => handleChange(e)}/>
+                    <input type='text' value={input.position} name='position' onChange={e => handleChange(e)} placeholder='Posición'/>
                 </div>
+                </InputSignPosition>
+                <InputSignEmail>
                 <div>
-                    <input type='text' value={input.email} name='email' onChange={e => handleChange(e)}/>
+                    <input type='text' value={input.email} name='email' onChange={e => handleChange(e)} placeholder='Mail'/>
                 </div>
+                </InputSignEmail>
+                <InputSignPassword>
                 <div>
-                    <input type='text' value={input.password} name='password' onChange={e => handleChange(e)}/>
+                    <input type='text' value={input.password} name='password' onChange={e => handleChange(e)} placeholder='Contraseña'/>
                 </div>
+                </InputSignPassword>
+                <BtnCreate>
                 <div>
                     <button type='submit' onClick={e => {handleClick(e)}}>Crear cuenta</button>
                 </div>
+                </BtnCreate>
             </form>
+            </SignInDiv>
         </div>
     );
 };
 
-export default SingIn;
+export default SignIn;
