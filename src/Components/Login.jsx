@@ -1,6 +1,8 @@
 import React from "react";
 import Logo from "./Logo";
-import { LoginDiv, InputDiv1, InputDiv2, BtnDiv } from "../Styles/Login.js";
+import { LoginDiv, InputDiv1, BtnNetworks, BtnDiv } from "../Styles/Login.js";
+import SocialListLogin from "./SocialListLogin";
+
 
 
 export default function Login(){
@@ -23,17 +25,17 @@ export default function Login(){
                             <button type= 'submit'>Ingresar</button>
                         </BtnDiv> 
                     </div>  
-                    <p>/</p>
+                    <span>/</span>
                     <div>
-                        <InputDiv2>
-                            <input type= 'text' name= 'google' placeholder= 'Iniciar sesión con Google'/>                   
-                        </InputDiv2>
-                        <InputDiv2>
-                            <input type= 'text' name= 'facebook' placeholder= 'Iniciar sesión con Facebook'/>                   
-                        </InputDiv2>                 
-                        <InputDiv2>
-                            <input type= 'text' name= 'github' placeholder= 'Iniciar sesión con GitHub'/>
-                        </InputDiv2>    
+                        <BtnNetworks>                         
+                            <button type= 'submit'><span><SocialListLogin /></span>Iniciar sesión con Google</button>                   
+                        </BtnNetworks>
+                        <BtnNetworks>
+                            <button type= 'submit'>Iniciar sesión con Facebook</button>                   
+                        </BtnNetworks>                 
+                        <BtnNetworks>
+                            <button type= 'submit'>Iniciar sesión con GitHub</button>
+                        </BtnNetworks>    
                     </div>                        
                 </form>          
         </LoginDiv>
