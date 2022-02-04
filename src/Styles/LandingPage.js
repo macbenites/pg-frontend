@@ -4,33 +4,38 @@ export const LandTop = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem 0;
 `;
 
 export const ContentLanding = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr minmax(100px, auto);
+  grid-gap: 2rem;
 
-  div {
-    margin: 0 auto;
-  }
   img {
     width: 100%;
+    box-sizing: border-box;
   }
+
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+`;
+export const ImgDiv = styled.div`
+  display: flex;
+  @media (min-width: 768px) {
+    width: 100%;
     align-items: center;
   }
 `;
 
 export const TextLanding = styled.div`
   padding: 1rem 0;
+  text-align: left;
 
   h4 {
-    text-align: center;
     font-weight: 700;
     letter-spacing: -0.05em;
     font-size: 3.75rem;
@@ -38,7 +43,6 @@ export const TextLanding = styled.div`
     color: var(--text-color);
   }
   p {
-    text-align: center;
     color: var(--secondary);
     line-height: 1.6;
     letter-spacing: -0.02em;
@@ -46,15 +50,7 @@ export const TextLanding = styled.div`
   }
 
   @media (min-width: 768px) {
-    max-width: 50%;
     padding-right: 2rem;
-
-    p {
-      text-align: justify;
-    }
-    h4 {
-      text-align: left;
-    }
   }
 `;
 

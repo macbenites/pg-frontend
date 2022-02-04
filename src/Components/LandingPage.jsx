@@ -3,12 +3,12 @@ import {
   ContentLanding,
   TextLanding,
   Landing,
+  ImgDiv,
 } from "../Styles/LandingPage";
-import { Button } from "../Styles/Button";
-import { LinkTo } from "../Styles/LinkTo";
+import { Button } from "../Styles/reusable/Button";
+import { LinkTo } from "../Styles/reusable/LinkTo";
 import imgLanding from "../Assets/img/img-landing.svg";
 import Logo from "./Logo";
-import NavBar from "./NavBar";
 
 function LandingPage() {
   return (
@@ -18,9 +18,6 @@ function LandingPage() {
         <div>
           <LinkTo to="/login">
             <Button primary>LogIn</Button>
-          </LinkTo>
-          <LinkTo to="/signin">
-            <Button>SignIn</Button>
           </LinkTo>
         </div>
       </LandTop>
@@ -38,10 +35,13 @@ function LandingPage() {
             leo, vel fringilla est ullamcorper eget nulla facilisi etiam
             dignissim.
           </p>
+          <LinkTo to="/signin">
+            <Button>SignIn</Button>
+          </LinkTo>
         </TextLanding>
-        <div>
+        <ImgDiv>
           <img src={imgLanding} alt="Camp" />
-        </div>
+        </ImgDiv>
       </ContentLanding>
     </Landing>
   );

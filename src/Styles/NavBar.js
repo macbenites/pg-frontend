@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LinkTo } from "./LinkTo";
+import { LinkTo } from "./reusable/LinkTo";
 
 export const NavStyle = styled.div`
   display: flex;
