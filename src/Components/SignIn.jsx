@@ -18,37 +18,37 @@ function SignIn(){
 
     function handleClick(e){
 
-        // if(input.name.length === 0){
-        //     alert('Complete your name before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.username.length === 0){
-        //     alert('Complete your username before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.neighborhood.length === 0){
-        //     alert('Complete your neighborhood before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.position.length === 0){
-        //     alert('Complete your position before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.email.length === 0){
-        //     alert('Complete your email before creating the account');
-        //     e.preventDefault();
-        // }
-        // else if(input.password.length === 0){
-        //     alert('Complete your password before creating the account');
-        //     e.preventDefault();
-        // }
+        if(input.name.length === 0){
+            alert('Complete su nombre antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.username.length === 0){
+            alert('Complete su usuario antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.neighborhood.length === 0){
+            alert('Complete su barrio antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.position.length === 0){
+            alert('Complete su posición antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.email.length === 0){
+            alert('Complete su mail antes de crear la cuenta');
+            e.preventDefault();
+        }
+        else if(input.password.length === 0){
+            alert('Complete su contraseña antes de crear la cuenta');
+            e.preventDefault();
+        }
         
-        // else{
+        else{
             e.preventDefault();
             // dispatch(createAccount(input));
             alert('Cuenta creada con éxito');
             navigate('/home');
-        // };
+        };
     };
 
     function handleChange(e){
