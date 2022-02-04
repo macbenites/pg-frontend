@@ -5,7 +5,7 @@ export const InputForm = styled.input`
   border: none;
   padding: 0.2rem 1rem;
   border-radius: 0.75rem;
-  height: 3.125rem;
+  height: 3rem;
   border-style: none;
   outline: none;
   font-size: 1rem;
