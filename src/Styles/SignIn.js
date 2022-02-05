@@ -50,29 +50,6 @@ export const SignInDiv = styled.div`
   }
 `;
 
-export const InputName = styled(InputForm)`
-  grid-area: name;
-`;
-
-export const InputUser = styled(InputForm)`
-  grid-area: username;
-`;
-
-export const InputBarrio = styled(InputForm)`
-  grid-area: barrio;
-`;
-
-export const InputPosition = styled(InputForm)`
-  grid-area: position;
-`;
-
-export const InputEmail = styled(InputForm)`
-  grid-area: email;
-`;
-
-export const InputPassword = styled(InputForm)`
-  grid-area: password;
-`;
 
 export const BtnSignIn = styled(Button)`
   width: 100%;
