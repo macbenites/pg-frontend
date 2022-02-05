@@ -40,6 +40,10 @@ export const InputDiv1 = styled.div`
     border-radius: 0.6rem;
     border: none;
   }
+  span{
+    color: #F70F08;
+    font-size: 0.7rem;
+  }
 `;
 
 export const BtnDiv = styled.div`
