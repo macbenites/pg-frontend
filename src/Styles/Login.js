@@ -1,11 +1,18 @@
 import styled from "styled-components";
-import GoogleLogin from "react-google-login";
 import { Button } from "../Styles/reusable/Button";
 
-export const BtnGoogle = styled(GoogleLogin)`
+export const BtnGoogle = styled.div`
+  margin: auto;
   grid-area: google;
-  background-color: transparent;
-  border-radius: 1rem;
+`;
+
+export const BtnFacebook = styled.div`
+  margin: auto;
+  grid-area: facebook;
+`;
+
+export const BtnApple = styled(Button)`
+  grid-area: apple;
 `;
 
 export const LoginDiv = styled.div`
@@ -22,20 +29,19 @@ export const LoginDiv = styled.div`
 
   form {
     display: grid;
-    grid-gap: 0.4rem;
+    grid-gap: 2rem;
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
       "username"
       "password"
       "btnlogin"
       "icon"
       "google"
-      "google"
-      "google"
-      ;
-    grid-template-rows: auto;
+      "facebook"
+      "apple";
   }
-  div {
+  span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,25 +49,30 @@ export const LoginDiv = styled.div`
     font-size: 2rem;
     font-weight: 700;
     padding: 1rem 0;
-    color : var(--text-color);
+    color: var(--text-color);
   }
 
-  @media (min-width: 568px) {
+  @media (min-width: 620px) {
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 600px;
     form {
+      grid-gap: 0.5rem;
       grid-template-columns: 1fr 20% 1fr;
       grid-template-rows: auto;
       grid-template-areas:
-      "username icon google"
-      "password icon google"
-      "btnlogin icon google"
-      ;
+        "username icon google"
+        "password icon facebook"
+        "btnlogin icon apple";
     }
   }
 `;
 
 export const BtnLogIn = styled(Button)`
- grid-area : btnlogin;
+  grid-area: btnlogin;
   width: 100%;
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: 1rem;
+  color: var(--tertiary);
 `;

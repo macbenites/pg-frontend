@@ -2,18 +2,16 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
+import { InputForm } from "../Styles/reusable/Input";
 import {
-  SignInDiv,
-  LinkToSignIn,
   InputUser,
   InputName,
   InputBarrio,
   InputPosition,
   InputEmail,
   InputPassword,
-  BtnSignIn,
-} from "../Styles/SignIn";
-
+} from "../Styles/reusable/ContainerInput";
 function SignIn() {
   // const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -69,60 +67,66 @@ function SignIn() {
           Ya tenes tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
         <form>
-          <InputName
-            type="text"
-            autoComplete="off"
-            value={input.name}
-            name="name"
-            onChange={(e) => handleChange(e)}
-            placeholder="Nombre"
-          />
-
-          <InputUser
-            type="text"
-            autoComplete="off"
-            value={input.username}
-            name="username"
-            onChange={(e) => handleChange(e)}
-            placeholder="Usuario"
-          />
-
-          <InputBarrio
-            type="text"
-            autoComplete="off"
-            value={input.neighborhood}
-            name="neighborhood"
-            onChange={(e) => handleChange(e)}
-            placeholder="Barrio"
-          />
-
-          <InputPosition
-            type="text"
-            autoComplete="off"
-            value={input.position}
-            name="position"
-            onChange={(e) => handleChange(e)}
-            placeholder="Posición"
-          />
-
-          <InputEmail
-            type="email"
-            autoComplete="off"
-            value={input.email}
-            name="email"
-            onChange={(e) => handleChange(e)}
-            placeholder="Email"
-          />
-
-          <InputPassword
-            type="password"
-            autoComplete="off"
-            value={input.password}
-            name="password"
-            onChange={(e) => handleChange(e)}
-            placeholder="Contraseña"
-          />
-
+          <InputName>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.name}
+              name="name"
+              onChange={(e) => handleChange(e)}
+              placeholder="Nombre"
+            />
+          </InputName>
+          <InputUser>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.username}
+              name="username"
+              onChange={(e) => handleChange(e)}
+              placeholder="Usuario"
+            />
+          </InputUser>
+          <InputBarrio>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.neighborhood}
+              name="neighborhood"
+              onChange={(e) => handleChange(e)}
+              placeholder="Barrio"
+            />
+          </InputBarrio>
+          <InputPosition>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.position}
+              name="position"
+              onChange={(e) => handleChange(e)}
+              placeholder="Posición"
+            />
+          </InputPosition>
+          <InputEmail>
+            <InputForm
+              type="email"
+              autoComplete="off"
+              value={input.email}
+              name="email"
+              onChange={(e) => handleChange(e)}
+              placeholder="Email"
+            />
+          </InputEmail>
+          <InputPassword>
+            <InputForm
+              type="password"
+              autoComplete="off"
+              value={input.password}
+              name="password"
+              onChange={(e) => handleChange(e)}
+              placeholder="Contraseña"
+            />
+          </InputPassword>
           <BtnSignIn
             primary
             type="submit"
