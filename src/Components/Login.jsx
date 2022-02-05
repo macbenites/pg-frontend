@@ -54,7 +54,7 @@ export default function Login(){
                                             message: '**Campo requerido'
                                         },
                                         pattern:{
-                                            value: /^.{4,12}$/,
+                                            value: /^.{6,12}$/,
                                             message: '**La contraseña debe contener entre 4 y 12 caracteres'
                                         }, 
                                     })
