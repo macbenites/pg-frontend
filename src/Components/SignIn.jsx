@@ -5,6 +5,10 @@ import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { InputForm } from "../Styles/reusable/Input";
 // import { ErrorMessage, Error } from "../Styles/Login.js";
+import { context } from "../Context/authContext";
+import { useContext } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 function SignIn() {
   // const dispatch = useDispatch()
@@ -40,6 +44,7 @@ function SignIn() {
     } else {
       e.preventDefault();
       // dispatch(createAccount(input));
+      createUserWithEmailAndPassword(auth , input.email , input.password)
       alert("Cuenta creada con éxito");
       navigate("/home");
     }

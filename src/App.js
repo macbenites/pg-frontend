@@ -5,23 +5,26 @@ import Login from "./Components/Login";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import SignIn from "./Components/SignIn";
+import { AuthProvider } from "./Context/authContext";
 
 
 function App() {
   return (
-    <Container>
-      <Wrapper>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path = '/login' element = {<Login/>}/>
-            <Route path="/home" element={<Home/>}/>
-          </Routes>
-        </BrowserRouter>
-      </Wrapper>
-      <Footer />
-    </Container>
+    <AuthProvider>
+      <Container>
+        <Wrapper>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path = '/login' element = {<Login/>}/>
+              <Route path="/home" element={<Home/>}/>
+            </Routes>
+          </BrowserRouter>
+        </Wrapper>
+        <Footer />
+      </Container>
+    </AuthProvider>
   );
 }
 
