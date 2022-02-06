@@ -1,23 +1,17 @@
 import styled from "styled-components";
-import { InputForm } from "../Styles/reusable/Input";
 import { LinkTo } from "../Styles/reusable/LinkTo";
 import { Button } from "../Styles/reusable/Button";
 
 export const SignInDiv = styled.div`
   padding: 0 2rem;
+  input {
+    margin: 0.2rem 0;
+  }
   form {
-    display: grid;
-    grid-gap: 0.4rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "name"
-      "username"
-      "barrio"
-      "position"
-      "email"
-      "password"
-      "button";
+    div {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   h4 {
@@ -39,21 +33,17 @@ export const SignInDiv = styled.div`
     margin: 0 auto;
     max-width: 500px;
     form {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-areas:
-        "name username"
-        "barrio position"
-        "email email"
-        "password password"
-        "button button";
+      div {
+        gap: 0.4rem;
+        flex-direction: row;
+      }
     }
   }
 `;
 
-
 export const BtnSignIn = styled(Button)`
   width: 100%;
-  grid-area: button;
+  margin-top: 1rem;
 `;
 
 export const LinkToSignIn = styled(LinkTo)`

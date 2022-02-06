@@ -4,14 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { InputForm } from "../Styles/reusable/Input";
-import {
-  InputUser,
-  InputName,
-  InputBarrio,
-  InputPosition,
-  InputEmail,
-  InputPassword,
-} from "../Styles/reusable/ContainerInput";
+// import { ErrorMessage, Error } from "../Styles/Login.js";
+
 function SignIn() {
   // const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -66,8 +60,14 @@ function SignIn() {
         <h5>
           Ya tenes tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
+        {/* {Object.entries(errors).length > 0 && (
+          <Error>
+            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
+          </Error>
+        )} */}
         <form>
-          <InputName>
+          <div>
             <InputForm
               type="text"
               autoComplete="off"
@@ -76,8 +76,6 @@ function SignIn() {
               onChange={(e) => handleChange(e)}
               placeholder="Nombre"
             />
-          </InputName>
-          <InputUser>
             <InputForm
               type="text"
               autoComplete="off"
@@ -86,8 +84,8 @@ function SignIn() {
               onChange={(e) => handleChange(e)}
               placeholder="Usuario"
             />
-          </InputUser>
-          <InputBarrio>
+          </div>
+          <div>
             <InputForm
               type="text"
               autoComplete="off"
@@ -96,8 +94,6 @@ function SignIn() {
               onChange={(e) => handleChange(e)}
               placeholder="Barrio"
             />
-          </InputBarrio>
-          <InputPosition>
             <InputForm
               type="text"
               autoComplete="off"
@@ -106,27 +102,23 @@ function SignIn() {
               onChange={(e) => handleChange(e)}
               placeholder="Posición"
             />
-          </InputPosition>
-          <InputEmail>
-            <InputForm
-              type="email"
-              autoComplete="off"
-              value={input.email}
-              name="email"
-              onChange={(e) => handleChange(e)}
-              placeholder="Email"
-            />
-          </InputEmail>
-          <InputPassword>
-            <InputForm
-              type="password"
-              autoComplete="off"
-              value={input.password}
-              name="password"
-              onChange={(e) => handleChange(e)}
-              placeholder="Contraseña"
-            />
-          </InputPassword>
+          </div>
+          <InputForm
+            type="email"
+            autoComplete="off"
+            value={input.email}
+            name="email"
+            onChange={(e) => handleChange(e)}
+            placeholder="Email"
+          />
+          <InputForm
+            type="password"
+            autoComplete="off"
+            value={input.password}
+            name="password"
+            onChange={(e) => handleChange(e)}
+            placeholder="Contraseña"
+          />
           <BtnSignIn
             primary
             type="submit"
