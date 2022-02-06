@@ -50,7 +50,7 @@ export default function Login() {
     <div>
       <Logo />
       <LoginDiv>
-        <h4>Ingresa a tu cuenta</h4>
+        <h4>Ingresá a tu cuenta</h4>
         {Object.entries(errors).length > 0 && (
           <Error>
             <ErrorMessage>{errors?.username?.message}</ErrorMessage>
@@ -83,12 +83,12 @@ export default function Login() {
               {...register("password", {
                 required: {
                   value: true,
-                  message: "Contraseña requerido",
+                  message: "Contraseña requerida",
                 },
                 pattern: {
                   value: /^.{6,12}$/,
                   message:
-                    "La contraseña debe contener entre 4 y 12 caracteres",
+                    "La contraseña debe contener entre 6 y 12 caracteres",
                 },
               })}
               autoComplete="off"
