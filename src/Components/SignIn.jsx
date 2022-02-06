@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { InputForm } from "../Styles/reusable/Input";
@@ -6,6 +7,7 @@ import { ErrorMessage, Error } from "../Styles/Login.js";
 import { useForm } from "react-hook-form";
 
 function SignIn() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +18,7 @@ function SignIn() {
 
   const onSubmit = (event) => {
     console.log(event);
-    // event.target.reset();
+    navigate('/login')
     reset();
   };
   

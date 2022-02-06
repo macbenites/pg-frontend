@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Logo from "./Logo";
 import {
   LoginDiv,
@@ -17,6 +18,7 @@ import GoogleLogin from "react-google-login";
 import { useForm } from "react-hook-form";
 
 export default function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,7 +31,7 @@ export default function Login() {
 
   const onSubmit = (event) => {
     console.log(event);
-    // event.target.reset();
+    navigate('/home')
     reset();
   };
 
