@@ -52,6 +52,7 @@ export default function Login() {
     <div>
       <Logo />
       <LoginDiv>
+      <h4>Ingresá a tu cuenta</h4>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerInput>
             <InputForm

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { InputForm } from "../Styles/reusable/Input";
@@ -18,7 +18,7 @@ function SignIn() {
     reset,
     formState: { errors },
   } = useForm();
-
+  
   const {login} = useContext(context);
   console.log(login);
 
@@ -33,10 +33,10 @@ function SignIn() {
         navigate('/login');
     }else{
       alert('Completar los campos requeridos')
+
     }
-    
   };
-  
+
   return (
     <div>
       <Logo />
@@ -132,12 +132,12 @@ function SignIn() {
             {...register("email", {
               required: {
                 value: true,
-                message: "Email requerido"
+                message: "Email requerido",
               },
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "El formato del email ingresado no es correcto"
-              }
+                message: "El formato del email ingresado no es correcto",
+              },
             })}
           />
           <InputForm
@@ -152,15 +152,11 @@ function SignIn() {
               },
               pattern: {
                 value: /^.{6,12}$/,
-                message:
-                  "La contraseña debe contener entre 6 y 12 caracteres",
+                message: "La contraseña debe contener entre 6 y 12 caracteres",
               },
             })}
           />
-          <BtnSignIn
-            primary
-            type="submit"
-          >
+          <BtnSignIn primary type="submit">
             Crear cuenta
           </BtnSignIn>
         </form>
