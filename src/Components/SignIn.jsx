@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { InputForm } from "../Styles/reusable/Input";
+// import { ErrorMessage, Error } from "../Styles/Login.js";
+import { context } from "../Context/authContext";
+import { useContext } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 import { ErrorMessage, Error } from "../Styles/Login.js";
 import { useForm } from "react-hook-form";
 
@@ -14,15 +19,22 @@ function SignIn() {
     reset,
     formState: { errors },
   } = useForm();
-
-
+  
   const onSubmit = (event) => {
     console.log(event);
-    navigate('/login')
-    reset();
+    e.preventDefault();
+      // dispatch(createAccount(input));
+    if(Object.entries(errors).length === 0){
+        createUserWithEmailAndPassword(auth , input.email , input.password)
+        alert("Cuenta creada con éxito");
+        reset();
+        navigate('/login');
+    }else{
+      alert('Completar los campos requeridos')
+    }
+    
   };
   
-
   return (
     <div>
       <Logo />
