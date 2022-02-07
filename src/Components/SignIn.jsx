@@ -20,8 +20,8 @@ function SignIn() {
   } = useForm();
 
   const {login} = useContext(context);
-  console.log(login)
-  
+  console.log(login);
+
   const onSubmit = (event) => {
     console.log(event);
     //e.preventDefault();
