@@ -51,12 +51,6 @@ export default function Login() {
       <Logo />
       <LoginDiv>
         <h4>Ingresa a tu cuenta</h4>
-        {Object.entries(errors).length > 0 && (
-          <Error>
-            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
-          </Error>
-        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerInput>
             <InputForm
@@ -124,6 +118,13 @@ export default function Login() {
             <BtnApple type="button">Apple</BtnApple>
           </ContainerInput>
         </form>
+        <br />
+        {Object.entries(errors).length > 0 && (
+          <Error>
+            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
+          </Error>
+        )}
       </LoginDiv>
     </div>
   );
