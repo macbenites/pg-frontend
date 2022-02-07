@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Logo from "./Logo";
 import {
   LoginDiv,
@@ -17,6 +18,7 @@ import GoogleLogin from "react-google-login";
 import { useForm } from "react-hook-form";
 
 export default function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,7 +31,7 @@ export default function Login() {
 
   const onSubmit = (event) => {
     console.log(event);
-    // event.target.reset();
+    navigate('/home')
     reset();
   };
 
@@ -50,13 +52,6 @@ export default function Login() {
     <div>
       <Logo />
       <LoginDiv>
-        <h4>Ingresa a tu cuenta</h4>
-        {Object.entries(errors).length > 0 && (
-          <Error>
-            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
-          </Error>
-        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerInput>
             <InputForm
@@ -83,12 +78,12 @@ export default function Login() {
               {...register("password", {
                 required: {
                   value: true,
-                  message: "Contraseña requerido",
+                  message: "Contraseña requerida",
                 },
                 pattern: {
                   value: /^.{6,12}$/,
                   message:
-                    "La contraseña debe contener entre 4 y 12 caracteres",
+                    "La contraseña debe contener entre 6 y 12 caracteres",
                 },
               })}
               autoComplete="off"
@@ -124,6 +119,13 @@ export default function Login() {
             <BtnApple type="button">Apple</BtnApple>
           </ContainerInput>
         </form>
+        <br />
+        {Object.entries(errors).length > 0 && (
+          <Error>
+            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
+          </Error>
+        )}
       </LoginDiv>
     </div>
   );
