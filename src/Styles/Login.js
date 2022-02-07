@@ -1,11 +1,38 @@
 import styled from "styled-components";
-import GoogleLogin from "react-google-login";
 import { Button } from "../Styles/reusable/Button";
 
-export const BtnGoogle = styled(GoogleLogin)`
-  grid-area: google;
-  background-color: transparent;
-  border-radius: 1rem;
+export const BtnGoogle = styled.div`
+  button {
+    width: 100%;
+    background-color: red;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 1rem;
+    height: 3.5rem;
+  }
+`;
+
+export const BtnFacebook = styled.div`
+  button {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 1rem;
+    text-transform: lowercase;
+    font-weight: 500;
+
+    height: 3.5rem;
+    border-radius: 0.75rem;
+    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px,
+      rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+  }
+`;
+
+export const BtnApple = styled(Button)`
+  width: 100%;
 `;
 
 export const LoginDiv = styled.div`
@@ -16,52 +43,58 @@ export const LoginDiv = styled.div`
     font-weight: 700;
     letter-spacing: -0.05em;
     font-size: 3rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
     color: var(--text-color);
   }
 
   form {
-    display: grid;
-    grid-gap: 0.4rem;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "username"
-      "password"
-      "btnlogin"
-      "icon"
-      "google"
-      "google"
-      "google"
-      ;
-    grid-template-rows: auto;
-  }
-  div {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: icon;
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 1rem 0;
-    color : var(--text-color);
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  @media (min-width: 568px) {
+  @media (min-width: 620px) {
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 600px;
+
     form {
-      grid-template-columns: 1fr 20% 1fr;
-      grid-template-rows: auto;
-      grid-template-areas:
-      "username icon google"
-      "password icon google"
-      "btnlogin icon google"
-      ;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
     }
   }
 `;
 
 export const BtnLogIn = styled(Button)`
- grid-area : btnlogin;
   width: 100%;
+`;
+
+export const ErrorMessage = styled.div`
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  color: var(--text-color);
+`;
+export const Bar = styled.div`
+  margin: auto;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  padding: 1rem;
+`;
+
+export const ContainerInput = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+
+export const Error = styled.div`
+  position: relative;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--text-color);
 `;

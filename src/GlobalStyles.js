@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     --tertiary : #e16162;
     --Links : #f9bc60;
     --text-color : #fffffe;
+    --stroke : #001e1d;
     
 
 }

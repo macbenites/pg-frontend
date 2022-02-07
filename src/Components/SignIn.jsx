@@ -2,17 +2,9 @@ import React, { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
-import {
-  SignInDiv,
-  LinkToSignIn,
-  InputUser,
-  InputName,
-  InputBarrio,
-  InputPosition,
-  InputEmail,
-  InputPassword,
-  BtnSignIn,
-} from "../Styles/SignIn";
+import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
+import { InputForm } from "../Styles/reusable/Input";
+// import { ErrorMessage, Error } from "../Styles/Login.js";
 
 function SignIn() {
   // const dispatch = useDispatch()
@@ -68,44 +60,50 @@ function SignIn() {
         <h5>
           Ya tenes tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
+        {/* {Object.entries(errors).length > 0 && (
+          <Error>
+            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
+          </Error>
+        )} */}
         <form>
-          <InputName
-            type="text"
-            autoComplete="off"
-            value={input.name}
-            name="name"
-            onChange={(e) => handleChange(e)}
-            placeholder="Nombre"
-          />
-
-          <InputUser
-            type="text"
-            autoComplete="off"
-            value={input.username}
-            name="username"
-            onChange={(e) => handleChange(e)}
-            placeholder="Usuario"
-          />
-
-          <InputBarrio
-            type="text"
-            autoComplete="off"
-            value={input.neighborhood}
-            name="neighborhood"
-            onChange={(e) => handleChange(e)}
-            placeholder="Barrio"
-          />
-
-          <InputPosition
-            type="text"
-            autoComplete="off"
-            value={input.position}
-            name="position"
-            onChange={(e) => handleChange(e)}
-            placeholder="Posición"
-          />
-
-          <InputEmail
+          <div>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.name}
+              name="name"
+              onChange={(e) => handleChange(e)}
+              placeholder="Nombre"
+            />
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.username}
+              name="username"
+              onChange={(e) => handleChange(e)}
+              placeholder="Usuario"
+            />
+          </div>
+          <div>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.neighborhood}
+              name="neighborhood"
+              onChange={(e) => handleChange(e)}
+              placeholder="Barrio"
+            />
+            <InputForm
+              type="text"
+              autoComplete="off"
+              value={input.position}
+              name="position"
+              onChange={(e) => handleChange(e)}
+              placeholder="Posición"
+            />
+          </div>
+          <InputForm
             type="email"
             autoComplete="off"
             value={input.email}
@@ -113,8 +111,7 @@ function SignIn() {
             onChange={(e) => handleChange(e)}
             placeholder="Email"
           />
-
-          <InputPassword
+          <InputForm
             type="password"
             autoComplete="off"
             value={input.password}
@@ -122,7 +119,6 @@ function SignIn() {
             onChange={(e) => handleChange(e)}
             placeholder="Contraseña"
           />
-
           <BtnSignIn
             primary
             type="submit"
