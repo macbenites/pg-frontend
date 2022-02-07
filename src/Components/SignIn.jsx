@@ -6,7 +6,6 @@ import { InputForm } from "../Styles/reusable/Input";
 // import { ErrorMessage, Error } from "../Styles/Login.js";
 import { context } from "../Context/authContext";
 import { useContext } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { ErrorMessage, Error } from "../Styles/Login.js";
 import { useForm } from "react-hook-form";
@@ -19,13 +18,16 @@ function SignIn() {
     reset,
     formState: { errors },
   } = useForm();
+
+  const firebaseLogIn = useContext(context);
+  console.log(firebaseLogIn)
   
   const onSubmit = (event) => {
     console.log(event);
-    e.preventDefault();
+    //e.preventDefault();
       // dispatch(createAccount(input));
     if(Object.entries(errors).length === 0){
-        createUserWithEmailAndPassword(auth , input.email , input.password)
+        firebaseLogIn(auth , event.email , event.password)
         alert("Cuenta creada con éxito");
         reset();
         navigate('/login');
