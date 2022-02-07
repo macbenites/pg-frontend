@@ -19,15 +19,15 @@ function SignIn() {
     formState: { errors },
   } = useForm();
 
-  const firebaseLogIn = useContext(context);
-  console.log(firebaseLogIn)
+  const {login} = useContext(context);
+  console.log(login)
   
   const onSubmit = (event) => {
     console.log(event);
     //e.preventDefault();
       // dispatch(createAccount(input));
     if(Object.entries(errors).length === 0){
-        firebaseLogIn(auth , event.email , event.password)
+        login(auth , event.email , event.password)
         alert("Cuenta creada con éxito");
         reset();
         navigate('/login');

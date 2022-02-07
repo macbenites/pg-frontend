@@ -10,7 +10,7 @@ export function AuthProvider ({children}) {
     }
 
     return(
-        <context.Provider value={login}>
+        <context.Provider value={{login}}>
             {children}
         </context.Provider>
         
