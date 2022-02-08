@@ -66,18 +66,18 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerInput>
             <InputForm
-              type="text"
-              name="username"
-              placeholder="Usuario"
+              type="email"
               autoComplete="off"
-              {...register("username", {
+              name="email"
+              placeholder="Email"
+              {...register("email", {
                 required: {
                   value: true,
-                  message: "Usuario requerido",
+                  message: "Email requerido",
                 },
                 pattern: {
-                  value: /^[a-zA-Z0-9_-]{4,20}$/,
-                  message: "El formato del usuario ingresado no es correcto",
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: "El formato del email ingresado no es correcto",
                 },
               })}
             />
@@ -133,7 +133,7 @@ export default function Login() {
         <br />
         {Object.entries(errors).length > 0 && (
           <Error>
-            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
             <ErrorMessage>{errors?.password?.message}</ErrorMessage>
           </Error>
         )}
