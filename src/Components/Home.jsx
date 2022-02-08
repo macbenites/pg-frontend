@@ -13,7 +13,7 @@ function Home() {
   const navigate = useNavigate();
   const { user, logOut } = useContext(context);
 
-  useEffect(() => console.log(user), []); // con la data de user podemos maquillar el home con la foto y data del usuario
+  useEffect(() => console.log(user), [user]); // con la data de user podemos maquillar el home con la foto y data del usuario
 
   const handleLogOut = () => {
     logOut();
