@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LinkTo } from "../Styles/reusable/LinkTo";
 import { Button } from "../Styles/reusable/Button";
 
 export const BtnGoogle = styled.div`
@@ -47,6 +48,13 @@ export const LoginDiv = styled.div`
     color: var(--text-color);
   }
 
+  h5 {
+    font-weight: 200;
+    font-size: 1rem;
+    font-style: normal;
+    color: #e8e4e6;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -71,9 +79,9 @@ export const BtnLogIn = styled(Button)`
 `;
 
 export const ErrorMessage = styled.div`
-  font-size: 0.9rem;
-  margin: 0.2rem 0;
-  color: red;
+  font-size: 0.8rem;
+  margin: 0.1rem 0;
+  color: var(--text-color);
 `;
 export const Bar = styled.div`
   margin: auto;
@@ -96,5 +104,10 @@ export const Error = styled.div`
   border-radius: 0.75rem;
   padding: 0.5rem;
   margin-bottom: 2rem;
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
+`;
+
+export const LinkToLogin = styled(LinkTo)`
+  color: var(--tertiary);
+  font-weight: 600;
 `;

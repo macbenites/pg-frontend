@@ -11,6 +11,7 @@ import {
   ContainerInput,
   Bar,
   Error,
+  LinkToLogin
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import FacebookLogin from "react-facebook-login";
@@ -63,6 +64,9 @@ export default function Login() {
       <Logo />
       <LoginDiv>
       <h4>Ingresá a tu cuenta</h4>
+      <h5>
+          No tenés cuenta?<LinkToLogin to="/signin"> Registrate</LinkToLogin>
+        </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerInput>
             <InputForm
