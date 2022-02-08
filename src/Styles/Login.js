@@ -73,7 +73,7 @@ export const BtnLogIn = styled(Button)`
 export const ErrorMessage = styled.div`
   font-size: 0.9rem;
   margin: 0.2rem 0;
-  color: var(--text-color);
+  color: red;
 `;
 export const Bar = styled.div`
   margin: auto;
