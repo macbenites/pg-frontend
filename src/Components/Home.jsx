@@ -4,8 +4,25 @@ import NavBar from "./NavBar";
 import Cards from "./Cards";
 import { infoCard } from "../Utils/infoCards";
 import { HomeStyle, IntroStyle, CardsStyle } from "../Styles/Home";
+import { context } from "../Context/authContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Home() {
+
+  const navigate = useNavigate()
+  const {user , logOut } = useContext(context);
+  
+  useEffect(()=> console.log(user),[])
+
+  const handleLogOut = () => {
+    logOut();
+    navigate("/login")
+  }
+
+  if(!user) return <h1>Cargando...</h1>
+
   return (
     <div>
       <HomeStyle>
@@ -14,8 +31,9 @@ function Home() {
       </HomeStyle>
       <IntroStyle>
         <div>
-          <h4>Hola Yeison</h4>
+          <h4>Hola {user.email}</h4>
           <p>Bienvenido</p>
+          <button onClick={handleLogOut}>Log Out</button>
         </div>
         <input type="text" placeholder="Buscar..." />
       </IntroStyle>
