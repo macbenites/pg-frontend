@@ -32,7 +32,7 @@ export default function Login() {
   // credencial google
   //658093002098339 -- creedencial Facebook
 
-  const {logIn} = useContext(context)
+  const {logIn} = useContext(context);
 
   const onSubmit = async (event) => {
     console.log(event);
