@@ -14,8 +14,6 @@ import {
   LinkToLogin
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
-import FacebookLogin from "react-facebook-login";
-import GoogleLogin from "react-google-login";
 import { useForm } from "react-hook-form";
 import { context } from "../Context/authContext";
 import { useContext } from "react";
@@ -33,7 +31,7 @@ export default function Login() {
   // credencial google
   //658093002098339 -- creedencial Facebook
 
-  const {logIn , logInWithGoogle , logInWithFacebook} = useContext(context);
+  const {logIn , logInWithGoogle , logInWithFacebook } = useContext(context);
 
   const onSubmit = async (event) => {
     console.log(event);
@@ -56,6 +54,10 @@ export default function Login() {
     const facebookData = await logInWithFacebook();
     console.log(facebookData)
     navigate('/home');
+  }
+
+  const newPassword =  () => {
+    navigate("/resetPassword")
   }
 
   console.log(errors);
@@ -116,6 +118,8 @@ export default function Login() {
             <BtnApple type="button">Apple</BtnApple>
           </ContainerInput>
         </form>
+        <br />
+        <button onClick={newPassword}>¿Olvidaste la contraseña?</button>
         <br />
         {Object.entries(errors).length > 0 && (
           <Error>
