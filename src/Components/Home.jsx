@@ -34,7 +34,7 @@ function Home() {
             Hola{" "}
             {user.displayName ? user.displayName : user.email.split("@")[0]}
           </h4>
-          <p>Bienvenido</p>
+          <p>Bienvenido a FutbolApp</p>
           <button onClick={handleLogOut}>Log Out</button>
         </div>
         <input type="text" placeholder="Buscar..." />
