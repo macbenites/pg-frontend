@@ -5,6 +5,7 @@ import Login from "./Components/Login";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import SignIn from "./Components/SignIn";
+import Password from "./Components/Password";
 import { AuthProvider } from "./Context/authContext";
 
 
@@ -19,6 +20,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path = '/login' element = {<Login/>}/>
               <Route path="/home" element={<Home/>}/>
+              <Route path="/resetPassword" element={<Password/>}/>
             </Routes>
           </BrowserRouter>
         </Wrapper>

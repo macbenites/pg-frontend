@@ -6,7 +6,8 @@ import {
     signOut,
     signInWithPopup, 
     GoogleAuthProvider,
-    FacebookAuthProvider } 
+    FacebookAuthProvider,
+    sendPasswordResetEmail } 
 from "firebase/auth";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -62,6 +63,8 @@ export function AuthProvider ({children}) {
           });
     }
 
+    const resetPassword = (email) => sendPasswordResetEmail(auth, email)
+
     useEffect (()=>{
         onAuthStateChanged(auth , function (value){
             setUser(value); // despues de que se logueo o deslogueo guardamos seteamos el estado
@@ -69,7 +72,7 @@ export function AuthProvider ({children}) {
     },[])
 
     return(
-        <context.Provider value={{signUp , logIn , user , logOut , logInWithGoogle , logInWithFacebook }}>
+        <context.Provider value={{signUp , logIn , user , logOut , logInWithGoogle , logInWithFacebook , resetPassword }}>
             {children}
         </context.Provider>
         
