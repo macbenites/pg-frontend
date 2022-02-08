@@ -14,7 +14,7 @@ function Home() {
   const navigate = useNavigate()
   const {user , logOut } = useContext(context);
   
-  useEffect(()=> console.log(user),[])
+  useEffect(()=> console.log(user),[]) // con la data de user podemos maquillar el home con la foto y data del usuario
 
   const handleLogOut = () => {
     logOut();
@@ -31,7 +31,7 @@ function Home() {
       </HomeStyle>
       <IntroStyle>
         <div>
-          <h4>Hola {user.email}</h4>
+          <h4>Hola {user.displayName ? user.displayName : user.email}</h4>
           <p>Bienvenido</p>
           <button onClick={handleLogOut}>Log Out</button>
         </div>

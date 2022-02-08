@@ -3,7 +3,10 @@ import {
     createUserWithEmailAndPassword ,
     signInWithEmailAndPassword,
     onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
-    signOut } 
+    signOut,
+    signInWithPopup, 
+    GoogleAuthProvider,
+    FacebookAuthProvider } 
 from "firebase/auth";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -26,7 +29,38 @@ export function AuthProvider ({children}) {
         signInWithEmailAndPassword(auth , email , password)
     }
 
-    const logOut = () => signOut(auth)
+    const logOut = () => signOut(auth);
+
+    const logInWithGoogle = () => {
+        const googleProvider = new GoogleAuthProvider();
+        return signInWithPopup(auth , googleProvider)
+    }
+
+    const logInWithFacebook = () => {
+        const facebookProvider = new FacebookAuthProvider();
+        signInWithPopup(auth , facebookProvider)
+        .then((result) => {
+            // The signed-in user info.
+            const user = result.user;
+        
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const accessToken = credential.accessToken;
+        
+            // ...
+          })
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+        
+            // ...
+          });
+    }
 
     useEffect (()=>{
         onAuthStateChanged(auth , function (value){
@@ -35,7 +69,7 @@ export function AuthProvider ({children}) {
     },[])
 
     return(
-        <context.Provider value={{signUp , logIn , user , logOut }}>
+        <context.Provider value={{signUp , logIn , user , logOut , logInWithGoogle , logInWithFacebook }}>
             {children}
         </context.Provider>
         
