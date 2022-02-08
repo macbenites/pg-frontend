@@ -10,18 +10,17 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function Home() {
+  const navigate = useNavigate();
+  const { user, logOut } = useContext(context);
 
-  const navigate = useNavigate()
-  const {user , logOut } = useContext(context);
-  
-  useEffect(()=> console.log(user),[]) // con la data de user podemos maquillar el home con la foto y data del usuario
+  useEffect(() => console.log(user), []); // con la data de user podemos maquillar el home con la foto y data del usuario
 
   const handleLogOut = () => {
     logOut();
-    navigate("/login")
-  }
+    navigate("/login");
+  };
 
-  if(!user) return <h1>Cargando...</h1>
+  if (!user) return <h1>Cargando...</h1>;
 
   return (
     <div>
@@ -31,7 +30,10 @@ function Home() {
       </HomeStyle>
       <IntroStyle>
         <div>
-          <h4>Hola {user.displayName ? user.displayName : user.email}</h4>
+          <h4>
+            Hola{" "}
+            {user.displayName ? user.displayName : user.email.split("@")[0]}
+          </h4>
           <p>Bienvenido</p>
           <button onClick={handleLogOut}>Log Out</button>
         </div>
