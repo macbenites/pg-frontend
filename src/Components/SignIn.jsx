@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { InputForm } from "../Styles/reusable/Input";
-// import { ErrorMessage, Error } from "../Styles/Login.js";
 import { context } from "../Context/authContext";
 import { useContext } from "react";
 import { auth } from "../firebase";
@@ -22,18 +21,17 @@ function SignIn() {
   const {signUp} = useContext(context);
   console.log(signUp);
 
-  const onSubmit = (event) => {
-    console.log(event);
+  const onSubmit = (input) => {
+    console.log(input);
     //e.preventDefault();
       // dispatch(createAccount(input));
-    if(Object.entries(errors).length === 0){
-        signUp(auth , event.email , event.password)
-        alert("Cuenta creada con éxito");
-        reset();
+      if(Object.entries(errors).length === 0){
+        signUp(auth , input.email , input.password)
+        alert("Cuenta creada con éxito");        
         navigate('/login');
+        reset();
     }else{
       alert('Completar los campos requeridos')
-
     }
   };
 
@@ -45,16 +43,6 @@ function SignIn() {
         <h5>
           Ya tenés tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
-        {Object.entries(errors).length > 0 && (
-          <Error>
-            <ErrorMessage>{errors?.name?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.neighborhood?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.position?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
-          </Error>
-        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <InputForm
@@ -65,12 +53,16 @@ function SignIn() {
               {...register("name", {
                 required: {
                   value: true,
-                  message: "Nombre requerido",
+                  message: "*Nombre requerido!"
                 },
                 pattern: {
                   value: /^[A-Za-zÃ‘Ã±ÃÃ¡Ã‰Ã©ÃÃ­Ã“Ã³ÃšÃºÃœÃ¼\s]+$/,
-                  message: "El formato del nombre ingresado no es correcto",
+                  message: "*El nombre solo admite letras y espacios en blanco!"
                 },
+                minLength: {
+                  value: 3, 
+                  message: '*El nombre debe contener mínimo 3 caracteres!'
+                  }
               })}
             />
             <InputForm
@@ -81,12 +73,20 @@ function SignIn() {
               {...register("username", {
                 required: {
                   value: true,
-                  message: "Usuario requerido",
+                  message: "*Usuario requerido!",
                 },
                 pattern: {
-                  value: /^[a-zA-Z0-9_-]{4,20}$/,
-                  message: "El formato del usuario ingresado no es correcto",
+                  value: /^[a-zA-Z0-9_-]+$/,
+                  message: "*El usuario sólo admite letras y números!",
                 },
+                maxLength: {
+                  value: 10, 
+                  message: '*El usuario debe contener máximo 10 caracteres!'
+                  },
+                minLength: {
+                  value: 4, 
+                  message: '*El usuario debe contener mínimo 3 caracteres!'
+                  }
               })}
             />
           </div>
@@ -99,11 +99,11 @@ function SignIn() {
               {...register("neighborhood", {
                 required: {
                   value: true,
-                  message: "Barrio requerido",
+                  message: "*Barrio requerido!",
                 },
                 pattern: {
                   value: /^[A-Za-zÃ‘Ã±ÃÃ¡Ã‰Ã©ÃÃ­Ã“Ã³ÃšÃºÃœÃ¼\s]+$/,
-                  message: "El formato del barrio ingresado no es correcto",
+                  message: "*El barrio solo admite letras y espacios en blanco!"
                 },
               })}
             />
@@ -115,11 +115,11 @@ function SignIn() {
               {...register("position", {
                 required: {
                   value: true,
-                  message: "Posición requerida",
+                  message: "*Posición requerida!",
                 },
                 pattern: {
-                  value: /^[A-Za-zÃ‘Ã±ÃÃ¡Ã‰Ã©ÃÃ­Ã“Ã³ÃšÃºÃœÃ¼\s]+$/,
-                  message: "El formato de la Posición ingresada no es correcto",
+                  value: /^[A-Za-z]+$/,
+                  message: "*La posición no admite números, caracteres especiales ni espacios en blanco!",
                 },
               })}
             />
@@ -132,11 +132,11 @@ function SignIn() {
             {...register("email", {
               required: {
                 value: true,
-                message: "Email requerido",
+                message: "*Email requerido!",
               },
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "El formato del email ingresado no es correcto",
+                message: "*El formato del email ingresado no es correcto!",
               },
             })}
           />
@@ -148,11 +148,11 @@ function SignIn() {
             {...register("password", {
               required: {
                 value: true,
-                message: "Contraseña requerida",
+                message: "*Contraseña requerida!",
               },
               pattern: {
                 value: /^.{6,12}$/,
-                message: "La contraseña debe contener entre 6 y 12 caracteres",
+                message: "*La contraseña debe contener entre 6 y 12 caracteres!",
               },
             })}
           />
@@ -160,6 +160,17 @@ function SignIn() {
             Crear cuenta
           </BtnSignIn>
         </form>
+        <br/>
+       {Object.entries(errors).length > 0 && (
+          <Error>
+            <ErrorMessage>{errors?.name?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.username?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.neighborhood?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.position?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
+          </Error>
+       )}
       </SignInDiv>
     </div>
   );
