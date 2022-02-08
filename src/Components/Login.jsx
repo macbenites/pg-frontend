@@ -16,6 +16,9 @@ import { InputForm } from "../Styles/reusable/Input";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import { useForm } from "react-hook-form";
+import { context } from "../Context/authContext";
+import { useContext } from "react";
+import { auth } from "../firebase";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,10 +32,17 @@ export default function Login() {
   // credencial google
   //658093002098339 -- creedencial Facebook
 
-  const onSubmit = (event) => {
+  const {logIn} = useContext(context)
+
+  const onSubmit = async (event) => {
     console.log(event);
-    navigate('/home')
-    reset();
+    try {
+      await logIn(auth , event.username , event.password)
+      navigate('/home')
+      reset();
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const responseGoogle = (response) => {

@@ -19,15 +19,15 @@ function SignIn() {
     formState: { errors },
   } = useForm();
   
-  const {login} = useContext(context);
-  console.log(login);
+  const {signUp} = useContext(context);
+  console.log(signUp);
 
   const onSubmit = (event) => {
     console.log(event);
     //e.preventDefault();
       // dispatch(createAccount(input));
     if(Object.entries(errors).length === 0){
-        login(auth , event.email , event.password)
+        signUp(auth , event.email , event.password)
         alert("Cuenta creada con éxito");
         reset();
         navigate('/login');
