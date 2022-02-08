@@ -37,7 +37,7 @@ export default function Login() {
   const onSubmit = async (event) => {
     console.log(event);
     try {
-      await logIn(auth , event.username , event.password)
+      await logIn(auth , event.email , event.password)
       navigate('/home')
       reset();
     } catch (error) {
