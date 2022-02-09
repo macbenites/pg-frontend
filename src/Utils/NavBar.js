@@ -14,7 +14,7 @@ export const NavItems = [
   },
   {
     name: "Partidos",
-    link: "/teams",
+    link: "/games",
     icon: <MdSportsSoccer />,
   },
   {

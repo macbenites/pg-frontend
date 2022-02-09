@@ -42,7 +42,7 @@ export const IntroStyle = styled.div`
 
 export const CardsStyle = styled.div`
   display: flex;
-  flex-direction: raw;
+  flex-direction: row;
   justify-content: space-between;
 `;
 
