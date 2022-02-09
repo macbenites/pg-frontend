@@ -45,7 +45,7 @@ function Home() {
           <Cards
             key={card.name}
             name={card.name}
-            link={card.link}
+            lingitk={card.link}
             description={card.description}
             amount={card.amount}
           />
