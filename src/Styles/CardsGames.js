@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "./reusable/Button";
 
-export const MainCardsTeams = styled.div`
+export const MainCardsGames = styled.div`
     border-radius: 30px;
     width: 190px;
     height: 190px;
@@ -11,7 +11,7 @@ export const MainCardsTeams = styled.div`
     justify-content: space-between;
     padding: 1rem;
 `
-export const TeamName = styled.div`
+export const DateStyle = styled.div`
 
 `
 
@@ -23,7 +23,10 @@ export const Search = styled.div`
 
 `
 
-export const ButtonCardsTeams = styled(Button)`
+export const Location = styled.div`
+`
+
+export const ButtonCardsGames = styled(Button)`
 background-color: #004643;
 width: 100px;
 height: 30px;
