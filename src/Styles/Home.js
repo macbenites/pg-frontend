@@ -36,11 +36,12 @@ export const IntroStyle = styled.div`
         margin-right: 2rem;
         font-size: 15px;
         border: none;
+        padding-left: 20px;
     }
 `
 
 export const CardsStyle = styled.div`
-display: flex;
-flex-direction: raw;
-justify-content: space-between;
+    display: flex;
+    flex-direction: raw;
+    justify-content: space-between;
 `
