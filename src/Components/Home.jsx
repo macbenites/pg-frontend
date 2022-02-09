@@ -4,8 +4,9 @@ import NavBar from "./NavBar";
 //import Cards from "./Cards";
 //import { infoCard } from "../Utils/infoCards";
 import CardsCity from "./CardsCity";
-import { HomeStyle, IntroStyle } from "../Styles/Home";
+import { HomeStyle, IntroStyle, HomeContent } from "../Styles/Home";
 import { context } from "../Context/authContext";
+import { Button } from "../Styles/reusable/Button";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -27,7 +28,7 @@ function Home() {
     <div>
       <HomeStyle>
         <Logo />
-        <NavBar />
+        <Button onClick={handleLogOut}>Log Out</Button>
       </HomeStyle>
       <IntroStyle>
         <div>
@@ -36,7 +37,6 @@ function Home() {
             {user.displayName ? user.displayName : user.email.split("@")[0]}
           </h4>
           <p>Bienvenido a FutbolApp</p>
-          <button onClick={handleLogOut}>Log Out</button>
         </div>
         <input type="text" placeholder="Buscar..." />
       </IntroStyle>
@@ -51,7 +51,10 @@ function Home() {
           />
         ))}
       </CardsStyle> */}
-      <CardsCity />
+      <HomeContent>
+        <NavBar />
+        <CardsCity />
+      </HomeContent>
     </div>
   );
 }
