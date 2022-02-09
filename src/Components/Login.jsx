@@ -10,7 +10,7 @@ import {
   ErrorMessage,
   ContainerInput,
   Bar,
-  Error,
+  /*Error,*/
   LinkToLogin
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
@@ -87,7 +87,7 @@ export default function Login() {
                 },
               })}
             />
-            {/* <ErrorMessage>{errors?.username?.message}</ErrorMessage> */}
+            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
             <InputForm
               type="password"
               name="password"
@@ -105,7 +105,7 @@ export default function Login() {
               })}
               autoComplete="off"
             />
-            {/* <ErrorMessage>{errors?.password?.message}</ErrorMessage> */}
+            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
 
             <BtnLogIn primary type="submit">
               Ingresar
@@ -118,15 +118,15 @@ export default function Login() {
             <BtnApple type="button">Apple</BtnApple>
           </ContainerInput>
         </form>
-        <br />
-        <button onClick={newPassword}>¿Olvidaste la contraseña?</button>
-        <br />
+        <br/>
+        <LinkToLogin to="/resetPassword" onClick={newPassword}> Olvidaste tu contraseña?</LinkToLogin>
+        {/*<br/>
         {Object.entries(errors).length > 0 && (
           <Error>
             <ErrorMessage>{errors?.email?.message}</ErrorMessage>
             <ErrorMessage>{errors?.password?.message}</ErrorMessage>
           </Error>
-        )}
+        )}*/}
       </LoginDiv>
     </div>
   );
