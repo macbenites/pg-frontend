@@ -1,9 +1,10 @@
 import React from "react";
 import Logo from "./Logo";
 import NavBar from "./NavBar";
-import Cards from "./Cards";
-import { infoCard } from "../Utils/infoCards";
-import { HomeStyle, IntroStyle, CardsStyle } from "../Styles/Home";
+//import Cards from "./Cards";
+//import { infoCard } from "../Utils/infoCards";
+import CardsCity from "./CardsCity";
+import { HomeStyle, IntroStyle } from "../Styles/Home";
 import { context } from "../Context/authContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +40,7 @@ function Home() {
         </div>
         <input type="text" placeholder="Buscar..." />
       </IntroStyle>
-      <CardsStyle>
+      {/* <CardsStyle>
         {infoCard.map((card) => (
           <Cards
             key={card.name}
@@ -49,7 +50,8 @@ function Home() {
             amount={card.amount}
           />
         ))}
-      </CardsStyle>
+      </CardsStyle> */}
+      <CardsCity />
     </div>
   );
 }
