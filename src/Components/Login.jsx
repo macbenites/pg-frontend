@@ -1,17 +1,20 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {
+  FaFacebookF,
+  FaGoogle,
+  FaApple,
+  FaExclamationCircle,
+} from "react-icons/fa";
 import Logo from "./Logo";
 import {
   LoginDiv,
-  BtnGoogle,
   BtnLogIn,
-  BtnFacebook,
-  BtnApple,
   ErrorMessage,
   ContainerInput,
+  BtnSignIn,
   Bar,
-  /*Error,*/
-  LinkToLogin
+  LinkToLogin,
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import { useForm } from "react-hook-form";
@@ -25,48 +28,48 @@ export default function Login() {
     register,
     handleSubmit,
     reset,
+    trigger,
     formState: { errors },
   } = useForm();
   //742910100228-bf1uk5tddd041i1fvd8bjcg77fk7qkmo.apps.googleusercontent.com
   // credencial google
   //658093002098339 -- creedencial Facebook
 
-  const {logIn , logInWithGoogle , logInWithFacebook } = useContext(context);
+  const { logIn, logInWithGoogle, logInWithFacebook } = useContext(context);
 
   const onSubmit = async (event) => {
-    console.log(event);
     try {
-      await logIn(auth , event.email , event.password)
-      navigate('/home')
+      await logIn(auth, event.email, event.password);
+      navigate("/home");
       reset();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
   const googleLogIn = async () => {
     const googleData = await logInWithGoogle();
-    console.log(googleData)
-    navigate('/home');
-  }
+    console.log(googleData);
+    navigate("/home");
+  };
 
   const facebookLogIn = async () => {
     const facebookData = await logInWithFacebook();
-    console.log(facebookData)
-    navigate('/home');
-  }
+    console.log(facebookData);
+    navigate("/home");
+  };
 
-  const newPassword =  () => {
-    navigate("/resetPassword")
-  }
+  const newPassword = () => {
+    navigate("/resetPassword");
+  };
 
   console.log(errors);
   return (
     <div>
       <Logo />
       <LoginDiv>
-      <h4>Ingresá a tu cuenta</h4>
-      <h5>
+        <h4>Ingresá a tu cuenta</h4>
+        <h5>
           No tenés cuenta?<LinkToLogin to="/signin"> Registrate</LinkToLogin>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -86,8 +89,19 @@ export default function Login() {
                   message: "El formato del email ingresado no es correcto",
                 },
               })}
+              onKeyUp={() => {
+                trigger("email");
+              }}
             />
-            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
+            <ErrorMessage>
+              <ErrorMessage>
+                {errors.email && (
+                  <small>
+                    <FaExclamationCircle /> {errors.email.message}
+                  </small>
+                )}
+              </ErrorMessage>
+            </ErrorMessage>
             <InputForm
               type="password"
               name="password"
@@ -104,29 +118,39 @@ export default function Login() {
                 },
               })}
               autoComplete="off"
+              onKeyUp={() => {
+                trigger("password");
+              }}
             />
-            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
-
+            <ErrorMessage>
+              {errors.password && (
+                <small>
+                  <FaExclamationCircle /> {errors.password.message}
+                </small>
+              )}
+            </ErrorMessage>
             <BtnLogIn primary type="submit">
               Ingresar
             </BtnLogIn>
           </ContainerInput>
           <Bar>/</Bar>
           <ContainerInput>
-            <BtnGoogle><button onClick={googleLogIn}>Google LogIn</button></BtnGoogle>
-            <BtnFacebook onClick={facebookLogIn}><button>Facebook LogIn</button></BtnFacebook>
-            <BtnApple type="button">Apple</BtnApple>
+            <BtnSignIn onClick={googleLogIn}>
+              <FaGoogle /> Ingresar con Google
+            </BtnSignIn>
+            <BtnSignIn onClick={facebookLogIn}>
+              <FaFacebookF /> Ingresar con Facebook
+            </BtnSignIn>
+            <BtnSignIn>
+              <FaApple /> Ingresar con Apple
+            </BtnSignIn>
           </ContainerInput>
         </form>
-        <br/>
-        <LinkToLogin to="/resetPassword" onClick={newPassword}> Olvidaste tu contraseña?</LinkToLogin>
-        {/*<br/>
-        {Object.entries(errors).length > 0 && (
-          <Error>
-            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
-            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
-          </Error>
-        )}*/}
+        <br />
+        <LinkToLogin to="/resetPassword" onClick={newPassword}>
+          {" "}
+          Olvidaste tu contraseña?
+        </LinkToLogin>
       </LoginDiv>
     </div>
   );
