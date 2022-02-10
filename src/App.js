@@ -6,7 +6,7 @@ import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import SignIn from "./Components/SignIn";
 import Password from "./Components/Password";
-import Teams from "./Components/Teams";
+import Games from "./Components/Games";
 import { AuthProvider } from "./Context/authContext";
 
 
@@ -22,7 +22,7 @@ function App() {
               <Route path = '/login' element = {<Login/>}/>
               <Route path="/home" element={<Home/>}/>
               <Route path="/resetPassword" element={<Password/>}/>
-              <Route path="/teams" element={<Teams/>}/>
+              <Route path="/games" element={<Games/>}/>
             </Routes>
           </BrowserRouter>
         </Wrapper>
