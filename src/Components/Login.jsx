@@ -49,15 +49,15 @@ export default function Login() {
 
   const googleLogIn = async () => {
     const googleData = await logInWithGoogle();
-    console.log(googleData);
-    navigate("/home");
-  };
+    console.log("Data google: " ,googleData)
+    navigate('/home');
+  }
 
   const facebookLogIn = async () => {
     const facebookData = await logInWithFacebook();
-    console.log(facebookData);
-    navigate("/home");
-  };
+    console.log("Data facebook: " , facebookData)
+    navigate('/home');
+  }
 
   const newPassword = () => {
     navigate("/resetPassword");
