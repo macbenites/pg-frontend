@@ -46,19 +46,43 @@
             "id_partidos": 1,
             "fecha": "03/02/22",
             "hora": 16,
-            "n_jugadores":10
+            "n_jugadores":10,
+            "jugadores_disponibles":5,
+            "jugadores_faltantes":5
         },
         {
             "id_partidos": 2,
             "fecha": "04/02/22",
             "hora": 18,
-            "n_jugadores":14
+            "n_jugadores":14,
+            "jugadores_disponibles":8,
+            "jugadores_faltantes":6
         },
         {
             "id_partidos": 3,
             "fecha": "05/02/22",
             "hora": 20,
-            "n_jugadores":22
+            "n_jugadores":22,
+            "jugadores_disponibles":17,
+            "jugadores_faltantes":5
+        }
+    ],
+    "canchas":[
+        {
+            "id_cancha": 1,
+            "nombre" : "Palermo",
+            "dirección" : "Gorriti 1222",
+            "reservado" : true
+        },{
+            "id_cancha": 2,
+            "nombre" : "Caballito",
+            "dirección" : "Morelos 564",
+            "reservado" : false
+        },{
+            "id_cancha": 3,
+            "nombre" : "Almagro",
+            "dirección" : "Medrano 522",
+            "reservado" : true
         }
     ]
 }
