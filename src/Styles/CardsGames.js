@@ -12,7 +12,12 @@ export const MainCardsGames = styled.div`
   padding: 1rem;
 `;
 
-export const DateStyle = styled.div``;
+export const DateStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: -20px;
+  font-size: 15px;
+`;
 
 export const Players = styled.div`
   display: flex;
@@ -25,10 +30,14 @@ export const Search = styled.div`
   display: flex;
   justify-content: center;
   font-size: 15px;
-  margin-bottom: 20px;
 `;
 
-export const Location = styled.div``;
+export const Location = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  margin-top: 10px;
+`;
 
 export const ButtonCardsGames = styled(Button)`
   background-color: #004643;
