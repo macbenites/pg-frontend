@@ -2,38 +2,24 @@ import styled from "styled-components";
 import { LinkTo } from "../Styles/reusable/LinkTo";
 import { Button } from "../Styles/reusable/Button";
 
-export const BtnGoogle = styled.div`
-  button {
-    width: 100%;
-    background-color: red;
-    display: inline-flex;
-    align-items: center;
-    font-weight: 500;
-    font-size: 14px;
-    padding: 1rem;
-    height: 3.5rem;
-  }
-`;
-
-export const BtnFacebook = styled.div`
-  button {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    font-size: 14px;
-    padding: 1rem;
-    text-transform: lowercase;
-    font-weight: 500;
-
-    height: 3.5rem;
-    border-radius: 0.75rem;
-    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px,
-      rgb(0 0 0 / 24%) 0px 0px 1px 0px;
-  }
-`;
-
-export const BtnApple = styled(Button)`
+export const BtnSignIn = styled(Button)`
+  position: relative;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
   width: 100%;
+  :hover {
+    color: var(--primary);
+    background-color: var(--text-color);
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+
+  svg {
+    position: absolute;
+    left: 1rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const LoginDiv = styled.div`
@@ -55,12 +41,6 @@ export const LoginDiv = styled.div`
     color: #e8e4e6;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
   @media (min-width: 620px) {
     margin: 0 auto;
     max-width: 600px;
@@ -79,9 +59,18 @@ export const BtnLogIn = styled(Button)`
 `;
 
 export const ErrorMessage = styled.div`
-  font-size: 0.8rem;
-  margin: 0.1rem 0;
-  color: var(--text-color);
+  small {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    margin: 0.1rem 0;
+    color: var(--text-color);
+  }
+  svg {
+    color: var(--tertiary);
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
 `;
 export const Bar = styled.div`
   margin: auto;
@@ -97,14 +86,6 @@ export const ContainerInput = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-`;
-
-export const Error = styled.div`
-  position: relative;
-  border-radius: 0.75rem;
-  padding: 0.5rem;
-  margin-bottom: 2rem;
-  border: 1px solid var(--text-color);
 `;
 
 export const LinkToLogin = styled(LinkTo)`
