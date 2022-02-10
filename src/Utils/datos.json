@@ -8,7 +8,7 @@
             "contraseña": "juan123123",
             "direccion": "Avenida 777",
             "fecha_nacimiento": "01/01/01",
-            "posicion" : "delantero"
+            "posicion" : ["delantero"]
         },
         {
             "nombre" : "Yeison",
@@ -18,7 +18,7 @@
             "contraseña": "yeison123123",
             "direccion": "calle 555",
             "fecha_nacimiento": "02/02/02",
-            "posicion" : "mediocampista"
+            "posicion" : ["mediocampista"]
         },
         {
             "nombre" : "Marlon",
@@ -28,7 +28,7 @@
             "contraseña": "marlon123123",
             "direccion": "calle 123",
             "fecha_nacimiento": "00/00/00",
-            "posicion" : "defensor"
+            "posicion" : ["defensor"]
         },
         {
             "nombre" : "Bruno",
@@ -38,7 +38,7 @@
             "contraseña": "bruno123123",
             "direccion": "avenida 564",
             "fecha_nacimiento": "02/02/99",
-            "posicion" : "Arquero"
+            "posicion" : ["Arquero"]
         }
     ],
     "partidos":[
