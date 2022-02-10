@@ -6,7 +6,7 @@ const Player = ({data}) => {
 
      return(
          <PlayerDiv>
-             <img src={data.imagen_perfil} />
+             <img src={data.imagen_perfil} alt="" />
              <h3>{data.nombre}</h3>
              <h6>{data.barrio}</h6>
          </PlayerDiv>
