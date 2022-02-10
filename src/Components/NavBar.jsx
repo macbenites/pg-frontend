@@ -1,12 +1,16 @@
 import { NavStyle, NavLink } from "../Styles/NavBar";
+import { NavItems } from "../Utils/NavBar";
 
 function NavBar() {
+  console.log({ NavItems });
   return (
     <NavStyle>
-      <NavLink to="/home">Home</NavLink>
-      <NavLink to="/reverse">Reserve</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/products">Products</NavLink>
+      {NavItems.map((item) => (
+        <NavLink to={item.link} key={item.name}>
+          <span>{item.icon}</span>
+          {item.name}
+        </NavLink>
+      ))}
     </NavStyle>
   );
 }
