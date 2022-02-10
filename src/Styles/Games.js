@@ -4,9 +4,6 @@ import { Button } from "./reusable/Button";
 export const TitleStyle = styled.h2`
   color: #abd1c6;
   display: flex;
-  font-size: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
 `;
 
 export const CardsGamesStyle = styled.div`
@@ -21,7 +18,11 @@ export const InputGamesStyle = styled.form`
   border-radius: 15px;
   padding: 20px;
   margin-top: 50px;
-  
+  h2 {
+    color: #004643;
+    margin-left: 20px;
+    font-size: 30px;
+  }
   input {
     width: 1110px;
     height: 50px;
@@ -31,22 +32,14 @@ export const InputGamesStyle = styled.form`
     border-radius: 15px;
     margin-left: 20px;
     margin-bottom: 20px;
-    margin-top: 20px;
     border: none;
     padding-left: 20px;
     font-size: 15px;
   }
 `;
 
-export const CreateGameStyle = styled.h2`
-    color: #abd1c6;
-    font-size: 30px;
-    margin-top: 70px;
-`;
-
 export const BtnCreateGame = styled(Button)`
-  margin-left: 490px;
-  width: 200px;
+  margin-left: 970px;
 `;
 
 export const BtnGamesFilter = styled(Button)`
@@ -56,13 +49,8 @@ export const BtnGamesFilter = styled(Button)`
   margin-left: 1050px;
   background-color: #f9bc60;
   display: flex;
-  margin-top: -60px;
+  margin-top: -90px;
   p {
     color: #004643;
   }
-`;
-
-export const BtnBack = styled(Button)`
-    margin-left: 1040px;
-    margin-top: -30px;
 `;
