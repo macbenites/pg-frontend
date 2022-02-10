@@ -7,12 +7,6 @@ export const SignInDiv = styled.div`
   input {
     margin: 0.2rem 0;
   }
-  form {
-    div {
-      display: flex;
-      flex-direction: column;
-    }
-  }
 
   h4 {
     font-weight: 700;
@@ -33,10 +27,11 @@ export const SignInDiv = styled.div`
     margin: 0 auto;
     max-width: 500px;
     form {
-      div {
-        gap: 0.4rem;
-        flex-direction: row;
-      }
+      display: grid;
+      grid-gap: 0.5rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "name user" "barrio position" "email email" "password password" "btn btn";
     }
   }
 `;
