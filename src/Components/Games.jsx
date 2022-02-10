@@ -1,4 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { context } from "../Context/authContext";
 import Logo from "./Logo";
 import CardsGames from "./CardsGames";
 import { infoCardsGames } from "../Utils/infoCardsGames";
@@ -7,13 +10,25 @@ import {
   BtnGamesFilter,
   CardsGamesStyle,
   InputGamesStyle,
+  CreateGameStyle,
   BtnCreateGame,
+  BtnBack,
 } from "../Styles/Games";
 
 function Games() {
+  const navigate = useNavigate();
+  const { user } = useContext(context);
+
+  useEffect(() => console.log(user), [user])
+
+  function handleCLick(e){
+      navigate('/home')
+  };
+
   return (
     <div>
       <Logo />
+      <BtnBack onClick={(e) => {handleCLick(e)}}>Volver</BtnBack>
       <TitleStyle>Partidos</TitleStyle>
       <BtnGamesFilter>
         <p>Filtrar</p>
@@ -29,7 +44,7 @@ function Games() {
           />
         ))}
       </CardsGamesStyle>
-      <h2>Crear Partido</h2>
+      <CreateGameStyle>Crear Partido</CreateGameStyle>
 
       <InputGamesStyle>
         <input placeholder="Lugar" />
