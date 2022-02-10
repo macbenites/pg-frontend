@@ -8,6 +8,8 @@ import { context } from "../Context/authContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+//import Map from "./Map";
+
 
 function Home() {
   const navigate = useNavigate();
