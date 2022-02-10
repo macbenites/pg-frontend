@@ -46,13 +46,13 @@ export default function Login() {
 
   const googleLogIn = async () => {
     const googleData = await logInWithGoogle();
-    console.log(googleData)
+    console.log("Data google: " ,googleData)
     navigate('/home');
   }
 
   const facebookLogIn = async () => {
     const facebookData = await logInWithFacebook();
-    console.log(facebookData)
+    console.log("Data facebook: " , facebookData)
     navigate('/home');
   }
 

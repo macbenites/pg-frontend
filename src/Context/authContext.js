@@ -40,6 +40,7 @@ export function AuthProvider({ children }) {
     const facebookProvider = new FacebookAuthProvider();
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
+        console.log(result)
         // The signed-in user info.
         //const user = result.user;
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -48,6 +49,7 @@ export function AuthProvider({ children }) {
         // ...
       })
       .catch((error) => {
+        console.log(error)
         // Handle Errors here.
         //const errorCode = error.code;
         //const errorMessage = error.message;
