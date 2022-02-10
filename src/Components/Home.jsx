@@ -10,6 +10,8 @@ import { Button } from "../Styles/reusable/Button";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+//import Map from "./Map";
+
 
 function Home() {
   const navigate = useNavigate();
