@@ -10,25 +10,34 @@ export const MainCardsGames = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
+  margin-top: 30px;
 `;
 
-export const DateStyle = styled.div``;
+export const DateStyle = styled.div`
+  text-align: center;
+  padding-top: 10px;
+`;
 
 export const Players = styled.div`
   display: flex;
   justify-content: center;
   font-size: 15px;
-  margin-top: 20px;
 `;
 
-export const Search = styled.div`
+export const Search = styled.div` 
   display: flex;
   justify-content: center;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `;
 
-export const Location = styled.div``;
+export const Location = styled.div`
+  color:#004643;
+  text-align: center;
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 15px;
+`;
 
 export const ButtonCardsGames = styled(Button)`
   background-color: #004643;

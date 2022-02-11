@@ -2,19 +2,16 @@ import CardsGames from "./CardsGames";
 import { infoCardsGames } from "../Utils/infoCardsGames";
 import {
   TitleStyle,
-  BtnGamesFilter,
   CardsGamesStyle,
   InputGamesStyle,
   BtnCreateGame,
+  CreateGame
 } from "../Styles/Games";
 
 function Games() {
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
-      <BtnGamesFilter>
-        <p>Filtrar</p>
-      </BtnGamesFilter>
       <CardsGamesStyle>
         {infoCardsGames.map((card) => (
           <CardsGames
@@ -26,8 +23,7 @@ function Games() {
           />
         ))}
       </CardsGamesStyle>
-      <h2>Crear Partido</h2>
-
+      <CreateGame>Crear Partido</CreateGame>
       <InputGamesStyle>
         <input placeholder="Lugar" />
         <input placeholder="Fecha y hora" />
@@ -37,6 +33,6 @@ function Games() {
       </InputGamesStyle>
     </div>
   );
-}
+};
 
 export default Games;
