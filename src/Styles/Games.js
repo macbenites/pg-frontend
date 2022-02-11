@@ -13,12 +13,12 @@ export const CardsGamesStyle = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 0px;
 
 `;
 
 export const InputGamesStyle = styled.form`
-  background-color: #f9bc60;
+  background-color: #abd1c6;
   border-radius: 15px;
   padding: 20px;
   margin-top: 50px;
@@ -52,4 +52,33 @@ export const CreateGame = styled.h2`
   color:#abd1c6;
   margin-top: 100px;
   font-size: 40px;
+`;
+
+export const SelectLocation = styled.select`
+  height: 30px;
+  width: 280px;
+  margin: 20px;
+  margin-top: 70px;
+  margin-left: 20px;
+  border: none;
+  background-color: #206F6C;
+  color: white
+`;
+
+export const SelectDate = styled.select`
+  height: 30px;
+  width: 280px;
+  margin:20px;
+  border: none;
+  background-color: #206F6C;
+  color: white;
+`;
+
+export const SelectSearch = styled.select`
+  height: 30px;
+  width: 280px;
+  margin: 20px;
+  border: none;
+  background-color: #206F6C;
+  color: white
 `;
