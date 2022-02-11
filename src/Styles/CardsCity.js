@@ -8,6 +8,8 @@ export const CardContainer = styled.div`
   margin: 1rem;
   padding: 0.7rem;
   border-radius: 1.8rem;
+  width: 400px;
+  height: 150px;
   @media (min-width: 568px) {
     grid-template-columns: 1fr 1fr;
   }
