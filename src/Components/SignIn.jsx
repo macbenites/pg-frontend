@@ -4,8 +4,6 @@ import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { FaExclamationCircle } from "react-icons/fa";
 import { InputForm } from "../Styles/reusable/Input";
-import { context } from "../Context/authContext";
-import { useContext } from "react";
 import { ErrorMessage } from "../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import {
@@ -30,7 +28,6 @@ function SignIn() {
     formState: { errors },
   } = useForm();
 
-  const { signUp } = useContext(context);
   const dispatch = useDispatch();
 
   const onSubmit =  (input) => {
