@@ -8,11 +8,13 @@ import {
   PasswordDiv
 } from "../Styles/Password.js";
 import { useForm } from "react-hook-form";
-import { context } from "../Context/authContext";
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { resetPassword } from "../Redux/Actions";
+
 
 function Password () {
-    const { resetPassword} = useContext(context);
+    
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     const {
         register,
@@ -23,7 +25,7 @@ function Password () {
 
     const onSubmit = async (event) => {
         if(!event) return alert("Ingrese un email")
-        await resetPassword(event.email);
+        await dispatch(resetPassword(event.email));
         alert("Revise su casilla de correo para reestablecer su contraseña");
         navigate("/login")
         reset();

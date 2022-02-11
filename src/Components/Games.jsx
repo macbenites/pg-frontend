@@ -4,9 +4,6 @@ import { infoCardsGames } from "../Utils/infoCardsGames";
 import {
   TitleStyle,
   CardsGamesStyle,
-  InputGamesStyle,
-  BtnCreateGame,
-  CreateGame,
   SelectLocation,
   SelectDate,
   SelectSearch

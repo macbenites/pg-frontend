@@ -18,9 +18,8 @@ import {
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import { useForm } from "react-hook-form";
-import { context } from "../Context/authContext";
-import { useContext } from "react";
-import { auth } from "../firebase";
+import { logInWithMail , logInWithGoogle, logInWithFacebook } from "../Redux/Actions";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,11 +34,12 @@ export default function Login() {
   // credencial google
   //658093002098339 -- creedencial Facebook
 
-  const { logIn, logInWithGoogle, logInWithFacebook } = useContext(context);
+  const dispatch = useDispatch()
 
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     try {
-      await logIn(auth, event.email, event.password);
+     
+      dispatch(logInWithMail(event.email , event.password))
       navigate("/home");
       reset();
     } catch (error) {
@@ -48,14 +48,12 @@ export default function Login() {
   };
 
   const googleLogIn = async () => {
-    const googleData = await logInWithGoogle();
-    console.log("Data google: " ,googleData)
+    dispatch(await logInWithGoogle())
     navigate('/home');
   }
 
   const facebookLogIn = async () => {
-    const facebookData = await logInWithFacebook();
-    console.log("Data facebook: " , facebookData)
+    dispatch(await logInWithFacebook())
     navigate('/home');
   }
 
