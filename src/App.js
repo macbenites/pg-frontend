@@ -9,7 +9,7 @@ import Password from "./Components/Password";
 import Games from "./Components/Games";
 import { AuthProvider } from "./Context/authContext";
 import Players from "./Components/Players";
-import CardsCity from "./Components/CardsCity";
+import Fields from "./Components/Fields";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
               <Route path="/home/*" element={<Home />}>
                 <Route path="games" element={<Games />} />
                 <Route path="players" element={<Players />} />
-                <Route path="canchas" element={<CardsCity />} />
+                <Route path="canchas" element={<Fields />} />
               </Route>
               <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
