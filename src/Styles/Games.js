@@ -18,7 +18,7 @@ export const CardsGamesStyle = styled.div`
 `;
 
 export const InputGamesStyle = styled.form`
-  background-color: #f9bc60;
+  background-color: #abd1c6;
   border-radius: 15px;
   padding: 20px;
   margin-top: 50px;
