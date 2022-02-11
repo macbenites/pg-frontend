@@ -34,7 +34,7 @@ const Players = () => {
           <option value="">Flores</option>
           <option value="">Caballito</option>
           <option value="">Almegro</option>
-        </select>
+        </select> 
       </Filter>
       <PlayersDiv>
         {data.usuario.map((obj) => (
