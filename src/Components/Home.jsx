@@ -10,7 +10,7 @@ import { Button } from "../Styles/reusable/Button";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-//import Map from "./Map";
+import Map from "./Map";
 
 
 function Home() {
@@ -54,8 +54,9 @@ function Home() {
         ))}
       </CardsStyle> */}
       <HomeContent>
-        <NavBar />
-        <CardsCity />
+        <NavBar />        
+        <CardsCity /> 
+        <Map />       
       </HomeContent>
     </div>
   );
