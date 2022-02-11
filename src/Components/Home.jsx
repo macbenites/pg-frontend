@@ -1,17 +1,15 @@
 import React from "react";
 import Logo from "./Logo";
 import NavBar from "./NavBar";
-//import Cards from "./Cards";
-//import { infoCard } from "../Utils/infoCards";
-import CardsCity from "./CardsCity";
 import { HomeStyle, IntroStyle, HomeContent } from "../Styles/Home";
 import { context } from "../Context/authContext";
 import { Button } from "../Styles/reusable/Button";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-//import Map from "./Map";
+import { Outlet } from "react-router-dom";
 
+//import Map from "./Map";
 
 function Home() {
   const navigate = useNavigate();
@@ -42,20 +40,9 @@ function Home() {
         </div>
         <input type="text" placeholder="Buscar..." />
       </IntroStyle>
-      {/* <CardsStyle>
-        {infoCard.map((card) => (
-          <Cards
-            key={card.name}
-            name={card.name}
-            lingitk={card.link}
-            description={card.description}
-            amount={card.amount}
-          />
-        ))}
-      </CardsStyle> */}
       <HomeContent>
         <NavBar />
-        <CardsCity />
+        <Outlet />
       </HomeContent>
     </div>
   );

@@ -4,17 +4,17 @@ import { GiSoccerField, GiSoccerKick } from "react-icons/gi";
 export const NavItems = [
   {
     name: "Canchas",
-    link: "/home",
+    link: "canchas",
     icon: <GiSoccerField />,
   },
   {
     name: "Jugadores",
-    link: "/players",
+    link: "players",
     icon: <GiSoccerKick />,
   },
   {
     name: "Partidos",
-    link: "/games",
+    link: "games",
     icon: <MdSportsSoccer />,
   },
   {
