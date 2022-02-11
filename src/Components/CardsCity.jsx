@@ -8,6 +8,7 @@ import phone from "../Assets/img/phone.svg";
 import schedule from "../Assets/img/shedule.svg";
 import web from "../Assets/img/web.svg";
 
+
 const CardsCity = () => {
   return (
     <CardContainer>
@@ -20,7 +21,7 @@ const CardsCity = () => {
       <Content>
         <div>
           <h6>Palermo</h6>
-          <p>loation</p>
+          <p>locación</p>
         </div>
         <IconsCity />
       </Content>
