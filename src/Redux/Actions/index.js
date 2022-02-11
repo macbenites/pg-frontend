@@ -1,7 +1,7 @@
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
+    //onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
     signOut,
     signInWithPopup,
     GoogleAuthProvider,
