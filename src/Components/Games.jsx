@@ -27,7 +27,6 @@ function Games() {
         ))}
       </CardsGamesStyle>
       <h2>Crear Partido</h2>
-
       <InputGamesStyle>
         <input placeholder="Lugar" />
         <input placeholder="Fecha y hora" />
