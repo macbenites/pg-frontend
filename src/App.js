@@ -8,7 +8,6 @@ import SignIn from "./Components/SignIn";
 import Password from "./Components/Password";
 import Games from "./Components/Games";
 import GamesCreate from "./Components/GamesCreate";
-import { AuthProvider } from "./Context/authContext";
 import {Provider} from "react-redux";
 import { store } from "./Redux/Store";
 import Players from "./Components/Players";
@@ -17,7 +16,6 @@ import Fields from "./Components/Fields";
 function App() {
   return (
     <Provider store={store}>
-      <AuthProvider>
         <Container>
           <Wrapper>
             <BrowserRouter>
@@ -38,7 +36,6 @@ function App() {
           </Wrapper>
           <Footer />
         </Container>
-      </AuthProvider>
     </Provider>
   );
 }
