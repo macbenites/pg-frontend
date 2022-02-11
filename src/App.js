@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import SignIn from "./Components/SignIn";
 import Password from "./Components/Password";
 import Games from "./Components/Games";
+import GamesCreate from "./Components/GamesCreate";
 import { AuthProvider } from "./Context/authContext";
 import Players from "./Components/Players";
 import Fields from "./Components/Fields";
@@ -24,6 +25,7 @@ function App() {
               <Route path="resetPassword" element={<Password />} />
               <Route path="/home/*" element={<Home />}>
                 <Route path="games" element={<Games />} />
+                <Route path="gamesCreate" element={<GamesCreate />} />
                 <Route path="players" element={<Players />} />
                 <Route path="canchas" element={<Fields />} />
               </Route>
