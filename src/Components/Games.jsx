@@ -5,13 +5,25 @@ import {
   CardsGamesStyle,
   InputGamesStyle,
   BtnCreateGame,
-  CreateGame
+  CreateGame,
+  SelectLocation,
+  SelectDate,
+  SelectSearch
 } from "../Styles/Games";
 
 function Games() {
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
+      <SelectLocation>
+        <option>Lugar</option>
+      </SelectLocation>
+      <SelectDate>
+        <option>Fecha y Hora</option>
+      </SelectDate>
+      <SelectSearch>
+        <option>Posición buscada</option>
+      </SelectSearch>
       <CardsGamesStyle>
         {infoCardsGames.map((card) => (
           <CardsGames
