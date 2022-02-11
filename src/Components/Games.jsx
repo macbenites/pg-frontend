@@ -1,5 +1,3 @@
-import React from "react";
-import Logo from "./Logo";
 import CardsGames from "./CardsGames";
 import { infoCardsGames } from "../Utils/infoCardsGames";
 import {
@@ -13,7 +11,6 @@ import {
 function Games() {
   return (
     <div>
-      <Logo />
       <TitleStyle>Partidos</TitleStyle>
       <BtnGamesFilter>
         <p>Filtrar</p>

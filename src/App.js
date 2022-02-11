@@ -9,7 +9,7 @@ import Password from "./Components/Password";
 import Games from "./Components/Games";
 import { AuthProvider } from "./Context/authContext";
 import Players from "./Components/Players";
-
+import Fields from "./Components/Fields";
 
 function App() {
   return (
@@ -19,12 +19,15 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path = '/login' element = {<Login/>}/>
-              <Route path="/home" element={<Home/>}/>
-              <Route path="/resetPassword" element={<Password/>}/>
-              <Route path="/games" element={<Games/>}/>
-              <Route path="/players" element={<Players/>}/>
+              <Route path="signin" element={<SignIn />} />
+              <Route path="login" element={<Login />} />
+              <Route path="resetPassword" element={<Password />} />
+              <Route path="/home/*" element={<Home />}>
+                <Route path="games" element={<Games />} />
+                <Route path="players" element={<Players />} />
+                <Route path="canchas" element={<Fields />} />
+              </Route>
+              <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
           </BrowserRouter>
         </Wrapper>
