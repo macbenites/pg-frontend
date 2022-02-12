@@ -10,6 +10,9 @@ import {
 } from "../Styles/Games";
 
 function Games() {
+
+  
+
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
