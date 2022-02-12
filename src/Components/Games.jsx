@@ -6,9 +6,8 @@ import {
   CardsGamesStyle,
   SelectLocation,
   SelectDate,
-  SelectSearch
+  SelectSearch,
 } from "../Styles/Games";
-
 
 function Games() {
   return (
@@ -36,6 +35,6 @@ function Games() {
       </CardsGamesStyle>
     </div>
   );
-};
+}
 
 export default Games;
