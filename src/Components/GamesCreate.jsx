@@ -4,12 +4,13 @@ import { FaExclamationCircle } from "react-icons/fa";
 import { ErrorMessage } from "../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { InputForm } from "../Styles/reusable/Input";
-import { DateTimePicker } from "@material-ui/pickers";
 import Logo from "./Logo";
 import { CreateDiv, BtnCreateGame } from "../Styles/GamesCreate";
 import { Name, User, Barrio, Position, Btn } from "../Styles/reusable/Containers";
-//import TextField from '@mui/material/TextField';
-//import DateTimePicker from '@mui/lab/DateTimePicker';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import addMonths from "date-fns/addMonths";
+
 
 export default function GamesCreate() {
   const navigate = useNavigate();
@@ -134,24 +135,40 @@ export default function GamesCreate() {
             )}
           </ErrorMessage>
         </Position>
-
-        
-          {/*<DateTimePicker
-            renderInput={(props) => <TextField {...props} />}
-            label="Fecha y Hora"
-            value={selectedDate}
-            onChange={(newValue) => {
-              setSelectedDate(newValue);
-            }}
-          />*/}
-        
-
         <Barrio>
-          <DateTimePicker             
-            value={selectedDate} 
-            onChange={setSelectedDate} 
-            //format="dd/MM/yyy"
-            label="Fecha y Hora"                      
+        {/*<InputForm
+            type="text"
+            placeholder="Fecha y Hora" 
+            name="fecha"
+            {...register("fecha", {
+              required: {
+                value: true,
+                message: "Fecha y Hora requeridas.",
+              },
+            })}
+            onKeyUp={() => {
+              trigger("fecha");
+            }}
+          />        
+          <ErrorMessage>
+            {errors.fecha && (
+              <small>
+                <FaExclamationCircle /> {errors.fecha.message}
+              </small>
+            )}
+            </ErrorMessage>*/}
+          <DatePicker
+            selected={selectedDate}
+            onChange={date => setSelectedDate(date)}
+            dateFormat="dd/MM/yyyy - h:mm aa"
+            placeholderText="Fecha y Hora" 
+            minDate={new Date()}
+            maxDate={addMonths(new Date(), 3)}
+            showTimeSelect
+            timeIntervals={30}
+            timeCaption="time"
+            //withPortal
+
           />
         </Barrio>
                
