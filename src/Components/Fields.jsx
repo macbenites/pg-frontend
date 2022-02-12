@@ -1,10 +1,10 @@
 import CardsCity from "./CardsCity";
-import Map from "./Map";
+//import Map from "./Map";
 const Fields = () => {
   return (
     <div>
       <CardsCity />
-      <Map />
+      {/* <Map /> */}
     </div>
   );
 };

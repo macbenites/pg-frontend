@@ -11,7 +11,7 @@ function CardsGames({location, date, players, search}){
                 <Search>{search}</Search>
                 <ButtonCardsGames>
                     Unirme
-                </ButtonCardsGames>
+                </ButtonCardsGames> 
             </MainCardsGames>
         </div>
     )

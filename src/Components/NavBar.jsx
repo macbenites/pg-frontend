@@ -4,16 +4,17 @@ import * as FaIcons from "react-icons/fa";
 import { useState } from "react";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { context } from "../Context/authContext";
+import { logOut } from "../Redux/Actions";
+import { useDispatch } from "react-redux";
+
 import Logo from "./Logo";
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const { logOut } = useContext(context);
+  const dispatch = useDispatch();
   const showSidebar = () => setIsOpen(!isOpen);
   const handleLogOut = () => {
-    logOut();
+    dispatch(logOut());
     navigate("/login");
   };
   return (

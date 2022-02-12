@@ -47,8 +47,5 @@ export const CardsStyle = styled.div`
 `;
 
 export const HomeContent = styled.div`
-  display: grid;
-  grid-template-columns: 20% 80%;
-  grid-gap: 1rem;
-  margin-top: 1rem;
+  padding: 1rem;
 `;

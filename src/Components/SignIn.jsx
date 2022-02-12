@@ -4,9 +4,6 @@ import Logo from "./Logo";
 import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { FaExclamationCircle } from "react-icons/fa";
 import { InputForm } from "../Styles/reusable/Input";
-import { context } from "../Context/authContext";
-import { useContext } from "react";
-import { auth } from "../firebase";
 import { ErrorMessage } from "../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import {
@@ -18,6 +15,8 @@ import {
   Password,
   Btn,
 } from "../Styles/reusable/Containers";
+import { useDispatch } from "react-redux";
+import { signUpWithMail } from "../Redux/Actions";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -29,21 +28,21 @@ function SignIn() {
     formState: { errors },
   } = useForm();
 
-  const { signUp } = useContext(context);
-  console.log(signUp);
-  const onSubmit = (input) => {
-    console.log(InputEvent);
-    //e.preventDefault();
-    // dispatch(createAccount(input));
+  const dispatch = useDispatch();
+
+  const onSubmit =  (input) => {
 
     if (Object.entries(errors).length === 0) {
-      signUp(auth, input.email, input.password);
-      alert("Cuenta creada con éxito");
-      navigate("/login");
-      reset();
-    } else {
-      alert("Completar los campos requeridos");
-    }
+
+        dispatch(signUpWithMail(input.email , input.password))
+        alert("Cuenta creada con éxito");
+        navigate("/login");
+        reset();
+      } else {
+       
+        alert("Completar los campos requeridos");
+        
+      }
   };
 
   return (

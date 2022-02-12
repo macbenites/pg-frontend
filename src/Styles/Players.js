@@ -9,7 +9,7 @@ export const Filter = styled.div`
         height : 30px;
         width : 210px;
         margin : 10px
-    }
+    } 
 `
 
 export const PlayersDiv = styled.div`

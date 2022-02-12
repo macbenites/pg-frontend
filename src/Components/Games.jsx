@@ -1,20 +1,27 @@
+import React from "react";
 import CardsGames from "./CardsGames";
 import { infoCardsGames } from "../Utils/infoCardsGames";
 import {
   TitleStyle,
-  BtnGamesFilter,
   CardsGamesStyle,
-  InputGamesStyle,
-  BtnCreateGame,
+  SelectLocation,
+  SelectDate,
+  SelectSearch,
 } from "../Styles/Games";
 
 function Games() {
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
-      <BtnGamesFilter>
-        <p>Filtrar</p>
-      </BtnGamesFilter>
+      <SelectLocation>
+        <option>Lugar</option>
+      </SelectLocation>
+      <SelectDate>
+        <option>Fecha y Hora</option>
+      </SelectDate>
+      <SelectSearch>
+        <option>Posición buscada</option>
+      </SelectSearch>
       <CardsGamesStyle>
         {infoCardsGames.map((card) => (
           <CardsGames
@@ -26,14 +33,6 @@ function Games() {
           />
         ))}
       </CardsGamesStyle>
-      <h2>Crear Partido</h2>
-      <InputGamesStyle>
-        <input placeholder="Lugar" />
-        <input placeholder="Fecha y hora" />
-        <input placeholder="Cantidad de jugadores" />
-        <input placeholder="Posición buscada" />
-        <BtnCreateGame>Crear Partido</BtnCreateGame>
-      </InputGamesStyle>
     </div>
   );
 }

@@ -1,14 +1,11 @@
-import React from "react";
 import NavBar from "./NavBar";
 import { HomeStyle, IntroStyle, HomeContent } from "../Styles/Home";
-import { context } from "../Context/authContext";
-import { useContext } from "react";
-
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Home() {
-  const { user } = useContext(context);
+  const user = useSelector((obj) => obj.userLogeado.user);
 
   useEffect(() => console.log(user), [user]); // con la data de user podemos maquillar el home con la foto y data del usuario
 
