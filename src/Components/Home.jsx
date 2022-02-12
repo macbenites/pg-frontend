@@ -18,7 +18,8 @@ function Home() {
       </HomeStyle>
       <IntroStyle>
         <div>
-          {user.photoURL ? <img src={user.photoURL} alt="" /> : <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"/>}
+          {user.photoURL ? <img src={user.photoURL} alt="img perfil" /> : <img alt="img perfil"
+          src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"/>}
           <h4> 
             Hola{" "}
             {user.displayName ? user.displayName : user.email.split("@")[0]}
