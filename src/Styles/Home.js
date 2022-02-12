@@ -38,6 +38,10 @@ export const IntroStyle = styled.div`
     font-size: 15px;
     border: none;
   }
+  img {
+    height: 85px;
+    width: 130px
+  }
 `;
 
 export const CardsStyle = styled.div`
