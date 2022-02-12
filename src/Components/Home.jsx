@@ -1,33 +1,20 @@
-import React from "react";
-import Logo from "./Logo";
 import NavBar from "./NavBar";
 import { HomeStyle, IntroStyle, HomeContent } from "../Styles/Home";
-import { Button } from "../Styles/reusable/Button";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useSelector , useDispatch } from "react-redux";
-import { logOut } from "../Redux/Actions";
+import { useSelector } from "react-redux";
 
 function Home() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const user = useSelector((obj) => obj.userLogeado.user)
+  const user = useSelector((obj) => obj.userLogeado.user);
 
   useEffect(() => console.log(user), [user]); // con la data de user podemos maquillar el home con la foto y data del usuario
-
-  const handleLogOut = () => {
-    dispatch(logOut())
-    navigate("/login");
-  };
 
   if (!user) return <h1>Cargando...</h1>;
 
   return (
     <div>
       <HomeStyle>
-        <Logo />
-        <Button onClick={handleLogOut}>Log Out</Button>
+        <NavBar />
       </HomeStyle>
       <IntroStyle>
         <div>
@@ -40,7 +27,6 @@ function Home() {
         <input type="text" placeholder="Buscar..." />
       </IntroStyle>
       <HomeContent>
-        <NavBar />
         <Outlet />
       </HomeContent>
     </div>
