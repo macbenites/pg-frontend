@@ -14,7 +14,9 @@ import {
     LOG_IN_WHIT_EMAIL,
     LOG_OUT,
     LOG_IN_WITH_GOOGLE,
-    LOG_IN_WITH_FACEBOOK} from "./types"
+    LOG_IN_WITH_FACEBOOK
+} from "./types";
+import axios from "axios";
 
 export const signUpWithMail = (email, password) => {
     return function (dispatch) {
@@ -81,5 +83,12 @@ export const logInWithFacebook = () => {
 export const resetPassword = (email) => {
     return function (dispatch){
         sendPasswordResetEmail(auth ,email)
+    }
+}
+
+export function postMatch(payload){
+    return async function(distpach){
+        const newMatch = await axios.post("https://futbolapp-henry.herokuapp.com/match", payload);
+        return newMatch;
     }
 }
