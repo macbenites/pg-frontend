@@ -6,6 +6,7 @@ import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../Redux/Actions";
 import { useDispatch } from "react-redux";
+import { LinkTo } from "../Styles/reusable/LinkTo";
 
 import Logo from "./Logo";
 function NavBar() {
@@ -19,19 +20,23 @@ function NavBar() {
   };
   return (
     <Wrapper>
-      <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
+      <IconContext.Provider value={{ style: { fontSize: "2rem" } }}>
         <Logo />
         <MobileIcon onClick={showSidebar}>
           {isOpen ? <FaIcons.FaTimes /> : <FaIcons.FaBars />}
         </MobileIcon>
         <Menu open={isOpen}>
           {NavItems.map((item) => (
-            <NavLink to={item.link} key={item.name} onClick={showSidebar}>
-              {item.icon}
-              <span>{item.name}</span>
-            </NavLink>
+            <LinkTo key={item.name} to={item.link}>
+              <NavLink key={item.name} onClick={showSidebar}>
+                {item.icon}
+                <span>{item.name}</span>
+              </NavLink>
+            </LinkTo>
           ))}
-          <div onClick={handleLogOut}>LogOut</div>
+          <NavLink onClick={handleLogOut}>
+            <FaIcons.FaSignOutAlt /> <span>Logout</span>
+          </NavLink>
         </Menu>
       </IconContext.Provider>
     </Wrapper>
