@@ -31,6 +31,10 @@ function rootReducer(state = initialState, { type, payload }) {
       ...state,
       userLogeado : payload
     }
+    case 'POST_MATCH':
+      return{
+        ...state,                      
+      }
     default:
       return { ...state };
   }

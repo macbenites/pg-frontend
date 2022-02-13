@@ -1,5 +1,6 @@
 import { InputForm } from "../Styles/reusable/Input";
 import { useNavigate } from 'react-router-dom';
+import { FaExclamationCircle } from "react-icons/fa";
 import Logo from "./Logo";
 import {
   BtnLogIn,
@@ -54,7 +55,13 @@ function Password () {
                             },
                         })}
                         />
-                        <ErrorMessage>{errors?.email?.message}</ErrorMessage>
+                        <ErrorMessage>
+                          {errors.email && (
+                            <small>
+                              <FaExclamationCircle /> {errors.email.message}
+                            </small>
+                          )}
+                        </ErrorMessage>
                         <BtnLogIn primary type="submit">
                             Recuperar Contraseña
                         </BtnLogIn>
