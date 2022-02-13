@@ -1,46 +1,36 @@
 import styled from "styled-components";
 
-export const HomeStyle = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
+export const HomeContainer = styled.div`
+  padding: 0 1rem;
 `;
-
 export const IntroStyle = styled.div`
-  margin-left: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr minmax(50px, 70%);
+  grid-gap: 1rem;
   margin-top: 3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  p,
-  h4 {
-    color: #abd1c6;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0.2rem;
+  div {
+    display: flex;
+    align-items: center;
   }
-  h4 {
-    font-size: 36px;
+  h5 {
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin: 0 1rem;
   }
-  p {
-    font-size: 18px;
-  }
-  input {
-    height: 38px;
-    width: 422.00030517578125px;
-    left: 891px;
-    top: 187px;
-    border-radius: 15px;
-    margin-right: 2rem;
-    font-size: 15px;
-    border: none;
+
+  span {
+    font-size: 0.9rem;
+    font-weight: 300;
   }
   img {
-    height: 85px;
-    width: 130px
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+  @media (min-width: 620px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(50px, 70%);
   }
 `;
 
@@ -52,4 +42,31 @@ export const CardsStyle = styled.div`
 
 export const HomeContent = styled.div`
   padding: 1rem;
+`;
+
+export const Search = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 1em;
+  border-radius: 1rem;
+  background-color: var(--primary-light);
+  input {
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: transparent;
+    ::placeholder {
+      color: #d1d1d1;
+    }
+  }
+
+  svg {
+    fill: var(--secondary);
+    margin: 0 1rem;
+    font-size: 1.2rem;
+  }
 `;
