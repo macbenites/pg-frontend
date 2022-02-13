@@ -7,7 +7,7 @@ import {
 import phone from "../Assets/img/phone.svg";
 import schedule from "../Assets/img/shedule.svg";
 import web from "../Assets/img/web.svg";
-
+//import Map from "./Map";
 
 const CardsCity = () => {
   return (
@@ -20,9 +20,10 @@ const CardsCity = () => {
       </ImgCard>
       <Content>
         <div>
-          <h6>Palermo</h6>
-          <p>locación</p>
+          <h6>Cancha Pirulita</h6>
+          <p>Almagro</p>
         </div>
+        {/*<Map />*/}
         <IconsCity />
       </Content>
     </CardContainer>
