@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { GlobalStyles } from "./GlobalStyles";
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
 
 ReactDOM.render(
   <React.StrictMode>
