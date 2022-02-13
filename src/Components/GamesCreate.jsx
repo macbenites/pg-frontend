@@ -1,4 +1,4 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaExclamationCircle } from "react-icons/fa";
 import { ErrorMessage } from "../Styles/Login.js";
@@ -7,15 +7,11 @@ import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
 import { CreateDiv, BtnCreateGame } from "../Styles/GamesCreate";
 import { Name, User, Barrio, Position, Btn } from "../Styles/reusable/Containers";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import addMonths from "date-fns/addMonths";
 
 
 
 export default function GamesCreate() {
   const navigate = useNavigate();
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const {
     register,
     handleSubmit,
@@ -43,35 +39,35 @@ export default function GamesCreate() {
         <Name>
           <InputForm
             type="text"
-            placeholder="Lugar" 
+            placeholder="Nombre Predio" 
             autoComplete="off"
-            name="place"
-            {...register("place", {
+            name="nameCenter"
+            {...register("nameCenter", {
               required: {
                 value: true,
-                message: "Lugar requerido.",
+                message: "El nombre del club o cancha es requerido.",
               },
               pattern: {
                 value: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/,
-                message: "El lugar solo admite letras y espacios en blanco.",
+                message: "El nombre del club o cancha solo admite letras y espacios en blanco.",
               },
               minLength: {
                 value: 4,
-                message: "El lugar debe contener mínimo 3 caracteres.",
+                message: "El nombre del club o cancha debe contener mínimo 3 caracteres.",
               },
               maxLength: {
                 value: 100,
-                message: "El lugar debe contener máximo 100 caracteres.",
+                message: "El nombre del club o cancha debe contener máximo 100 caracteres.",
               },
             })}
             onKeyUp={() => {
-              trigger("place");
+              trigger("nameCenter");
             }}
           />
           <ErrorMessage>
-            {errors.place && (
+            {errors.nameCenter && (
               <small>
-                <FaExclamationCircle /> {errors.place.message}
+                <FaExclamationCircle /> {errors.nameCenter.message}
               </small>
             )}
           </ErrorMessage>        
@@ -80,11 +76,11 @@ export default function GamesCreate() {
           <InputForm
             type="number"
             placeholder="Cantidad de Jugadores" 
-            name="cantplayers"
-            {...register("cantplayers", {
+            name="players"
+            {...register("players", {
               required: {
                 value: true,
-                message: "Cantidad requerida.",
+                message: "Cantidad de jugadores requerida.",
               },
               min: {
                 value: 1,
@@ -96,13 +92,13 @@ export default function GamesCreate() {
               },
             })}
             onKeyUp={() => {
-              trigger("cantplayers");
+              trigger("players");
             }}
           />        
           <ErrorMessage>
-            {errors.cantplayers && (
+            {errors.players && (
               <small>
-                <FaExclamationCircle /> {errors.cantplayers.message}
+                <FaExclamationCircle /> {errors.players.message}
               </small>
             )}
           </ErrorMessage>
@@ -110,70 +106,55 @@ export default function GamesCreate() {
         <Position>
           <InputForm
             type="text"
-            placeholder="Posicion solicitada" 
+            placeholder="Barrio" 
             autoComplete="off"
-            name="position"
-            {...register("position", {
+            name="distric"
+            {...register("distric", {
               required: {
                 value: true,
-                message: "Posición requerida.",
+                message: "Barrio requerido.",
               },
               pattern: {
-                value: /^[A-Za-z]+$/,
+                value: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/,
                 message:
-                  "La posición no admite números, caracteres especiales ni espacios en blanco.",
+                  "El barrio solo admite letras y espacios en blanco.",
               },
             })}
             onKeyUp={() => {
-              trigger("position");
+              trigger("distric");
             }}
           />
           <ErrorMessage>
-            {errors.position && (
+            {errors.distric && (
               <small>
-                <FaExclamationCircle /> {errors.position.message}
+                <FaExclamationCircle /> {errors.distric.message}
               </small>
             )}
           </ErrorMessage>
         </Position>
         <Barrio>
-        {/*<InputForm
-            type="text"
+        <InputForm
+            type="datetime-local"
             placeholder="Fecha y Hora" 
-            name="fecha"
-            {...register("fecha", {
+            name="date"
+            {...register("date", {
               required: {
                 value: true,
                 message: "Fecha y Hora requeridas.",
               },
             })}
             onKeyUp={() => {
-              trigger("fecha");
+              trigger("date");
             }}
           />        
           <ErrorMessage>
-            {errors.fecha && (
+            {errors.date && (
               <small>
-                <FaExclamationCircle /> {errors.fecha.message}
+                <FaExclamationCircle /> {errors.date.message}
               </small>
             )}
-            </ErrorMessage>*/}
-          <DatePicker
-            selected={selectedDate}
-            onChange={date => setSelectedDate(date)}
-            dateFormat="dd/MM/yyyy - h:mm aa"
-            placeholderText="Fecha y Hora" 
-            minDate={new Date()}
-            maxDate={addMonths(new Date(), 3)}
-            showTimeSelect
-            timeIntervals={30}
-            timeCaption="time"
-            //withPortal
-
-          />
-        </Barrio>
-               
-        
+            </ErrorMessage>
+        </Barrio>       
         <Btn>
           <BtnCreateGame primary type="submit">Crear partido</BtnCreateGame>
         </Btn>
