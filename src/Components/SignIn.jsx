@@ -15,34 +15,31 @@ import {
   Password,
   Btn,
 } from "../Styles/reusable/Containers";
-import { useDispatch } from "react-redux";
-import { signUpWithMail } from "../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpWithMail, resetStateError } from "../Redux/Actions";
 
 function SignIn() {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    reset,
     trigger,
     formState: { errors },
   } = useForm();
-
+  const { error } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const onSubmit =  (input) => {
-
+  const onSubmit = (input) => {
     if (Object.entries(errors).length === 0) {
-
-        dispatch(signUpWithMail(input.email , input.password))
-        alert("Cuenta creada con éxito");
-        navigate("/login");
-        reset();
-      } else {
-       
-        alert("Completar los campos requeridos");
-        
-      }
+      dispatch(resetStateError());
+      dispatch(
+        signUpWithMail(input.email, input.password, () => {
+          navigate("/login");
+        })
+      );
+    } else {
+      alert("Completar los campos requeridos");
+    }
   };
 
   return (
@@ -51,6 +48,7 @@ function SignIn() {
       <SignInDiv>
         <h4>Creá tu cuenta</h4>
         <h5>
+          {error && <h2>{error}</h2>}
           Ya tenés tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
