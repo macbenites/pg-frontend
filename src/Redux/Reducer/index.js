@@ -2,7 +2,8 @@ const initialState = {
   userLogeado: {},
   users: [],
   error: [],
-  fields: []
+  fields: [],
+  matches: []
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -82,7 +83,16 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         fields : payload
       }
-
+    case 'GET_MATCHES':
+      return{
+        ...state,
+        matches: payload
+      }
+    case 'JOIN_MATCH':
+      return{
+        ...state,
+        matches: payload
+      }
     default:
       return { ...state };
   }
