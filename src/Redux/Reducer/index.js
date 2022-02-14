@@ -1,36 +1,34 @@
 const initialState = {
-
-  userLogeado : {},
+  userLogeado: {},
   users: [],
   error: [],
-  fields: []
-
+  fields: [],
+  matches: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
-    
     case "ERROR":
-      if(payload === "auth/email-already-in-use"){
+      if (payload === "auth/email-already-in-use") {
         return {
           ...state,
-          error : "Ese mail ya esta registrado"
-        }
-      } else if (payload === "auth/invalid-email"){
+          error: "Ese mail ya esta registrado",
+        };
+      } else if (payload === "auth/invalid-email") {
         return {
           ...state,
-          error : "Mail invalido"
-        }
-      } else if(payload === "auth/user-not-found"){
+          error: "Mail invalido",
+        };
+      } else if (payload === "auth/user-not-found") {
         return {
           ...state,
-          error : "Usuario no registrado"
-        }
-      } else if (payload === "auth/wrong-password"){
+          error: "Usuario no registrado",
+        };
+      } else if (payload === "auth/wrong-password") {
         return {
           ...state,
-          error : "Password incorrecta"
-        }
+          error: "Password incorrecta",
+        };
       } else {
         return {
           ...state,
@@ -65,26 +63,34 @@ function rootReducer(state = initialState, { type, payload }) {
     case "LOG_IN_WITH_GOOGLE":
       return {
         ...state,
-        userLogeado : payload
+        userLogeado: payload,
       };
-      
-    case "LOG_IN_WITH_FACEBOOK": 
-    return {
-      ...state,
-      userLogeado : payload
-    }
-      
-    case 'POST_MATCH':
-      return{
-        ...state,                   
 
-      }
+    case "LOG_IN_WITH_FACEBOOK":
+      return {
+        ...state,
+        userLogeado: payload,
+      };
+
+    case "POST_MATCH":
+      return {
+        ...state,
+      };
     case "GET_FIELDS":
       return {
         ...state,
-        fields : payload
-      }
-      
+        fields: payload,
+      };
+    case "GET_MATCHES":
+      return {
+        ...state,
+        matches: payload,
+      };
+    case "JOIN_MATCH":
+      return {
+        ...state,
+        matches: payload,
+      };
     default:
       return { ...state };
   }
