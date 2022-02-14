@@ -2,10 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getMatches, joinMatch } from "../Redux/Actions/index";
-import {MainCardsGames, DateStyle, Players, Search, NameCenter, ButtonCardsGames} from '../Styles/CardsGames'
+import {MainCardsGames, DateStyle, Players, NameCenter, ButtonCardsGames} from '../Styles/CardsGames'
 // import { useParams, Link } from "react-router-dom";
 
-function CardsGames({nameCenter, date, players, search}){
+function CardsGames({props}){
 
     const dispatch = useDispatch();
     const [ state, setState ] = useState({
@@ -20,17 +20,17 @@ function CardsGames({nameCenter, date, players, search}){
         dispatch(joinMatch());
         setState({
             ...state,
-            players: [...players, players +1]
+            // players: [...players, players +1]
         })
     };
 
     return (
         <div>
             <MainCardsGames>
-                <NameCenter>{nameCenter}</NameCenter>
-                <DateStyle>{date}</DateStyle>
-                <Players>{players}</Players>
-                <Search>{search}</Search>
+                <NameCenter>{props.nameCenter}</NameCenter>
+                <DateStyle>{props.date}</DateStyle>
+                <Players>{props.players}</Players>
+                {/* <Search>{search}</Search> */}
                 <ButtonCardsGames onClick={e => {handleCLick(e)}}>
                     Unirme
                 </ButtonCardsGames> 
