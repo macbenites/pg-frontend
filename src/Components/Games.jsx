@@ -1,6 +1,7 @@
 import React from "react";
 import CardsGames from "./CardsGames";
-import { infoCardsGames } from "../Utils/infoCardsGames";
+// import { infoCardsGames } from "../Utils/infoCardsGames";
+import { useSelector } from "react-redux";
 import {
   TitleStyle,
   CardsGamesStyle,
@@ -10,7 +11,9 @@ import {
 } from "../Styles/Games";
 
 function Games() {
-
+  
+  const allMatches = useSelector((state) => state.matches)
+  console.log(allMatches)
   
 
   return (
@@ -26,13 +29,13 @@ function Games() {
         <option>Posición buscada</option>
       </SelectSearch>
       <CardsGamesStyle>
-        {infoCardsGames.map((card) => (
+        {allMatches.map((el) => (
           <CardsGames
-            key={card.nameCenter}
-            nameCenter={card.nameCenter}
-            date={card.date}
-            players={card.players}
-            search={card.search}
+            key={el.nameCenter}
+            nameCenter={el.nameCenter}
+            date={el.date}
+            players={el.players}
+            // search={el.search}
           />
         ))}
       </CardsGamesStyle>

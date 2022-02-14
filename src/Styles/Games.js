@@ -56,7 +56,7 @@ export const CreateGame = styled.h2`
 
 export const SelectLocation = styled.select`
   height: 30px;
-  width: 280px;
+  width: 336px;
   margin: 20px;
   margin-top: 70px;
   margin-left: 20px;
@@ -67,7 +67,7 @@ export const SelectLocation = styled.select`
 
 export const SelectDate = styled.select`
   height: 30px;
-  width: 280px;
+  width: 336px;
   margin:20px;
   border: none;
   background-color: #206F6C;
@@ -76,7 +76,7 @@ export const SelectDate = styled.select`
 
 export const SelectSearch = styled.select`
   height: 30px;
-  width: 280px;
+  width: 336px;
   margin: 20px;
   border: none;
   background-color: #206F6C;

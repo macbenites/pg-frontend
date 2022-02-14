@@ -144,9 +144,9 @@ export function getFields() {
     }
 }
 
-export function getMatches(payload){
+export function getMatches(){
     return async function(dispatch){
-        const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches", payload);
+        const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches");
         return dispatch({
             type: GET_MATCHES,
             payload: getGames.data
