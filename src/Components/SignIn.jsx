@@ -23,7 +23,6 @@ function SignIn() {
   const {
     register,
     handleSubmit,
-    reset,
     trigger,
     formState: { errors },
   } = useForm();
@@ -49,7 +48,7 @@ function SignIn() {
       <SignInDiv>
         <h4>Creá tu cuenta</h4>
         <h5>
-        {error && <h2>{error}</h2>}
+          {error && <h2>{error}</h2>}
           Ya tenés tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
