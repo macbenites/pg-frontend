@@ -2,6 +2,7 @@ const initialState = {
   userLogeado: {},
   users: [],
   error: [],
+  fields: []
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -75,6 +76,12 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+
+    case "GET_FIELDS":
+      return {
+        ...state,
+        fields : payload
+      }
 
     default:
       return { ...state };

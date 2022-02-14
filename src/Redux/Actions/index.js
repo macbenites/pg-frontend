@@ -15,6 +15,7 @@ import {
   LOG_OUT,
   LOG_IN_WITH_GOOGLE,
   LOG_IN_WITH_FACEBOOK,
+  GET_FIELDS
 } from "./types";
 import axios from "axios";
 
@@ -127,4 +128,16 @@ export function postMatch(payload) {
     );
     return newMatch;
   };
+}
+
+export function getFields() {
+    return function (dispatch) {
+        fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
+            .then(obj => obj.json())
+            .then(obj => dispatch({
+                payload : obj,
+                type : GET_FIELDS
+                })
+            )
+    }
 }
