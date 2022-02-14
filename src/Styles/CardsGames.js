@@ -31,7 +31,7 @@ export const Search = styled.div`
   margin-bottom: 15px;
 `;
 
-export const Location = styled.div`
+export const NameCenter = styled.div`
   color:#004643;
   text-align: center;
   font-weight: bold;
