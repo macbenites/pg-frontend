@@ -1,15 +1,37 @@
 import React from "react";
-import {MainCardsGames, DateStyle, Players, Search, Location, ButtonCardsGames} from '../Styles/CardsGames'
+import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { getMatches, joinMatch } from "../Redux/Actions/index";
+import {MainCardsGames, DateStyle, Players, Search, NameCenter, ButtonCardsGames} from '../Styles/CardsGames'
+// import { useParams, Link } from "react-router-dom";
 
-function CardsGames({location, date, players, search}){
+function CardsGames({nameCenter, date, players, search}){
+
+    const dispatch = useDispatch();
+    const [ state, setState ] = useState({
+    });
+
+    useEffect(() => {
+        dispatch(getMatches()); 
+        dispatch(joinMatch())
+    }, [dispatch]);
+
+    function handleCLick(e){
+        dispatch(joinMatch());
+        setState({
+            ...state,
+            players: [...players, players +1]
+        })
+    };
+
     return (
         <div>
             <MainCardsGames>
-                <Location>{location}</Location>
+                <NameCenter>{nameCenter}</NameCenter>
                 <DateStyle>{date}</DateStyle>
                 <Players>{players}</Players>
                 <Search>{search}</Search>
-                <ButtonCardsGames>
+                <ButtonCardsGames onClick={e => {handleCLick(e)}}>
                     Unirme
                 </ButtonCardsGames> 
             </MainCardsGames>

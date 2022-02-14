@@ -18,8 +18,13 @@ import {
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import { useForm } from "react-hook-form";
-import { logInWithMail , logInWithGoogle, logInWithFacebook , resetStateError } from "../Redux/Actions";
-import { useDispatch , useSelector } from "react-redux";
+import {
+  logInWithMail,
+  logInWithGoogle,
+  logInWithFacebook,
+  resetStateError,
+} from "../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -34,29 +39,31 @@ export default function Login() {
   // credencial google
   //658093002098339 -- creedencial Facebook
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { error } = useSelector((state) => state);
 
   const onSubmit = (event) => {
     try {
       dispatch(resetStateError());
-      dispatch(logInWithMail(event.email , event.password , ()=>{
-        navigate("/login");
-      }))
+      dispatch(
+        logInWithMail(event.email, event.password, () => {
+          navigate("/home");
+        })
+      );
     } catch (error) {
       console.log(error);
     }
   };
 
   const googleLogIn = async () => {
-    dispatch(await logInWithGoogle())
-    navigate('/home');
-  }
+    dispatch(await logInWithGoogle());
+    navigate("/home");
+  };
 
   const facebookLogIn = async () => {
-    dispatch(await logInWithFacebook())
-    navigate('/home');
-  }
+    dispatch(await logInWithFacebook());
+    navigate("/home");
+  };
 
   const newPassword = () => {
     navigate("/resetPassword");
@@ -68,7 +75,7 @@ export default function Login() {
       <Logo />
       <LoginDiv>
         <h4>Ingresá a tu cuenta</h4>
-      
+
         <h5>
           No tenés cuenta?<LinkToLogin to="/signin"> Registrate</LinkToLogin>
         </h5>
