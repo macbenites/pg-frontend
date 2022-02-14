@@ -172,27 +172,3 @@ export function joinMatch(id) {
     }
   };
 }
-
-export function getMatches(payload){
-    return async function(dispatch){
-        const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches", payload);
-        return dispatch({
-            type: GET_MATCHES,
-            payload: getGames.data
-        });
-    };
-};
-
-export function joinMatch(id){
-    return async function(dispatch){
-        try{
-            const joinGame = await axios.put("https://futbolapp-henry.herokuapp.com/matches/" +id);
-            return dispatch({
-                type: JOIN_MATCH,
-                payload: [joinGame.data]
-            });
-        } catch(error) {
-            alert('No se pudo unir')
-        }
-    };
-};
