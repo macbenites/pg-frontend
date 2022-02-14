@@ -42,9 +42,9 @@ export const InputGamesStyle = styled.form`
 `;
 
 export const BtnCreateGame = styled(Button)`
-  width: 870px;
+  width: 200px;
   height: 50px;
-  margin: 20px;
+  margin-top: 50px;
   border-radius: 15px;
 `;
 
