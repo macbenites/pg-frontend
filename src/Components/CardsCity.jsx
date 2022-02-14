@@ -9,7 +9,10 @@ import schedule from "../Assets/img/shedule.svg";
 import web from "../Assets/img/web.svg";
 //import Map from "./Map";
 
-const CardsCity = () => {
+const CardsCity = ({props}) => {
+
+  console.log(props);
+
   return (
     <CardContainer>
       <ImgCard>
@@ -20,8 +23,9 @@ const CardsCity = () => {
       </ImgCard>
       <Content>
         <div>
-          <h6>Cancha Pirulita</h6>
-          <p>Almagro</p>
+          <h6>{props.name.length > 15 ? props.name.slice(0,15) : props.name}</h6>
+          <p>{props.street + " " + props.streetNumber}</p>
+          <p>{props.city}</p>
         </div>
         {/*<Map />*/}
         <IconsCity />
