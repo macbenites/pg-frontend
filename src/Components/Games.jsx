@@ -28,8 +28,8 @@ function Games() {
       <CardsGamesStyle>
         {infoCardsGames.map((card) => (
           <CardsGames
-            key={card.location}
-            location={card.location}
+            key={card.nameCenter}
+            nameCenter={card.nameCenter}
             date={card.date}
             players={card.players}
             search={card.search}

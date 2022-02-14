@@ -1,6 +1,7 @@
 const initialState = {
   userLogeado : {},
   users : [],
+  matches : [],
 
 };
 
