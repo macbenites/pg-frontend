@@ -50,14 +50,29 @@ export const signUpWithMail = (email, password, callback) => {
   };
 };
 
-export const logInWithMail = (email, password) => {
-  return function (dispatch) {
-    signInWithEmailAndPassword(auth, email, password).then((obj) => {
-      dispatch({
-        payload: obj,
-        type: LOG_IN_WHIT_EMAIL,
-      });
-    });
+export const logInWithMail = (email, password, callback) => {
+  return async function (dispatch) {
+      try {       
+          signInWithEmailAndPassword(auth, email, password)
+            .then((obj) => {
+            dispatch({
+              payload: obj,
+              type: LOG_IN_WHIT_EMAIL,
+            });
+            callback();
+          })
+          .catch((error) => {
+            dispatch({
+                payload: error.code,
+                type: "ERROR",
+              });
+          })
+      } catch (error) {
+        dispatch({
+            payload: error.code,
+            type: "ERROR",
+          });
+      }
   };
 };
 
