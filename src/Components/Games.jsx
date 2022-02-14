@@ -1,6 +1,8 @@
 import React from "react";
 import CardsGames from "./CardsGames";
-// import { infoCardsGames } from "../Utils/infoCardsGames";
+import { getMatches } from "../Redux/Actions/index";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,8 +17,13 @@ import {
 function Games() {
   
   const allMatches = useSelector((state) => state.matches)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(allMatches)
+
+  useEffect(() => {
+    dispatch(getMatches()); 
+}, [dispatch]);
 
   function handleClick(){
     navigate('/gamesCreate')
@@ -36,9 +43,9 @@ function Games() {
         <option>Posición buscada</option>
       </SelectSearch>
       <CardsGamesStyle>
-        {allMatches && allMatches.map((el) => (
+        {allMatches && allMatches.map((el, index) => (
           <CardsGames
-            key={el.nameCenter}
+            key={index}
             nameCenter={el.nameCenter}
             date={el.date}
             players={el.players}

@@ -147,11 +147,16 @@ export function getFields() {
 
 export function getMatches(){
     return async function(dispatch){
-        const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches");
-        return dispatch({
-            type: GET_MATCHES,
-            payload: getGames.data
-        });
+        try{
+            const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches");
+            return dispatch({
+                type: GET_MATCHES,
+                payload: getGames.data
+            });
+
+        } catch(error){
+            alert('Error al traer los partidos')
+        }
     };
 };
 
