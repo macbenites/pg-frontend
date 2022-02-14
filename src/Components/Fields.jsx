@@ -10,7 +10,7 @@ const Fields = () => {
   const tenFields = fields.slice(0,10)
   const dispatch = useDispatch();
 
-  useEffect (()=> dispatch(getFields()) ,[])
+  useEffect (()=> dispatch(getFields()) ,[dispatch])
   console.log(fields)
 
   return (
