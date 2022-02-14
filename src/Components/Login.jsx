@@ -41,7 +41,7 @@ export default function Login() {
     try {
       dispatch(resetStateError());
       dispatch(logInWithMail(event.email , event.password , ()=>{
-        navigate("/login");
+        navigate("/home");
       }))
     } catch (error) {
       console.log(error);
