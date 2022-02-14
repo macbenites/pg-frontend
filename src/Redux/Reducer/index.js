@@ -1,41 +1,88 @@
 const initialState = {
-  userLogeado : {},
-  users : [],
-  matches : [],
-
+  userLogeado: {},
+  users: [],
+  error: [],
+  fields: []
 };
 
 function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
+    
+    case "ERROR":
+      if(payload === "auth/email-already-in-use"){
+        return {
+          ...state,
+          error : "Ese mail ya esta registrado"
+        }
+      } else if (payload === "auth/invalid-email"){
+        return {
+          ...state,
+          error : "Mail invalido"
+        }
+      } else if(payload === "auth/user-not-found"){
+        return {
+          ...state,
+          error : "Usuario no registrado"
+        }
+      } else if (payload === "auth/wrong-password"){
+        return {
+          ...state,
+          error : "Password incorrecta"
+        }
+      } else {
+        return {
+          ...state,
+          error: payload,
+        };
+      }
+
+    case "RESET_STATE_ERROR":
+      return {
+        ...state,
+        error: [],
+      };
+
     case "SIGN_UP_WHIT_EMAIL_AND_PASSWORD":
       return {
         ...state,
-        users : state.users.concat(payload)
-      }
+        users: state.users.concat(payload),
+      };
+
     case "LOG_IN_WHIT_EMAIL":
       return {
         ...state,
-        userLogeado : payload
-      }
+        userLogeado: payload,
+      };
+
     case "LOG_OUT":
       return {
         ...state,
-        userLogeado : payload
-      }
-    case "LOG_IN_WITH_GOOGLE": 
+        userLogeado: payload,
+      };
+
+    case "LOG_IN_WITH_GOOGLE":
       return {
         ...state,
-        userLogeado : payload
+        userLogeado: payload,
+      };
+
+    case "LOG_IN_WITH_FACEBOOK":
+      return {
+        ...state,
+        userLogeado: payload,
+      };
+
+    case "POST_MATCH":
+      return {
+        ...state,
+      };
+
+    case "GET_FIELDS":
+      return {
+        ...state,
+        fields : payload
       }
-    case "LOG_IN_WITH_FACEBOOK": 
-    return {
-      ...state,
-      userLogeado : payload
-    }
-    case 'POST_MATCH':
-      return{
-        ...state,                      
-      }
+
     default:
       return { ...state };
   }
