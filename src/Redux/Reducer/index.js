@@ -6,11 +6,34 @@ const initialState = {
 
 function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
+    
     case "ERROR":
-      return {
-        ...state,
-        error: payload,
-      };
+      if(payload === "auth/email-already-in-use"){
+        return {
+          ...state,
+          error : "Ese mail ya esta registrado"
+        }
+      } else if (payload === "auth/invalid-email"){
+        return {
+          ...state,
+          error : "Mail invalido"
+        }
+      } else if(payload === "auth/user-not-found"){
+        return {
+          ...state,
+          error : "Usuario no registrado"
+        }
+      } else if (payload === "auth/wrong-password"){
+        return {
+          ...state,
+          error : "Password incorrecta"
+        }
+      } else {
+        return {
+          ...state,
+          error: payload,
+        };
+      }
 
     case "RESET_STATE_ERROR":
       return {
@@ -29,25 +52,30 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         userLogeado: payload,
       };
+
     case "LOG_OUT":
       return {
         ...state,
         userLogeado: payload,
       };
+
     case "LOG_IN_WITH_GOOGLE":
       return {
         ...state,
         userLogeado: payload,
       };
+
     case "LOG_IN_WITH_FACEBOOK":
       return {
         ...state,
         userLogeado: payload,
       };
+
     case "POST_MATCH":
       return {
         ...state,
       };
+
     default:
       return { ...state };
   }

@@ -18,15 +18,15 @@ import {
 } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import { useForm } from "react-hook-form";
-import { logInWithMail , logInWithGoogle, logInWithFacebook } from "../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { logInWithMail , logInWithGoogle, logInWithFacebook , resetStateError } from "../Redux/Actions";
+import { useDispatch , useSelector } from "react-redux";
 
 export default function Login() {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    reset,
+    //reset,
     trigger,
     formState: { errors },
   } = useForm();
@@ -35,13 +35,14 @@ export default function Login() {
   //658093002098339 -- creedencial Facebook
 
   const dispatch = useDispatch()
+  const { error } = useSelector((state) => state);
 
   const onSubmit = (event) => {
     try {
-     
-      dispatch(logInWithMail(event.email , event.password))
-      navigate("/home");
-      reset();
+      dispatch(resetStateError());
+      dispatch(logInWithMail(event.email , event.password , ()=>{
+        navigate("/login");
+      }))
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +68,7 @@ export default function Login() {
       <Logo />
       <LoginDiv>
         <h4>Ingresá a tu cuenta</h4>
+      
         <h5>
           No tenés cuenta?<LinkToLogin to="/signin"> Registrate</LinkToLogin>
         </h5>
@@ -145,6 +147,7 @@ export default function Login() {
           </ContainerInput>
         </form>
         <br />
+        {error && <h2>{error}</h2>}
         <LinkToLogin to="/resetPassword" onClick={newPassword}>
           {" "}
           Olvidaste tu contraseña?
