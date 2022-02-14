@@ -1,7 +1,6 @@
 const initialState = {
   userLogeado : {},
   users : [],
-
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -33,7 +32,7 @@ function rootReducer(state = initialState, { type, payload }) {
     }
     case 'POST_MATCH':
       return{
-        ...state,                      
+        ...state,                   
       }
     default:
       return { ...state };

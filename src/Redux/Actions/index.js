@@ -87,8 +87,9 @@ export const resetPassword = (email) => {
 }
 
 export function postMatch(payload){
-    return async function(distpach){
+    return async function(dispatch){
         const newMatch = await axios.post("https://futbolapp-henry.herokuapp.com/match", payload);
+        console.log(newMatch)
         return newMatch;
     }
 }
