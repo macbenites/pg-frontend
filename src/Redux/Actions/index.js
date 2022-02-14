@@ -17,7 +17,7 @@ import {
   LOG_IN_WITH_FACEBOOK,
   GET_FIELDS,
   GET_MATCHES,
-  JOIN_MATCH
+  JOIN_MATCH,
 } from "./types";
 import axios from "axios";
 
@@ -55,27 +55,27 @@ export const signUpWithMail = (email, password, callback) => {
 
 export const logInWithMail = (email, password, callback) => {
   return async function (dispatch) {
-      try {       
-          signInWithEmailAndPassword(auth, email, password)
-            .then((obj) => {
-            dispatch({
-              payload: obj,
-              type: LOG_IN_WHIT_EMAIL,
-            });
-            callback();
-          })
-          .catch((error) => {
-            dispatch({
-                payload: error.code,
-                type: "ERROR",
-              });
-          })
-      } catch (error) {
-        dispatch({
+    try {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: LOG_IN_WHIT_EMAIL,
+          });
+          callback();
+        })
+        .catch((error) => {
+          dispatch({
             payload: error.code,
             type: "ERROR",
           });
-      }
+        });
+    } catch (error) {
+      dispatch({
+        payload: error.code,
+        type: "ERROR",
+      });
+    }
   };
 };
 
@@ -123,7 +123,7 @@ export const resetPassword = (email) => {
 };
 
 export function postMatch(payload) {
-  return async function (distpach) {
+  return async function (dispatch) {
     const newMatch = await axios.post(
       "https://futbolapp-henry.herokuapp.com/match",
       payload
@@ -133,15 +133,16 @@ export function postMatch(payload) {
 }
 
 export function getFields() {
-    return function (dispatch) {
-        fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
-            .then(obj => obj.json())
-            .then(obj => dispatch({
-                payload : obj,
-                type : GET_FIELDS
-                })
-            )
-    }
+  return function (dispatch) {
+    fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
+      .then((obj) => obj.json())
+      .then((obj) =>
+        dispatch({
+          payload: obj,
+          type: GET_FIELDS,
+        })
+      );
+  };
 }
 
 export function getMatches(){
@@ -167,3 +168,4 @@ export function joinMatch(id){
         }
     };
 };
+
