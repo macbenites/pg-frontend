@@ -76,7 +76,6 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
-
     case "GET_FIELDS":
       return {
         ...state,
