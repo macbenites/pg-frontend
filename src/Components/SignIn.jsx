@@ -33,9 +33,18 @@ function SignIn() {
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
       dispatch(
-        signUpWithMail(input.email, input.password, () => {
+        signUpWithMail(input.email, input.password, input, () => {
           navigate("/login");
         })
+        /* .then(obj => {
+          return {
+            ...obj,
+            username : input.username,
+            name : input.name,
+            barrio : input.neighborhood,
+            posicion : input.position
+          }
+        }) */
       );
     } else {
       alert("Completar los campos requeridos");
