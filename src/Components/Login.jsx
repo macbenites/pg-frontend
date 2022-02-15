@@ -99,13 +99,11 @@ export default function Login() {
               }}
             />
             <ErrorMessage>
-              <ErrorMessage>
-                {errors.email && (
-                  <small>
-                    <FaExclamationCircle /> {errors.email.message}
-                  </small>
-                )}
-              </ErrorMessage>
+              {errors.email && (
+                <small>
+                  <FaExclamationCircle /> {errors.email.message}
+                </small>
+              )}
             </ErrorMessage>
             <InputForm
               type="password"
