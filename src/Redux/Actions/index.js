@@ -1,7 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  //onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
+  onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
@@ -145,32 +145,52 @@ export function getFields() {
   };
 }
 
-export function getMatches(){
-    return async function(dispatch){
-        try{
-            const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches");
-            return dispatch({
-                type: GET_MATCHES,
-                payload: getGames.data
-            });
+export function getMatches() {
+  return async function (dispatch) {
+    try {
+      const getGames = await axios.get(
+        "https://futbolapp-henry.herokuapp.com/matches"
+      );
+      return dispatch({
+        type: GET_MATCHES,
+        payload: getGames.data,
+      });
+    } catch (error) {
+      alert("Error al traer los partidos");
+    }
+  };
+}
 
-        } catch(error){
-            alert('Error al traer los partidos')
-        }
-    };
+export function joinMatch(id) {
+  return async function (dispatch) {
+    try {
+      const joinGame = await axios.put(
+        "https://futbolapp-henry.herokuapp.com/matches/" + id
+      );
+      return dispatch({
+        type: JOIN_MATCH,
+        payload: [joinGame.data],
+      });
+    } catch (error) {
+      alert("No se pudo unir");
+    }
+  };
+}
+
+export const authState = () => {
+  return (dispatch) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch({
+          payload: user,
+          type: "USER_LOGGED",
+        });
+      } else {
+        dispatch({
+          payload: null,
+          type: "USER_LOGGED",
+        });
+      }
+    });
+  };
 };
-
-export function joinMatch(id){
-    return async function(dispatch){
-        try{
-            const joinGame = await axios.put("https://futbolapp-henry.herokuapp.com/matches/" +id);
-            return dispatch({
-                type: JOIN_MATCH,
-                payload: [joinGame.data]
-            });
-        } catch(error) {
-            alert('No se pudo unir')
-        }
-    };
-};
-
