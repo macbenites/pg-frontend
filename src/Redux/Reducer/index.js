@@ -4,6 +4,7 @@ const initialState = {
   error: [],
   fields: [],
   matches: [],
+  userState: {},
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -35,6 +36,12 @@ function rootReducer(state = initialState, { type, payload }) {
           error: payload,
         };
       }
+
+    case "USER_LOGGED":
+      return {
+        ...state,
+        userState: payload,
+      };
 
     case "RESET_STATE_ERROR":
       return {
