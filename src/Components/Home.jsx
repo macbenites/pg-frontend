@@ -7,11 +7,13 @@ import { FaSearch } from "react-icons/fa";
 import { authState } from "../Redux/Actions/index";
 
 function Home() {
-  const { userState } = useSelector((state) => state);
+  const { userState , users } = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authState());
   }, [dispatch, userState]); // con la data de user podemos maquillar el home con la foto y data del usuario
+
+  console.log(users)
 
   if (!userState) return <h1>Cargando...</h1>;
 
