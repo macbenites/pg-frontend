@@ -17,6 +17,7 @@ import {
 } from "../Styles/reusable/Containers";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpWithMail, resetStateError } from "../Redux/Actions";
+import Swal from 'sweetalert2';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -38,7 +39,11 @@ function SignIn() {
         })
       );
     } else {
-      alert("Completar los campos requeridos");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Todos los campos son requeridos!',
+      })
     }
   };
 

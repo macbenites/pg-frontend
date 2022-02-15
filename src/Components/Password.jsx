@@ -11,6 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { resetPassword } from "../Redux/Actions";
+import Swal from 'sweetalert2';
 
 
 function Password () {
@@ -25,9 +26,21 @@ function Password () {
     } = useForm();
 
     const onSubmit = async (event) => {
-        if(!event) return alert("Ingrese un email")
+        if(!event){ 
+          return Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ingrese un email!',
+          })
+        }
         await dispatch(resetPassword(event.email));
-        alert("Revise su casilla de correo para reestablecer su contraseña");
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: "Revise su casilla de correo para reestablecer su contraseña",
+          showConfirmButton: false,
+          timer: 2000
+        })
         navigate("/login")
         reset();
       };
