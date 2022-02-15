@@ -23,12 +23,12 @@ function rootReducer(state = initialState, { type, payload }) {
       } else if (payload === "auth/user-not-found") {
         return {
           ...state,
-          error: "Usuario no registrado",
+          error: "Credenciales Incorrectas",
         };
       } else if (payload === "auth/wrong-password") {
         return {
           ...state,
-          error: "Password incorrecta",
+          error: "Credenciales Incorrectas",
         };
       } else {
         return {
