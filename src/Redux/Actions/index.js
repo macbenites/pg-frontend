@@ -26,11 +26,33 @@ export const resetStateError = () => async (dispatch) =>
     type: "RESET_STATE_ERROR",
   });
 
-export const signUpWithMail = (email, password, callback) => {
+export const signUpWithMail = (email, password, data, callback) => {
   return async (dispatch) => {
     try {
       createUserWithEmailAndPassword(auth, email, password)
         .then((obj) => {
+          return {
+            ...obj.user,
+            username : data.username,
+            name : data.name,
+            barrio : data.neighborhood,
+            posicion : data.position
+          }
+        })
+        .then((obj) => {
+          fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              name : obj.name,
+              user_name : obj.username,
+              neighborhood : obj.barrio,
+              email : obj.email,
+              password : "123123"
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
+          })
           dispatch({
             payload: obj,
             type: SIGN_UP_WHIT_EMAIL_AND_PASSWORD,
