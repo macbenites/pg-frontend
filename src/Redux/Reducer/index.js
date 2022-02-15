@@ -84,7 +84,7 @@ function rootReducer(state = initialState, { type, payload }) {
     case "GET_MATCHES":
       return {
         ...state,
-        matches: state.matches.concat(payload),
+        matches: payload,
       };
     case "JOIN_MATCH":
       return {

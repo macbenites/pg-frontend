@@ -8,7 +8,9 @@ import { FaSearch } from "react-icons/fa";
 function Home() {
   const user = useSelector((obj) => obj.userLogeado.user);
 
-  useEffect(() => console.log(user), [user]); // con la data de user podemos maquillar el home con la foto y data del usuario
+  useEffect(() => {
+    console.log(user)
+  } , [user]); // con la data de user podemos maquillar el home con la foto y data del usuario
 
   if (!user) return <h1>Cargando...</h1>;
 
