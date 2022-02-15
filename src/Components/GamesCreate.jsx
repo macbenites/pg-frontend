@@ -8,6 +8,7 @@ import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
 import { CreateDiv, BtnCreateGame } from "../Styles/GamesCreate";
 import { Name, User, Barrio, Position, Email, Btn } from "../Styles/reusable/Containers";
+import Swal from 'sweetalert2';
 
 const validationForm = (input) => {
   let errors = {};
@@ -64,7 +65,13 @@ export default function GamesCreate() {
     setErrors(validationForm(input));
     if (input.nameCenter && input.players && input.date && input.distric && input.note && !Object.keys(errors).length){  
       dispatch(postMatch(input));
-      alert("Partido creado con éxito");  
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Partido creado con éxito!!',
+        showConfirmButton: false,
+        timer: 2000
+      })  
       navigate("/home/games"); 
       setInput({
         nameCenter: '',
@@ -73,7 +80,11 @@ export default function GamesCreate() {
         distric: ''
       })
     }else{
-      alert('Todos los campos son requeridos!!')
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Todos los campos son requeridos!',
+      })
     }       
   };
 
