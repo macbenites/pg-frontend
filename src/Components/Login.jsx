@@ -150,7 +150,14 @@ export default function Login() {
           </ContainerInput>
         </form>
         <br />
-        {error && <h2>{error}</h2>}
+        <ErrorMessage>
+          {error && (
+            <small>
+              {/*<FaExclamationCircle />*/} {error}
+            </small>
+          )}
+        </ErrorMessage>
+        <br /> 
         <LinkToLogin to="/resetPassword" onClick={newPassword}>
           {" "}
           Olvidaste tu contraseña?

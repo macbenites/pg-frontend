@@ -47,8 +47,7 @@ function SignIn() {
       <Logo />
       <SignInDiv>
         <h4>Creá tu cuenta</h4>
-        <h5>
-          {error && <h2>{error}</h2>}
+        <h5>          
           Ya tenés tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -235,6 +234,14 @@ function SignIn() {
               )}
             </ErrorMessage>
           </Password>
+          <ErrorMessage>
+            {error && (
+              <small>
+                {/*<FaExclamationCircle />*/} {error}
+              </small>
+            )}
+          </ErrorMessage>
+          <br />          
           <Btn>
             <BtnSignIn primary type="submit">
               Crear cuenta
