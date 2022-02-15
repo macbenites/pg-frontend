@@ -42,9 +42,10 @@ export const InputGamesStyle = styled.form`
 `;
 
 export const BtnCreateGame = styled(Button)`
-  width: 870px;
+  width: 150px;
   height: 50px;
-  margin: 20px;
+  margin-top: -50px;
+  margin-left: 998px;
   border-radius: 15px;
 `;
 
@@ -56,7 +57,7 @@ export const CreateGame = styled.h2`
 
 export const SelectLocation = styled.select`
   height: 30px;
-  width: 280px;
+  width: 336px;
   margin: 20px;
   margin-top: 70px;
   margin-left: 20px;
@@ -67,7 +68,7 @@ export const SelectLocation = styled.select`
 
 export const SelectDate = styled.select`
   height: 30px;
-  width: 280px;
+  width: 336px;
   margin:20px;
   border: none;
   background-color: #206F6C;
@@ -76,7 +77,7 @@ export const SelectDate = styled.select`
 
 export const SelectSearch = styled.select`
   height: 30px;
-  width: 280px;
+  width: 336px;
   margin: 20px;
   border: none;
   background-color: #206F6C;

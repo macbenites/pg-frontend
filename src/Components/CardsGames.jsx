@@ -1,14 +1,15 @@
 import React from "react";
-import {MainCardsGames, DateStyle, Players, Search, Location, ButtonCardsGames} from '../Styles/CardsGames'
+import {MainCardsGames, DateStyle, Players, NameCenter, ButtonCardsGames} from '../Styles/CardsGames'
 
-function CardsGames({location, date, players, search}){
+function CardsGames({nameCenter, date, players}){
+
     return (
         <div>
             <MainCardsGames>
-                <Location>{location}</Location>
+                <NameCenter>{nameCenter}</NameCenter>
                 <DateStyle>{date}</DateStyle>
                 <Players>{players}</Players>
-                <Search>{search}</Search>
+                {/* <Search>{search}</Search> */}
                 <ButtonCardsGames>
                     Unirme
                 </ButtonCardsGames> 
