@@ -17,7 +17,7 @@ import {
   LOG_IN_WITH_FACEBOOK,
   GET_FIELDS,
   GET_MATCHES,
-  JOIN_MATCH,
+  JOIN_MATCH
 } from "./types";
 import axios from "axios";
 
@@ -160,10 +160,10 @@ export function getMatches(){
     };
 };
 
-export function joinMatch(id){
+export function joinMatch(id, players){
     return async function(dispatch){
         try{
-            const joinGame = await axios.put("https://futbolapp-henry.herokuapp.com/matches/" +id);
+            const joinGame = await axios.put(`https://futbolapp-henry.herokuapp.com/matches/${id}`, { players: players + 1 });
             return dispatch({
                 type: JOIN_MATCH,
                 payload: [joinGame.data]

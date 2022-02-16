@@ -89,7 +89,6 @@ function rootReducer(state = initialState, { type, payload }) {
     case "JOIN_MATCH":
       return {
         ...state,
-        matches: payload,
       };
     default:
       return { ...state };
