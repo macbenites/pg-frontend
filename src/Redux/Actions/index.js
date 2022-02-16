@@ -118,7 +118,7 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        /* console.log(obj)
+        console.log(obj)
         fetch("https://futbolapp-henry.herokuapp.com/register" , {
             method : "POST",
             body : JSON.stringify({
@@ -129,7 +129,7 @@ export const logInWithGoogle = () => {
             headers : {
               "Content-type" : "application/json"
             }
-        }) */
+        })
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -143,6 +143,18 @@ export const logInWithFacebook = () => {
   return function (dispatch) {
     signInWithPopup(auth, new FacebookAuthProvider())
       .then((obj) => {
+        console.log(obj)
+        fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              user_name : obj.user.displayName,
+              email : obj.user.email,
+              password : "123123"
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
+        })
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_FACEBOOK,
@@ -195,23 +207,23 @@ export function getMatches() {
       console.log(error);
     }
   };
-}
+};
 
-export function joinMatch(id) {
+export function joinMatch(id, players) {
   return async function (dispatch) {
     try {
       const joinGame = await axios.put(
-        "https://futbolapp-henry.herokuapp.com/matches/" + id
+        `https://futbolapp-henry.herokuapp.com/matches/${id}`, players
       );
       return dispatch({
         type: JOIN_MATCH,
-        payload: [joinGame.data],
+        payload: joinGame.data
       });
     } catch (error) {
-      console.log(error);
+      console.log('error');
     }
   };
-}
+};
 
 export const authState = () => {
   return (dispatch) => {
@@ -234,12 +246,12 @@ export const authState = () => {
 export function getDetailsUser(id) {
   return async function (distpach) {
     try {
-      const userIdJson = await axios.get(
+      const userId = await axios.get(
         `https://futbolapp-henry.herokuapp.com/users/${id}`
       );
       return distpach({
         type: GET_DETAILS_USER,
-        payload: userIdJson.data,
+        payload: userId.data,
       });
     } catch (error) {
       console.log(error);

@@ -1,13 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {MainCardsGames, DateStyle, Players, NameCenter, ButtonJoinCardsGames, BtnInviteCardsGames} from '../Styles/CardsGames'
 import { joinMatch } from "../Redux/Actions";
+// import { useParams } from "react-router-dom"
 
 function CardsGames({nameCenter, date, players}){
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    // const {id} = useParams();
+    const allPlayers = useSelector((state) => state.players)
 
     function handleClick(e){
         e.preventDefault();
@@ -15,9 +18,11 @@ function CardsGames({nameCenter, date, players}){
         alert('Te has unido con éxito');
     };
 
-    function handleCLickInvite(e){
+    function handleCLickInvite(){
         navigate('/home/players');
     };
+
+    console.log(allPlayers)
 
     return (
         <div>
