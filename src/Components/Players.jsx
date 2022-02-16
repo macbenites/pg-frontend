@@ -21,7 +21,7 @@ const Players = () => {
 
       dispatch(showUsers());
 
-  },[])
+  },[dispatch])
 
   return (
     <div>
