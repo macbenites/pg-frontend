@@ -5,7 +5,7 @@ const initialState = {
   fields: [],
   matches: [],
   userState: {},
-  detailsUser: [],
+  detailsUser: {},
 };
 
 function rootReducer(state = initialState, { type, payload }) {
