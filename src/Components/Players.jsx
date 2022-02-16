@@ -1,5 +1,4 @@
-//import { useEffect } from "react"
-import data from "../Utils/datos.json";
+import { useEffect } from "react"
 import Player from "./Player";
 import {
   Filter,
@@ -7,9 +6,22 @@ import {
   FilterButtom,
   PlayersDiv,
 } from "../Styles/Players";
+import { useDispatch , useSelector } from "react-redux";
+import { showUsers } from "../Redux/Actions";
+import { Link } from "react-router-dom";
+
 
 const Players = () => {
-  console.log(data.usuario);
+  
+  const dispatch = useDispatch()
+  const users = useSelector(obj => obj.users)
+  console.log(users)
+
+  useEffect(()=>{
+
+      dispatch(showUsers());
+
+  },[])
 
   return (
     <div>
@@ -37,9 +49,12 @@ const Players = () => {
         </select> 
       </Filter>
       <PlayersDiv>
-        {data.usuario.map((obj) => (
-          <Player key={obj.nombre} data={obj} />
-        ))}
+        {users.length > 0 ? users.map((obj) => (
+          <Link to={"/users/" + obj.id}>
+            <Player key={obj.id} data={obj} />
+          </Link>
+        )) : 
+           <h4>Cargando...</h4> }
       </PlayersDiv>
     </div>
   );
