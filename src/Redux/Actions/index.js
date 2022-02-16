@@ -18,6 +18,7 @@ import {
   GET_FIELDS,
   GET_MATCHES,
   JOIN_MATCH,
+  GET_USERS
 } from "./types";
 import axios from "axios";
 
@@ -116,6 +117,18 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
+        /* console.log(obj)
+        fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              user_name : obj.user.displayName,
+              email : obj.user.email,
+              password : "123123"
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
+        }) */
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -216,3 +229,17 @@ export const authState = () => {
     });
   };
 };
+
+
+export const showUsers = () => {
+  return (dispatch) => {
+    fetch("https://futbolapp-henry.herokuapp.com/users")
+      .then(obj => obj.json())
+      .then(obj => {
+        dispatch({
+          type : GET_USERS,
+          payload : obj
+        })
+      })
+  }
+}
