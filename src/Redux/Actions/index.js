@@ -207,23 +207,23 @@ export function getMatches() {
       console.log(error);
     }
   };
-}
+};
 
-export function joinMatch(id) {
+export function joinMatch(id, players) {
   return async function (dispatch) {
     try {
       const joinGame = await axios.put(
-        "https://futbolapp-henry.herokuapp.com/matches/" + id
+        `https://futbolapp-henry.herokuapp.com/matches/${id}`, players
       );
       return dispatch({
         type: JOIN_MATCH,
-        payload: [joinGame.data],
+        payload: joinGame.data
       });
     } catch (error) {
-      console.log(error);
+      console.log('error');
     }
   };
-}
+};
 
 export const authState = () => {
   return (dispatch) => {

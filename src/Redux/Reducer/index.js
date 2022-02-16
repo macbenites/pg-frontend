@@ -6,6 +6,7 @@ const initialState = {
   matches: [],
   userState: {},
   detailsUser: {},
+  players: {}
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -100,6 +101,7 @@ function rootReducer(state = initialState, { type, payload }) {
     case "JOIN_MATCH":
       return {
         ...state,
+        players: payload
       };
     case "GET_DETAILS_USER":
       return {

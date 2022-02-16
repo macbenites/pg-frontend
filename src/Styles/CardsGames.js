@@ -39,10 +39,19 @@ export const NameCenter = styled.div`
   margin-top: 15px;
 `;
 
-export const ButtonCardsGames = styled(Button)`
+export const ButtonJoinCardsGames = styled(Button)`
   background-color: #004643;
-  width: 100px;
+  width: 80px;
   height: 30px;
   display: flex;
-  margin-left: 45px;
+  margin-left: 15px;
+`;
+
+export const BtnInviteCardsGames = styled(Button)`
+  background-color: #004643;
+  width: 80px;
+  height: 30px;
+  display: flex;
+  margin-left: 100px;
+  margin-top: -49px;
 `;
