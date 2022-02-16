@@ -37,15 +37,6 @@ function SignIn() {
         signUpWithMail(input.email, input.password, input, () => {
           navigate("/login");
         })
-        /* .then(obj => {
-          return {
-            ...obj,
-            username : input.username,
-            name : input.name,
-            barrio : input.neighborhood,
-            posicion : input.position
-          }
-        }) */
       );
     } else {
       Swal.fire({
