@@ -22,7 +22,7 @@ function Games() {
   console.log(allMatches)
 
   useEffect(() => {
-    dispatch(getMatches()); 
+    dispatch(getMatches());
 }, [dispatch]);
 
   function handleClick(){
@@ -49,7 +49,6 @@ function Games() {
             nameCenter={el.nameCenter}
             date={el.date}
             players={el.players}
-            // search={el.search}
           />
         ))}
       </CardsGamesStyle>
