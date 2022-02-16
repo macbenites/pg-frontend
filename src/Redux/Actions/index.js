@@ -234,12 +234,12 @@ export const authState = () => {
 export function getDetailsUser(id) {
   return async function (distpach) {
     try {
-      const userIdJson = await axios.get(
+      const userId = await axios.get(
         `https://futbolapp-henry.herokuapp.com/users/${id}`
       );
       return distpach({
         type: GET_DETAILS_USER,
-        payload: userIdJson.data,
+        payload: userId.data,
       });
     } catch (error) {
       console.log(error);

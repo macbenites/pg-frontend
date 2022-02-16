@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getDetailsUser } from "../actions";
+import { getDetailsUser } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function DetailsUser() {
+export default function DetailUser() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const detail = useSelector((state) => state.detailsUser);
+  console.log(detail)
   useEffect(() => {
     dispatch(getDetailsUser(id));
   }, [dispatch, id]);
-
+ 
   return (
     <div>
-      {detail.length > 0 ? (
+      {detail ? (
         <div>
           <img alt="player" src={detail.image} />
           <p>
@@ -29,7 +30,7 @@ export default function DetailsUser() {
       ) : (
         <p>Cargando...</p>
       )}
-      <Link to="/home/canchas">
+      <Link to="/home/players">
         <button>Volver</button>
       </Link>
     </div>
