@@ -17,6 +17,7 @@ import {
 } from "../Styles/reusable/Containers";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpWithMail, resetStateError } from "../Redux/Actions";
+import Swal from 'sweetalert2';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -33,12 +34,16 @@ function SignIn() {
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
       dispatch(
-        signUpWithMail(input.email, input.password, () => {
+        signUpWithMail(input.email, input.password, input, () => {
           navigate("/login");
         })
       );
     } else {
-      alert("Completar los campos requeridos");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Todos los campos son requeridos!',
+      })
     }
   };
 
@@ -47,8 +52,7 @@ function SignIn() {
       <Logo />
       <SignInDiv>
         <h4>Creá tu cuenta</h4>
-        <h5>
-          {error && <h2>{error}</h2>}
+        <h5>          
           Ya tenés tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -235,6 +239,14 @@ function SignIn() {
               )}
             </ErrorMessage>
           </Password>
+          <ErrorMessage>
+            {error && (
+              <small>
+                {/*<FaExclamationCircle />*/} {error}
+              </small>
+            )}
+          </ErrorMessage>
+          <br />          
           <Btn>
             <BtnSignIn primary type="submit">
               Crear cuenta

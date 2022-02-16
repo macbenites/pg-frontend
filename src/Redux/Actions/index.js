@@ -1,7 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  //onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
+  onAuthStateChanged, // funcion que devuelve la info del usuario cada vez que se logue y desloguea
   signOut,
   signInWithPopup,
   GoogleAuthProvider,
@@ -17,7 +17,9 @@ import {
   LOG_IN_WITH_FACEBOOK,
   GET_FIELDS,
   GET_MATCHES,
-  JOIN_MATCH
+  JOIN_MATCH,
+  GET_DETAILS_USER,
+  GET_USERS,
 } from "./types";
 import axios from "axios";
 
@@ -26,11 +28,33 @@ export const resetStateError = () => async (dispatch) =>
     type: "RESET_STATE_ERROR",
   });
 
-export const signUpWithMail = (email, password, callback) => {
+export const signUpWithMail = (email, password, data, callback) => {
   return async (dispatch) => {
     try {
       createUserWithEmailAndPassword(auth, email, password)
         .then((obj) => {
+          return {
+            ...obj.user,
+            username: data.username,
+            name: data.name,
+            barrio: data.neighborhood,
+            posicion: data.position,
+          };
+        })
+        .then((obj) => {
+          fetch("https://futbolapp-henry.herokuapp.com/register", {
+            method: "POST",
+            body: JSON.stringify({
+              name: obj.name,
+              user_name: obj.username,
+              neighborhood: obj.barrio,
+              email: obj.email,
+              password: "123123",
+            }),
+            headers: {
+              "Content-type": "application/json",
+            },
+          });
           dispatch({
             payload: obj,
             type: SIGN_UP_WHIT_EMAIL_AND_PASSWORD,
@@ -94,6 +118,18 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
+        /* console.log(obj)
+        fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              user_name : obj.user.displayName,
+              email : obj.user.email,
+              password : "123123"
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
+        }) */
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -145,32 +181,80 @@ export function getFields() {
   };
 }
 
-export function getMatches(){
-    return async function(dispatch){
-        try{
-            const getGames = await axios.get("https://futbolapp-henry.herokuapp.com/matches");
-            return dispatch({
-                type: GET_MATCHES,
-                payload: getGames.data
-            });
+export function getMatches() {
+  return async function (dispatch) {
+    try {
+      const getGames = await axios.get(
+        "https://futbolapp-henry.herokuapp.com/matches"
+      );
+      return dispatch({
+        type: GET_MATCHES,
+        payload: getGames.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 
-        } catch(error){
-            alert('Error al traer los partidos')
-        }
-    };
+export function joinMatch(id) {
+  return async function (dispatch) {
+    try {
+      const joinGame = await axios.put(
+        "https://futbolapp-henry.herokuapp.com/matches/" + id
+      );
+      return dispatch({
+        type: JOIN_MATCH,
+        payload: [joinGame.data],
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export const authState = () => {
+  return (dispatch) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch({
+          payload: user,
+          type: "USER_LOGGED",
+        });
+      } else {
+        dispatch({
+          payload: null,
+          type: "USER_LOGGED",
+        });
+      }
+    });
+  };
 };
 
-export function joinMatch(id, players){
-    return async function(dispatch){
-        try{
-            const joinGame = await axios.put(`https://futbolapp-henry.herokuapp.com/matches/${id}`, { players: players + 1 });
-            return dispatch({
-                type: JOIN_MATCH,
-                payload: [joinGame.data]
-            });
-        } catch(error) {
-            alert('No se pudo unir')
-        }
-    };
+export function getDetailsUser(id) {
+  return async function (distpach) {
+    try {
+      const userIdJson = await axios.get(
+        `https://futbolapp-henry.herokuapp.com/users/${id}`
+      );
+      return distpach({
+        type: GET_DETAILS_USER,
+        payload: userIdJson.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+export const showUsers = () => {
+  return (dispatch) => {
+    fetch("https://futbolapp-henry.herokuapp.com/users")
+      .then((obj) => obj.json())
+      .then((obj) => {
+        dispatch({
+          type: GET_USERS,
+          payload: obj,
+        });
+      });
+  };
 };
-

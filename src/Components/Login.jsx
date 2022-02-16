@@ -45,11 +45,9 @@ export default function Login() {
   const onSubmit = (event) => {
     try {
       dispatch(resetStateError());
-      dispatch(
-        logInWithMail(event.email, event.password, () => {
-          navigate("/home");
-        })
-      );
+      dispatch(logInWithMail(event.email , event.password , ()=>{
+        navigate("/home");
+      }))
     } catch (error) {
       console.log(error);
     }
@@ -101,13 +99,11 @@ export default function Login() {
               }}
             />
             <ErrorMessage>
-              <ErrorMessage>
-                {errors.email && (
-                  <small>
-                    <FaExclamationCircle /> {errors.email.message}
-                  </small>
-                )}
-              </ErrorMessage>
+              {errors.email && (
+                <small>
+                  <FaExclamationCircle /> {errors.email.message}
+                </small>
+              )}
             </ErrorMessage>
             <InputForm
               type="password"
@@ -154,7 +150,14 @@ export default function Login() {
           </ContainerInput>
         </form>
         <br />
-        {error && <h2>{error}</h2>}
+        <ErrorMessage>
+          {error && (
+            <small>
+              {/*<FaExclamationCircle />*/} {error}
+            </small>
+          )}
+        </ErrorMessage>
+        <br /> 
         <LinkToLogin to="/resetPassword" onClick={newPassword}>
           {" "}
           Olvidaste tu contraseña?

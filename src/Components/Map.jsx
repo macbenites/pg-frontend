@@ -23,7 +23,6 @@ const center = {
   lng: -58.381557,
 };
 
-console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 export default function Map() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,

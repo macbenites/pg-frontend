@@ -4,6 +4,8 @@ const initialState = {
   error: [],
   fields: [],
   matches: [],
+  userState: {},
+  detailsUser: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -22,12 +24,12 @@ function rootReducer(state = initialState, { type, payload }) {
       } else if (payload === "auth/user-not-found") {
         return {
           ...state,
-          error: "Usuario no registrado",
+          error: "Credenciales Incorrectas",
         };
       } else if (payload === "auth/wrong-password") {
         return {
           ...state,
-          error: "Password incorrecta",
+          error: "Credenciales Incorrectas",
         };
       } else {
         return {
@@ -35,6 +37,12 @@ function rootReducer(state = initialState, { type, payload }) {
           error: payload,
         };
       }
+
+    case "USER_LOGGED":
+      return {
+        ...state,
+        userState: payload,
+      };
 
     case "RESET_STATE_ERROR":
       return {
@@ -76,19 +84,33 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+
     case "GET_FIELDS":
       return {
         ...state,
         fields: payload,
       };
+
     case "GET_MATCHES":
       return {
         ...state,
         matches: payload,
       };
+
     case "JOIN_MATCH":
       return {
         ...state,
+      };
+    case "GET_DETAILS_USER":
+      return {
+        ...state,
+        detailsUser: payload,
+      };
+
+    case "GET_USERS":
+      return {
+        ...state,
+        users: payload,
       };
     default:
       return { ...state };
