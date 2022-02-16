@@ -18,6 +18,7 @@ import {
   GET_FIELDS,
   GET_MATCHES,
   JOIN_MATCH,
+  GET_DETAILS_USER,
   GET_USERS
 } from "./types";
 import axios from "axios";
@@ -191,7 +192,7 @@ export function getMatches() {
         payload: getGames.data,
       });
     } catch (error) {
-      alert("Error al traer los partidos");
+      console.log(error);
     }
   };
 }
@@ -207,7 +208,7 @@ export function joinMatch(id) {
         payload: [joinGame.data],
       });
     } catch (error) {
-      alert("No se pudo unir");
+      console.log(error);
     }
   };
 }
@@ -230,6 +231,19 @@ export const authState = () => {
   };
 };
 
+export function getDetailsUser(id){
+  return async function(distpach){
+    try {
+        const userIdJson = await axios.get(`https://futbolapp-henry.herokuapp.com/users/${id}`);
+        return distpach({
+            type: GET_DETAILS_USER,
+            payload: userIdJson.data
+        })
+    } catch (error) {
+      console.log(error)
+      }        
+  }
+}
 
 export const showUsers = () => {
   return (dispatch) => {
@@ -243,3 +257,4 @@ export const showUsers = () => {
       })
   }
 }
+
