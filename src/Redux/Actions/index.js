@@ -118,7 +118,7 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        /* console.log(obj)
+        console.log(obj)
         fetch("https://futbolapp-henry.herokuapp.com/register" , {
             method : "POST",
             body : JSON.stringify({
@@ -129,7 +129,7 @@ export const logInWithGoogle = () => {
             headers : {
               "Content-type" : "application/json"
             }
-        }) */
+        })
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -143,6 +143,18 @@ export const logInWithFacebook = () => {
   return function (dispatch) {
     signInWithPopup(auth, new FacebookAuthProvider())
       .then((obj) => {
+        console.log(obj)
+        fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              user_name : obj.user.displayName,
+              email : obj.user.email,
+              password : "123123"
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
+        })
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_FACEBOOK,
