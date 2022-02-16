@@ -5,7 +5,6 @@ const initialState = {
   fields: [],
   matches: [],
   userState: {},
-  detailsUser: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -102,12 +101,6 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };
-
-    case 'GET_DETAILS_USER':
-      return{
-        ...state,
-        detailsUser: payload  
-      }  
 
      case "GET_USERS":
        return {
