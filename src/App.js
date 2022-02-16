@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import Players from "./Components/Players";
 import Fields from "./Components/Fields";
+import DetailUser from "./Components/DetailUser";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="resetPassword" element={<Password />} />
               <Route path="gamesCreate" element={<GamesCreate />} />
+              <Route path="/users/:id" element={<DetailUser />} />
               <Route path="/home/*" element={<Home />}>
                 <Route path="games" element={<Games />} />                
                 <Route path="players" element={<Players />} />
