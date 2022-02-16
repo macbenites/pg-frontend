@@ -83,21 +83,30 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+
     case "GET_FIELDS":
       return {
         ...state,
         fields: payload,
       };
+
     case "GET_MATCHES":
       return {
         ...state,
         matches: payload,
       };
+
     case "JOIN_MATCH":
       return {
         ...state,
         matches: payload,
       };
+
+     case "GET_USERS":
+       return {
+         ...state,
+         users : payload
+       } 
     default:
       return { ...state };
   }
