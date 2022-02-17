@@ -22,6 +22,9 @@ import {
   GET_USERS,
 } from "./types";
 import axios from "axios";
+import { db } from "../../firebase";
+
+console.log(db)
 
 export const resetStateError = () => async (dispatch) =>
   dispatch({
@@ -50,6 +53,7 @@ export const signUpWithMail = (email, password, data, callback) => {
               neighborhood: obj.barrio,
               email: obj.email,
               password: "123123",
+              player_position : [obj.posicion]
             }),
             headers: {
               "Content-type": "application/json",
@@ -124,7 +128,8 @@ export const logInWithGoogle = () => {
             body : JSON.stringify({
               user_name : obj.user.displayName,
               email : obj.user.email,
-              password : "123123"
+              password : "123123",
+              name : obj.user.name
             }),
             headers : {
               "Content-type" : "application/json"
