@@ -4,7 +4,7 @@ import { postBuy } from "../Redux/Actions/index";
 import { useDispatch } from "react-redux";
 import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
-import { CreateDiv, BtnCreateGame } from "../Styles/GamesCreate";
+import { CreateDiv, BtnCreateGame } from "../Styles/component/GamesCreate";
 import { Name, User, Barrio, Btn } from "../Styles/reusable/Containers";
 
 

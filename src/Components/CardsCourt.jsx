@@ -3,15 +3,14 @@ import {
   ImgCard,
   Content,
   IconsContainer,
-} from "../Styles/CardsCity";
+} from "../Styles/component/CardsCity";
 import phone from "../Assets/img/phone.svg";
 import schedule from "../Assets/img/shedule.svg";
 import web from "../Assets/img/web.svg";
 //import Map from "./Map";
 import { Link } from "react-router-dom";
 
-const CardsCourt = ({props}) => {
-
+const CardsCourt = ({ props }) => {
   console.log(props);
 
   return (
@@ -24,7 +23,9 @@ const CardsCourt = ({props}) => {
       </ImgCard>
       <Content>
         <div>
-          <h6>{props.name.length > 15 ? props.name.slice(0,15) : props.name}</h6>
+          <h6>
+            {props.name.length > 15 ? props.name.slice(0, 15) : props.name}
+          </h6>
           <p>{props.street + " " + props.streetNumber}</p>
           <p>{props.city}</p>
           <Link to="/reserveCourt">
