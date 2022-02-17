@@ -12,6 +12,7 @@ import Fields from "./Components/Fields";
 import DetailUser from "./Components/DetailUser";
 import ReserveCourt from "./Components/ReserveCourt";
 import Players from "./Components/Players";
+import DetailCourt from "./Components/DetailCourt";
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="reserveCourt" element={<ReserveCourt />} />
             <Route path="gamesCreate" element={<GamesCreate />} />
             <Route path="/users/:id" element={<DetailUser />} />
+            <Route path="/sportcenters/:id" element={<DetailCourt />} />
             <Route path="home" element={<Home />}>
               <Route path="games" element={<Games />} />
               <Route path="players" element={<Players />} />
