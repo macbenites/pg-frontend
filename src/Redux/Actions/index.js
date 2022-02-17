@@ -210,12 +210,12 @@ export function getMatches() {
   };
 }
 
-export function joinMatch(id, players) {
+export function joinMatch(id_match, users) {
   return async function (dispatch) {
     try {
       const joinGame = await axios.put(
-        `https://futbolapp-henry.herokuapp.com/matches/${id}`,
-        players
+        `https://futbolapp-henry.herokuapp.com/matches/${id_match}`,
+        users
       );
       return dispatch({
         type: JOIN_MATCH,
