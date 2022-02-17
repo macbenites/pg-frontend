@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "./reusable/Button";
+import { Button } from "../reusable/Button";
 
 export const TitleStyle = styled.h2`
   color: #abd1c6;

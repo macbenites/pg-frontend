@@ -1,7 +1,7 @@
 import { MdOutlinePayments, MdSportsSoccer } from "react-icons/md";
 import { GiSoccerField, GiSoccerKick } from "react-icons/gi";
 
-export const NavItems = [
+export const NavHome = [
   {
     name: "Canchas",
     link: "canchas",
@@ -21,5 +21,18 @@ export const NavItems = [
     name: "Payment",
     link: "/payment",
     icon: <MdOutlinePayments />,
+  },
+];
+
+export const NavAuth = [
+  {
+    name: "Futbolero",
+    link: "/auth/signin",
+    icon: <GiSoccerField />,
+  },
+  {
+    name: "Empresa",
+    link: "/auth/business",
+    icon: <GiSoccerKick />,
   },
 ];
