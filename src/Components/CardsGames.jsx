@@ -1,27 +1,26 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {MainCardsGames, DateStyle, Players, NameCenter, ButtonJoinCardsGames, BtnInviteCardsGames} from '../Styles/component/CardsGames'
-import { joinMatch } from "../Redux/Actions";
-// import { useParams } from "react-router-dom"
 
 function CardsGames({nameCenter, date, players}){
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const {id} = useParams();
-    const allPlayers = useSelector((state) => state.players)
+    const allMatches = useSelector((state) => state.matches)
 
-    function handleClick(e){
-        e.preventDefault();
-        dispatch(joinMatch());
-        alert('Te has unido con éxito');
+    console.log(allMatches)
+
+    function handleClick(){
+        if(allMatches.length !== 0){
+            allMatches.map((e) => (
+            navigate('/home/joinMatch/' + e.id_match)))
+        } else {
+            console.log('error')
+        };
     };
 
     function handleCLickInvite(){
         navigate('/home/players');
     };
-
-    console.log(allPlayers)
 
     return (
         <div>
@@ -29,7 +28,7 @@ function CardsGames({nameCenter, date, players}){
                 <NameCenter>{nameCenter}</NameCenter>
                 <DateStyle>Fecha y hora: {date}</DateStyle>
                 <Players>Faltan: {players} jugadores</Players>
-                <ButtonJoinCardsGames onClick={e => handleClick(e)}>Unirme</ButtonJoinCardsGames> 
+                    <ButtonJoinCardsGames onClick={e => handleClick(e)}>Unirme</ButtonJoinCardsGames> 
                 <BtnInviteCardsGames onClick={e => handleCLickInvite(e)}>Invitar</BtnInviteCardsGames>
             </MainCardsGames>
         </div>
