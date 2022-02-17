@@ -5,7 +5,7 @@ import {
   ButtonFiltrar,
   FilterButtom,
   PlayersDiv,
-} from "../Styles/Players";
+} from "../Styles/component/Players";
 import { useDispatch , useSelector } from "react-redux";
 import { showUsers } from "../Redux/Actions";
 import { Link } from "react-router-dom";

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { LinkTo } from "../Styles/reusable/LinkTo";
-import { Button } from "../Styles/reusable/Button";
+import { LinkTo } from "../reusable/LinkTo";
+import { Button } from "../reusable/Button";
 
-export const SignInDiv = styled.div`
+export const CreateDiv = styled.div`
   padding: 0 2rem;
   input {
     margin: 0.2rem 0;
@@ -36,7 +36,7 @@ export const SignInDiv = styled.div`
   }
 `;
 
-export const BtnSignIn = styled(Button)`
+export const BtnCreateGame = styled(Button)`
   width: 100%;
   margin-top: 1rem;
 `;

@@ -12,7 +12,7 @@ import {
   SelectDate,
   SelectSearch,
   BtnCreateGame
-} from "../Styles/Games";
+} from "../Styles/component/Games";
 
 function Games() {
   

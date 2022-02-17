@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,

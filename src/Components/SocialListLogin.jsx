@@ -1,4 +1,3 @@
-import React from "react";
 import { IconList } from "../Styles/SocialList";
 import { socialMediaLogin } from "../Utils/socialMediaLogin";
 

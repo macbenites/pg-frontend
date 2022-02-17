@@ -6,7 +6,6 @@ import {
   FaApple,
   FaExclamationCircle,
 } from "react-icons/fa";
-import Logo from "./Logo";
 import {
   LoginDiv,
   BtnLogIn,
@@ -15,15 +14,15 @@ import {
   BtnSignIn,
   Bar,
   LinkToLogin,
-} from "../Styles/Login.js";
-import { InputForm } from "../Styles/reusable/Input";
+} from "../../Styles/Login.js";
+import { InputForm } from "../../Styles/reusable/Input";
 import { useForm } from "react-hook-form";
 import {
   logInWithMail,
   logInWithGoogle,
   logInWithFacebook,
   resetStateError,
-} from "../Redux/Actions";
+} from "../../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
@@ -45,9 +44,11 @@ export default function Login() {
   const onSubmit = (event) => {
     try {
       dispatch(resetStateError());
-      dispatch(logInWithMail(event.email , event.password , ()=>{
-        navigate("/home");
-      }))
+      dispatch(
+        logInWithMail(event.email, event.password, () => {
+          navigate("/home");
+        })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -63,19 +64,13 @@ export default function Login() {
     navigate("/home");
   };
 
-  const newPassword = () => {
-    navigate("/resetPassword");
-  };
-
-  console.log(errors);
   return (
     <div>
-      <Logo />
       <LoginDiv>
         <h4>Ingresá a tu cuenta</h4>
-
         <h5>
-          No tenés cuenta?<LinkToLogin to="/signin"> Registrate</LinkToLogin>
+          No tenés cuenta?
+          <LinkToLogin to="/auth/signin"> Registrate</LinkToLogin>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <ContainerInput>
@@ -157,8 +152,8 @@ export default function Login() {
             </small>
           )}
         </ErrorMessage>
-        <br /> 
-        <LinkToLogin to="/resetPassword" onClick={newPassword}>
+        <br />
+        <LinkToLogin to="/auth/resetPassword">
           {" "}
           Olvidaste tu contraseña?
         </LinkToLogin>
