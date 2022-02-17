@@ -1,4 +1,3 @@
-import React from "react";
 import { MainCards, Amount, Description } from "../Styles/Cards";
 
 export default function Cards({ name, description, link, amount }) {

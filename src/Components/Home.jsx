@@ -1,5 +1,11 @@
 import NavBar from "./NavBar";
-import { IntroStyle, HomeContent, HomeContainer, Search } from "../Styles/Home";
+import { NavHome } from "../Utils/NavBar";
+import {
+  IntroStyle,
+  HomeContent,
+  HomeContainer,
+  Search,
+} from "../Styles/component/Home";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,19 +13,20 @@ import { FaSearch } from "react-icons/fa";
 import { authState } from "../Redux/Actions/index";
 
 function Home() {
-  const { userState , users } = useSelector((state) => state);
+  const { userState, users } = useSelector((state) => state);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authState());
   }, [dispatch, userState]); // con la data de user podemos maquillar el home con la foto y data del usuario
 
-  console.log(users)
+  console.log(users);
 
   if (!userState) return <h1>Cargando...</h1>;
 
   return (
     <HomeContainer>
-      <NavBar />
+      <NavBar items={NavHome} portal="home" />
       <IntroStyle>
         <div>
           {userState?.photoURL ? (

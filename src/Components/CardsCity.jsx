@@ -3,14 +3,13 @@ import {
   ImgCard,
   Content,
   IconsContainer,
-} from "../Styles/CardsCity";
+} from "../Styles/component/CardsCity";
 import phone from "../Assets/img/phone.svg";
 import schedule from "../Assets/img/shedule.svg";
 import web from "../Assets/img/web.svg";
 //import Map from "./Map";
 
-const CardsCity = ({props}) => {
-
+const CardsCity = ({ props }) => {
   console.log(props);
 
   return (
@@ -23,7 +22,9 @@ const CardsCity = ({props}) => {
       </ImgCard>
       <Content>
         <div>
-          <h6>{props.name.length > 15 ? props.name.slice(0,15) : props.name}</h6>
+          <h6>
+            {props.name.length > 15 ? props.name.slice(0, 15) : props.name}
+          </h6>
           <p>{props.street + " " + props.streetNumber}</p>
           <p>{props.city}</p>
         </div>

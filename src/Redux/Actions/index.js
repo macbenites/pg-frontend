@@ -118,18 +118,18 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        console.log(obj)
-        fetch("https://futbolapp-henry.herokuapp.com/register" , {
-            method : "POST",
-            body : JSON.stringify({
-              user_name : obj.user.displayName,
-              email : obj.user.email,
-              password : "123123"
-            }),
-            headers : {
-              "Content-type" : "application/json"
-            }
-        })
+        console.log(obj);
+        fetch("https://futbolapp-henry.herokuapp.com/register", {
+          method: "POST",
+          body: JSON.stringify({
+            user_name: obj.user.displayName,
+            email: obj.user.email,
+            password: "123123",
+          }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -143,18 +143,18 @@ export const logInWithFacebook = () => {
   return function (dispatch) {
     signInWithPopup(auth, new FacebookAuthProvider())
       .then((obj) => {
-        console.log(obj)
-        fetch("https://futbolapp-henry.herokuapp.com/register" , {
-            method : "POST",
-            body : JSON.stringify({
-              user_name : obj.user.displayName,
-              email : obj.user.email,
-              password : "123123"
-            }),
-            headers : {
-              "Content-type" : "application/json"
-            }
-        })
+        console.log(obj);
+        fetch("https://futbolapp-henry.herokuapp.com/register", {
+          method: "POST",
+          body: JSON.stringify({
+            user_name: obj.user.displayName,
+            email: obj.user.email,
+            password: "123123",
+          }),
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_FACEBOOK,
@@ -207,23 +207,24 @@ export function getMatches() {
       console.log(error);
     }
   };
-};
+}
 
 export function joinMatch(id, players) {
   return async function (dispatch) {
     try {
       const joinGame = await axios.put(
-        `https://futbolapp-henry.herokuapp.com/matches/${id}`, players
+        `https://futbolapp-henry.herokuapp.com/matches/${id}`,
+        players
       );
       return dispatch({
         type: JOIN_MATCH,
-        payload: joinGame.data
+        payload: joinGame.data,
       });
     } catch (error) {
-      console.log('error');
+      console.log("error");
     }
   };
-};
+}
 
 export const authState = () => {
   return (dispatch) => {
@@ -268,5 +269,67 @@ export const showUsers = () => {
           payload: obj,
         });
       });
+  };
+};
+
+export const signUpBusiness = (email, password, data, callback) => {
+  return async (dispatch) => {
+    try {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((obj) => {
+          return {
+            ...obj.user,
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            phone: data.phone,
+            street: data.street,
+            availableHours: data.availableHours,
+            typeFloor: data.typeFloor,
+            cantPlayers: data.cantPlayers,
+            typepay: data.typepay,
+            cbu: data.cbu,
+            note: data.note,
+          };
+        })
+        .then((obj) => {
+          fetch("https://futbolapp-henry.herokuapp.com/sportcenter", {
+            method: "POST",
+            body: JSON.stringify({
+              name: obj.name,
+              email: obj.email,
+              password: obj.password,
+              phone: obj.phone,
+              street: obj.street,
+              availableHours: obj.availableHours,
+              typeFloor: obj.typeFloor,
+              cantPlayers: obj.cantPlayers,
+              typepay: obj.typepay,
+              cbu: obj.cbu,
+              note: obj.note,
+            }),
+            headers: {
+              "Content-type": "application/json",
+            },
+          });
+          dispatch({
+            payload: obj,
+            type: SIGN_UP_WHIT_EMAIL_AND_PASSWORD,
+          });
+          callback();
+        })
+        .catch((error) => {
+          dispatch({
+            payload: error.code,
+            type: "ERROR",
+          });
+          //   alert(error.code);
+        });
+    } catch (error) {
+      dispatch({
+        payload: error.code,
+        type: "ERROR",
+      });
+    }
   };
 };
