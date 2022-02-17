@@ -178,7 +178,7 @@ export function postMatch(payload) {
     );
     return newMatch;
   };
-}
+};
 
 export function getFields() {
   return function (dispatch) {
@@ -268,5 +268,15 @@ export const showUsers = () => {
           payload: obj,
         });
       });
+  };
+};
+
+export function postBuy(payload) {
+  return async function (dispatch) {
+    const newBuy = await axios.post(
+      "https://futbolapp-henry.herokuapp.com/buy",
+      payload
+    );
+    return newBuy;
   };
 };
