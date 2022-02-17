@@ -10,6 +10,7 @@ import Games from "./Components/Games";
 import GamesCreate from "./Components/GamesCreate";
 import Fields from "./Components/Fields";
 import DetailUser from "./Components/DetailUser";
+import ReserveCourt from "./Components/ReserveCourt";
 import Players from "./Components/Players";
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
@@ -27,6 +28,7 @@ function App() {
               <Route path="business" element={<SignUpBusiness />} />
               <Route path="resetPassword" element={<Password />} />
             </Route>
+            <Route path="reserveCourt" element={<ReserveCourt />} />
             <Route path="gamesCreate" element={<GamesCreate />} />
             <Route path="/users/:id" element={<DetailUser />} />
             <Route path="home" element={<Home />}>

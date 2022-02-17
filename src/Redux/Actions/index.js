@@ -272,6 +272,16 @@ export const showUsers = () => {
   };
 };
 
+export function postBuy(payload) {
+  return async function (dispatch) {
+    const newBuy = await axios.post(
+      "https://futbolapp-henry.herokuapp.com/buy",
+      payload
+    );
+    return newBuy;
+  };
+}
+
 export const signUpBusiness = (email, password, data, callback) => {
   return async (dispatch) => {
     try {
