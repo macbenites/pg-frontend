@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getDetailsUser } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import Logo from "./Logo";
 
 export default function DetailUser() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ export default function DetailUser() {
  
   return (
     <div>
+      <Logo />
       {detail ? (
         <div>
           <img alt="player" src={detail.image} />

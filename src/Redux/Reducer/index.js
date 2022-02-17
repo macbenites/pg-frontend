@@ -114,6 +114,10 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
+    case "POST_BUY":
+      return {
+        ...state,
+      };  
     default:
       return { ...state };
   }
