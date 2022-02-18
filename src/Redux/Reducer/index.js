@@ -6,7 +6,7 @@ const initialState = {
   matches: [],
   userState: {},
   detailsUser: {},
-  players: {}
+  players: []
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -37,7 +37,7 @@ function rootReducer(state = initialState, { type, payload }) {
           ...state,
           error: payload,
         };
-      }
+      };
 
     case "USER_LOGGED":
       return {
@@ -120,7 +120,7 @@ function rootReducer(state = initialState, { type, payload }) {
       };  
     default:
       return { ...state };
-  }
-}
+  };
+};
 
 export default rootReducer;

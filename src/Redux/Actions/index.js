@@ -178,7 +178,7 @@ export function postMatch(payload) {
     );
     return newMatch;
   };
-}
+};
 
 export function getFields() {
   return function (dispatch) {
@@ -191,7 +191,7 @@ export function getFields() {
         })
       );
   };
-}
+};
 
 export function getMatches() {
   return async function (dispatch) {
@@ -205,16 +205,17 @@ export function getMatches() {
       });
     } catch (error) {
       console.log(error);
-    }
+    };
   };
-}
+};
 
-export function joinMatch(id_match, users) {
+export function joinMatch(id_match, user_name) {
   return async function (dispatch) {
     try {
+      console.log({id_match, user_name})
       const joinGame = await axios.put(
         `https://futbolapp-henry.herokuapp.com/matches/${id_match}`,
-        users
+        {user: user_name}
       );
       return dispatch({
         type: JOIN_MATCH,
@@ -222,9 +223,9 @@ export function joinMatch(id_match, users) {
       });
     } catch (error) {
       console.log("error");
-    }
+    };
   };
-}
+};
 
 export const authState = () => {
   return (dispatch) => {
@@ -258,7 +259,7 @@ export function getDetailsUser(id) {
       console.log(error);
     }
   };
-}
+};
 export const showUsers = () => {
   return (dispatch) => {
     fetch("https://futbolapp-henry.herokuapp.com/users")
@@ -280,7 +281,7 @@ export function postBuy(payload) {
     );
     return newBuy;
   };
-}
+};
 
 export const signUpBusiness = (email, password, data, callback) => {
   return async (dispatch) => {

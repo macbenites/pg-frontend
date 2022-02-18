@@ -1,15 +1,18 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { joinMatch } from '../Redux/Actions'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function JoinMatch(){
     
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { id } = useParams();
+    const addPlayer = useSelector((state) => state.players)
     const [input, setInput] = useState({
-        user:'',
+        user_name:'',
         position: ''
     });
 
@@ -20,21 +23,25 @@ function JoinMatch(){
         });
     };
 
+    console.log(input);
+    console.log(addPlayer);
+
     function handleClick(e){
         e.preventDefault();
-        dispatch(joinMatch(input.user));
+        dispatch(joinMatch(id, input.user_name));
         alert('Te has unido con éxito');
         navigate('/home');
-        console.log(input.user)
+        console.log(e.target.value);
     };
 
     return(
+        
         <form>
             <input 
             placeholder='Usuario' 
             onChange={e => handleChange(e)}
-            value={input.user}
-            name='user'
+            value={input.user_name}
+            name='user_name'
             />
             <input 
             placeholder='Posición' 
