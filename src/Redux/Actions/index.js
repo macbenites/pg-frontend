@@ -20,6 +20,7 @@ import {
   JOIN_MATCH,
   GET_DETAILS_USER,
   GET_USERS,
+  GET_DETAILS_COURT
 } from "./types";
 
 import axios from "axios";
@@ -262,7 +263,8 @@ export function getDetailsUser(id) {
       console.log(error);
     }
   };
-}
+};
+
 export const showUsers = () => {
   return (dispatch) => {
     fetch("https://futbolapp-henry.herokuapp.com/users")
@@ -344,6 +346,22 @@ export const signUpBusiness = (email, password, data, callback) => {
         payload: error.code,
         type: "ERROR",
       });
+    }
+  };
+};
+
+export function getDetailsCourt(id) {
+  return async function (distpach) {
+    try {
+      const courtId = await axios.get(
+        `https://futbolapp-henry.herokuapp.com/sportcenters/${id}`
+      );
+      return distpach({
+        type: GET_DETAILS_COURT,
+        payload: courtId.data,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };
