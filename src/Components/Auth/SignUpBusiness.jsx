@@ -1,10 +1,10 @@
 import { FaExclamationCircle } from "react-icons/fa";
 import { InputForm } from "../../Styles/reusable/Input";
 import { ErrorMessage } from "../../Styles/Login.js";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpWithMail, resetStateError } from "../../Redux/Actions";
+import { signUpBusiness, resetStateError } from "../../Redux/Actions";
 import Swal from "sweetalert2";
 
 import {
@@ -15,16 +15,14 @@ import {
 
 export const SignUpBusiness = () => {
   const navigate = useNavigate();
-  const defaultValues = {
-    select: "",
-  };
+
   const {
     register,
     handleSubmit,
     trigger,
-    control,
+    //control,
     formState: { errors },
-  } = useForm({ defaultValues });
+  } = useForm();
   const { error } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -32,7 +30,7 @@ export const SignUpBusiness = () => {
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
       dispatch(
-        signUpWithMail(input.email, input.password, input, () => {
+        signUpBusiness(input.email, input.password, input, () => {
           navigate("/auth/login");
         })
       );
@@ -45,7 +43,6 @@ export const SignUpBusiness = () => {
     }
   };
 
-  console.log(errors);
   return (
     <div>
       <SignInDiv>
@@ -210,7 +207,7 @@ export const SignUpBusiness = () => {
             </ErrorMessage>
           </div>
           {/* tipo de suelo */}
-          <div>
+          {/* <div>
             <Controller
               render={({ field }) => (
                 <select {...field}>
@@ -240,7 +237,7 @@ export const SignUpBusiness = () => {
                 </small>
               )}
             </ErrorMessage>
-          </div>
+          </div> */}
           {/* cantidad de jugadores */}
           <div>
             <InputForm

@@ -7,66 +7,66 @@ import Logo from "./Logo";
 import { CreateDiv, BtnCreateGame } from "../Styles/component/GamesCreate";
 import { Name, User, Barrio, Btn } from "../Styles/reusable/Containers";
 
-
 export default function GamesCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [input, setInput] = useState({
-    datetime: ''
-  })  
+    datetime: "",
+  });
 
-  const handleChange = (e) => {             
+  const handleChange = (e) => {
     setInput({
-        ...input,
-        [e.target.name]: e.target.value
-    }) 
-  }  
-
-  const handleSubmit = (e) => {
-    e.preventDefault();      
-    dispatch(postBuy(input));
-    navigate("/home/"); 
-    setInput({
-        datetime: ''
-    })          
+      ...input,
+      [e.target.name]: e.target.value,
+    });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postBuy(input, navigate));
+    // navigate("/home/");
+    setInput({
+      datetime: "",
+    });
+  };
 
   return (
     <div>
       <Logo />
       <CreateDiv>
-        <h4>Reservar</h4>    
-        <form onSubmit= {e => handleSubmit(e)}>          
+        <h4>Reservar</h4>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
             <InputForm
               type="text"
               value="Marlon Sports"
               name="title"
               readOnly
-            />                 
-          </Name>        
-          <User>   
+            />
+          </Name>
+          <User>
             <InputForm
               type="number"
               placeholder="Precio"
               name="price"
-              onChange={e => handleChange(e)}
-            />         
+              onChange={(e) => handleChange(e)}
+            />
           </User>
           <Barrio>
-          <InputForm
+            <InputForm
               type="datetime-local"
-              placeholder="Fecha y Hora" 
+              placeholder="Fecha y Hora"
               name="datetime"
-              onChange={e => handleChange(e)}
-            />           
-          </Barrio>       
+              onChange={(e) => handleChange(e)}
+            />
+          </Barrio>
           <Btn>
-            <BtnCreateGame primary type="submit">Pagar</BtnCreateGame>
+            <BtnCreateGame primary type="submit">
+              Pagar
+            </BtnCreateGame>
           </Btn>
-        </form>  
+        </form>
       </CreateDiv>
     </div>
   );
-};
+}
