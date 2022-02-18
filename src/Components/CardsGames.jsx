@@ -1,21 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import {MainCardsGames, DateStyle, Players, NameCenter, ButtonJoinCardsGames, BtnInviteCardsGames} from '../Styles/component/CardsGames'
 
-function CardsGames({nameCenter, date, players}){
+function CardsGames({nameCenter, date, players, id}){
 
     const navigate = useNavigate();
-    const allMatches = useSelector((state) => state.matches)
-
-    console.log(allMatches)
 
     function handleClick(){
-        if(allMatches.length !== 0){
-            allMatches.map((e) => (
-            navigate('/home/joinMatch/' + e.id_match)))
-        } else {
-            console.log('error')
-        };
+            navigate(`/home/joinMatch/${id}`)
     };
 
     function handleCLickInvite(){
