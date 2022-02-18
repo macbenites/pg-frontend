@@ -12,7 +12,7 @@ import Fields from "./Components/Fields";
 import DetailUser from "./Components/DetailUser";
 import ReserveCourt from "./Components/ReserveCourt";
 import Players from "./Components/Players";
-
+import DetailCourt from './Components/DetailCourt';
 import JoinMatch from "./Components/JoinMatch"
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
