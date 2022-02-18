@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import { joinMatch } from '../Redux/Actions'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import Swal from "sweetalert2";
 import { InputUsername, BtnJoinStyle, TextJoin, InputPosition, BtnBack } from '../Styles/JoinMatch'
+
 
 function JoinMatch(){
     
@@ -34,7 +36,13 @@ function JoinMatch(){
     function handleClick(e){
         e.preventDefault();
         dispatch(joinMatch(id, input.user_name));
-        alert('Te has unido con éxito');
+        Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Te has unido a este partido con éxito!!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         navigate('/home');
         console.log(e.target.value);
     };

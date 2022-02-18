@@ -13,7 +13,8 @@ import DetailUser from "./Components/DetailUser";
 import ReserveCourt from "./Components/ReserveCourt";
 import Players from "./Components/Players";
 import DetailCourt from './Components/DetailCourt';
-import JoinMatch from "./Components/JoinMatch"
+import JoinMatch from "./Components/JoinMatch";
+import DetailMatch from "./Components/DetailMatch";
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="gamesCreate" element={<GamesCreate />} />
             <Route path="/users/:id" element={<DetailUser />} />
             <Route path="/sportcenters/:id" element={<DetailCourt />} />
+            <Route path="/matches/:id_match" element={<DetailMatch />} />
             <Route path="home" element={<Home />}>
               <Route path="games" element={<Games />} />
               <Route path="joinMatch/:id" element={<JoinMatch/>}/>

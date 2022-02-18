@@ -20,9 +20,9 @@ import {
   JOIN_MATCH,
   GET_DETAILS_USER,
   GET_USERS,
-  GET_DETAILS_COURT
+  GET_DETAILS_COURT,
+  GET_DETAILS_MATCH
 } from "./types";
-
 import axios from "axios";
 
 export const resetStateError = () => async (dispatch) =>
@@ -360,6 +360,22 @@ export function getDetailsCourt(id) {
       return distpach({
         type: GET_DETAILS_COURT,
         payload: courtId.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export function getDetailsMatch(id_match) {
+  return async function (distpach) {
+    try {
+      const matchId = await axios.get(
+        `https://futbolapp-henry.herokuapp.com/matches/${id_match}`
+      );
+      return distpach({
+        type: GET_DETAILS_MATCH,
+        payload: matchId.data,
       });
     } catch (error) {
       console.log(error);
