@@ -22,6 +22,8 @@ import {
   GET_USERS,
 } from "./types";
 
+import axios from "axios";
+
 export const resetStateError = () => async (dispatch) =>
   dispatch({
     type: "RESET_STATE_ERROR",
