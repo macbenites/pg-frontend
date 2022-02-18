@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {MainCardsGames, DateStyle, Players, NameCenter, ButtonJoinCardsGames, BtnInviteCardsGames} from '../Styles/component/CardsGames'
 
 function CardsGames({nameCenter, date, players, id}){
@@ -16,7 +16,9 @@ function CardsGames({nameCenter, date, players, id}){
     return (
         <div>
             <MainCardsGames>
+            <Link to={`/matches/${id}`} style={{textDecoration: 'none'}}>
                 <NameCenter>{nameCenter}</NameCenter>
+            </Link>    
                 <DateStyle>Fecha y hora: {date}</DateStyle>
                 <Players>Faltan: {players} jugadores</Players>
                     <ButtonJoinCardsGames onClick={e => handleClick(e)}>Unirme</ButtonJoinCardsGames> 
