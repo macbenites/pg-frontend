@@ -56,30 +56,36 @@ export const CreateGame = styled.h2`
 `;
 
 export const SelectLocation = styled.select`
-  height: 30px;
+  height: 40px;
   width: 336px;
   margin: 20px;
   margin-top: 70px;
   margin-left: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
   border: none;
   background-color: #206F6C;
-  color: white
+  color: #abd1c6
 `;
 
 export const SelectDate = styled.select`
-  height: 30px;
+  height: 40px;
   width: 336px;
   margin:20px;
+  padding-left: 20px;
+  border-radius: 10px;
   border: none;
   background-color: #206F6C;
-  color: white;
+  color: #abd1c6;
 `;
 
 export const SelectSearch = styled.select`
-  height: 30px;
+  height: 40px;
   width: 336px;
   margin: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
   border: none;
   background-color: #206F6C;
-  color: white
+  color: #abd1c6
 `;
