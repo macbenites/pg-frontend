@@ -49,6 +49,7 @@ function Games() {
             nameCenter={el.nameCenter}
             date={el.date}
             players={el.players}
+            id={el.id_match}
           />
         ))}
       </CardsGamesStyle>
