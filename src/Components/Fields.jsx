@@ -3,6 +3,7 @@ import Map from "./Map";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getFields } from "../Redux/Actions";
+import { Link } from "react-router-dom";
 
 const Fields = () => {
 
@@ -17,7 +18,11 @@ const Fields = () => {
     <div>
       {
         tenFields && tenFields.map(obj => {
-         return <CardsCity key={obj.id} props={obj}/>
+         return (
+          <Link to={"/sportcenters/" + obj.id}>
+           <CardsCity key={obj.id} props={obj}/>
+          </Link> 
+           )
         })
       }
       <Map />

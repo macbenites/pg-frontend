@@ -6,7 +6,8 @@ const initialState = {
   matches: [],
   userState: {},
   detailsUser: {},
-  players: []
+  players: [],
+  detailsCourt: {}
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -117,6 +118,12 @@ function rootReducer(state = initialState, { type, payload }) {
     case "POST_BUY":
       return {
         ...state,
+      }; 
+      
+    case "GET_DETAILS_COURT":
+      return {
+        ...state,
+        detailsCourt: payload,
       };  
     default:
       return { ...state };
