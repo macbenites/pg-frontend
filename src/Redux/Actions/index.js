@@ -21,6 +21,7 @@ import {
   GET_DETAILS_USER,
   GET_USERS,
 } from "./types";
+
 import axios from "axios";
 
 export const resetStateError = () => async (dispatch) =>
@@ -50,6 +51,7 @@ export const signUpWithMail = (email, password, data, callback) => {
               neighborhood: obj.barrio,
               email: obj.email,
               password: "123123",
+              player_position : [obj.posicion]
             }),
             headers: {
               "Content-type": "application/json",
@@ -118,18 +120,20 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        console.log(obj);
-        fetch("https://futbolapp-henry.herokuapp.com/register", {
-          method: "POST",
-          body: JSON.stringify({
-            user_name: obj.user.displayName,
-            email: obj.user.email,
-            password: "123123",
-          }),
-          headers: {
-            "Content-type": "application/json",
-          },
+        console.log(obj)
+        fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              user_name : obj.user.displayName,
+              email : obj.user.email,
+              password : "123123",
+              name : obj.user.name
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
         });
+      
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
