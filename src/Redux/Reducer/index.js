@@ -7,7 +7,8 @@ const initialState = {
   userState: {},
   detailsUser: {},
   players: [],
-  detailsCourt: {}
+  detailsCourt: {},
+  detailsMatch: {}
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -124,7 +125,14 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         detailsCourt: payload,
-      };  
+      };
+      
+    case "GET_DETAILS_MATCH":
+      return {
+        ...state,
+        detailsMatch: payload,
+      };
+
     default:
       return { ...state };
   };
