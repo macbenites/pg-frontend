@@ -85,7 +85,7 @@ export default function GamesCreate() {
         icon: "success",
         title: "Partido creado con éxito!!",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
       });
       navigate("/home/games");
       setInput({
