@@ -21,10 +21,6 @@ import {
   GET_DETAILS_USER,
   GET_USERS,
 } from "./types";
-import axios from "axios";
-import { db } from "../../firebase";
-
-console.log(db)
 
 export const resetStateError = () => async (dispatch) =>
   dispatch({
