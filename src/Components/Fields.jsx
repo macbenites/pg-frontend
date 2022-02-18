@@ -1,4 +1,4 @@
-import CardsCity from "./CardsCity";
+import CardsCity from "./CardsCourt";
 import Map from "./Map";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect } from "react";

@@ -4,7 +4,7 @@ import {
   TextLanding,
   Landing,
   ImgDiv,
-} from "../Styles/LandingPage";
+} from "../Styles/component/LandingPage";
 import { Button } from "../Styles/reusable/Button";
 import { LinkTo } from "../Styles/reusable/LinkTo";
 import imgLanding from "../Assets/img/img-landing.svg";
@@ -16,7 +16,7 @@ function LandingPage() {
       <LandTop>
         <Logo />
         <div>
-          <LinkTo to="/login">
+          <LinkTo to="/auth/login">
             <Button primary>LogIn</Button>
           </LinkTo>
         </div>
@@ -35,7 +35,7 @@ function LandingPage() {
             leo, vel fringilla est ullamcorper eget nulla facilisi etiam
             dignissim.
           </p>
-          <LinkTo to="/signin">
+          <LinkTo to="/auth/signin">
             <Button>SignIn</Button>
           </LinkTo>
         </TextLanding>

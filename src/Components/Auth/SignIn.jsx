@@ -1,11 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Logo from "./Logo";
-import { SignInDiv, LinkToSignIn, BtnSignIn } from "../Styles/SignIn";
 import { FaExclamationCircle } from "react-icons/fa";
-import { InputForm } from "../Styles/reusable/Input";
-import { ErrorMessage } from "../Styles/Login.js";
+import { InputForm } from "../../Styles/reusable/Input";
+import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpWithMail, resetStateError } from "../../Redux/Actions";
+import Swal from "sweetalert2";
+
+import {
+  SignInDiv,
+  LinkToSignIn,
+  BtnSignIn,
+} from "../../Styles/component/SignIn";
+
 import {
   Name,
   User,
@@ -14,10 +21,7 @@ import {
   Email,
   Password,
   Btn,
-} from "../Styles/reusable/Containers";
-import { useDispatch, useSelector } from "react-redux";
-import { signUpWithMail, resetStateError } from "../Redux/Actions";
-import Swal from 'sweetalert2';
+} from "../../Styles/reusable/Containers";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -35,25 +39,25 @@ function SignIn() {
       dispatch(resetStateError());
       dispatch(
         signUpWithMail(input.email, input.password, input, () => {
-          navigate("/login");
+          navigate("/auth/login");
         })
       );
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Todos los campos son requeridos!',
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Todos los campos son requeridos!",
+      });
     }
   };
 
   return (
     <div>
-      <Logo />
       <SignInDiv>
         <h4>Creá tu cuenta</h4>
-        <h5>          
-          Ya tenés tu cuenta?<LinkToSignIn to="/login"> Log In</LinkToSignIn>
+        <h5>
+          Ya tenés tu cuenta?
+          <LinkToSignIn to="/auth/login"> Log In</LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Name>
@@ -246,7 +250,7 @@ function SignIn() {
               </small>
             )}
           </ErrorMessage>
-          <br />          
+          <br />
           <Btn>
             <BtnSignIn primary type="submit">
               Crear cuenta

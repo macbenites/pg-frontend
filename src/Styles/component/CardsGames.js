@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "./reusable/Button";
+import { Button } from "../reusable/Button";
 
 export const MainCardsGames = styled.div`
   border-radius: 30px;
@@ -24,7 +24,7 @@ export const Players = styled.div`
   font-size: 15px;
 `;
 
-export const Search = styled.div` 
+export const Search = styled.div`
   display: flex;
   justify-content: center;
   font-size: 15px;
@@ -32,7 +32,7 @@ export const Search = styled.div`
 `;
 
 export const NameCenter = styled.div`
-  color:#004643;
+  color: #004643;
   text-align: center;
   font-weight: bold;
   font-size: 23px;

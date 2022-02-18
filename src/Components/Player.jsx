@@ -1,4 +1,4 @@
-import {PlayerDiv} from "../Styles/Player.js"
+import {PlayerDiv} from "../Styles/component/Player.js"
 
 const Player = ({data}) => {
 
