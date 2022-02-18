@@ -5,6 +5,8 @@ import { joinMatch } from '../Redux/Actions'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from "sweetalert2";
+import { InputUsername, BtnJoinStyle, TextJoin, InputPosition, BtnBack } from '../Styles/JoinMatch'
+
 
 function JoinMatch(){
     
@@ -27,6 +29,10 @@ function JoinMatch(){
     console.log(input);
     console.log(addPlayer);
 
+    function handleBackClick(e){
+        navigate('/home/games');
+    };
+
     function handleClick(e){
         e.preventDefault();
         dispatch(joinMatch(id, input.user_name));
@@ -42,21 +48,22 @@ function JoinMatch(){
     };
 
     return(
-        
         <form>
-            <input 
-            placeholder='Usuario' 
-            onChange={e => handleChange(e)}
-            value={input.user_name}
-            name='user_name'
-            />
-            <input 
-            placeholder='Posición' 
-            onChange={e => handleChange(e)}
-            value={input.position}
-            name='position'
-            />
-            <button onClick={e => handleClick(e)}>Unirme</button>
+            <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
+            <TextJoin>Completa tu usuario y tu posición para unirte a este partido</TextJoin>
+            <InputUsername 
+                placeholder='Usuario' 
+                onChange={e => handleChange(e)}
+                value={input.user_name}
+                name='user_name'>
+            </InputUsername>
+            <InputPosition 
+                placeholder='Posición' 
+                onChange={e => handleChange(e)}
+                value={input.position}
+                name='position'> 
+            </InputPosition>
+            <BtnJoinStyle primary onClick={e => handleClick(e)}>Unirme</BtnJoinStyle>
         </form>
     );
 };
