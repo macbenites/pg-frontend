@@ -278,7 +278,9 @@ export function postBuy(payload) {
       "https://futbolapp-henry.herokuapp.com/buy",
       payload
     );
-    return newBuy;
+    const { data } = newBuy;
+    window.location.replace(data.response.sandbox_init_point);
+    // return newBuy;
   };
 }
 
@@ -297,7 +299,6 @@ export const signUpBusiness = (email, password, data, callback) => {
             availableHours: data.availableHours,
             typeFloor: data.typeFloor,
             cantPlayers: data.cantPlayers,
-            typepay: data.typepay,
             cbu: data.cbu,
             note: data.note,
           };
@@ -314,7 +315,6 @@ export const signUpBusiness = (email, password, data, callback) => {
               availableHours: obj.availableHours,
               typeFloor: obj.typeFloor,
               cantPlayers: obj.cantPlayers,
-              typepay: obj.typepay,
               cbu: obj.cbu,
               note: obj.note,
             }),
