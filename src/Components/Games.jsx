@@ -19,15 +19,15 @@ function Games() {
   const allMatches = useSelector((state) => state.matches)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(allMatches)
+  console.log(allMatches);
 
   useEffect(() => {
     dispatch(getMatches());
-}, [dispatch]);
+  }, [dispatch]);
 
   function handleClick(){
     navigate('/gamesCreate')
-  }
+  };
 
   return (
     <div>
@@ -54,6 +54,6 @@ function Games() {
       </CardsGamesStyle>
     </div>
   );
-}
+};
 
 export default Games;

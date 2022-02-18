@@ -20,7 +20,9 @@ import {
   JOIN_MATCH,
   GET_DETAILS_USER,
   GET_USERS,
+  GET_DETAILS_COURT
 } from "./types";
+
 import axios from "axios";
 
 export const resetStateError = () => async (dispatch) =>
@@ -50,6 +52,7 @@ export const signUpWithMail = (email, password, data, callback) => {
               neighborhood: obj.barrio,
               email: obj.email,
               password: "123123",
+              player_position : [obj.posicion]
             }),
             headers: {
               "Content-type": "application/json",
@@ -118,18 +121,20 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        console.log(obj);
-        fetch("https://futbolapp-henry.herokuapp.com/register", {
-          method: "POST",
-          body: JSON.stringify({
-            user_name: obj.user.displayName,
-            email: obj.user.email,
-            password: "123123",
-          }),
-          headers: {
-            "Content-type": "application/json",
-          },
+        console.log(obj)
+        fetch("https://futbolapp-henry.herokuapp.com/register" , {
+            method : "POST",
+            body : JSON.stringify({
+              user_name : obj.user.displayName,
+              email : obj.user.email,
+              password : "123123",
+              name : obj.user.name
+            }),
+            headers : {
+              "Content-type" : "application/json"
+            }
         });
+      
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -209,12 +214,12 @@ export function getMatches() {
   };
 }
 
-export function joinMatch(id, players) {
+export function joinMatch(id_match, users) {
   return async function (dispatch) {
     try {
       const joinGame = await axios.put(
-        `https://futbolapp-henry.herokuapp.com/matches/${id}`,
-        players
+        `https://futbolapp-henry.herokuapp.com/matches/${id_match}`,
+        users
       );
       return dispatch({
         type: JOIN_MATCH,
@@ -258,7 +263,8 @@ export function getDetailsUser(id) {
       console.log(error);
     }
   };
-}
+};
+
 export const showUsers = () => {
   return (dispatch) => {
     fetch("https://futbolapp-henry.herokuapp.com/users")
@@ -278,7 +284,9 @@ export function postBuy(payload) {
       "https://futbolapp-henry.herokuapp.com/buy",
       payload
     );
-    return newBuy;
+    const { data } = newBuy;
+    window.location.replace(data.response.sandbox_init_point);
+    // return newBuy;
   };
 }
 
@@ -297,7 +305,6 @@ export const signUpBusiness = (email, password, data, callback) => {
             availableHours: data.availableHours,
             typeFloor: data.typeFloor,
             cantPlayers: data.cantPlayers,
-            typepay: data.typepay,
             cbu: data.cbu,
             note: data.note,
           };
@@ -314,7 +321,6 @@ export const signUpBusiness = (email, password, data, callback) => {
               availableHours: obj.availableHours,
               typeFloor: obj.typeFloor,
               cantPlayers: obj.cantPlayers,
-              typepay: obj.typepay,
               cbu: obj.cbu,
               note: obj.note,
             }),
@@ -340,6 +346,22 @@ export const signUpBusiness = (email, password, data, callback) => {
         payload: error.code,
         type: "ERROR",
       });
+    }
+  };
+};
+
+export function getDetailsCourt(id) {
+  return async function (distpach) {
+    try {
+      const courtId = await axios.get(
+        `https://futbolapp-henry.herokuapp.com/sportcenters/${id}`
+      );
+      return distpach({
+        type: GET_DETAILS_COURT,
+        payload: courtId.data,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };
