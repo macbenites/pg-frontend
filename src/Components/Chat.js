@@ -96,7 +96,7 @@ function Chat () {
         console.log(userReceptor)
         dispatch(getDetailsUser(params.id))   
 
-    },[dispatch])
+    },[])
 
     return (
         <div>
