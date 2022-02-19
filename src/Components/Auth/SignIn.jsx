@@ -3,8 +3,9 @@ import { InputForm } from "../../Styles/reusable/Input";
 import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpWithMail, resetStateError } from "../../Redux/Actions";
+import { signUpWithMail, resetStateError, getNeighborhoods } from "../../Redux/Actions";
 import Swal from "sweetalert2";
 
 import {
@@ -33,6 +34,11 @@ function SignIn() {
   } = useForm();
   const { error } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const neighborhoods = useSelector((state) => state.neighborhoods);
+
+  useEffect(() => {
+    dispatch(getNeighborhoods());
+  }, [dispatch]);
 
   const onSubmit = (input) => {
     if (Object.entries(errors).length === 0) {
@@ -130,25 +136,23 @@ function SignIn() {
             </ErrorMessage>
           </User>
           <Barrio>
-            <InputForm
-              type="text"
-              autoComplete="off"
+            <select
               name="neighborhood"
-              placeholder="Barrio"
               {...register("neighborhood", {
                 required: {
                   value: true,
                   message: "Barrio requerido.",
                 },
-                pattern: {
-                  value: /^[A-Za-zÃ‘Ã±ÃÃ¡Ã‰Ã©ÃÃ­Ã“Ã³ÃšÃºÃœÃ¼\s]+$/,
-                  message: "El barrio solo admite letras y espacios en blanco.",
-                },
               })}
               onKeyUp={() => {
                 trigger("neighborhood");
               }}
-            />
+            >
+              <option value= ''>Barrio</option>
+                {neighborhoods.map((element) =>(
+                  <option key= {element.id} value = {element.name}>{element.name}</option>
+                ))}  
+            </select>
             <ErrorMessage>
               {errors.neighborhood && (
                 <small>
@@ -158,26 +162,24 @@ function SignIn() {
             </ErrorMessage>
           </Barrio>
           <Position>
-            <InputForm
-              type="text"
-              autoComplete="off"
-              name="position"
-              placeholder="Posición"
+            <select
+              name="position"             
               {...register("position", {
                 required: {
                   value: true,
                   message: "Posición requerida.",
                 },
-                pattern: {
-                  value: /^[A-Za-z]+$/,
-                  message:
-                    "La posición no admite números, caracteres especiales ni espacios en blanco.",
-                },
               })}
               onKeyUp={() => {
                 trigger("position");
               }}
-            />
+            >
+              <option value="">Posicion de juego</option>
+              <option value="delantero">Delantero</option>
+              <option value="mediocampista">Mediocampista</option>
+              <option value="defensor">Defensor</option>
+              <option value="arquero">Arquero</option>
+            </select>
             <ErrorMessage>
               {errors.position && (
                 <small>
