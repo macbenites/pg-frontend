@@ -21,7 +21,8 @@ import {
   GET_DETAILS_USER,
   GET_USERS,
   GET_DETAILS_COURT,
-  GET_DETAILS_MATCH
+  GET_DETAILS_MATCH,
+  GET_NEIGHBORHOODS,
 } from "./types";
 import axios from "axios";
 
@@ -380,5 +381,21 @@ export function getDetailsMatch(id_match) {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export function getNeighborhoods() {
+  return async function (dispatch) {
+    try {
+      const neighborhoods = await axios.get(
+        "https://futbolapp-henry.herokuapp.com/hoods"
+      );
+      return dispatch({
+        type: GET_NEIGHBORHOODS,
+        payload: neighborhoods.data,
+      });
+    } catch (error) {
+      console.log(error);
+    };
   };
 };
