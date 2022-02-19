@@ -48,3 +48,15 @@ export const BtnJoinStyle = styled(Button)`
     border-radius: 14px;
     color: #004643;
 `;
+
+export const SelectSearch = styled.select`
+    display: flex;
+    width: 432px;
+    height: 55px;
+    margin-left: 350px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 14px;
+    background-color: #206F6C;
+    color: white;
+`;

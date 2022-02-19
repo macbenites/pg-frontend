@@ -129,7 +129,7 @@ export default function GamesCreate() {
             <select name= 'nameCenter' onChange= {e => handleSelect(e)}>
               <option value= ''>Seleccione la cancha</option>
               {fields.map((element) =>(
-                <option value = {element.name}>{element.name}</option>
+                <option key = {element.id} value = {element.name}>{element.name}</option>
               ))} 
             </select>
             <ErrorMessage>

@@ -45,3 +45,5 @@ export const LinkToSignIn = styled(LinkTo)`
   color: var(--tertiary);
   font-weight: 600;
 `;
+
+
