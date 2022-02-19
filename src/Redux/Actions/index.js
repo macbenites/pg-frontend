@@ -26,6 +26,7 @@ import {
 } from "./types";
 import axios from "axios";
 
+
 export const resetStateError = () => async (dispatch) =>
   dispatch({
     type: "RESET_STATE_ERROR",
@@ -42,6 +43,7 @@ export const signUpWithMail = (email, password, data, callback) => {
             name: data.name,
             barrio: data.neighborhood,
             posicion: data.position,
+            displayName: data.username
           };
         })
         .then((obj) => {
@@ -81,11 +83,23 @@ export const signUpWithMail = (email, password, data, callback) => {
   };
 };
 
-export const logInWithMail = (email, password, callback) => {
+export const logInWithMail = (email, password, data, callback) => {
   return async function (dispatch) {
     try {
       signInWithEmailAndPassword(auth, email, password)
         .then((obj) => {
+          console.log(obj)
+          console.log(data)
+          const newData = {
+            ...obj.user,
+            displayName : "display"
+          }
+          return {
+            newData
+          }
+        })
+        .then((obj) => {
+          console.log(obj)
           dispatch({
             payload: obj,
             type: LOG_IN_WHIT_EMAIL,

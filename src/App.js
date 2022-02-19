@@ -17,6 +17,7 @@ import JoinMatch from "./Components/JoinMatch";
 import DetailMatch from "./Components/DetailMatch";
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
+import Chat from "./Components/Chat";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="reserveCourt" element={<ReserveCourt />} />
             <Route path="gamesCreate" element={<GamesCreate />} />
             <Route path="/users/:id" element={<DetailUser />} />
+            <Route path="/users/:id/chat" element={<Chat />} />
             <Route path="/sportcenters/:id" element={<DetailCourt />} />
             <Route path="/matches/:id_match" element={<DetailMatch />} />
             <Route path="home" element={<Home />}>
