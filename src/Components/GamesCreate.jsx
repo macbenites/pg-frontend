@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { postMatch } from "../Redux/Actions/index";
-import { useDispatch } from "react-redux";
+import { postMatch, getFields } from "../Redux/Actions/index";
+import { useDispatch, useSelector } from "react-redux";
 import { FaExclamationCircle } from "react-icons/fa";
 import { ErrorMessage } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
@@ -19,12 +19,9 @@ import Swal from "sweetalert2";
 
 const validationForm = (input) => {
   let errors = {};
-  let regexNameCenter = /^[A-Za-z0-9Ã‘Ã±ÃÃ¡Ã‰Ã©ÃÃ­Ã“Ã³ÃšÃºÃœÃ¼\s]+$/;
 
-  if (!input.nameCenter.trim()) {
-    errors.nameCenter = "El nombre del club o cancha es requerido.";
-  } else if (!regexNameCenter.test(input.nameCenter.trim())) {
-    errors.name = "El nombre del club o cancha no admite caracteres especiales";
+  if (input.nameCenter.length === 0) {
+    errors.name = "El nombre del club o cancha es requerido.";
   }
   if (!input.players) {
     errors.players = "Cantidad de jugadores requerida";
@@ -46,6 +43,8 @@ const validationForm = (input) => {
 export default function GamesCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const fields = useSelector((state) => state.fields);
+  console.log(fields)
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     nameCenter: "",
@@ -54,6 +53,11 @@ export default function GamesCreate() {
     distric: "",
     note: "",
   });
+
+  useEffect(() => {
+    dispatch(getFields());      
+  }, [dispatch]);
+  
 
   const handleChange = (e) => {
     setInput({
@@ -68,6 +72,19 @@ export default function GamesCreate() {
     );
   };
 
+  const handleSelect = (e) => {   
+    setInput({
+      ...input,
+      nameCenter: e.target.value               
+    }) 
+    setErrors(validationForm({
+      ...input,
+      nameCenter: e.target.value
+    }))              
+  };
+
+  console.log(input)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validationForm(input));
@@ -81,11 +98,10 @@ export default function GamesCreate() {
     ) {
       dispatch(postMatch(input));
       Swal.fire({
-        position: "top-center",
         icon: "success",
         title: "Partido creado con éxito!!",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1500,
       });
       navigate("/home/games");
       setInput({
@@ -110,14 +126,12 @@ export default function GamesCreate() {
         <h4>Crear Partido</h4>
         <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
-            <InputForm
-              type="text"
-              value={input.nameCenter}
-              placeholder="Nombre Predio"
-              autoComplete="off"
-              name="nameCenter"
-              onChange={(e) => handleChange(e)}
-            />
+            <select name= 'nameCenter' onChange= {e => handleSelect(e)}>
+              <option value= ''>Seleccione la cancha</option>
+              {fields.map((element) =>(
+                <option value = {element.name}>{element.name}</option>
+              ))} 
+            </select>
             <ErrorMessage>
               {errors.nameCenter && (
                 <small>

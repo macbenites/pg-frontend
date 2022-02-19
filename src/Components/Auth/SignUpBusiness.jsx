@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import { InputForm } from "../../Styles/reusable/Input";
 import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpBusiness, resetStateError } from "../../Redux/Actions";
+import { signUpBusiness, resetStateError, getNeighborhoods } from "../../Redux/Actions";
 import Swal from "sweetalert2";
 
 import {
@@ -15,7 +16,6 @@ import {
 
 export const SignUpBusiness = () => {
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -24,7 +24,28 @@ export const SignUpBusiness = () => {
     formState: { errors },
   } = useForm();
   const { error } = useSelector((state) => state);
+  const neighborhoods = useSelector((state) => state.neighborhoods);
+  console.log(neighborhoods)
   const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    name: "",
+    neighborhood: "",
+    street: "",
+    phone: "",
+    availableHours: "",
+    cantPlayers: "",
+    cbu: "",
+    typePay: "",
+    note: "",
+    email: "",
+    password: ""
+  });
+
+  console.log(input)
+
+  useEffect(() => {
+    dispatch(getNeighborhoods());      
+  }, [dispatch]);
 
   const onSubmit = (input) => {
     if (Object.entries(errors).length === 0) {
@@ -43,12 +64,26 @@ export const SignUpBusiness = () => {
     }
   };
 
+  const handleChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSelect = (e) => {   
+    setInput({
+      ...input,
+      neighborhoods: e.target.value              
+    })             
+  };
+
   return (
     <div>
       <SignInDiv>
         <h4>Cuenta Business</h4>
         <h5>
-          Ya eres parte de FutbolApp?
+          Ya eres parte de SeJuega!?
           <LinkToSignIn to="/auth/login"> Log In</LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -59,14 +94,15 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               placeholder="Nombre de Club"
               name="name"
+              onChange={(e) => handleChange(e)}
               {...register("name", {
                 required: {
                   value: true,
                   message: "Nombre requerido.",
                 },
                 pattern: {
-                  value: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/,
-                  message: "El nombre solo admite letras y espacios en blanco.",
+                  value: /^[a-zA-Z0-9À-ÿ\u00f1\u00d1\s]+$/,
+                  message: "El nombre solo admite letras, números y espacios en blanco.",
                 },
                 minLength: {
                   value: 3,
@@ -87,34 +123,23 @@ export const SignUpBusiness = () => {
           </div>
           {/* barrio */}
           <div>
-            <InputForm
-              type="text"
-              autoComplete="off"
-              name="neighborhood"
-              placeholder="Barrio"
+            <select name="neighborhood" onChange= {e => handleSelect(e)}
               {...register("neighborhood", {
                 onBlur: (e) => console.log(e),
                 required: {
                   value: true,
                   message: "Barrio requerido.",
                 },
-                pattern: {
-                  value: /^[a-zA-Z0-9_-]+$/,
-                  message: "El barrio sólo admite letras y números.",
-                },
-                maxLength: {
-                  value: 30,
-                  message: "El barrio debe contener máximo 30 caracteres.",
-                },
-                minLength: {
-                  value: 5,
-                  message: "El barrio debe contener mínimo 5 caracteres.",
-                },
               })}
               onKeyUp={() => {
                 trigger("neighborhood");
               }}
-            />
+            >
+              <option value= ''>Seleccione el barrio</option>
+              {neighborhoods.map((element) =>(
+                <option key= {element.name} value = {element.name}>{element.name}</option>
+              ))}
+            </select>  
             <ErrorMessage>
               {errors.neighborhood && (
                 <small>
@@ -130,6 +155,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="street"
               placeholder="Calle"
+              onChange={(e) => handleChange(e)}
               {...register("street", {
                 required: {
                   value: true,
@@ -159,6 +185,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="phone"
               placeholder="Teléfono"
+              onChange={(e) => handleChange(e)}
               {...register("phone", {
                 required: {
                   value: true,
@@ -188,6 +215,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="availableHours"
               placeholder="Horario"
+              onChange={(e) => handleChange(e)}
               {...register("availableHours", {
                 required: {
                   value: true,
@@ -245,6 +273,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="cantPlayers"
               placeholder="N° de jugadores"
+              onChange={(e) => handleChange(e)}
               {...register("cantPlayers", {
                 required: {
                   value: true,
@@ -270,6 +299,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="cbu"
               placeholder="Cbu"
+              onChange={(e) => handleChange(e)}
               {...register("cbu", {
                 required: {
                   value: true,
@@ -295,6 +325,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="typePay"
               placeholder="Tipo de pago"
+              onChange={(e) => handleChange(e)}
               {...register("typePay", {
                 required: {
                   value: true,
@@ -320,6 +351,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="note"
               placeholder="Note "
+              onChange={(e) => handleChange(e)}
               {...register("note", {
                 required: {
                   value: true,
@@ -345,6 +377,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="email"
               placeholder="Email"
+              onChange={(e) => handleChange(e)}
               {...register("email", {
                 required: {
                   value: true,
@@ -373,6 +406,7 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="password"
               placeholder="Contraseña"
+              onChange={(e) => handleChange(e)}
               {...register("password", {
                 required: {
                   value: true,

@@ -5,7 +5,7 @@ function Logo({ changeColor }) {
   return (
     <StyledLogo>
       <img src={logoBall} alt="logo" draggable="false" />
-      <span>FutbolApp</span>
+      <span>SeJuega!</span>
     </StyledLogo>
   );
 }
