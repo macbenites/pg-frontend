@@ -43,7 +43,7 @@ function Home() {
               ? userState?.displayName
               : userState?.email?.split("@")[0]}
             <br />
-            <span>Bienvenido a FutbolApp</span>
+            <span>Bienvenido a SeJuega!</span>
           </h5>
         </div>
         <Search>
