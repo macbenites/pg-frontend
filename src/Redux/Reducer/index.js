@@ -9,7 +9,8 @@ const initialState = {
   players: [],
   detailsCourt: {},
   detailsMatch: {},
-  neighborhoods: []
+  neighborhoods: [],
+  displayName : "",
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -58,6 +59,7 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         users: state.users.concat(payload),
+        displayName : payload.displayName
       };
 
     case "LOG_IN_WHIT_EMAIL":

@@ -32,6 +32,9 @@ export default function DetailUser() {
       ) : (
         <p>Cargando...</p>
       )}
+      <Link to={`chat`}>
+        <button>Enviar Mensaje</button>
+      </Link>
       <Link to="/home/players">
         <button>Volver</button>
       </Link>
