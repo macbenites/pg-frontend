@@ -18,16 +18,15 @@ export default function DetailMatch() {
       <Logo />
       {detail ? (
         <div>
-          <p><strong>Lugar:</strong> {detail.nameCenter}</p>         
-          <p><strong>Dirección:</strong> {detail.street}</p>
-          <p><strong>Barrio:</strong> {detail.distric}</p>
+          <p><strong>Lugar:</strong> {detail.nameCenter}</p>
           <p><strong>Fecha y hora:</strong> {detail.date}</p>
-          <p><strong>Tipo de pago:</strong> {detail.typePay}</p>
           <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
           <p><strong>Descripción:</strong> {detail.note}</p> 
           <p><strong>Jugadores:</strong> 
             {detail.matchPlayers?.map((element) => (
-                <p>{element.user_name} - Posición: {element.player_position}</p>
+                <ul>
+                  <li>{element.user_name} - {element.position}</li>
+                </ul>
               ))
             }
           </p>         
