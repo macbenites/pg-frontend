@@ -11,12 +11,12 @@ function Chat () {
 
     const [mensajes , setMensajes] = useState();
     const [inputMensaje , setInputMensaje] = useState();
-    const [actualizar , setActualizar] = useState()
     const user = useSelector(obj => obj.userState);
     const userReceptor = useSelector(obj => obj.detailsUser);
     const params = useParams();
     const dispatch = useDispatch();
     console.log("asdasd")
+    
     
     const submitForm = (e) => {
         e.preventDefault();
@@ -27,15 +27,15 @@ function Chat () {
             receptor : userReceptor.email,
             emisor : user.email
         })
-        getMensajes()
         setInputMensaje(" ")
-        setActualizar(e.target.value)
+        getMensajes()
     }
 
     const handleChange = (e) => {
         setInputMensaje(e.target.value)
     }
-
+    
+    
     async function getMensajes  ()  {
 
         const arrayEnviados = [];
@@ -86,28 +86,32 @@ function Chat () {
         
     }
 
+    const showMensajes = () => {
+        getMensajes()
+    }
 
-    
+    /* useEffect(()=>{
+        getMensajes()
+    },[]) */
+
     useEffect(()=>{
-        
-        getMensajes();
-        console.log(user);
+
         dispatch(authState())  
-        console.log(userReceptor)
         dispatch(getDetailsUser(params.id))   
 
-    },[])
+    },[dispatch , params.id])
 
     return (
         <div>
-            <NavBar />
             {
                 mensajes ? mensajes.map((obj)=>{
                     return <div key={obj.id}>
                         <p>{obj ? obj.emisor : "user"} :</p>
                         <p>{obj.texto}</p>
                     </div>
-                }) : "No hay mensajes"
+                }) : 
+                
+                <button onClick={showMensajes}>Mostrar historial de chat</button>
             }
             <form onSubmit={submitForm}>
                 <input 
