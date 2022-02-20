@@ -45,7 +45,7 @@ export default function Login() {
     try {
       dispatch(resetStateError());
       dispatch(
-        logInWithMail(event.email, event.password, event, () => {
+        logInWithMail(event.email, event.password, () => {
           navigate("/home");
         })
       );
