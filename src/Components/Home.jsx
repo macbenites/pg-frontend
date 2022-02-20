@@ -3,13 +3,11 @@ import { NavHome } from "../Utils/NavBar";
 import {
   IntroStyle,
   HomeContent,
-  HomeContainer,
-  Search,
+  HomeContainer
 } from "../Styles/component/Home";
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { FaSearch } from "react-icons/fa";
 import { authState } from "../Redux/Actions/index";
 
 function Home() {
@@ -46,10 +44,6 @@ function Home() {
             <span>Bienvenido a SeJuega!</span>
           </h5>
         </div>
-        <Search>
-          <FaSearch />
-          <input type="text" placeholder="Buscar..." />
-        </Search>
       </IntroStyle>
       <HomeContent>
         <Outlet />

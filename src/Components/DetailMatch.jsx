@@ -27,8 +27,8 @@ export default function DetailMatch() {
           <p><strong>Descripción:</strong> {detail.note}</p> 
           <p><strong>Jugadores:</strong> 
             {detail.matchPlayers?.map((element) => (
-                <p>{element.user_name}</p>
-            ))
+                <p>{element.user_name} - Posición: {element.player_position}</p>
+              ))
             }
           </p>         
         </div>

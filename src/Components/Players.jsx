@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import Player from "./Player";
 import {
   Filter,
-  ButtonFiltrar,
-  FilterButtom,
   PlayersDiv,
+  Search
 } from "../Styles/component/Players";
 import { useDispatch , useSelector } from "react-redux";
 import { showUsers, getNeighborhoods } from "../Redux/Actions";
 import { Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 
 const Players = () => {  
@@ -25,21 +25,20 @@ const Players = () => {
   return (
     <div>
       <br />
-      <ButtonFiltrar>
-        <h2>Los convocados</h2>
-        <FilterButtom>Filtros</FilterButtom>
-      </ButtonFiltrar>
       <Filter>
-        <label htmlFor="">Usuario</label>
-        <input type="text" placeholder="Search..." />
-        <label htmlFor="">Posición</label>
+        <label>Usuario</label>
+        <Search>
+          <FaSearch />
+          <input type="text" placeholder="Buscar..." />
+        </Search>
+        <label>Posición</label>
         <select name="" id="">
           <option value="">Delantero</option>
           <option value="">Mediocampista</option>
           <option value="">Defensor</option>
           <option value="">Arquero</option>
         </select>
-        <label htmlFor="">Ubicación</label>
+        <label>Ubicación</label>
         <select name="neighborhood">
           <option value= ''>Seleccione el barrio</option>
             {neighborhoods.map((element) =>(

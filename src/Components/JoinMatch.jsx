@@ -5,7 +5,7 @@ import { joinMatch, showUsers } from '../Redux/Actions'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from "sweetalert2";
-import { SelectSearch, BtnJoinStyle, TextJoin, /*InputPosition,*/ BtnBack } from '../Styles/JoinMatch';
+import { SelectSearch, BtnJoinStyle, TextJoin, BtnBack } from '../Styles/JoinMatch';
 
 
 function JoinMatch(){
@@ -17,7 +17,6 @@ function JoinMatch(){
     const users = useSelector((state) => state.users)
     const [input, setInput] = useState({
         user_name:'',
-        //position: ''
     });
 
     useEffect(()=>{
@@ -30,9 +29,6 @@ function JoinMatch(){
             [e.target.name]: e.target.value
         });
     };
-
-    console.log(input);
-    console.log(addPlayer);
 
     function handleBackClick(e){
         navigate('/home/games');
@@ -48,7 +44,6 @@ function JoinMatch(){
             timer: 1500,
           });
         navigate('/home');
-        console.log(e.target.value);
     };
 
     return(
