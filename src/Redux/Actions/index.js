@@ -26,7 +26,6 @@ import {
 } from "./types";
 import axios from "axios";
 
-
 export const resetStateError = () => async (dispatch) =>
   dispatch({
     type: "RESET_STATE_ERROR",
@@ -43,7 +42,7 @@ export const signUpWithMail = (email, password, data, callback) => {
             name: data.name,
             barrio: data.neighborhood,
             posicion: data.position,
-            displayName: data.username
+            displayName: data.username,
           };
         })
         .then((obj) => {
@@ -55,7 +54,7 @@ export const signUpWithMail = (email, password, data, callback) => {
               neighborhood: obj.barrio,
               email: obj.email,
               password: "123123",
-              player_position : [obj.posicion]
+              player_position: [obj.posicion],
             }),
             headers: {
               "Content-type": "application/json",
@@ -83,23 +82,16 @@ export const signUpWithMail = (email, password, data, callback) => {
   };
 };
 
-export const logInWithMail = (email, password, data, callback) => {
+export const logInWithMail = (email, password, callback) => {
   return async function (dispatch) {
     try {
       signInWithEmailAndPassword(auth, email, password)
         .then((obj) => {
-          console.log(obj)
-          console.log(data)
-          const newData = {
-            ...obj.user,
-            displayName : "display"
-          }
           return {
-            newData
-          }
+            ...obj.user,
+          };
         })
         .then((obj) => {
-          console.log(obj)
           dispatch({
             payload: obj,
             type: LOG_IN_WHIT_EMAIL,
@@ -136,20 +128,20 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        console.log(obj)
-        fetch("https://futbolapp-henry.herokuapp.com/register" , {
-            method : "POST",
-            body : JSON.stringify({
-              user_name : obj.user.displayName,
-              email : obj.user.email,
-              password : "123123",
-              name : obj.user.name
-            }),
-            headers : {
-              "Content-type" : "application/json"
-            }
+        console.log(obj);
+        fetch("https://futbolapp-henry.herokuapp.com/register", {
+          method: "POST",
+          body: JSON.stringify({
+            user_name: obj.user.displayName,
+            email: obj.user.email,
+            password: "123123",
+            name: obj.user.name,
+          }),
+          headers: {
+            "Content-type": "application/json",
+          },
         });
-      
+
         dispatch({
           payload: obj,
           type: LOG_IN_WITH_GOOGLE,
@@ -198,7 +190,7 @@ export function postMatch(payload) {
     );
     return newMatch;
   };
-};
+}
 
 export function getFields() {
   return function (dispatch) {
@@ -211,7 +203,7 @@ export function getFields() {
         })
       );
   };
-};
+}
 
 export function getMatches() {
   return async function (dispatch) {
@@ -225,17 +217,17 @@ export function getMatches() {
       });
     } catch (error) {
       console.log(error);
-    };
+    }
   };
-};
+}
 
 export function joinMatch(id_match, user_name) {
   return async function (dispatch) {
     try {
-      console.log({id_match, user_name})
+      console.log({ id_match, user_name });
       const joinGame = await axios.put(
         `https://futbolapp-henry.herokuapp.com/matches/${id_match}`,
-        {user: user_name}
+        { user: user_name }
       );
       return dispatch({
         type: JOIN_MATCH,
@@ -243,9 +235,9 @@ export function joinMatch(id_match, user_name) {
       });
     } catch (error) {
       console.log("error");
-    };
+    }
   };
-};
+}
 
 export const authState = () => {
   return (dispatch) => {
@@ -279,7 +271,7 @@ export function getDetailsUser(id) {
       console.log(error);
     }
   };
-};
+}
 
 export const showUsers = () => {
   return (dispatch) => {
@@ -304,7 +296,7 @@ export function postBuy(payload) {
     window.location.replace(data.response.sandbox_init_point);
     // return newBuy;
   };
-};
+}
 
 export const signUpBusiness = (email, password, data, callback) => {
   return async (dispatch) => {
@@ -318,6 +310,7 @@ export const signUpBusiness = (email, password, data, callback) => {
             password: data.password,
             phone: data.phone,
             street: data.street,
+            district: data.district,
             availableHours: data.availableHours,
             typeFloor: data.typeFloor,
             cantPlayers: data.cantPlayers,
@@ -334,6 +327,7 @@ export const signUpBusiness = (email, password, data, callback) => {
               password: obj.password,
               phone: obj.phone,
               street: obj.street,
+              district: obj.district,
               availableHours: obj.availableHours,
               typeFloor: obj.typeFloor,
               cantPlayers: obj.cantPlayers,
@@ -344,6 +338,7 @@ export const signUpBusiness = (email, password, data, callback) => {
               "Content-type": "application/json",
             },
           });
+          console.log(obj);
           dispatch({
             payload: obj,
             type: SIGN_UP_WHIT_EMAIL_AND_PASSWORD,
@@ -380,7 +375,7 @@ export function getDetailsCourt(id) {
       console.log(error);
     }
   };
-};
+}
 
 export function getDetailsMatch(id_match) {
   return async function (distpach) {
@@ -396,7 +391,7 @@ export function getDetailsMatch(id_match) {
       console.log(error);
     }
   };
-};
+}
 
 export function getNeighborhoods() {
   return async function (dispatch) {
@@ -410,6 +405,6 @@ export function getNeighborhoods() {
       });
     } catch (error) {
       console.log(error);
-    };
+    }
   };
-};
+}
