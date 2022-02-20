@@ -19,24 +19,29 @@ export const PlayersDiv = styled.div`
     margin-left: 190px;
 `
 
-export const ButtonFiltrar = styled.div`
-    display: flex;
-    flex-direction : raw;
-    margin-left: 190px;
-    margin-right : 150px;
-    justify-content : space-between
-`
+export const Search = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: 1em;
+  border-radius: 1rem;
+  background-color: var(--primary-light);
+  input {
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: transparent;
+    ::placeholder {
+      color: #d1d1d1;
+    }
+  }
 
-export const FilterButtom = styled.button`
-    height: 52px;
-    width: 224px;
-    left: 1151px;
-    top: 205px;
-    border-radius: 10px;
-    background-color : #F9BC60;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-`
+  svg {
+    fill: var(--secondary);
+    margin: 0 1rem;
+    font-size: 1.2rem;
+  }
+`;
