@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import { InputForm } from "../../Styles/reusable/Input";
 import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpBusiness, resetStateError, getNeighborhoods } from "../../Redux/Actions";
+import { Select } from "../../Styles/reusable/Select";
+import { SignUp, BtnSignUp } from "../../Styles/component/SignUpBusiness";
+import {
+  signUpBusiness,
+  resetStateError,
+  getNeighborhoods,
+} from "../../Redux/Actions";
 import Swal from "sweetalert2";
 
-import {
-  SignInDiv,
-  LinkToSignIn,
-  BtnSignIn,
-} from "../../Styles/component/SignIn";
+import { LinkToSignIn, BtnSignIn } from "../../Styles/component/SignIn";
 
 export const SignUpBusiness = () => {
   const navigate = useNavigate();
@@ -20,31 +22,15 @@ export const SignUpBusiness = () => {
     register,
     handleSubmit,
     trigger,
-    //control,
     formState: { errors },
   } = useForm();
   const { error } = useSelector((state) => state);
   const neighborhoods = useSelector((state) => state.neighborhoods);
-  console.log(neighborhoods)
+  console.log(neighborhoods);
   const dispatch = useDispatch();
-  const [input, setInput] = useState({
-    name: "",
-    neighborhood: "",
-    street: "",
-    phone: "",
-    availableHours: "",
-    cantPlayers: "",
-    cbu: "",
-    typePay: "",
-    note: "",
-    email: "",
-    password: ""
-  });
-
-  console.log(input)
 
   useEffect(() => {
-    dispatch(getNeighborhoods());      
+    dispatch(getNeighborhoods());
   }, [dispatch]);
 
   const onSubmit = (input) => {
@@ -64,23 +50,9 @@ export const SignUpBusiness = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSelect = (e) => {   
-    setInput({
-      ...input,
-      neighborhoods: e.target.value              
-    })             
-  };
-
   return (
     <div>
-      <SignInDiv>
+      <SignUp>
         <h4>Cuenta Business</h4>
         <h5>
           Ya eres parte de SeJuega!?
@@ -94,7 +66,6 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               placeholder="Nombre de Club"
               name="name"
-              onChange={(e) => handleChange(e)}
               {...register("name", {
                 required: {
                   value: true,
@@ -102,7 +73,8 @@ export const SignUpBusiness = () => {
                 },
                 pattern: {
                   value: /^[a-zA-Z0-9À-ÿ\u00f1\u00d1\s]+$/,
-                  message: "El nombre solo admite letras, números y espacios en blanco.",
+                  message:
+                    "El nombre solo admite letras, números y espacios en blanco.",
                 },
                 minLength: {
                   value: 3,
@@ -121,33 +93,6 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
-          {/* barrio */}
-          <div>
-            <select name="neighborhood" onChange= {e => handleSelect(e)}
-              {...register("neighborhood", {
-                onBlur: (e) => console.log(e),
-                required: {
-                  value: true,
-                  message: "Barrio requerido.",
-                },
-              })}
-              onKeyUp={() => {
-                trigger("neighborhood");
-              }}
-            >
-              <option value= ''>Seleccione el barrio</option>
-              {neighborhoods.map((element) =>(
-                <option key= {element.name} value = {element.name}>{element.name}</option>
-              ))}
-            </select>  
-            <ErrorMessage>
-              {errors.neighborhood && (
-                <small>
-                  <FaExclamationCircle /> {errors.neighborhood.message}
-                </small>
-              )}
-            </ErrorMessage>
-          </div>
           {/* calle */}
           <div>
             <InputForm
@@ -155,7 +100,6 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="street"
               placeholder="Calle"
-              onChange={(e) => handleChange(e)}
               {...register("street", {
                 required: {
                   value: true,
@@ -178,6 +122,36 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
+          {/* barrio */}
+          <div>
+            <Select
+              name="district"
+              {...register("district", {
+                required: {
+                  value: true,
+                  message: "Barrio requerido.",
+                },
+              })}
+              onKeyUp={() => {
+                trigger("district");
+              }}
+            >
+              <option value="">Seleccione el barrio</option>
+              {neighborhoods.map((element) => (
+                <option key={element.name} value={element.name}>
+                  {element.name}
+                </option>
+              ))}
+            </Select>
+            <ErrorMessage>
+              {errors.district && (
+                <small>
+                  <FaExclamationCircle /> {errors.district.message}
+                </small>
+              )}
+            </ErrorMessage>
+          </div>
+
           {/* telefono */}
           <div>
             <InputForm
@@ -185,7 +159,6 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="phone"
               placeholder="Teléfono"
-              onChange={(e) => handleChange(e)}
               {...register("phone", {
                 required: {
                   value: true,
@@ -215,7 +188,6 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="availableHours"
               placeholder="Horario"
-              onChange={(e) => handleChange(e)}
               {...register("availableHours", {
                 required: {
                   value: true,
@@ -235,59 +207,29 @@ export const SignUpBusiness = () => {
             </ErrorMessage>
           </div>
           {/* tipo de suelo */}
-          {/* <div>
-            <Controller
-              render={({ field }) => (
-                <select {...field}>
-                  <option value={"cesped"}>Cesped</option>
-                  <option value={"sintetico"}>Sintetico</option>
-                  <option value={"piso"}>Piso</option>
-                  <option value={"otro"}>Otro</option>
-                </select>
-              )}
-              control={control}
+          <div>
+            <Select
               name="typeFloor"
-              defaultValue={2}
               {...register("typeFloor", {
                 required: {
                   value: true,
-                  message: "Campo requerido.",
+                  message: "Tipo de suelo requerido.",
                 },
               })}
               onKeyUp={() => {
                 trigger("typeFloor");
               }}
-            />
+            >
+              <option value="">Seleccione tipo de suelo </option>
+              <option value="cesped">Cesped</option>
+              <option value="cesped sintetico">Cesped Sintético</option>
+              <option value="piso">Piso</option>
+              <option value="otro">Otro</option>
+            </Select>
             <ErrorMessage>
               {errors.typeFloor && (
                 <small>
                   <FaExclamationCircle /> {errors.typeFloor.message}
-                </small>
-              )}
-            </ErrorMessage>
-          </div> */}
-          {/* cantidad de jugadores */}
-          <div>
-            <InputForm
-              type="number"
-              autoComplete="off"
-              name="cantPlayers"
-              placeholder="N° de jugadores"
-              onChange={(e) => handleChange(e)}
-              {...register("cantPlayers", {
-                required: {
-                  value: true,
-                  message: "Campo requerido.",
-                },
-              })}
-              onKeyUp={() => {
-                trigger("cantPlayers");
-              }}
-            />
-            <ErrorMessage>
-              {errors.cantPlayers && (
-                <small>
-                  <FaExclamationCircle /> {errors.cantPlayers.message}
                 </small>
               )}
             </ErrorMessage>
@@ -299,11 +241,14 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="cbu"
               placeholder="Cbu"
-              onChange={(e) => handleChange(e)}
               {...register("cbu", {
                 required: {
                   value: true,
                   message: "Campo requerido.",
+                },
+                pattern: {
+                  value: /^[0-9]{22}$/,
+                  message: "El CBU debe contener 22 números.",
                 },
               })}
               onKeyUp={() => {
@@ -318,40 +263,13 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
-          {/* tipo de pago */}
-          <div>
-            <InputForm
-              type="text"
-              autoComplete="off"
-              name="typePay"
-              placeholder="Tipo de pago"
-              onChange={(e) => handleChange(e)}
-              {...register("typePay", {
-                required: {
-                  value: true,
-                  message: "Campo requerido.",
-                },
-              })}
-              onKeyUp={() => {
-                trigger("typePay");
-              }}
-            />
-            <ErrorMessage>
-              {errors.typePay && (
-                <small>
-                  <FaExclamationCircle /> {errors.typePay.message}
-                </small>
-              )}
-            </ErrorMessage>
-          </div>
           {/* Nota */}
           <div>
-            <InputForm
+            <textarea
               type="text"
               autoComplete="off"
               name="note"
               placeholder="Note "
-              onChange={(e) => handleChange(e)}
               {...register("note", {
                 required: {
                   value: true,
@@ -377,7 +295,6 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="email"
               placeholder="Email"
-              onChange={(e) => handleChange(e)}
               {...register("email", {
                 required: {
                   value: true,
@@ -406,7 +323,6 @@ export const SignUpBusiness = () => {
               autoComplete="off"
               name="password"
               placeholder="Contraseña"
-              onChange={(e) => handleChange(e)}
               {...register("password", {
                 required: {
                   value: true,
@@ -438,13 +354,13 @@ export const SignUpBusiness = () => {
             )}
           </ErrorMessage>
           <br />
-          <div>
+          <BtnSignUp>
             <BtnSignIn primary type="submit">
               Crear cuenta
             </BtnSignIn>
-          </div>
+          </BtnSignUp>
         </form>
-      </SignInDiv>
+      </SignUp>
     </div>
   );
 };

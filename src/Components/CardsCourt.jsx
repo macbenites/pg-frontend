@@ -7,12 +7,9 @@ import {
 import phone from "../Assets/img/phone.svg";
 import schedule from "../Assets/img/shedule.svg";
 import web from "../Assets/img/web.svg";
-//import Map from "./Map";
 import { Link } from "react-router-dom";
 
 const CardsCourt = ({ props }) => {
-  console.log(props);
-
   return (
     <CardContainer>
       <ImgCard>
@@ -28,7 +25,7 @@ const CardsCourt = ({ props }) => {
           </h6>
           <p>{props.street + " " + props.streetNumber}</p>
           <p>{props.city}</p>
-          <Link to="/reserveCourt">
+          <Link to={`/reserveCourt/${props.name}`}>
             <button>Reservar</button>
           </Link>
         </div>
@@ -38,7 +35,6 @@ const CardsCourt = ({ props }) => {
     </CardContainer>
   );
 };
-
 const IconsCity = () => {
   return (
     <IconsContainer>
