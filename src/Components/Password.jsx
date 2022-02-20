@@ -38,7 +38,7 @@ function Password() {
       showConfirmButton: false,
       timer: 1500,
     });
-    navigate("/login");
+    navigate("/auth/login");
     reset();
   };
 
@@ -71,9 +71,9 @@ function Password() {
                 </small>
               )}
             </ErrorMessage>
-            <BtnLogIn primary type="submit">
-              Recuperar Contraseña
-            </BtnLogIn>
+              <BtnLogIn primary type="submit">
+                Recuperar Contraseña
+              </BtnLogIn>
           </ContainerInput>
         </form>
       </PasswordDiv>
