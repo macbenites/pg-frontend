@@ -36,7 +36,7 @@ function Password() {
       icon: "success",
       title: "Revise su casilla de correo para reestablecer su contraseña",
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
     navigate("/login");
     reset();
