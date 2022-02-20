@@ -2,7 +2,6 @@ import { useState , useEffect } from "react"
 import { db } from "../firebase";
 import { collection, setDoc , getDocs , doc } from "firebase/firestore"
 import { useSelector , useDispatch } from "react-redux";
-import NavBar from "./NavBar";
 import {authState , getDetailsUser} from "../Redux/Actions/index"
 import { useParams } from "react-router-dom";
 
