@@ -10,7 +10,8 @@ const initialState = {
   detailsCourt: {},
   detailsMatch: {},
   neighborhoods: [],
-  displayName: "",
+  displayName : "",
+  removePlayer: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -119,7 +120,11 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         neighborhoods: payload,
       };
-
+    case "REMOVE_PLAYER":
+      return {
+        ...state,
+        removePlayer: payload
+      };
     default:
       return { ...state };
   }
