@@ -26,7 +26,7 @@ const CardsCourt = ({ props }) => {
           </h6>
           <p>{props.street + " " + props.streetNumber}</p>
           <p>{props.city}</p>
-          <Link to={`/reserveCourt/${props.name}`}>
+          <Link to={`/reserveCourt/${props.name}`}>pu
             <button>Reservar</button>
           </Link>
         </div>

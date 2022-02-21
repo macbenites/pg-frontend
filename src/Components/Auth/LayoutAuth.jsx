@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { NavAuth } from "../../Utils/NavBar";
-import NavBar from "../NavBar";
 
+import Logo from "../Logo";
 export const LayoutAuth = () => {
   return (
     <div>
-      <NavBar items={NavAuth} />
+      <Logo />
       <Outlet />
     </div>
   );

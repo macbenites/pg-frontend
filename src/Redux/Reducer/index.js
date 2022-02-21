@@ -17,31 +17,9 @@ const initialState = {
 function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
     case "ERROR":
-      if (payload === "auth/email-already-in-use") {
-        return {
-          ...state,
-          error: "Ese mail ya esta registrado",
-        };
-      } else if (payload === "auth/invalid-email") {
-        return {
-          ...state,
-          error: "Mail invalido",
-        };
-      } else if (payload === "auth/user-not-found") {
-        return {
-          ...state,
-          error: "Credenciales Incorrectas",
-        };
-      } else if (payload === "auth/wrong-password") {
-        return {
-          ...state,
-          error: "Credenciales Incorrectas",
-        };
-      } else {
-        return {
-          ...state,
-          error: payload,
-        };
+      return {
+        ...state,
+        error: payload,
       };
 
     case "USER_LOGGED":
@@ -60,7 +38,7 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         users: state.users.concat(payload),
-        displayName : payload.displayName
+        displayName: payload.displayName,
       };
 
     case "LOG_IN_WHIT_EMAIL":
@@ -107,7 +85,7 @@ function rootReducer(state = initialState, { type, payload }) {
     case "JOIN_MATCH":
       return {
         ...state,
-        players: payload
+        players: payload,
       };
     case "GET_DETAILS_USER":
       return {
@@ -123,24 +101,24 @@ function rootReducer(state = initialState, { type, payload }) {
     case "POST_BUY":
       return {
         ...state,
-      }; 
-      
+      };
+
     case "GET_DETAILS_COURT":
       return {
         ...state,
         detailsCourt: payload,
       };
-      
+
     case "GET_DETAILS_MATCH":
       return {
         ...state,
         detailsMatch: payload,
       };
 
-    case 'GET_NEIGHBORHOODS':
-      return{
-        ...state,                    
-        neighborhoods: payload                
+    case "GET_NEIGHBORHOODS":
+      return {
+        ...state,
+        neighborhoods: payload,
       };
     case "REMOVE_PLAYER":
       return {
@@ -149,7 +127,7 @@ function rootReducer(state = initialState, { type, payload }) {
       };
     default:
       return { ...state };
-  };
-};
+  }
+}
 
 export default rootReducer;

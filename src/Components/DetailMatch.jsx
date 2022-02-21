@@ -20,6 +20,7 @@ export default function DetailMatch() {
     navigate(`/matches/${id_match}`);
   };
  
+  
   return (
     <div>
       <Logo />
@@ -29,6 +30,7 @@ export default function DetailMatch() {
           <p><strong>Fecha y hora:</strong> {detail.date}</p>
           <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
           <p><strong>Descripción:</strong> {detail.note}</p> 
+
           <span><strong>Jugadores:</strong> 
             {detail.matchPlayers?.map((element, index) => (
                 <ul key={index}>
@@ -36,7 +38,7 @@ export default function DetailMatch() {
                 </ul>
               ))
             }
-          </span>         
+          </p>         
         </div>
       ) : (
         <p>Cargando...</p>

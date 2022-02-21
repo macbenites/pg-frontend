@@ -11,7 +11,7 @@ function Footer() {
       <Container>
         <Content>
           <p>
-            Hecho con <span>❤️</span> por el equipo de FutbolDev{" "}
+            Hecho con <span>❤️</span> por el equipo de Sejuega{" "}
             {new Date().getFullYear()}
           </p>
           <SocialList />

@@ -128,7 +128,7 @@ function DataUserGoogle() {
                 trigger("position");
               }}
             >
-              <option value="">Posicion de juego</option>
+              <option value="">Posición</option>
               <option value="arquero">Arquero</option>
               <option value="defensor">Defensor</option>
               <option value="mediocampista">Mediocampista</option>

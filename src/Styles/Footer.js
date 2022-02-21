@@ -6,7 +6,7 @@ export const Content = styled.div`
   align-items: center;
   p {
     font-size: 0.8rem;
-    font-weight: 100;
+    font-weight: 400;
   }
 
   @media (min-width: 568px) {
