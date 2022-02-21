@@ -8,11 +8,13 @@ export default function DetailMatch() {
   const dispatch = useDispatch();
   const { id_match } = useParams();
   const detail = useSelector((state) => state.detailsMatch);
+  console.log(detail)
 
   useEffect(() => {
     dispatch(getDetailsMatch(id_match));
   }, [dispatch, id_match]);
  
+  
   return (
     <div>
       <Logo />
@@ -22,14 +24,14 @@ export default function DetailMatch() {
           <p><strong>Fecha y hora:</strong> {detail.date}</p>
           <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
           <p><strong>Descripción:</strong> {detail.note}</p> 
-          <span><strong>Jugadores:</strong> 
-            {detail.matchPlayers?.map((element, index) => (
-                <ul key={index}>
-                  <li>{element.user_name} - {element.position}</li>
+          <p><strong>Jugadores:</strong>
+            {detail.matchPlayers?.map((element) => (
+                <ul>
+                  <li>{element.user_name} - {element.player_position}</li>
                 </ul>
               ))
             }
-          </span>         
+          </p>         
         </div>
       ) : (
         <p>Cargando...</p>
