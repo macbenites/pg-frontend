@@ -20,7 +20,7 @@ function CardsGames({nameCenter, date, players, id}){
                 <NameCenter>{nameCenter}</NameCenter>
             </Link>    
                 <DateStyle>Fecha y hora: {date}</DateStyle>
-                <Players>Faltan: {players} jugadores</Players>
+                <Players>{players > 0? <div>Faltan: {players} jugadores</div>: players = 'PARTIDO COMPLETO'}</Players>
                     <ButtonJoinCardsGames onClick={e => handleClick(e)}>Unirse</ButtonJoinCardsGames> 
                 <BtnInviteCardsGames onClick={e => handleCLickInvite(e)}>Invitar</BtnInviteCardsGames>
             </MainCardsGames>
