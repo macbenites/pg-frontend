@@ -1,19 +1,13 @@
 import { useEffect } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
-import { InputForm } from "../../Styles/reusable/Input";
+import { InputForm, Label } from "../../Styles/reusable/Input";
 import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Select } from "../../Styles/reusable/Select";
 import { SignUp, BtnSignUp } from "../../Styles/component/SignUpBusiness";
-import {
-  signUpBusiness,
-  resetStateError,
-  getNeighborhoods,
-} from "../../Redux/Actions";
-import Swal from "sweetalert2";
-
+import { signUpBusiness, getNeighborhoods } from "../../Redux/Actions";
 import { LinkToSignIn, BtnSignIn } from "../../Styles/component/SignIn";
 
 export const SignUpBusiness = () => {
@@ -24,7 +18,7 @@ export const SignUpBusiness = () => {
     trigger,
     formState: { errors },
   } = useForm();
-  const { error } = useSelector((state) => state);
+
   const neighborhoods = useSelector((state) => state.neighborhoods);
   console.log(neighborhoods);
   const dispatch = useDispatch();
@@ -35,18 +29,11 @@ export const SignUpBusiness = () => {
 
   const onSubmit = (input) => {
     if (Object.entries(errors).length === 0) {
-      dispatch(resetStateError());
       dispatch(
         signUpBusiness(input.email, input.password, input, () => {
           navigate("/auth/login");
         })
       );
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Todos los campos son requeridos!",
-      });
     }
   };
 
@@ -55,16 +42,19 @@ export const SignUpBusiness = () => {
       <SignUp>
         <h4>Cuenta Business</h4>
         <h5>
-          Ya eres parte de SeJuega!?
-          <LinkToSignIn to="/auth/login"> Log In</LinkToSignIn>
+          Ya eres parte de SeJuega ?{" "}
+          <LinkToSignIn to="/auth/login" business="true">
+            Iniciar Sesión
+          </LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* nombre de club */}
           <div>
+            <Label>Nombre de Club</Label>
             <InputForm
               type="text"
               autoComplete="off"
-              placeholder="Nombre de Club"
+              placeholder="Sejuega club"
               name="name"
               {...register("name", {
                 required: {
@@ -95,19 +85,25 @@ export const SignUpBusiness = () => {
           </div>
           {/* calle */}
           <div>
+            <Label>Dirección</Label>
             <InputForm
               type="text"
               autoComplete="off"
               name="street"
-              placeholder="Calle"
+              placeholder="Av. Corrientes 1234"
               {...register("street", {
                 required: {
                   value: true,
-                  message: "Calle requerida.",
+                  message: "Dirección requerida.",
                 },
                 pattern: {
-                  value: /^[a-zA-Z0-9_-]+$/,
-                  message: "La calle solo admite letras y espacios en blanco.",
+                  value: /^[a-zA-Z0-9À-ÿ\u00f1\u00d1._-\s]+$/,
+                  message:
+                    "La Dirección solo admite letras,numeros y espacios en blanco.",
+                },
+                maxLength: {
+                  value: 30,
+                  message: "La Dirección debe contener máximo 30 caracteres.",
                 },
               })}
               onKeyUp={() => {
@@ -124,6 +120,7 @@ export const SignUpBusiness = () => {
           </div>
           {/* barrio */}
           <div>
+            <Label>Barrio</Label>
             <Select
               name="district"
               {...register("district", {
@@ -137,8 +134,8 @@ export const SignUpBusiness = () => {
               }}
             >
               <option value="">Seleccione el barrio</option>
-              {neighborhoods.map((element) => (
-                <option key={element.name} value={element.name}>
+              {neighborhoods.map((element, index) => (
+                <option key={index} value={element.name}>
                   {element.name}
                 </option>
               ))}
@@ -151,63 +148,9 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
-
-          {/* telefono */}
-          <div>
-            <InputForm
-              type="tel"
-              autoComplete="off"
-              name="phone"
-              placeholder="Teléfono"
-              {...register("phone", {
-                required: {
-                  value: true,
-                  message: "Telefono requerida.",
-                },
-                // pattern: {
-                //   value: /^[0-9]{3}-[0-9]{2}-[0-9]{3}+$/,
-                //   message: "El campo solo admiete números.",
-                // },
-              })}
-              onKeyUp={() => {
-                trigger("phone");
-              }}
-            />
-            <ErrorMessage>
-              {errors.phone && (
-                <small>
-                  <FaExclamationCircle /> {errors.phone.message}
-                </small>
-              )}
-            </ErrorMessage>
-          </div>
-          {/* horario */}
-          <div>
-            <InputForm
-              type="text"
-              autoComplete="off"
-              name="availableHours"
-              placeholder="Horario"
-              {...register("availableHours", {
-                required: {
-                  value: true,
-                  message: "Horario requerido.",
-                },
-              })}
-              onKeyUp={() => {
-                trigger("availableHours");
-              }}
-            />
-            <ErrorMessage>
-              {errors.availableHours && (
-                <small>
-                  <FaExclamationCircle /> {errors.availableHours.message}
-                </small>
-              )}
-            </ErrorMessage>
-          </div>
           {/* tipo de suelo */}
           <div>
+            <Label>Tipo de suelo</Label>
             <Select
               name="typeFloor"
               {...register("typeFloor", {
@@ -234,13 +177,106 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
+          {/* telefono */}
+          <div>
+            <Label>Teléfono</Label>
+            <InputForm
+              type="tel"
+              autoComplete="off"
+              name="phone"
+              placeholder="11 59777570"
+              {...register("phone", {
+                required: {
+                  value: true,
+                  message: "Telefono requerido.",
+                },
+                pattern: {
+                  value: /^[0-9_-\s]+$/,
+                  message: "Solo debe contener solo números.",
+                },
+                maxLength: {
+                  value: 11,
+                  message: "Máximo 10 caracteres.",
+                },
+              })}
+              onKeyUp={() => {
+                trigger("phone");
+              }}
+            />
+            <ErrorMessage>
+              {errors.phone && (
+                <small>
+                  <FaExclamationCircle /> {errors.phone.message}
+                </small>
+              )}
+            </ErrorMessage>
+          </div>
+          {/* horario */}
+
+          <div>
+            <Label>Horario de atención</Label>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              name="availableHours"
+              placeholder="9:00 - 18:00"
+              {...register("availableHours", {
+                required: {
+                  value: true,
+                  message: "Horario requerido.",
+                },
+              })}
+              onKeyUp={() => {
+                trigger("availableHours");
+              }}
+            />
+            <ErrorMessage>
+              {errors.availableHours && (
+                <small>
+                  <FaExclamationCircle /> {errors.availableHours.message}
+                </small>
+              )}
+            </ErrorMessage>
+          </div>
+          {/* Precio */}
+          <div>
+            <Label>Precio</Label>
+            <InputForm
+              type="text"
+              autoComplete="off"
+              name="price"
+              placeholder="ARS"
+              {...register("price", {
+                required: {
+                  value: true,
+                  message: "Precio requerido.",
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "El precio solo debe contener números.",
+                },
+              })}
+              onKeyUp={() => {
+                trigger("price");
+              }}
+            />
+            <ErrorMessage>
+              {errors.price && (
+                <small>
+                  <FaExclamationCircle /> {errors.price.message}
+                </small>
+              )}
+            </ErrorMessage>
+          </div>
+
           {/* CBU */}
           <div>
+            <Label>Cvu</Label>
             <InputForm
               type="text"
               autoComplete="off"
               name="cbu"
-              placeholder="Cbu"
+              placeholder="7652987623411238905021"
               {...register("cbu", {
                 required: {
                   value: true,
@@ -248,7 +284,7 @@ export const SignUpBusiness = () => {
                 },
                 pattern: {
                   value: /^[0-9]{22}$/,
-                  message: "El CBU debe contener 22 números.",
+                  message: "El cvu debe contener 22 números.",
                 },
               })}
               onKeyUp={() => {
@@ -263,38 +299,15 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
-          {/* Nota */}
-          <div>
-            <textarea
-              type="text"
-              autoComplete="off"
-              name="note"
-              placeholder="Note "
-              {...register("note", {
-                required: {
-                  value: true,
-                  message: "Campo requerido.",
-                },
-              })}
-              onKeyUp={() => {
-                trigger("note");
-              }}
-            />
-            <ErrorMessage>
-              {errors.note && (
-                <small>
-                  <FaExclamationCircle /> {errors.note.message}
-                </small>
-              )}
-            </ErrorMessage>
-          </div>
+
           {/* email */}
           <div>
+            <Label>Correo electrónico</Label>
             <InputForm
               type="email"
               autoComplete="off"
               name="email"
-              placeholder="Email"
+              placeholder="sejuega@outlook.com"
               {...register("email", {
                 required: {
                   value: true,
@@ -318,6 +331,7 @@ export const SignUpBusiness = () => {
             </ErrorMessage>
           </div>
           <div>
+            <Label>Contraseña</Label>
             <InputForm
               type="password"
               autoComplete="off"
@@ -346,14 +360,39 @@ export const SignUpBusiness = () => {
               )}
             </ErrorMessage>
           </div>
-          <ErrorMessage>
-            {error && (
-              <small>
-                {/*<FaExclamationCircle />*/} {error}
-              </small>
-            )}
-          </ErrorMessage>
-          <br />
+          {/* Nota */}
+          <BtnSignUp>
+            <Label>Notas</Label>
+            <textarea
+              type="text"
+              autoComplete="off"
+              name="note"
+              placeholder="Notas "
+              {...register("note", {
+                required: {
+                  value: false,
+                },
+                minLength: {
+                  value: 10,
+                  message: "La nota debe contener al menos 10 caracteres.",
+                },
+                maxLength: {
+                  value: 200,
+                  message: "La nota no debe contener más de 200 caracteres.",
+                },
+              })}
+              onKeyUp={() => {
+                trigger("note");
+              }}
+            />
+            <ErrorMessage>
+              {errors.note && (
+                <small>
+                  <FaExclamationCircle /> {errors.note.message}
+                </small>
+              )}
+            </ErrorMessage>
+          </BtnSignUp>
           <BtnSignUp>
             <BtnSignIn primary type="submit">
               Crear cuenta

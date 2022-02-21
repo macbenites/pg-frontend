@@ -1,12 +1,13 @@
 import { FaExclamationCircle } from "react-icons/fa";
-import { InputForm } from "../../Styles/reusable/Input";
+import { InputForm, Label } from "../../Styles/reusable/Input";
+import { Select } from "../../Styles/reusable/Select";
 import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpWithMail, resetStateError, getNeighborhoods } from "../../Redux/Actions";
-import Swal from "sweetalert2";
+
+import { signUpWithMail, getNeighborhoods } from "../../Redux/Actions";
 
 import {
   SignInDiv,
@@ -32,7 +33,7 @@ function SignIn() {
     trigger,
     formState: { errors },
   } = useForm();
-  const { error } = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const neighborhoods = useSelector((state) => state.neighborhoods);
 
@@ -42,18 +43,11 @@ function SignIn() {
 
   const onSubmit = (input) => {
     if (Object.entries(errors).length === 0) {
-      dispatch(resetStateError());
       dispatch(
         signUpWithMail(input.email, input.password, input, () => {
           navigate("/auth/login");
         })
       );
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Todos los campos son requeridos!",
-      });
     }
   };
 
@@ -62,11 +56,15 @@ function SignIn() {
       <SignInDiv>
         <h4>Creá tu cuenta</h4>
         <h5>
-          Ya tenés tu cuenta?
-          <LinkToSignIn to="/auth/login"> Log In</LinkToSignIn>
+          <LinkToSignIn to="/auth/login"> Ya tenés tu cuenta?</LinkToSignIn>
+          <span> o </span>
+          <LinkToSignIn business="true" to="/auth/business">
+            Eres una empresa?
+          </LinkToSignIn>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Name>
+            <Label>Nombre</Label>
             <InputForm
               type="text"
               autoComplete="off"
@@ -99,6 +97,7 @@ function SignIn() {
             </ErrorMessage>
           </Name>
           <User>
+            <Label>Usuario</Label>
             <InputForm
               type="text"
               autoComplete="off"
@@ -136,7 +135,8 @@ function SignIn() {
             </ErrorMessage>
           </User>
           <Barrio>
-            <select
+            <Label>Barrio</Label>
+            <Select
               name="neighborhood"
               {...register("neighborhood", {
                 required: {
@@ -148,11 +148,13 @@ function SignIn() {
                 trigger("neighborhood");
               }}
             >
-              <option value= ''>Barrio</option>
-                {neighborhoods.map((element) =>(
-                  <option key= {element.id} value = {element.name}>{element.name}</option>
-                ))}  
-            </select>
+              <option value="">Barrio</option>
+              {neighborhoods.map((element, index) => (
+                <option key={index} value={element.name}>
+                  {element.name}
+                </option>
+              ))}
+            </Select>
             <ErrorMessage>
               {errors.neighborhood && (
                 <small>
@@ -162,8 +164,9 @@ function SignIn() {
             </ErrorMessage>
           </Barrio>
           <Position>
-            <select
-              name="position"             
+            <Label>Posición</Label>
+            <Select
+              name="position"
               {...register("position", {
                 required: {
                   value: true,
@@ -179,7 +182,7 @@ function SignIn() {
               <option value="mediocampista">Mediocampista</option>
               <option value="defensor">Defensor</option>
               <option value="arquero">Arquero</option>
-            </select>
+            </Select>
             <ErrorMessage>
               {errors.position && (
                 <small>
@@ -189,6 +192,7 @@ function SignIn() {
             </ErrorMessage>
           </Position>
           <Email>
+            <Label>Correo electrónico</Label>
             <InputForm
               type="email"
               autoComplete="off"
@@ -217,6 +221,7 @@ function SignIn() {
             </ErrorMessage>
           </Email>
           <Password>
+            <Label>Contraseña</Label>
             <InputForm
               type="password"
               autoComplete="off"
@@ -245,13 +250,6 @@ function SignIn() {
               )}
             </ErrorMessage>
           </Password>
-          <ErrorMessage>
-            {error && (
-              <small>
-                {/*<FaExclamationCircle />*/} {error}
-              </small>
-            )}
-          </ErrorMessage>
           <br />
           <Btn>
             <BtnSignIn primary type="submit">
