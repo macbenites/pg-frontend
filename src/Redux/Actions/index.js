@@ -69,7 +69,7 @@ export const signUpWithMail = (email, password, data, callback) => {
             neighborhood: obj.barrio,
             email: obj.email,
             password: "123123",
-            player_position: [obj.posicion],
+            player_position: obj.posicion,
           }),
           headers: {
             "Content-type": "application/json",
@@ -238,19 +238,19 @@ export const authState = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         fetch("https://futbolapp-henry.herokuapp.com/users/email/" + user.email)
-          .then(obj => obj.json())
-          .then(obj => {
+          .then((obj) => obj.json())
+          .then((obj) => {
             const moreData = {
               ...user,
-              user_name : obj.user_name,
-              name : obj.name
-            }
-            console.log(moreData )
+              user_name: obj.user_name,
+              name: obj.name,
+            };
+            console.log(moreData);
             return dispatch({
               payload: moreData,
               type: "USER_LOGGED",
             });
-          })
+          });
       } else {
         dispatch({
           payload: null,
