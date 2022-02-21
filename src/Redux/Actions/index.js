@@ -24,6 +24,8 @@ import {
   GET_DETAILS_COURT,
   GET_DETAILS_MATCH,
   GET_NEIGHBORHOODS,
+  FILTER_BY_POSITION,
+  FILTER_BY_NEIGHBORHOOD,
   REMOVE_PLAYER,
 } from "./types";
 import axios from "axios";
@@ -402,19 +404,74 @@ export function getNeighborhoods() {
   };
 }
 
-export function removeMatchPlayer(id_match, user_name){
-  return async function(dispatch){
-    try{
+export function filterPlayersByPosition(position) {
+  if (position === "todos") {
+    return function (dispatch) {
+      fetch("https://futbolapp-henry.herokuapp.com/users")
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_POSITION,
+          });
+        });
+    };
+  } else {
+    return function (dispatch) {
+      fetch(`https://futbolapp-henry.herokuapp.com/users/position/${position}`)
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_POSITION,
+          });
+        });
+    };
+  }
+}
+
+export function filterPlayersByNeighborhoods(neighborhood) {
+  if (neighborhood === "todos") {
+    return function (dispatch) {
+      fetch("https://futbolapp-henry.herokuapp.com/users")
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_NEIGHBORHOOD,
+          });
+        });
+    };
+  } else {
+    return function (dispatch) {
+      fetch(
+        `https://futbolapp-henry.herokuapp.com/users/neighborhood/${neighborhood}`
+      )
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_NEIGHBORHOOD,
+          });
+        });
+    };
+  }
+}
+
+export function removeMatchPlayer(id_match, user_name) {
+  return async function (dispatch) {
+    try {
       console.log({ id_match, user_name });
-      const removePlayer = axios.put(`https://futbolapp-henry.herokuapp.com/exitMatches/${id_match}`,
-      { user: user_name }
+      const removePlayer = axios.put(
+        `https://futbolapp-henry.herokuapp.com/exitMatches/${id_match}`,
+        { user: user_name }
       );
       return dispatch({
         type: REMOVE_PLAYER,
-        payload: removePlayer.data
+        payload: removePlayer.data,
       });
-    }catch(error){
-      console.log('error')
-    };
+    } catch (error) {
+      console.log("error");
+    }
   };
-};
+}
