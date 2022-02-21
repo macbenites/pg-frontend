@@ -16,8 +16,8 @@ export default function DetailMatch() {
 
   function handleClick(e){
     // e.preventDefault();
-    dispatch(removeMatchPlayer(id_match, e.target.value))
-    navigate(`/matches/${id_match}`)
+    dispatch(removeMatchPlayer(id_match, e.target.value));
+    navigate(`/matches/${id_match}`);
   };
  
   return (
