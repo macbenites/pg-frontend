@@ -64,11 +64,10 @@ function SignIn() {
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Name>
-            <Label>Nombre</Label>
+            <Label>Nombres</Label>
             <InputForm
               type="text"
               autoComplete="off"
-              placeholder="Nombre"
               name="name"
               {...register("name", {
                 required: {
@@ -102,7 +101,6 @@ function SignIn() {
               type="text"
               autoComplete="off"
               name="username"
-              placeholder="Usuario"
               {...register("username", {
                 onBlur: (e) => console.log(e),
                 required: {
@@ -197,7 +195,6 @@ function SignIn() {
               type="email"
               autoComplete="off"
               name="email"
-              placeholder="Email"
               {...register("email", {
                 required: {
                   value: true,
@@ -226,7 +223,6 @@ function SignIn() {
               type="password"
               autoComplete="off"
               name="password"
-              placeholder="Contraseña"
               {...register("password", {
                 required: {
                   value: true,

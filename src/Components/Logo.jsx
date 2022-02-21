@@ -5,7 +5,6 @@ function Logo({ changeColor }) {
   return (
     <StyledLogo>
       <img src={logoBall} alt="logo" draggable="false" />
-      <span>SeJuega!</span>
     </StyledLogo>
   );
 }
