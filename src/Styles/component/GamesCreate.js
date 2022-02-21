@@ -4,8 +4,23 @@ import { Button } from "../reusable/Button";
 
 export const CreateDiv = styled.div`
   padding: 0 2rem;
+
+  select{
+    display: flex;
+    margin-top: 3px;
+    height: 52px;
+    width: 259px;
+    background-color: #206F6C;
+    border: none;
+    border-radius: 15px;
+    color:#abd1c6;
+    padding-left: 10px;
+    font-size: 17px;
+  }
   input {
     margin: 0.2rem 0;
+    height: 20px;
+    color:#abd1c6;
   }
 
   h4 {
@@ -13,7 +28,7 @@ export const CreateDiv = styled.div`
     letter-spacing: -0.05em;
     font-size: 3rem;
     margin: 2rem 0;
-    color: var(--text-color);
+    color:#abd1c6;
   }
 
   h5 {

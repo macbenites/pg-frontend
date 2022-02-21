@@ -26,19 +26,18 @@ const Players = () => {
     <div>
       <br />
       <Filter>
-        <label>Usuario</label>
         <Search>
           <FaSearch />
           <input type="text" placeholder="Buscar..." />
         </Search>
-        <label>Posición</label>
+        <label>Filtrar por posición: </label>
         <select name="" id="">
           <option value="">Delantero</option>
           <option value="">Mediocampista</option>
           <option value="">Defensor</option>
           <option value="">Arquero</option>
         </select>
-        <label>Ubicación</label>
+        <label>Filtrar por ubicación:</label>
         <select name="neighborhood">
           <option value= ''>Seleccione el barrio</option>
             {neighborhoods.map((element) =>(

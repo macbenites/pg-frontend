@@ -11,6 +11,7 @@ export const MainCardsGames = styled.div`
   justify-content: space-between;
   padding: 1rem;
   margin-top: 30px;
+  :hover{background-color: #F9BC60;}
 `;
 
 export const DateStyle = styled.div`

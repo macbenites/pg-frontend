@@ -4,12 +4,24 @@ export const Filter = styled.div`
     display : flex;
     flex-wrap : wrap;
     flex-direction : raw;
-
-    input , select {
-        height : 30px;
-        width : 210px;
-        margin : 10px
-    } 
+    margin-bottom: 50px;
+    label{
+      color: #abd1c6;
+      margin-left: 50px;
+      margin-top: 10px;
+      font-size: 20px;
+      margin-right: 20px;
+    }
+    select{
+      display: flex;
+      width: 300px;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+      padding-left: 20px;
+      background-color: #206F6C;
+      color: #abd1c6;
+    }
 `
 
 export const PlayersDiv = styled.div`
@@ -21,7 +33,10 @@ export const PlayersDiv = styled.div`
 
 export const Search = styled.div`
   display: flex;
-  justify-content: center;
+  height: 50px;
+  width: 300px;
+  margin-left: 800px;
+  margin-top: -100px;
   align-items: center;
   padding: 0 1rem;
   font-size: 1em;

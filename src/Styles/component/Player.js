@@ -6,8 +6,12 @@ export const PlayerDiv = styled.div`
     flex-wrap : wrap;
     flex-direction : column;
     background-color: #abd1c6;
+    color:  #004643;
     margin : 10px;
     width : 200px;
+    :hover{
+        background-color: #F9BC60;
+    }
     
     border-radius : 20px;
 
