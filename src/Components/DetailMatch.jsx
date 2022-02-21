@@ -31,7 +31,7 @@ export default function DetailMatch() {
                 </ul>
               ))
             }
-          </p>         
+          </span>         
         </div>
       ) : (
         <p>Cargando...</p>

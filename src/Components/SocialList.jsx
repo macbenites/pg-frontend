@@ -5,7 +5,7 @@ function SocialList() {
   return (
     <div>
       {socialMedia.map((item, index) => (
-        <IconList href={item.url} key={index} target="_blank" rel="noreferrer">
+        <IconList href={item.link} key={index} target="_blank" rel="noreferrer">
           {item.icon}
         </IconList>
       ))}
