@@ -5,7 +5,7 @@ import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Select } from "../../Styles/reusable/Select";
+import { Select } from "../../Styles/reusable/Select.js";
 import { SignUp, BtnSignUp } from "../../Styles/component/SignUpBusiness";
 import {
   signUpBusiness,

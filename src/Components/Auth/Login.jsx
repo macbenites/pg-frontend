@@ -46,7 +46,7 @@ export default function Login() {
       dispatch(resetStateError());
       dispatch(
         logInWithMail(event.email, event.password, () => {
-          navigate("/home");
+          navigate("/home/games");
         })
       );
     } catch (error) {
@@ -56,12 +56,12 @@ export default function Login() {
 
   const googleLogIn = async () => {
     dispatch(await logInWithGoogle());
-    navigate("/home");
+    navigate("/home/games");
   };
 
   const facebookLogIn = async () => {
     dispatch(await logInWithFacebook());
-    navigate("/home");
+    navigate("/home/games");
   };
 
   return (
