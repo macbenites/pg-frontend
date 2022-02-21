@@ -23,16 +23,3 @@ export const NavHome = [
     icon: <MdOutlinePayments />,
   },
 ];
-
-export const NavAuth = [
-  {
-    name: "Futbolero",
-    link: "/auth/signin",
-    icon: <GiSoccerField />,
-  },
-  {
-    name: "Empresa",
-    link: "/auth/business",
-    icon: <GiSoccerKick />,
-  },
-];
