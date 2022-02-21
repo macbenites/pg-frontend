@@ -10,8 +10,9 @@ import web from "../Assets/img/web.svg";
 import { Link } from "react-router-dom";
 
 const CardsCourt = ({ props }) => {
+
   return (
-    <CardContainer>
+    <CardContainer> 
       <ImgCard>
         <img
           src="https://user-images.githubusercontent.com/59841113/153101175-a51d1d35-d901-47b7-a8dd-dd82e2f3285b.jpg"

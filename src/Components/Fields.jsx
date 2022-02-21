@@ -1,8 +1,9 @@
-import CardsCity from "./CardsCourt";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getFields, getNeighborhoods } from "../Redux/Actions";
 import { Link } from "react-router-dom";
+import { FilterSelect, CardStyles, TitleStyle } from '../Styles/component/Fields'
+import CardsCourt from "./CardsCourt";
 
 const Fields = () => {
   const fields = useSelector (obj => obj.fields);
@@ -18,21 +19,27 @@ const Fields = () => {
 
   return (
     <div>
+      <TitleStyle>Canchas de Capital Federal</TitleStyle>
+      <FilterSelect>
+      <label>Filtrar por:</label>
       <select name="neighborhood">
         <option value= ''>Barrio</option>
           {neighborhoods.map((element) =>(
             <option key= {element.id} value = {element.name}>{element.name}</option>
           ))}  
       </select>
+      </FilterSelect>
+      <CardStyles>
       {
-        tenFields && tenFields.map(obj => {
+        tenFields && tenFields.map(obj => { 
          return (
           <Link to={"/sportcenters/" + obj.id}>
-           <CardsCity key={obj.id} props={obj}/>
+           <CardsCourt key={obj.id} props={obj}/>
           </Link> 
            )
         })
       }
+      </CardStyles>
     </div>
   );
 };
