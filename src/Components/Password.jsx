@@ -36,9 +36,9 @@ function Password() {
       icon: "success",
       title: "Revise su casilla de correo para reestablecer su contraseña",
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
-    navigate("/login");
+    navigate("/auth/login");
     reset();
   };
 
@@ -71,9 +71,9 @@ function Password() {
                 </small>
               )}
             </ErrorMessage>
-            <BtnLogIn primary type="submit">
-              Recuperar Contraseña
-            </BtnLogIn>
+              <BtnLogIn primary type="submit">
+                Recuperar Contraseña
+              </BtnLogIn>
           </ContainerInput>
         </form>
       </PasswordDiv>

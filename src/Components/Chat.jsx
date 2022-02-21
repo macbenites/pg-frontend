@@ -1,6 +1,6 @@
 import { useState , useEffect } from "react"
 import { db } from "../firebase";
-import { collection, setDoc , getDocs , doc } from "firebase/firestore"
+import { collection, setDoc , getDocs , doc , onSnapshot , /* updateDoc */ } from "firebase/firestore"
 import { useSelector , useDispatch } from "react-redux";
 import {authState , getDetailsUser} from "../Redux/Actions/index"
 import { useParams } from "react-router-dom";
@@ -26,8 +26,12 @@ function Chat () {
             receptor : userReceptor.email,
             emisor : user.email
         })
-        setInputMensaje(" ")
-        getMensajes()
+        setInputMensaje(" ");
+        getMensajes();
+        const unsub = onSnapshot(doc(db, "mensajes","chat"  ), (doc) => {
+            console.log("Current data: ", doc.data());
+        });
+        console.log(unsub)
     }
 
     const handleChange = (e) => {
@@ -108,9 +112,7 @@ function Chat () {
                         <p>{obj ? obj.emisor : "user"} :</p>
                         <p>{obj.texto}</p>
                     </div>
-                }) : 
-                
-                <button onClick={showMensajes}>Mostrar historial de chat</button>
+                }) : null
             }
             <form onSubmit={submitForm}>
                 <input 
@@ -120,6 +122,7 @@ function Chat () {
                     onChange={handleChange} />
                 <button>Enviar</button>
             </form>
+                <button onClick={showMensajes}>{ mensajes ?  "Actualizar chat" : "Mostrar historial de chat"}</button>
         </div>
     )
 }

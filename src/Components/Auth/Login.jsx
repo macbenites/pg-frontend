@@ -32,7 +32,7 @@ export default function Login() {
     try {
       dispatch(
         logInWithMail(event.email, event.password, () => {
-          navigate("/home");
+          navigate("/home/games");
         })
       );
     } catch (e) {}
@@ -40,7 +40,7 @@ export default function Login() {
 
   const googleLogIn = async () => {
     dispatch(await logInWithGoogle());
-    navigate("/home");
+    navigate("/home/games");
   };
 
   return (
