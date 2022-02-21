@@ -54,5 +54,5 @@ export const BtnInviteCardsGames = styled(Button)`
   height: 30px;
   display: flex;
   margin-left: 100px;
-  margin-top: -49px;
+  margin-top: -40px;
 `;
