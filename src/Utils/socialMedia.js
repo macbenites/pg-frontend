@@ -1,19 +1,14 @@
-import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export const socialMedia = [
   {
     name: "Instagram",
-    link: "https://www.instagram.com/",
+    link: "https://www.instagram.com/sejuega2022/",
     icon: <FaInstagram />,
   },
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/",
-    icon: <FaLinkedin />,
-  },
-  {
-    name: "Github",
-    link: "https://www.github.com/",
-    icon: <FaGithub />,
+    link: "https://www.facebook.com/profile.php?id=100077983145789",
+    icon: <FaFacebook />,
   },
 ];
