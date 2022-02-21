@@ -18,6 +18,7 @@ import DetailMatch from "./Components/DetailMatch";
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
 import Chat from "./Components/Chat";
+import DataUserGoogle from "./Components/Auth/DataUserGoogle";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/sportcenters/:id" element={<DetailCourt />} />
             <Route path="/matches/:id_match" element={<DetailMatch />} />
             <Route path="home" element={<Home />}>
+              <Route path="profile" element={<DataUserGoogle />} />
               <Route path="games" element={<Games />} />
               <Route path="joinMatch/:id" element={<JoinMatch />} />
               <Route path="players" element={<Players />} />
