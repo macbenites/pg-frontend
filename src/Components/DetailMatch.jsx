@@ -8,30 +8,40 @@ export default function DetailMatch() {
   const dispatch = useDispatch();
   const { id_match } = useParams();
   const detail = useSelector((state) => state.detailsMatch);
-  console.log(detail)
+  console.log(detail);
 
   useEffect(() => {
     dispatch(getDetailsMatch(id_match));
   }, [dispatch, id_match]);
- 
-  
+
   return (
     <div>
       <Logo />
       {detail ? (
         <div>
-          <p><strong>Lugar:</strong> {detail.nameCenter}</p>
-          <p><strong>Fecha y hora:</strong> {detail.date}</p>
-          <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
-          <p><strong>Descripción:</strong> {detail.note}</p> 
-          <p><strong>Jugadores:</strong>
+          <p>
+            <strong>Lugar:</strong> {detail.nameCenter}
+          </p>
+          <p>
+            <strong>Fecha y hora:</strong> {detail.date}
+          </p>
+          <p>
+            <strong>Cancelación:</strong> {detail.cancellation} antes de la hora
+            de inicio
+          </p>
+          <p>
+            <strong>Descripción:</strong> {detail.note}
+          </p>
+          <p>
+            <strong>Jugadores:</strong>
             {detail.matchPlayers?.map((element) => (
-                <ul>
-                  <li>{element.user_name} - {element.player_position}</li>
-                </ul>
-              ))
-            }
-          </p>         
+              <ul>
+                <li>
+                  {element.user_name} - {element.position}
+                </li>
+              </ul>
+            ))}
+          </p>
         </div>
       ) : (
         <p>Cargando...</p>

@@ -176,10 +176,10 @@ function SignIn() {
               }}
             >
               <option value="">Posicion de juego</option>
-              <option value="delantero">Delantero</option>
-              <option value="mediocampista">Mediocampista</option>
-              <option value="defensor">Defensor</option>
-              <option value="arquero">Arquero</option>
+              <option value="Delantero">Delantero</option>
+              <option value="Mediocampista">Mediocampista</option>
+              <option value="Defensor">Defensor</option>
+              <option value="Arquero">Arquero</option>
             </Select>
             <ErrorMessage>
               {errors.position && (
