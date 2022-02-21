@@ -243,10 +243,20 @@ export const authState = () => {
   return (dispatch) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch({
-          payload: user,
-          type: "USER_LOGGED",
-        });
+        fetch("https://futbolapp-henry.herokuapp.com/users/email/" + user.email)
+          .then(obj => obj.json())
+          .then(obj => {
+            const moreData = {
+              ...user,
+              user_name : obj.user_name,
+              name : obj.name
+            }
+            console.log(moreData )
+            return dispatch({
+              payload: moreData,
+              type: "USER_LOGGED",
+            });
+          })
       } else {
         dispatch({
           payload: null,

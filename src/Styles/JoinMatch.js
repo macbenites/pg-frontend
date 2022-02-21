@@ -49,7 +49,7 @@ export const BtnJoinStyle = styled(Button)`
     color: #004643;
 `;
 
-export const SelectSearch = styled.select`
+export const SelectSearch = styled.div`
     display: flex;
     width: 432px;
     height: 55px;
