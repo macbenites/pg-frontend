@@ -17,10 +17,11 @@ export const Filter = styled.div`
       width: 300px;
       height: 50px;
       border: none;
-      border-radius: 10px;
+      border-radius: 15px;
       padding-left: 20px;
       background-color: #206F6C;
       color: #abd1c6;
+      font-size: 15px;
     }
 `
 
@@ -28,7 +29,7 @@ export const PlayersDiv = styled.div`
     display : flex;
     flex-wrap : wrap;
     flex-direction : raw;
-    margin-left: 190px;
+    justify-content: space-evenly;
 `
 
 export const Search = styled.div`

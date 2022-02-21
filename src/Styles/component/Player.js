@@ -19,12 +19,26 @@ export const PlayerDiv = styled.div`
         width : 120px;
         height : 100px;
         border-radius : 100%;
-        margin-top: 10px;
+        margin-top: 20px;
         padding-left : 45px;
         padding-right : 45px
     }
 
-    h3, h5, h4 {
+    h3{
         text-align : center;
+        font-size: 25px;
+        padding: 10px;
+        margin-right: 8px;
+    }
+    h4{
+        text-align : center;
+        font-size: 20px;
+        margin-right: 8px;
+        margin-top: -10px;
+    }
+    h5{
+        text-align : center;
+        font-size: 15px;
+        margin-top: -10px;
     }
 `

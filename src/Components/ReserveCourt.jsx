@@ -4,7 +4,7 @@ import { postBuy } from "../Redux/Actions/index";
 import { useDispatch } from "react-redux";
 import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
-import { CreateDiv, BtnCreateGame } from "../Styles/component/GamesCreate";
+import { CreateDiv, BtnCreateGame, BtnBack } from "../Styles/component/GamesCreate";
 import { Name, User, Barrio, Btn } from "../Styles/reusable/Containers";
 
 export default function ReserveCourt() {
@@ -32,11 +32,16 @@ export default function ReserveCourt() {
     });
   };
 
+  function handleBackClick(){
+    navigate('/home/canchas');
+  };
+
   return (
     <div>
       <Logo />
       <CreateDiv>
         <h4>Reservar</h4>
+        <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
         <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
             <InputForm type="text" value={name} name="title" readOnly />
