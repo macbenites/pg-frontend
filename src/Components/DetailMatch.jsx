@@ -8,11 +8,13 @@ export default function DetailMatch() {
   const dispatch = useDispatch();
   const { id_match } = useParams();
   const detail = useSelector((state) => state.detailsMatch);
+  console.log(detail)
 
   useEffect(() => {
     dispatch(getDetailsMatch(id_match));
   }, [dispatch, id_match]);
  
+  
   return (
     <div>
       <Logo />
@@ -25,7 +27,7 @@ export default function DetailMatch() {
           <p><strong>Jugadores:</strong> 
             {detail.matchPlayers?.map((element) => (
                 <ul>
-                  <li>{element.user_name} - {element.position}</li>
+                  <li>{element.user_name} - {element.player_position}</li>
                 </ul>
               ))
             }
