@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 
 const CardsCourt = ({ props }) => {
 
+  console.log(props)
+
   return (
     <CardContainer> 
       <ImgCard>
@@ -25,7 +27,7 @@ const CardsCourt = ({ props }) => {
             {props.name.length > 15 ? props.name.slice(0, 15) : props.name}
           </h6>
           <p>{props.street + " " + props.streetNumber}</p>
-          <p>{props.city}</p>
+          <p>{props.district}</p>
           <Link to={`/reserveCourt/${props.name}`}>pu
             <button>Reservar</button>
           </Link>

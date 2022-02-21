@@ -120,6 +120,19 @@ function rootReducer(state = initialState, { type, payload }) {
         neighborhoods: payload,
       };
 
+    case "FILTER_BY_POSITION":
+      return {
+        ...state,
+        users : payload
+      }
+    
+    case "FILTER_BY_NEIGHBORHOOD":
+      return {
+        ...state,
+        users : payload
+      }
+      
+
     default:
       return { ...state };
   }
