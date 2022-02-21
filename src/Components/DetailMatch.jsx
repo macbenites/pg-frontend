@@ -14,31 +14,47 @@ export default function DetailMatch() {
     dispatch(getDetailsMatch(id_match));
   }, [dispatch, id_match]);
 
-  function handleClick(e){
+  function handleClick(e) {
     // e.preventDefault();
     dispatch(removeMatchPlayer(id_match, e.target.value));
     navigate(`/matches/${id_match}`);
-  };
- 
-  
+  }
+
   return (
     <div>
       <Logo />
       {detail ? (
         <div>
-          <p><strong>Lugar:</strong> {detail.nameCenter}</p>
-          <p><strong>Fecha y hora:</strong> {detail.date}</p>
-          <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
-          <p><strong>Descripción:</strong> {detail.note}</p> 
+          <p>
+            <strong>Lugar:</strong> {detail.nameCenter}
+          </p>
+          <p>
+            <strong>Fecha y hora:</strong> {detail.date}
+          </p>
+          <p>
+            <strong>Cancelación:</strong> {detail.cancellation} antes de la hora
+            de inicio
+          </p>
+          <p>
+            <strong>Descripción:</strong> {detail.note}
+          </p>
 
-          <p><strong>Jugadores:</strong> 
+          <p>
+            <strong>Jugadores:</strong>
             {detail.matchPlayers?.map((element, index) => (
-                <ul key={index}>
-                  <li>{element.user_name} - {element.position}<button value={element.user_name}  onClick={e => handleClick(e)}>Sacar</button></li>
-                </ul>
-              ))
-            }
-          </p>         
+              <ul key={index}>
+                <li>
+                  {element.name} - {element.position}
+                  <button
+                    value={element.user_name}
+                    onClick={(e) => handleClick(e)}
+                  >
+                    Sacar
+                  </button>
+                </li>
+              </ul>
+            ))}
+          </p>
         </div>
       ) : (
         <p>Cargando...</p>
