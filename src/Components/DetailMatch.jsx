@@ -24,14 +24,14 @@ export default function DetailMatch() {
           <p><strong>Fecha y hora:</strong> {detail.date}</p>
           <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
           <p><strong>Descripción:</strong> {detail.note}</p> 
-          <p><strong>Jugadores:</strong> 
+          <p><strong>Jugadores:</strong>
             {detail.matchPlayers?.map((element) => (
                 <ul>
                   <li>{element.user_name} - {element.player_position}</li>
                 </ul>
               ))
             }
-          </span>         
+          </p>         
         </div>
       ) : (
         <p>Cargando...</p>
