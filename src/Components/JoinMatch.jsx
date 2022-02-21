@@ -52,7 +52,7 @@ function JoinMatch(){
     return(
         <form>
             <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
-            <TextJoin>Seleccioná tu usuario o el de un amigo para unirse a este partido</TextJoin>
+            <TextJoin>Confirmar Asistencia</TextJoin>
             <SelectSearch>
                     <p>{users.user_name}</p>
             </SelectSearch>
