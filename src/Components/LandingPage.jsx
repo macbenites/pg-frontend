@@ -17,7 +17,7 @@ function LandingPage() {
         <Logo />
         <div>
           <LinkTo to="/auth/login">
-            <Button primary>LogIn</Button>
+            <Button primary>Iniciar Sesión</Button>
           </LinkTo>
         </div>
       </LandTop>
@@ -36,7 +36,7 @@ function LandingPage() {
             dignissim.
           </p>
           <LinkTo to="/auth/signin">
-            <Button>SignIn</Button>
+            <Button>Registrarse</Button>
           </LinkTo>
         </TextLanding>
         <ImgDiv>

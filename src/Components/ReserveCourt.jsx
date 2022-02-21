@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { postBuy } from "../Redux/Actions/index";
 import { useDispatch } from "react-redux";
 import { InputForm } from "../Styles/reusable/Input";
@@ -7,9 +7,11 @@ import Logo from "./Logo";
 import { CreateDiv, BtnCreateGame } from "../Styles/component/GamesCreate";
 import { Name, User, Barrio, Btn } from "../Styles/reusable/Containers";
 
-export default function GamesCreate() {
+export default function ReserveCourt() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { name } = useParams();
+  console.log(name);
   const [input, setInput] = useState({
     datetime: "",
   });
@@ -37,12 +39,7 @@ export default function GamesCreate() {
         <h4>Reservar</h4>
         <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
-            <InputForm
-              type="text"
-              value="Marlon Sports"
-              name="title"
-              readOnly
-            />
+            <InputForm type="text" value={name} name="title" readOnly />
           </Name>
           <User>
             <InputForm

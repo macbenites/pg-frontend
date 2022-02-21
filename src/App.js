@@ -12,7 +12,7 @@ import Fields from "./Components/Fields";
 import DetailUser from "./Components/DetailUser";
 import ReserveCourt from "./Components/ReserveCourt";
 import Players from "./Components/Players";
-import DetailCourt from './Components/DetailCourt';
+import DetailCourt from "./Components/DetailCourt";
 import JoinMatch from "./Components/JoinMatch";
 import DetailMatch from "./Components/DetailMatch";
 import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
@@ -32,7 +32,7 @@ function App() {
               <Route path="business" element={<SignUpBusiness />} />
               <Route path="resetPassword" element={<Password />} />
             </Route>
-            <Route path="reserveCourt" element={<ReserveCourt />} />
+            <Route path="reserveCourt/:name" element={<ReserveCourt />} />
             <Route path="gamesCreate" element={<GamesCreate />} />
             <Route path="/users/:id" element={<DetailUser />} />
             <Route path="/users/:id/chat" element={<Chat />} />
@@ -40,7 +40,7 @@ function App() {
             <Route path="/matches/:id_match" element={<DetailMatch />} />
             <Route path="home" element={<Home />}>
               <Route path="games" element={<Games />} />
-              <Route path="joinMatch/:id" element={<JoinMatch/>}/>
+              <Route path="joinMatch/:id" element={<JoinMatch />} />
               <Route path="players" element={<Players />} />
               <Route path="canchas" element={<Fields />} />
             </Route>

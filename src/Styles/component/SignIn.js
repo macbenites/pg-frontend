@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { LinkTo } from "../reusable/LinkTo";
 import { Button } from "../reusable/Button";
 
@@ -17,7 +17,7 @@ export const SignInDiv = styled.div`
   }
 
   h5 {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 1rem;
     font-style: normal;
     color: #e8e4e6;
@@ -42,8 +42,13 @@ export const BtnSignIn = styled(Button)`
 `;
 
 export const LinkToSignIn = styled(LinkTo)`
-  color: var(--tertiary);
-  font-weight: 600;
+  color: var(--text-color);
+  font-weight: 400;
+  text-decoration: underline;
+  padding: 0.5rem 0;
+  ${(props) =>
+    props.business &&
+    css`
+      color: var(--tertiary);
+    `}
 `;
-
-

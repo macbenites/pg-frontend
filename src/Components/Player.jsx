@@ -6,9 +6,10 @@ const Player = ({data}) => {
 
      return(
          <PlayerDiv>
-             <img src={data.image} alt="" />
+             <img src={data.image} alt="Player" />
              <h3>{data.user_name ? data.user_name : data.email?.split("@")[0]}</h3>
-             <h6>{data.neighborhood ? data.neighborhood : "Barrio desconocido"}</h6>
+             <h4>{data.player_position ? data.player_position : "Posición no definida"}</h4>
+             <h5>{data.neighborhood ? data.neighborhood : "Barrio desconocido"}</h5>
          </PlayerDiv>
      )
 }   

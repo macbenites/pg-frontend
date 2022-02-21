@@ -8,7 +8,7 @@ export const PlayerDiv = styled.div`
     background-color: #abd1c6;
     margin : 10px;
     width : 200px;
-    heigth : 135px;
+    
     border-radius : 20px;
 
     img {
@@ -20,7 +20,7 @@ export const PlayerDiv = styled.div`
         padding-right : 45px
     }
 
-    h3 , h6 {
+    h3, h5, h4 {
         text-align : center;
     }
 `

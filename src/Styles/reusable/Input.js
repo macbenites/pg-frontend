@@ -13,6 +13,13 @@ export const InputForm = styled.input`
   color: var(--text-color);
   box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
   ::placeholder {
-    color: #d1d1d1;
+    color: #c2c2c2;
+    font-weight: 100;
   }
+`;
+
+export const Label = styled.label`
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: 300;
 `;

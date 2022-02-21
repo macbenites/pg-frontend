@@ -1,5 +1,4 @@
 import CardsCity from "./CardsCourt";
-import Map from "./Map";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getFields, getNeighborhoods } from "../Redux/Actions";
@@ -34,7 +33,6 @@ const Fields = () => {
            )
         })
       }
-      <Map />
     </div>
   );
 };
