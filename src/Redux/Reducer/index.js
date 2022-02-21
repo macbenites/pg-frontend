@@ -11,6 +11,7 @@ const initialState = {
   detailsMatch: {},
   neighborhoods: [],
   displayName: "",
+  removePlayer: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -119,19 +120,22 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         neighborhoods: payload,
       };
-
     case "FILTER_BY_POSITION":
       return {
         ...state,
-        users : payload
-      }
-    
+        users: payload,
+      };
+
     case "FILTER_BY_NEIGHBORHOOD":
       return {
         ...state,
-        users : payload
-      }
-      
+        users: payload,
+      };
+    case "REMOVE_PLAYER":
+      return {
+        ...state,
+        removePlayer: payload,
+      };
 
     default:
       return { ...state };
