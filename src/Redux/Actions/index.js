@@ -23,6 +23,7 @@ import {
   GET_DETAILS_COURT,
   GET_DETAILS_MATCH,
   GET_NEIGHBORHOODS,
+  REMOVE_PLAYER,
 } from "./types";
 import axios from "axios";
 
@@ -408,3 +409,20 @@ export function getNeighborhoods() {
     }
   };
 }
+
+export function removeMatchPlayer(id_match, user_name){
+  return async function(dispatch){
+    try{
+      console.log({ id_match, user_name });
+      const removePlayer = axios.put(`https://futbolapp-henry.herokuapp.com/exitMatches/${id_match}`,
+      { user: user_name }
+      );
+      return dispatch({
+        type: REMOVE_PLAYER,
+        payload: removePlayer.data
+      });
+    }catch(error){
+      console.log('error')
+    };
+  };
+};
