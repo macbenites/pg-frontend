@@ -31,7 +31,7 @@ export default function DetailMatch() {
           <p><strong>Cancelación:</strong> {detail.cancellation} antes de la hora de inicio</p>
           <p><strong>Descripción:</strong> {detail.note}</p> 
 
-          <span><strong>Jugadores:</strong> 
+          <p><strong>Jugadores:</strong> 
             {detail.matchPlayers?.map((element, index) => (
                 <ul key={index}>
                   <li>{element.user_name} - {element.position}<button value={element.user_name}  onClick={e => handleClick(e)}>Sacar</button></li>
