@@ -1,45 +1,23 @@
 import styled from "styled-components";
 
 export const Filter = styled.div`
-    display : flex;
-    flex-wrap : wrap;
-    flex-direction : raw;
-    margin-bottom: 50px;
-    label{
-      color: #abd1c6;
-      margin-left: 50px;
-      margin-top: 10px;
-      font-size: 20px;
-      margin-right: 20px;
-    }
-    select{
-      display: flex;
-      width: 300px;
-      height: 50px;
-      border: none;
-      border-radius: 15px;
-      padding-left: 20px;
-      background-color: #206F6C;
-      color: #abd1c6;
-      font-size: 15px;
-    }
-`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: raw;
+  gap: 1rem;
+`;
 
 export const PlayersDiv = styled.div`
-    display : flex;
-    flex-wrap : wrap;
-    flex-direction : raw;
-    justify-content: space-evenly;
-`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 1rem 0;
+`;
 
 export const Search = styled.div`
   display: flex;
-  height: 50px;
-  width: 300px;
-  margin-left: 800px;
-  margin-top: -100px;
   align-items: center;
-  padding: 0 1rem;
+  padding: 1rem;
   font-size: 1em;
   border-radius: 1rem;
   background-color: var(--primary-light);

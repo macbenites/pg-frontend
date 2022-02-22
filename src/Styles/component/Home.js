@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HomeContainer = styled.div`
   padding: 0 1rem;
 `;
+
 export const IntroStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -34,14 +35,4 @@ export const IntroStyle = styled.div`
   }
 `;
 
-export const CardsStyle = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const HomeContent = styled.div`
-  padding: 1rem;
-`;
-
-
+export const HomeContent = styled.div``;
