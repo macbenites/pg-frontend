@@ -12,7 +12,6 @@ const initialState = {
   neighborhoods: [],
   displayName: "",
   removePlayer: [],
-  filterSportCenter: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {

@@ -12,7 +12,6 @@ const Fields = () => {
   const tenFields = fields.slice(0, 10);
   const dispatch = useDispatch();
   const neighborhoods = useSelector((state) => state.neighborhoods);
-  const filter = useSelector((state) => state.filterSportCenter);
   
   const handleFilter = (e) => {
     e.preventDefault();
@@ -24,8 +23,6 @@ const Fields = () => {
     dispatch(getFields());
     dispatch(getNeighborhoods());
   }, [dispatch]);
-
-  console.log(fields);
 
   return (
     <div>
