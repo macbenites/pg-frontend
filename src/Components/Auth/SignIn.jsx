@@ -135,15 +135,15 @@ function SignIn() {
           <Barrio>
             <Label>Barrio</Label>
             <Select
-              name="neighborhood"
-              {...register("neighborhood", {
+              name="neighborhoods"
+              {...register("neighborhoods", {
                 required: {
                   value: true,
                   message: "Barrio requerido.",
                 },
               })}
               onKeyUp={() => {
-                trigger("neighborhood");
+                trigger("neighborhoods");
               }}
             >
               <option value="">Barrio</option>
@@ -154,9 +154,9 @@ function SignIn() {
               ))}
             </Select>
             <ErrorMessage>
-              {errors.neighborhood && (
+              {errors.neighborhoods && (
                 <small>
-                  <FaExclamationCircle /> {errors.neighborhood.message}
+                  <FaExclamationCircle /> {errors.neighborhoods.message}
                 </small>
               )}
             </ErrorMessage>

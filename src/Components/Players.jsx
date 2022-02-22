@@ -9,11 +9,15 @@ import {
 } from "../Redux/Actions";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import {
+  filterPlayersByPosition,
+  filterPlayersByNeighborhoods,
+} from "../Redux/Actions";
 
 const Players = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const { users, userModify, neighborhoods } = useSelector((state) => state);
+  const { users, neighborhoods } = useSelector((state) => state);
 
   const onChangeSearch = (e) => {
     e.preventDefault();
@@ -30,7 +34,15 @@ const Players = () => {
     }
   };
 
-  console.log(userModify);
+  const handleFilterByPosition = (e) => {
+    console.log(e.target.value);
+    dispatch(filterPlayersByPosition(e.target.value));
+  };
+
+  const handleFilterByNeighborhood = (e) => {
+    console.log(e.target.value);
+    dispatch(filterPlayersByNeighborhoods(e.target.value));
+  };
 
   useEffect(() => {
     dispatch(showUsers());
@@ -53,15 +65,16 @@ const Players = () => {
           />
         </Search>
         <label>Filtrar por posición: </label>
-        <select>
-          <option value="Delantero">Delantero</option>
-          <option value="Mediocampista">Mediocampista</option>
-          <option value="Defensor">Defensor</option>
-          <option value="Arquero">Arquero</option>
+        <select name="" id="" onClick={handleFilterByPosition}>
+          <option value="todos">Todas las posiciones</option>
+          <option value="delantero">Delantero</option>
+          <option value="mediocampista">Mediocampista</option>
+          <option value="defensor">Defensor</option>
+          <option value="arquero">Arquero</option>
         </select>
         <label>Filtrar por ubicación:</label>
-        <select name="neighborhood">
-          <option value="">Seleccione el barrio</option>
+        <select name="neighborhood" onClick={handleFilterByNeighborhood}>
+          <option value="todos">Todos los barrios</option>
           {neighborhoods.map((element) => (
             <option key={element.id} value={element.name}>
               {element.name}
