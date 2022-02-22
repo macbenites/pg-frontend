@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getFields, getNeighborhoods } from "../Redux/Actions";
+import { getFields, getNeighborhoods, filterSportCentersByDistrict } from "../Redux/Actions";
 import { CardStyles, TopFields } from "../Styles/component/Fields";
 import CardsCourt from "./CardsCourt";
 import { Select } from "../Styles/reusable/Select";
@@ -16,6 +16,11 @@ const Fields = () => {
     dispatch(getNeighborhoods());
   }, [dispatch]);
 
+  function handleFilter(e){
+    e.preventDefault();
+    dispatch(filterSportCentersByDistrict(e.target.value));
+  };
+
   return (
     <div>
       <TopFields>
@@ -25,7 +30,7 @@ const Fields = () => {
           <Select name="neighborhood">
             <option value="">Barrio</option>
             {neighborhoods.map((element) => (
-              <option key={element.id} value={element.name}>
+              <option key={element.id} value={element.name} onChange={e => {handleFilter(e)}}>
                 {element.name}
               </option>
             ))}
