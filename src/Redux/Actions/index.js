@@ -27,7 +27,7 @@ import {
   USER_BY_NAME,
   FILTER_BY_POSITION,
   FILTER_BY_NEIGHBORHOOD,
-  REMOVE_PLAYER,
+  REMOVE_PLAYER
 } from "./types";
 import axios from "axios";
 
@@ -247,7 +247,8 @@ export const authState = () => {
             const moreData = {
               ...user,
               user_name: obj.user_name,
-              name: obj.name,
+              name: obj.user_name,
+              id : obj.id
             };
             console.log(moreData);
             return dispatch({
@@ -493,4 +494,21 @@ export function removeMatchPlayer(id_match, user_name) {
       console.log("error");
     }
   };
+}
+
+export function updateData (id , newData) {
+  return async function (dispatch) {
+    try {
+      await axios.put(
+        `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
+        {
+          name : newData.name,
+          neighborhood : newData.neighborhood,
+          player_position : newData.position 
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
