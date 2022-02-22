@@ -77,7 +77,7 @@ const Players = () => {
       <Filter>
         <div>
           <Label>Filtrar por posición: </Label>
-          <Select name="" id="" onClick={handleFilterByPosition}>
+          <Select name="" id="" onChange={handleFilterByPosition}>
             <option value="todos">Todas las posiciones</option>
             <option value="delantero">Delantero</option>
             <option value="mediocampista">Mediocampista</option>
@@ -87,7 +87,7 @@ const Players = () => {
         </div>
         <div>
           <Label>Filtrar por ubicación:</Label>
-          <Select name="neighborhood" onClick={handleFilterByNeighborhood}>
+          <Select name="neighborhood" onChange={handleFilterByNeighborhood}>
             <option value="todos">Todos los barrios</option>
             {neighborhoods.map((element) => (
               <option key={element.id} value={element.name}>

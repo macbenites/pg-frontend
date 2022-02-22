@@ -593,15 +593,27 @@ export function resetPlayersFilter () {
 }
 
 export function filterSportCentersByDistrict(payload){
-  return async function (dispatch){
-    try{
-      const filterSportCenters = await axios.get(`https://futbolapp-henry.herokuapp.com/sportcenter/${payload}`);
-      return dispatch({
-        type: FILTER_SPORTCENTER,
-        payload: filterSportCenters.data
-      });
-    }catch(error){
-      console.log('error');
+  if(payload === ""){
+    return function(dispatch){
+      fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_SPORTCENTER,
+          });
+        });
+    };
+  } else {
+    return function(dispatch){
+      fetch(`https://futbolapp-henry.herokuapp.com/sportcenter/${payload}`)
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_SPORTCENTER,
+          });
+        });
     };
   };
 };
