@@ -161,13 +161,19 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };
+      
+    case "RESET_PLAYERS_FILTER":
+      return {
+        ...state,
+        users : payload
+      }
 
     case "MATCH_BY_NAME_SPORTCENTER":
       return {
         ...state,
         matches: payload,
       };  
-
+      
     default:
       return { ...state };
   };

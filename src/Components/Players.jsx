@@ -14,7 +14,9 @@ import { FaSearch } from "react-icons/fa";
 import {
   filterPlayersByPosition,
   filterPlayersByNeighborhoods,
+  resetPlayersFilter
 } from "../Redux/Actions";
+import {BtnCreateGame} from "../Styles/component/Games";
 
 const Players = () => {
   const dispatch = useDispatch();
@@ -45,6 +47,11 @@ const Players = () => {
     console.log(e.target.value);
     dispatch(filterPlayersByNeighborhoods(e.target.value));
   };
+
+  const resetFilters = () => {
+    console.log("asdasd")
+    dispatch(resetPlayersFilter())
+  }
 
   useEffect(() => {
     dispatch(showUsers());
@@ -89,7 +96,10 @@ const Players = () => {
             ))}
           </Select>
         </div>
-      </Filter>
+        <BtnCreateGame onClick={resetFilters}>
+              <h6>Resetear filtros</h6>
+        </BtnCreateGame>
+      </Filter> 
       <PlayersDiv>
         {users.length > 0 ? (
           users.map((obj) => <Player key={obj.id} data={obj} />)
