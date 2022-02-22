@@ -24,6 +24,12 @@ import {
   GET_DETAILS_COURT,
   GET_DETAILS_MATCH,
   GET_NEIGHBORHOODS,
+  USER_BY_NAME,
+  FILTER_BY_POSITION,
+  FILTER_BY_NEIGHBORHOOD,
+  REMOVE_PLAYER,
+  ORDER_BY_PLAYERS,
+  ORDER_BY_DATE,
 } from "./types";
 import axios from "axios";
 
@@ -69,7 +75,7 @@ export const signUpWithMail = (email, password, data, callback) => {
             neighborhood: obj.barrio,
             email: obj.email,
             password: "123123",
-            player_position: [obj.posicion],
+            player_position: obj.posicion,
           }),
           headers: {
             "Content-type": "application/json",
@@ -238,19 +244,20 @@ export const authState = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         fetch("https://futbolapp-henry.herokuapp.com/users/email/" + user.email)
-          .then(obj => obj.json())
-          .then(obj => {
+          .then((obj) => obj.json())
+          .then((obj) => {
             const moreData = {
               ...user,
-              user_name : obj.user_name,
-              name : obj.name
-            }
-            console.log(moreData )
+              user_name: obj.user_name,
+              name: obj.user_name,
+              id : obj.id
+            };
+            console.log(moreData);
             return dispatch({
               payload: moreData,
               type: "USER_LOGGED",
             });
-          })
+          });
       } else {
         dispatch({
           payload: null,
@@ -400,3 +407,154 @@ export function getNeighborhoods() {
     }
   };
 }
+
+export const filterByNameUser = (name) => async (dispatch) => {
+  await axios
+    .get(`https://futbolapp-henry.herokuapp.com/users/name/${name}`)
+    .then((response) => {
+      dispatch({
+        type: USER_BY_NAME,
+        payload: response.data,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    });
+};
+
+export function filterPlayersByPosition(position) {
+  if (position === "todos") {
+    return function (dispatch) {
+      fetch("https://futbolapp-henry.herokuapp.com/users")
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_POSITION,
+          });
+        });
+    };
+  } else {
+    return function (dispatch) {
+      fetch(`https://futbolapp-henry.herokuapp.com/users/position/${position}`)
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_POSITION,
+          });
+        });
+    };
+  }
+}
+
+export function filterPlayersByNeighborhoods(neighborhood) {
+  if (neighborhood === "todos") {
+    return function (dispatch) {
+      fetch("https://futbolapp-henry.herokuapp.com/users")
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_NEIGHBORHOOD,
+          });
+        });
+    };
+  } else {
+    return function (dispatch) {
+      fetch(
+        `https://futbolapp-henry.herokuapp.com/users/neighborhood/${neighborhood}`
+      )
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_BY_NEIGHBORHOOD,
+          });
+        });
+    };
+  }
+}
+
+export function removeMatchPlayer(id_match, user_name) {
+  return async function (dispatch) {
+    try {
+      console.log({ id_match, user_name });
+      const removePlayer = axios.put(
+        `https://futbolapp-henry.herokuapp.com/exitMatches/${id_match}`,
+        { user: user_name }
+      );
+      return dispatch({
+        type: REMOVE_PLAYER,
+        payload: removePlayer.data,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    }
+  };
+
+};
+
+export const orderByDateTime = (payload) => {
+ return async function (dispatch) {
+   try {
+     const orderDate = await axios.get(`https://futbolapp-henry.herokuapp.com/recentMatches/${payload}`)
+     return dispatch({
+      type: ORDER_BY_DATE,
+      payload: orderDate.data   
+    });
+   } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `${error.response.data.error}`,
+    });
+   }
+ };
+};
+
+export const orderByPlayers = (payload) => {
+  return async function (dispatch) {
+    try {
+      const orderPlayers = await axios.get(`https://futbolapp-henry.herokuapp.com/orderMAtches/${payload}`)
+      return dispatch({
+       type: ORDER_BY_PLAYERS,
+       payload: orderPlayers.data   
+     });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    }
+  };
+ };
+
+
+
+export function updateData (id , newData) {
+  return async function (dispatch) {
+    try {
+      await axios.put(
+        `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
+        {
+          name : newData.name,
+          neighborhood : newData.neighborhood,
+          player_position : newData.position 
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+

@@ -6,7 +6,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 import { ErrorMessage } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
-import { CreateDiv, BtnCreateGame } from "../Styles/component/GamesCreate";
+import { CreateDiv, BtnCreateGame, BtnBack } from "../Styles/component/GamesCreate";
 import {
   Name,
   User,
@@ -119,11 +119,16 @@ export default function GamesCreate() {
     }
   };
 
+  function handleBackClick(){
+    navigate('/home/games');
+  };
+
   return (
     <div>
       <Logo />
       <CreateDiv>
         <h4>Crear Partido</h4>
+        <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
         <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
             <select name= 'nameCenter' onChange= {e => handleSelect(e)}>

@@ -307,7 +307,6 @@ export const SignUpBusiness = () => {
               type="email"
               autoComplete="off"
               name="email"
-              placeholder="sejuega@outlook.com"
               {...register("email", {
                 required: {
                   value: true,
@@ -336,7 +335,6 @@ export const SignUpBusiness = () => {
               type="password"
               autoComplete="off"
               name="password"
-              placeholder="Contraseña"
               {...register("password", {
                 required: {
                   value: true,
@@ -367,7 +365,6 @@ export const SignUpBusiness = () => {
               type="text"
               autoComplete="off"
               name="note"
-              placeholder="Notas "
               {...register("note", {
                 required: {
                   value: false,

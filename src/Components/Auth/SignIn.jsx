@@ -64,11 +64,10 @@ function SignIn() {
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Name>
-            <Label>Nombre</Label>
+            <Label>Nombres</Label>
             <InputForm
               type="text"
               autoComplete="off"
-              placeholder="Nombre"
               name="name"
               {...register("name", {
                 required: {
@@ -102,7 +101,6 @@ function SignIn() {
               type="text"
               autoComplete="off"
               name="username"
-              placeholder="Usuario"
               {...register("username", {
                 onBlur: (e) => console.log(e),
                 required: {
@@ -137,15 +135,15 @@ function SignIn() {
           <Barrio>
             <Label>Barrio</Label>
             <Select
-              name="neighborhood"
-              {...register("neighborhood", {
+              name="neighborhoods"
+              {...register("neighborhoods", {
                 required: {
                   value: true,
                   message: "Barrio requerido.",
                 },
               })}
               onKeyUp={() => {
-                trigger("neighborhood");
+                trigger("neighborhoods");
               }}
             >
               <option value="">Barrio</option>
@@ -156,9 +154,9 @@ function SignIn() {
               ))}
             </Select>
             <ErrorMessage>
-              {errors.neighborhood && (
+              {errors.neighborhoods && (
                 <small>
-                  <FaExclamationCircle /> {errors.neighborhood.message}
+                  <FaExclamationCircle /> {errors.neighborhoods.message}
                 </small>
               )}
             </ErrorMessage>
@@ -178,10 +176,10 @@ function SignIn() {
               }}
             >
               <option value="">Posicion de juego</option>
-              <option value="delantero">Delantero</option>
-              <option value="mediocampista">Mediocampista</option>
-              <option value="defensor">Defensor</option>
-              <option value="arquero">Arquero</option>
+              <option value="Delantero">Delantero</option>
+              <option value="Mediocampista">Mediocampista</option>
+              <option value="Defensor">Defensor</option>
+              <option value="Arquero">Arquero</option>
             </Select>
             <ErrorMessage>
               {errors.position && (
@@ -197,7 +195,6 @@ function SignIn() {
               type="email"
               autoComplete="off"
               name="email"
-              placeholder="Email"
               {...register("email", {
                 required: {
                   value: true,
@@ -226,7 +223,6 @@ function SignIn() {
               type="password"
               autoComplete="off"
               name="password"
-              placeholder="Contraseña"
               {...register("password", {
                 required: {
                   value: true,

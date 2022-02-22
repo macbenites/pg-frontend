@@ -11,6 +11,7 @@ export const MainCardsGames = styled.div`
   justify-content: space-between;
   padding: 1rem;
   margin-top: 30px;
+  :hover{background-color: #F9BC60;}
 `;
 
 export const DateStyle = styled.div`
@@ -53,5 +54,5 @@ export const BtnInviteCardsGames = styled(Button)`
   height: 30px;
   display: flex;
   margin-left: 100px;
-  margin-top: -49px;
+  margin-top: -40px;
 `;

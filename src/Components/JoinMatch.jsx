@@ -45,7 +45,7 @@ function JoinMatch(){
             showConfirmButton: false,
             timer: 1500,
           });
-        navigate('/home');
+        navigate('/home/games');
         console.log(e.target.value);
     };
 

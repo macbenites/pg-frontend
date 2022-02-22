@@ -8,7 +8,7 @@ import {
   LinkToLogin,
   Space,
 } from "../../Styles/Login.js";
-import { InputForm } from "../../Styles/reusable/Input";
+import { InputForm, Label } from "../../Styles/reusable/Input";
 import { useForm } from "react-hook-form";
 import { logInWithMail, logInWithGoogle } from "../../Redux/Actions";
 import { useDispatch } from "react-redux";
@@ -52,11 +52,11 @@ export default function Login() {
           <LinkToLogin to="/auth/signin"> Registrate</LinkToLogin>
         </h5>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <Label>Correo electrónico</Label>
           <InputForm
             type="email"
             autoComplete="off"
             name="email"
-            placeholder="Email"
             {...register("email", {
               required: {
                 value: true,
@@ -78,10 +78,10 @@ export default function Login() {
               </small>
             )}
           </ErrorMessage>
+          <Label>Contraseña</Label>
           <InputForm
             type="password"
             name="password"
-            placeholder="Contraseña"
             {...register("password", {
               required: {
                 value: true,

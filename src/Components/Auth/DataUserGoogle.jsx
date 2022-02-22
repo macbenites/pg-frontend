@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpWithMail, resetStateError, getNeighborhoods } from "../../Redux/Actions";
+import { updateData, resetStateError, getNeighborhoods } from "../../Redux/Actions";
 import Swal from "sweetalert2";
 
 import {
@@ -30,19 +30,23 @@ function DataUserGoogle() {
   } = useForm();
   const dispatch = useDispatch();
   const neighborhoods = useSelector((state) => state.neighborhoods);
+  const currentUser = useSelector((state) => state.userState)
 
   useEffect(() => {
     dispatch(getNeighborhoods());
   }, [dispatch]);
 
   const onSubmit = (input) => {
+    console.log(input)
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
-      dispatch(
+      /* dispatch(
         signUpWithMail(input.email, input.password, input, () => {
           navigate("/auth/login");
         })
-      );
+      ); */
+      dispatch(updateData(currentUser.id , input))
+      navigate("/home/canchas")
     } else {
       Swal.fire({
         icon: "error",
@@ -61,7 +65,7 @@ function DataUserGoogle() {
             <InputForm
               type="text"
               autoComplete="off"
-              placeholder="Nombre"
+              placeholder="Eliga un userName"
               name="name"
               {...register("name", {
                 required: {
@@ -128,7 +132,7 @@ function DataUserGoogle() {
                 trigger("position");
               }}
             >
-              <option value="">Posicion de juego</option>
+              <option value="">Posición</option>
               <option value="arquero">Arquero</option>
               <option value="defensor">Defensor</option>
               <option value="mediocampista">Mediocampista</option>

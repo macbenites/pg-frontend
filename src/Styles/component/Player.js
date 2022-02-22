@@ -1,26 +1,45 @@
 import styled from "styled-components";
 
 export const PlayerDiv = styled.div`
+  background-color: #abd1c6;
+  border-radius: 0.75rem;
+  max-width: 100%;
+  color: #004643;
+  :hover {
+    background-color: #f9bc60;
+  }
 
-    display : flex;
-    flex-wrap : wrap;
-    flex-direction : column;
-    background-color: #abd1c6;
-    margin : 10px;
-    width : 200px;
-    
-    border-radius : 20px;
+  img {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 100%;
+  }
+  h3 {
+    text-align: center;
+    margin: 0;
+  }
 
-    img {
-        width : 120px;
-        height : 100px;
-        border-radius : 100%;
-        margin-top: 10px;
-        padding-left : 45px;
-        padding-right : 45px
-    }
+  h4 {
+    margin: 0;
+  }
+  p {
+    text-align: center;
+    text-transform: lowercase;
+    margin: 0;
+  }
+  p::first-letter {
+    text-transform: capitalize;
+  }
+`;
 
-    h3, h5, h4 {
-        text-align : center;
-    }
-`
+export const ImgDiv = styled.div`
+  padding: 1rem;
+`;
+
+export const ContentDiv = styled.div`
+  padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+`;

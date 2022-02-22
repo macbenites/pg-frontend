@@ -1,29 +1,23 @@
 import styled from "styled-components";
 
 export const Filter = styled.div`
-    display : flex;
-    flex-wrap : wrap;
-    flex-direction : raw;
-
-    input , select {
-        height : 30px;
-        width : 210px;
-        margin : 10px
-    } 
-`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: raw;
+  gap: 1rem;
+`;
 
 export const PlayersDiv = styled.div`
-    display : flex;
-    flex-wrap : wrap;
-    flex-direction : raw;
-    margin-left: 190px;
-`
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 1rem 0;
+`;
 
 export const Search = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 0 1rem;
+  padding: 1rem;
   font-size: 1em;
   border-radius: 1rem;
   background-color: var(--primary-light);

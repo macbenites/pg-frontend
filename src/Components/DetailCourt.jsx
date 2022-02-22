@@ -20,13 +20,11 @@ export default function DetailCourt() {
         <div>
           <p><strong>Nombre:</strong> {detail.name}</p>          
           <p><strong>Dirección:</strong> {detail.street}</p>
-          <p><strong>Barrio:</strong> {detail.distric}</p>
+          <p><strong>Barrio:</strong> {detail.district}</p>
           <p><strong>Teléfono:</strong> {detail.phone}</p>
           <p><strong>Email:</strong> {detail.email}</p>
           <p><strong>Horario:</strong> {detail.availableHours}</p>
           <p><strong>Tipo de suelo:</strong> {detail.typeFloor}</p>
-          <p><strong>N. de jugadores:</strong> {detail.cantPlayers}</p>
-          <p><strong>Tipo de pago:</strong> {detail.typePay}</p>
           <p><strong>Descripción:</strong> {detail.note}</p>          
         </div>
       ) : (
