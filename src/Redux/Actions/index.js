@@ -249,7 +249,8 @@ export const authState = () => {
             const moreData = {
               ...user,
               user_name: obj.user_name,
-              name: obj.name,
+              name: obj.user_name,
+              id : obj.id
             };
             console.log(moreData);
             return dispatch({
@@ -499,6 +500,7 @@ export function removeMatchPlayer(id_match, user_name) {
       });
     }
   };
+
 };
 
 export const orderByDateTime = (payload) => {
@@ -536,3 +538,23 @@ export const orderByPlayers = (payload) => {
     }
   };
  };
+
+}
+
+export function updateData (id , newData) {
+  return async function (dispatch) {
+    try {
+      await axios.put(
+        `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
+        {
+          name : newData.name,
+          neighborhood : newData.neighborhood,
+          player_position : newData.position 
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
