@@ -8,23 +8,43 @@ export const Wrapper = styled.nav`
   justify-content: space-between;
 `;
 
+export const Close = styled.div`
+  position: absolute;
+  width: 1.5rem;
+  top: 3rem;
+  right: 3rem;
+  svg {
+    fill: var(--text-color);
+    margin-right: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const Menu = styled.div`
   display: flex;
   align-items: center;
   transition: all 0.3s ease-in;
-
   &:hover {
     color: var(--secondary);
   }
 
   @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100vh;
+    background: var(--primary);
+    display: flex;
     overflow: hidden;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100%;
+    align-items: center;
     max-height: ${({ open }) => (open ? "100vh" : "0")};
+    transition: max-height 0.2s ease-in;
   }
 `;
 
@@ -36,7 +56,8 @@ export const MobileIcon = styled.div`
     fill: var(--text-color);
     margin-right: 0.5rem;
   }
-  @media screen and (min-width: 768px) {
+
+  @media (min-width: 768px) {
     display: none;
   }
 `;
