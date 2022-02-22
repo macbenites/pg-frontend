@@ -144,10 +144,10 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
-    case "FILETR_SPORTCENTER":
+    case "FILTER_SPORTCENTER":
       return {
         ...state,
-        filterSportCenter: payload
+        fields: payload,
       };
 
     case "ORDER_BY_DATE":
