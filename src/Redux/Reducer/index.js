@@ -162,6 +162,12 @@ function rootReducer(state = initialState, { type, payload }) {
         matches: payload,
       };
 
+    case "MATCH_BY_NAME_SPORTCENTER":
+      return {
+        ...state,
+        matches: payload,
+      };  
+
     default:
       return { ...state };
   };

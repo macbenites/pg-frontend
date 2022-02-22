@@ -11,9 +11,9 @@ import {
   Name,
   User,
   Barrio,
-  Position,
   Email,
   Btn,
+  Position
 } from "../Styles/reusable/Containers";
 import Swal from "sweetalert2";
 
@@ -31,9 +31,6 @@ const validationForm = (input) => {
   if (!input.date) {
     errors.date = "Fecha y hora requeridas";
   }
-  if (!input.distric) {
-    errors.distric = "Barrio requerido";
-  }
   if (!input.note) {
     errors.note = "Observaciones requeridas";
   }
@@ -44,14 +41,14 @@ export default function GamesCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fields = useSelector((state) => state.fields);
-  console.log(fields)
   const [errors, setErrors] = useState({});
+  const users = useSelector((state) => state.userState)
   const [input, setInput] = useState({
     nameCenter: "",
     players: "",
     date: "",
-    distric: "",
     note: "",
+    user: users.user_name
   });
 
   useEffect(() => {
@@ -83,20 +80,19 @@ export default function GamesCreate() {
     }))              
   };
 
-  console.log(input)
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validationForm(input));
+    
     if (
       input.nameCenter &&
       input.players &&
       input.date &&
-      input.distric &&
       input.note &&
       !Object.keys(errors).length
     ) {
       dispatch(postMatch(input));
+      console.log(input)
       Swal.fire({
         icon: "success",
         title: "Partido creado con éxito!!",
@@ -108,7 +104,6 @@ export default function GamesCreate() {
         nameCenter: "",
         players: "",
         date: "",
-        distric: "",
       });
     } else {
       Swal.fire({
@@ -130,6 +125,9 @@ export default function GamesCreate() {
         <h4>Crear Partido</h4>
         <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
         <form onSubmit={(e) => handleSubmit(e)}>
+          <Position>
+            <InputForm type="text" value={users.user_name} name="user" readOnly />
+          </Position>
           <Name>
             <select name= 'nameCenter' onChange= {e => handleSelect(e)}>
               <option value= ''>Seleccione la cancha</option>
@@ -161,23 +159,6 @@ export default function GamesCreate() {
               )}
             </ErrorMessage>
           </User>
-          <Position>
-            <InputForm
-              type="text"
-              value={input.distric}
-              placeholder="Barrio"
-              autoComplete="off"
-              name="distric"
-              onChange={(e) => handleChange(e)}
-            />
-            <ErrorMessage>
-              {errors.distric && (
-                <small>
-                  <FaExclamationCircle /> {errors.distric}
-                </small>
-              )}
-            </ErrorMessage>
-          </Position>
           <Barrio>
             <InputForm
               type="datetime-local"
