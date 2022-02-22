@@ -28,6 +28,8 @@ import {
   FILTER_BY_POSITION,
   FILTER_BY_NEIGHBORHOOD,
   REMOVE_PLAYER,
+  ORDER_BY_PLAYERS,
+  ORDER_BY_DATE,
 } from "./types";
 import axios from "axios";
 
@@ -247,7 +249,8 @@ export const authState = () => {
             const moreData = {
               ...user,
               user_name: obj.user_name,
-              name: obj.name,
+              name: obj.user_name,
+              id : obj.id
             };
             console.log(moreData);
             return dispatch({
@@ -490,7 +493,68 @@ export function removeMatchPlayer(id_match, user_name) {
         payload: removePlayer.data,
       });
     } catch (error) {
-      console.log("error");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
+
+};
+
+export const orderByDateTime = (payload) => {
+ return async function (dispatch) {
+   try {
+     const orderDate = await axios.get(`https://futbolapp-henry.herokuapp.com/recentMatches/${payload}`)
+     return dispatch({
+      type: ORDER_BY_DATE,
+      payload: orderDate.data   
+    });
+   } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `${error.response.data.error}`,
+    });
+   }
+ };
+};
+
+export const orderByPlayers = (payload) => {
+  return async function (dispatch) {
+    try {
+      const orderPlayers = await axios.get(`https://futbolapp-henry.herokuapp.com/orderMAtches/${payload}`)
+      return dispatch({
+       type: ORDER_BY_PLAYERS,
+       payload: orderPlayers.data   
+     });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    }
+  };
+ };
+
+
+
+export function updateData (id , newData) {
+  return async function (dispatch) {
+    try {
+      await axios.put(
+        `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
+        {
+          name : newData.name,
+          neighborhood : newData.neighborhood,
+          player_position : newData.position 
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
+

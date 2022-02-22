@@ -144,6 +144,18 @@ function rootReducer(state = initialState, { type, payload }) {
         users: payload,
       };
 
+    case "ORDER_BY_DATE":
+      return {
+        ...state,
+        matches: payload,
+      };
+      
+    case "ORDER_BY_PLAYERS":
+      return {
+        ...state,
+        matches: payload,
+      };
+
     default:
       return { ...state };
   }
