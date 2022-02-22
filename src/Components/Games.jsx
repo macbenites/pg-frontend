@@ -1,6 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import CardsGames from "./CardsGames";
-import { getMatches, getFields, orderByDateTime, orderByPlayers } from "../Redux/Actions/index";
+import { getMatches, orderByDateTime, orderByPlayers, filterMatchBySportcenter} from "../Redux/Actions/index";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -8,22 +8,23 @@ import { useNavigate } from "react-router-dom";
 import {
   TitleStyle,
   CardsGamesStyle,
-  SelectLocation,
   SelectDate,
   SelectSearch,
-  BtnCreateGame
+  BtnCreateGame,
+  Search
 } from "../Styles/component/Games";
+import { FaSearch } from "react-icons/fa";
+import { TopFields } from "../Styles/component/Fields";
 
 function Games() {  
   const allMatches = useSelector((state) => state.matches)
+  const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(allMatches);
-  const fields = useSelector((state) => state.fields);
 
   useEffect(() => {
     dispatch(getMatches());
-    dispatch(getFields());
   }, [dispatch]);
 
   function handleClick(){
@@ -38,16 +39,38 @@ function Games() {
     dispatch(orderByPlayers(e.target.value));
   }
 
+  const onClickSearch = (e) => {
+    e.preventDefault();
+    if (!input) {
+      alert("Ingresar cancha a buscar");
+    } else {
+      dispatch(filterMatchBySportcenter(input));
+      setInput("");
+    }
+  };
+
+  const onChangeSearch = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
       <BtnCreateGame onClick={e => handleClick(e)}>Crear partido</BtnCreateGame>
-      <SelectLocation>
-        <option value= ''>Lugar</option>
-        {fields.map((element) =>(
-          <option key = {element.id} value = {element.name}>{element.name}</option>
-        ))}
-      </SelectLocation>
+      <TopFields>
+          <Search>
+              <FaSearch onClick={onClickSearch} />
+              <input
+                onChange={onChangeSearch}
+                name="search"
+                type="text"
+                value={input}
+                placeholder="Buscar..."
+                autoComplete="off"
+              />
+          </Search>
+       </TopFields>
       <SelectDate onChange={handleChange}>
         <option value='latest'>Reciente</option>
         <option value='oldest'>Antiguo</option>

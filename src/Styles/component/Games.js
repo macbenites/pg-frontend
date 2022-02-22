@@ -89,3 +89,29 @@ export const SelectSearch = styled.select`
   background-color: #206F6C;
   color: #abd1c6
 `;
+
+export const Search = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1em;
+  border-radius: 1rem;
+  background-color: var(--primary-light);
+  input {
+    color: var(--text-color);
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: transparent;
+    ::placeholder {
+      color: #d1d1d1;
+    }
+  }
+
+  svg {
+    fill: var(--secondary);
+    margin: 0 1rem;
+    font-size: 1.2rem;
+  }
+`;
