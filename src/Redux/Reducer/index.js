@@ -12,6 +12,7 @@ const initialState = {
   neighborhoods: [],
   displayName: "",
   removePlayer: [],
+  filterSportCenter: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -143,6 +144,11 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
+    case "FILETR_SPORTCENTER":
+      return {
+        ...state,
+        filterSportCenter: payload
+      };
 
     case "ORDER_BY_DATE":
       return {
@@ -164,7 +170,7 @@ function rootReducer(state = initialState, { type, payload }) {
 
     default:
       return { ...state };
-  }
-}
+  };
+};
 
 export default rootReducer;

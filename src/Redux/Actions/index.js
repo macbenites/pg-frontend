@@ -30,7 +30,9 @@ import {
   REMOVE_PLAYER,
   ORDER_BY_PLAYERS,
   ORDER_BY_DATE,
-  MATCH_BY_NAME_SPORTCENTER
+  MATCH_BY_NAME_SPORTCENTER,
+  FILTER_SPORTCENTER,
+
 } from "./types";
 import axios from "axios";
 
@@ -576,3 +578,16 @@ export function updateData (id , newData) {
   }
 }
 
+export function filterSportCentersByDistrict(payload){
+  return async function (dispatch){
+    try{
+      const filterSportCenters = await axios.get(`https://futbolapp-henry.herokuapp.com/sportcenter/${payload}`);
+      return dispatch({
+        type: FILTER_SPORTCENTER,
+        payload: filterSportCenters.data
+      });
+    }catch(error){
+      console.log('error');
+    };
+  };
+};
