@@ -11,9 +11,9 @@ import {
   Name,
   User,
   Barrio,
-  Position,
   Email,
   Btn,
+  Position
 } from "../Styles/reusable/Containers";
 import Swal from "sweetalert2";
 
@@ -41,13 +41,14 @@ export default function GamesCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fields = useSelector((state) => state.fields);
-  console.log(fields)
   const [errors, setErrors] = useState({});
+  const users = useSelector((state) => state.userState)
   const [input, setInput] = useState({
     nameCenter: "",
     players: "",
     date: "",
     note: "",
+    user: users.user_name
   });
 
   useEffect(() => {
@@ -79,11 +80,10 @@ export default function GamesCreate() {
     }))              
   };
 
-  console.log(input)
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validationForm(input));
+    
     if (
       input.nameCenter &&
       input.players &&
@@ -92,6 +92,7 @@ export default function GamesCreate() {
       !Object.keys(errors).length
     ) {
       dispatch(postMatch(input));
+      console.log(input)
       Swal.fire({
         icon: "success",
         title: "Partido creado con éxito!!",
@@ -124,6 +125,9 @@ export default function GamesCreate() {
         <h4>Crear Partido</h4>
         <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
         <form onSubmit={(e) => handleSubmit(e)}>
+          <Position>
+            <InputForm type="text" value={users.user_name} name="user" readOnly />
+          </Position>
           <Name>
             <select name= 'nameCenter' onChange= {e => handleSelect(e)}>
               <option value= ''>Seleccione la cancha</option>
