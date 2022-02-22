@@ -30,6 +30,7 @@ import {
   REMOVE_PLAYER,
   ORDER_BY_PLAYERS,
   ORDER_BY_DATE,
+  RESET_PLAYERS_FILTER
 } from "./types";
 import axios from "axios";
 
@@ -549,7 +550,8 @@ export function updateData (id , newData) {
         {
           name : newData.name,
           neighborhood : newData.neighborhood,
-          player_position : newData.position 
+          player_position : newData.position,
+          image : newData.img
         }
       )
     } catch (error) {
@@ -558,3 +560,15 @@ export function updateData (id , newData) {
   }
 }
 
+export function resetPlayersFilter () {
+  return async function (dispatch) {
+    fetch("https://futbolapp-henry.herokuapp.com/users")
+      .then(obj => obj.json())
+      .then(obj => {
+        dispatch({
+          payload: obj,
+          type: RESET_PLAYERS_FILTER,
+        })
+      })
+  }
+}

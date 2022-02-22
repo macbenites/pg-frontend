@@ -156,6 +156,12 @@ function rootReducer(state = initialState, { type, payload }) {
         matches: payload,
       };
 
+    case "RESET_PLAYERS_FILTER":
+      return {
+        ...state,
+        users : payload
+      }
+
     default:
       return { ...state };
   }
