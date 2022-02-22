@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import Player from "./Player";
+import { Label } from "../Styles/reusable/Input";
+import { Select } from "../Styles/reusable/Select";
 import { Filter, PlayersDiv, Search } from "../Styles/component/Players";
 import { useDispatch, useSelector } from "react-redux";
+import { TopFields } from "../Styles/component/Fields";
 import {
   showUsers,
   getNeighborhoods,
@@ -51,8 +54,8 @@ const Players = () => {
 
   return (
     <div>
-      <br />
-      <Filter>
+      <TopFields>
+        <h2>Jugadores</h2>
         <Search>
           <FaSearch onClick={onClickSearch} />
           <input
@@ -64,31 +67,33 @@ const Players = () => {
             autoComplete="off"
           />
         </Search>
-        <label>Filtrar por posición: </label>
-        <select name="" id="" onClick={handleFilterByPosition}>
-          <option value="todos">Todas las posiciones</option>
-          <option value="delantero">Delantero</option>
-          <option value="mediocampista">Mediocampista</option>
-          <option value="defensor">Defensor</option>
-          <option value="arquero">Arquero</option>
-        </select>
-        <label>Filtrar por ubicación:</label>
-        <select name="neighborhood" onClick={handleFilterByNeighborhood}>
-          <option value="todos">Todos los barrios</option>
-          {neighborhoods.map((element) => (
-            <option key={element.id} value={element.name}>
-              {element.name}
-            </option>
-          ))}
-        </select>
+      </TopFields>
+      <Filter>
+        <div>
+          <Label>Filtrar por posición: </Label>
+          <Select name="" id="" onClick={handleFilterByPosition}>
+            <option value="todos">Todas las posiciones</option>
+            <option value="delantero">Delantero</option>
+            <option value="mediocampista">Mediocampista</option>
+            <option value="defensor">Defensor</option>
+            <option value="arquero">Arquero</option>
+          </Select>
+        </div>
+        <div>
+          <Label>Filtrar por ubicación:</Label>
+          <Select name="neighborhood" onClick={handleFilterByNeighborhood}>
+            <option value="todos">Todos los barrios</option>
+            {neighborhoods.map((element) => (
+              <option key={element.id} value={element.name}>
+                {element.name}
+              </option>
+            ))}
+          </Select>
+        </div>
       </Filter>
       <PlayersDiv>
         {users.length > 0 ? (
-          users.map((obj) => (
-            <Link to={"/users/" + obj.id}>
-              <Player key={obj.id} data={obj} />
-            </Link>
-          ))
+          users.map((obj) => <Player key={obj.id} data={obj} />)
         ) : (
           <h4>Cargando...</h4>
         )}
