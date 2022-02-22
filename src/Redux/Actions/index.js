@@ -24,6 +24,7 @@ import {
   GET_DETAILS_COURT,
   GET_DETAILS_MATCH,
   GET_NEIGHBORHOODS,
+  USER_BY_NAME,
   FILTER_BY_POSITION,
   FILTER_BY_NEIGHBORHOOD,
   REMOVE_PLAYER,
@@ -403,6 +404,24 @@ export function getNeighborhoods() {
     }
   };
 }
+
+export const filterByNameUser = (name) => async (dispatch) => {
+  await axios
+    .get(`https://futbolapp-henry.herokuapp.com/users/name/${name}`)
+    .then((response) => {
+      dispatch({
+        type: USER_BY_NAME,
+        payload: response.data,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    });
+};
 
 export function filterPlayersByPosition(position) {
   if (position === "todos") {

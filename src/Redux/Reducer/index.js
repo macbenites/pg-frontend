@@ -98,6 +98,7 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
+
     case "POST_BUY":
       return {
         ...state,
@@ -135,6 +136,12 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         removePlayer: payload,
+      };
+
+    case "USER_BY_NAME":
+      return {
+        ...state,
+        users: payload,
       };
 
     default:
