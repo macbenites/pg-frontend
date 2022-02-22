@@ -539,7 +539,7 @@ export const orderByPlayers = (payload) => {
   };
  };
 
-}
+
 
 export function updateData (id , newData) {
   return async function (dispatch) {
