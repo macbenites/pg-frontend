@@ -30,6 +30,7 @@ import {
   REMOVE_PLAYER,
   ORDER_BY_PLAYERS,
   ORDER_BY_DATE,
+  MATCH_BY_NAME_SPORTCENTER
 } from "./types";
 import axios from "axios";
 
@@ -539,6 +540,23 @@ export const orderByPlayers = (payload) => {
   };
  };
 
+ export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
+  await axios
+    .get(`https://futbolapp-henry.herokuapp.com/matches?name=${nameCenter}`)
+    .then((response) => {
+      dispatch({
+        type: MATCH_BY_NAME_SPORTCENTER,
+        payload: response.data,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    });
+};
 
 
 export function updateData (id , newData) {
