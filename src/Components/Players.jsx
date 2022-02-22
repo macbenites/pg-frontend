@@ -10,7 +10,6 @@ import {
   getNeighborhoods,
   filterByNameUser,
 } from "../Redux/Actions";
-import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import {
   filterPlayersByPosition,
