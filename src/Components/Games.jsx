@@ -9,7 +9,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
   TitleStyle,
   CardsGamesStyle,
@@ -25,16 +24,12 @@ function Games() {
   const allMatches = useSelector((state) => state.matches);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   console.log(allMatches);
 
   useEffect(() => {
     dispatch(getMatches());
   }, [dispatch]);
 
-  function handleClick() {
-    navigate("/gamesCreate");
-  }
 
   const handleChange = (e) => {
     dispatch(orderByDateTime(e.target.value));
@@ -63,8 +58,8 @@ function Games() {
     <div>
       <TitleStyle>Partidos</TitleStyle>
 
-      <BtnCreateGame onClick={(e) => handleClick(e)}>
-        Crear partido
+      <BtnCreateGame onClick={()=> dispatch(getMatches())} >
+        Quitar Filtros
       </BtnCreateGame>
       <TopFields>
         <Search>
