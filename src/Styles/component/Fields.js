@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const TopFields = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 1rem 0;
   h2 {
     font-size: 1.6rem;
     color: var(--Links);
   }
-  @media (min-width: 768px) {
+  @media (min-width: 550px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;

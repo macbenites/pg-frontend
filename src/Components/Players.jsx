@@ -14,7 +14,9 @@ import { FaSearch } from "react-icons/fa";
 import {
   filterPlayersByPosition,
   filterPlayersByNeighborhoods,
+  resetPlayersFilter,
 } from "../Redux/Actions";
+import { BtnCreateGame, TitleStyle } from "../Styles/component/Games";
 
 const Players = () => {
   const dispatch = useDispatch();
@@ -46,6 +48,11 @@ const Players = () => {
     dispatch(filterPlayersByNeighborhoods(e.target.value));
   };
 
+  const resetFilters = () => {
+    console.log("asdasd");
+    dispatch(resetPlayersFilter());
+  };
+
   useEffect(() => {
     dispatch(showUsers());
     dispatch(getNeighborhoods());
@@ -53,8 +60,8 @@ const Players = () => {
 
   return (
     <div>
+      <TitleStyle>Jugadores</TitleStyle>
       <TopFields>
-        <h2>Jugadores</h2>
         <Search>
           <FaSearch onClick={onClickSearch} />
           <input
@@ -66,11 +73,12 @@ const Players = () => {
             autoComplete="off"
           />
         </Search>
+        <BtnCreateGame onClick={resetFilters}>Resetear filtros</BtnCreateGame>
       </TopFields>
       <Filter>
         <div>
           <Label>Filtrar por posición: </Label>
-          <Select name="" id="" onClick={handleFilterByPosition}>
+          <Select name="" id="" onChange={handleFilterByPosition}>
             <option value="todos">Todas las posiciones</option>
             <option value="delantero">Delantero</option>
             <option value="mediocampista">Mediocampista</option>
@@ -80,7 +88,7 @@ const Players = () => {
         </div>
         <div>
           <Label>Filtrar por ubicación:</Label>
-          <Select name="neighborhood" onClick={handleFilterByNeighborhood}>
+          <Select name="neighborhood" onChange={handleFilterByNeighborhood}>
             <option value="todos">Todos los barrios</option>
             {neighborhoods.map((element) => (
               <option key={element.id} value={element.name}>

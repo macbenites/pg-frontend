@@ -4,6 +4,7 @@ const initialState = {
   error: [],
   fields: [],
   matches: [],
+  yourMatchesCreated: [],
   userState: {},
   detailsUser: {},
   players: [],
@@ -12,6 +13,7 @@ const initialState = {
   neighborhoods: [],
   displayName: "",
   removePlayer: [],
+
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -132,6 +134,7 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
+      
     case "REMOVE_PLAYER":
       return {
         ...state,
@@ -144,21 +147,50 @@ function rootReducer(state = initialState, { type, payload }) {
         users: payload,
       };
 
+    case "FILTER_SPORTCENTER":
+      return {
+        ...state,
+        fields: payload,
+      };
+
     case "ORDER_BY_DATE":
       return {
         ...state,
         matches: payload,
       };
-      
+
     case "ORDER_BY_PLAYERS":
       return {
         ...state,
         matches: payload,
       };
+      
+    case "RESET_PLAYERS_FILTER":
+      return {
+        ...state,
+        users : payload
+      }
 
+    case "MATCH_BY_NAME_SPORTCENTER":
+      return {
+        ...state,
+        matches: payload,
+      };  
+
+    case "DELETE_MATCH":
+      return {
+        ...state
+      };
+
+    case "SHOW_YOUR_MATCHES":
+      return {
+        ...state,
+        yourMatchesCreated : payload
+      }
+      
     default:
       return { ...state };
-  }
-}
+  };
+};
 
 export default rootReducer;

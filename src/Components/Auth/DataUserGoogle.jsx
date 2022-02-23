@@ -18,6 +18,7 @@ import {
   Barrio,
   Position,
   Btn,
+  User
 } from "../../Styles/reusable/Containers";
 
 function DataUserGoogle() {
@@ -40,11 +41,6 @@ function DataUserGoogle() {
     console.log(input)
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
-      /* dispatch(
-        signUpWithMail(input.email, input.password, input, () => {
-          navigate("/auth/login");
-        })
-      ); */
       dispatch(updateData(currentUser.id , input))
       navigate("/home/canchas")
     } else {
@@ -93,6 +89,15 @@ function DataUserGoogle() {
               )}
             </ErrorMessage>
           </Name>
+          <User>
+          <InputForm
+              type="text"
+              autoComplete="off"
+              placeholder="URL nueva imagen perfil"
+              name="img"
+              {...register("img")}
+          />   
+          </User>
           <Barrio>
             <select
               name="neighborhood"
