@@ -38,13 +38,8 @@ export default function DetailMatch() {
             <strong>Fecha y hora:</strong> {detail.date}
           </p>
           <p>
-            <strong>Cancelación:</strong> {detail.cancellation} antes de la hora
-            de inicio
-          </p>
-          <p>
             <strong>Descripción:</strong> {detail.note}
           </p>
-
           <div>
             <strong>Jugadores:</strong>
             {detail.matchPlayers?.map((element, index) => (

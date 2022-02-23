@@ -20,7 +20,6 @@ export const SignUpBusiness = () => {
   } = useForm();
 
   const neighborhoods = useSelector((state) => state.neighborhoods);
-  console.log(neighborhoods);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export const SignUpBusiness = () => {
   return (
     <div>
       <SignUp>
-        <h4>Cuenta Business</h4>
+        <h4>Cuenta Empresa</h4>
         <h5>
           Ya eres parte de SeJuega ?{" "}
           <LinkToSignIn to="/auth/login" business="true">
@@ -271,7 +270,7 @@ export const SignUpBusiness = () => {
 
           {/* CBU */}
           <div>
-            <Label>Cvu</Label>
+            <Label>CVU</Label>
             <InputForm
               type="text"
               autoComplete="off"
@@ -360,7 +359,7 @@ export const SignUpBusiness = () => {
           </div>
           {/* Nota */}
           <BtnSignUp>
-            <Label>Notas</Label>
+            <Label>Descripción</Label>
             <textarea
               type="text"
               autoComplete="off"

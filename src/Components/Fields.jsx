@@ -21,7 +21,6 @@ const Fields = () => {
   const handleFilter = (e) => {
     e.preventDefault();
     dispatch(filterSportCentersByDistrict(e.target.value));
-    console.log(e.target.value);
   };
 
   useEffect(() => {
