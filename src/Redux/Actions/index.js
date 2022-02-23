@@ -436,70 +436,45 @@ export const filterByNameUser = (name) => async (dispatch) => {
     });
 };
 
-export function filterPlayersByPosition(position) {
-  try {
-    
-    if (position === "todos") {
-      return function (dispatch) {
-        fetch("https://sejuega-henry.herokuapp.com/users")
-          .then((obj) => obj.json())
-          .then((obj) => {
-            dispatch({
-              payload: obj,
-              type: FILTER_BY_POSITION,
-            });
-          });
-      };
-    } else {
-      return function (dispatch) {
-        fetch(`https://sejuega-henry.herokuapp.com/users/position/${position}`)
-          .then((obj) => obj.json())
-          .then((obj) => {
-            dispatch({
-              payload: obj,
-              type: FILTER_BY_POSITION,
-            });
-          });
-      };
-    }
-
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `${error.response.data.error}`,
-  })
-}
-}
+export const filterPlayersByPosition = (position) => async (dispatch) => {
+  await axios
+    .get(`https://sejuega-henry.herokuapp.com/users/position/${position}`)
+    .then((obj) => {
+      dispatch({
+        payload: obj.data,
+        type: FILTER_BY_POSITION,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    });
+};
 
 export function filterPlayersByNeighborhoods(neighborhood) {
-  if (neighborhood === "todos") {
-    return function (dispatch) {
-      fetch("https://sejuega-henry.herokuapp.com/users")
-        .then((obj) => obj.json())
-        .then((obj) => {
-          dispatch({
-            payload: obj,
-            type: FILTER_BY_NEIGHBORHOOD,
-          });
-        });
-    };
-  } else {
-    return function (dispatch) {
-      fetch(
+  return async (dispatch) => {
+    await axios
+      .get(
         `https://sejuega-henry.herokuapp.com/users/neighborhood/${neighborhood}`
       )
-        .then((obj) => obj.json())
-        .then((obj) => {
-          dispatch({
-            payload: obj,
-            type: FILTER_BY_NEIGHBORHOOD,
-          });
+      .then((obj) => {
+        dispatch({
+          payload: obj.data,
+          type: FILTER_BY_NEIGHBORHOOD,
         });
-    };
-  }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.response.data.error}`,
+        });
+      });
+  };
 }
-
 export function removeMatchPlayer(id_match, user_name) {
   return async function (dispatch) {
     try {
