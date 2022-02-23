@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { postMatch, getFields } from "../Redux/Actions/index";
-import { useDispatch, useSelector } from "react-redux";
+import { postMatch, authState } from "../Redux/Actions/index";
+import { useDispatch } from "react-redux";
 import { FaExclamationCircle } from "react-icons/fa";
 import { ErrorMessage } from "../Styles/Login.js";
 import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
-import { CreateDiv, BtnCreateGame, BtnBack } from "../Styles/component/GamesCreate";
 import {
-  Name,
+  CreateDiv,
+  BtnCreateGame,
+  BtnBack,
+} from "../Styles/component/GamesCreate";
+import {
   User,
   Barrio,
   Email,
   Btn,
-  Position
+  Position,
 } from "../Styles/reusable/Containers";
 import Swal from "sweetalert2";
 
@@ -40,21 +43,20 @@ const validationForm = (input) => {
 export default function GamesCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const fields = useSelector((state) => state.fields);
   const [errors, setErrors] = useState({});
-  const users = useSelector((state) => state.userState)
+
   const [input, setInput] = useState({
-    nameCenter: "",
+    nameCenter: localStorage.getItem("title"),
     players: "",
-    date: "",
+    date: localStorage.getItem("datetime"),
     note: "",
-    user: users.user_name
+    price: localStorage.getItem("price"),
+    user: localStorage.getItem("user"),
   });
 
   useEffect(() => {
-    dispatch(getFields());      
+    dispatch(authState());
   }, [dispatch]);
-  
 
   const handleChange = (e) => {
     setInput({
@@ -69,21 +71,10 @@ export default function GamesCreate() {
     );
   };
 
-  const handleSelect = (e) => {   
-    setInput({
-      ...input,
-      nameCenter: e.target.value               
-    }) 
-    setErrors(validationForm({
-      ...input,
-      nameCenter: e.target.value
-    }))              
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validationForm(input));
-    
+
     if (
       input.nameCenter &&
       input.players &&
@@ -91,8 +82,9 @@ export default function GamesCreate() {
       input.note &&
       !Object.keys(errors).length
     ) {
+      console.log("input", input);
       dispatch(postMatch(input));
-      console.log(input)
+      localStorage.clear();
       Swal.fire({
         icon: "success",
         title: "Partido creado con éxito!!",
@@ -114,35 +106,31 @@ export default function GamesCreate() {
     }
   };
 
-  function handleBackClick(){
-    navigate('/home/games');
-  };
-
+  function handleBackClick() {
+    navigate("/home/games");
+  }
+  console.log(input);
   return (
     <div>
       <Logo />
       <CreateDiv>
         <h4>Crear Partido</h4>
-        <BtnBack onClick={e => handleBackClick(e)}>Volver</BtnBack>
+        <BtnBack onClick={(e) => handleBackClick(e)}>Volver</BtnBack>
         <form onSubmit={(e) => handleSubmit(e)}>
+          <div>
+            <InputForm type="text" value={input.price} name="price" readOnly />
+          </div>
+          <div>
+            <InputForm
+              type="text"
+              value={input.nameCenter}
+              name="nameCenter"
+              readOnly
+            />
+          </div>
           <Position>
-            <InputForm type="text" value={users.user_name} name="user" readOnly />
+            <InputForm type="text" value={input.user} name="user" readOnly />
           </Position>
-          <Name>
-            <select name= 'nameCenter' onChange= {e => handleSelect(e)}>
-              <option value= ''>Seleccione la cancha</option>
-              {fields.map((element) =>(
-                <option key = {element.id} value = {element.name}>{element.name}</option>
-              ))} 
-            </select>
-            <ErrorMessage>
-              {errors.nameCenter && (
-                <small>
-                  <FaExclamationCircle /> {errors.nameCenter}
-                </small>
-              )}
-            </ErrorMessage>
-          </Name>
           <User>
             <InputForm
               type="number"
@@ -165,7 +153,6 @@ export default function GamesCreate() {
               value={input.date}
               placeholder="Fecha y Hora"
               name="date"
-              onChange={(e) => handleChange(e)}
             />
             <ErrorMessage>
               {errors.date && (
