@@ -14,7 +14,7 @@ import { TitleStyle } from "../Styles/component/Games";
 
 const Fields = () => {
   const fields = useSelector((obj) => obj.fields);
-  const tenFields = fields.slice(0, 10);
+  const tenFields = fields?.slice(0, 10);
   const dispatch = useDispatch();
   const neighborhoods = useSelector((state) => state.neighborhoods);
 
@@ -37,7 +37,7 @@ const Fields = () => {
           <Label>Filtrar por barrio:</Label>
           <Select name="neighborhood" onChange={handleFilter}>
             <option value="">Todos</option>
-            {neighborhoods.map((element) => (
+            {neighborhoods?.map((element) => (
               <option key={element.id} value={element.name}>
                 {element.name}
               </option>
@@ -48,7 +48,7 @@ const Fields = () => {
       </TopFields>
       <CardStyles>
         {tenFields &&
-          tenFields.map((obj) => <CardsCourt key={obj.id} props={obj} />)}
+          tenFields?.map((obj) => <CardsCourt key={obj.id} props={obj} />)}
       </CardStyles>
     </div>
   );
