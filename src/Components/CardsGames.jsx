@@ -34,7 +34,7 @@ function CardsGames({ nameCenter, date, players, id }) {
         )}
       </DateStyle>
       <BtnDiv>
-        <BtnGames onClick={(e) => handleClick(e)}>Unirse</BtnGames>
+        <BtnGames primary onClick={(e) => handleClick(e)}>Unirse</BtnGames>
         <BtnGames onClick={(e) => handleCLickInvite(e)}>Invitar</BtnGames>
       </BtnDiv>
     </MainCardsGames>

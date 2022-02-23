@@ -4,18 +4,13 @@ import { LinkTo } from "../reusable/LinkTo";
 
 export const MainCardsGames = styled.div`
   border-radius: 0.75rem;
-  width: 100%;
+  max-width: 300px;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 2rem;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  :hover {
-    background-color: #f9bc60;
-  }
- 
 `;
 
 export const DateStyle = styled.div`
@@ -42,14 +37,9 @@ export const NameCenter = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-
 export const BtnGames = styled(Button)`
-  background-color: #004643;
   width: 100%;
   margin-top: 1rem;
-  :hover {
-    background-color: var(--primary-light);
-  }
 `;
 
 export const BtnDiv = styled.div`

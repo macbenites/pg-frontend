@@ -624,34 +624,34 @@ export function filterSportCentersByDistrict(payload) {
           });
         });
     };
-  };
-};
-
-export function deleteMatch(id_match){
-  return async function(dispatch){
-    try{
-      const matchDelete = await axios.delete(`http://futbolapp-henry.herokuapp.com/matches/${id_match}`);
-      return dispatch({
-        type: DELETE_MATCH,
-        payload: matchDelete
-      });
-    }catch(e){
-      console.log('error');
-    };
-  };
-};
-
-
-export function showYourMatch (id) {
-  return function (dispatch) {
-    fetch("https://futbolapp-henry.herokuapp.com/users/" + id)
-      .then(obj => obj.json())
-      .then(obj => {
-        dispatch({
-          payload : obj.matches,
-          type : SHOW_YOUR_MATCHES
-        })
-      })
   }
 }
 
+export function deleteMatch(id_match) {
+  return async function (dispatch) {
+    try {
+      const matchDelete = await axios.delete(
+        `http://futbolapp-henry.herokuapp.com/matches/${id_match}`
+      );
+      return dispatch({
+        type: DELETE_MATCH,
+        payload: matchDelete,
+      });
+    } catch (e) {
+      console.log("error");
+    }
+  };
+}
+
+export function showYourMatch(id) {
+  return function (dispatch) {
+    fetch("https://futbolapp-henry.herokuapp.com/users/" + id)
+      .then((obj) => obj.json())
+      .then((obj) => {
+        dispatch({
+          payload: obj.matches,
+          type: SHOW_YOUR_MATCHES,
+        });
+      });
+  };
+}
