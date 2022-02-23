@@ -5,6 +5,7 @@ import { CardStyles, TopFields } from "../Styles/component/Fields";
 import CardsCourt from "./CardsCourt";
 import { Select } from "../Styles/reusable/Select";
 import { Label } from "../Styles/reusable/Input";
+import { Button } from "../Styles/reusable/Button";
 
 const Fields = () => {
 
@@ -38,6 +39,9 @@ const Fields = () => {
               </option>
             ))}
           </Select>
+          <Button onClick={() => dispatch(getFields())}>
+            Quitar Filtros
+          </Button>
         </div>
       </TopFields>
       <CardStyles>
