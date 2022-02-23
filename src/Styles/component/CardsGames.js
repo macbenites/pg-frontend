@@ -4,7 +4,8 @@ import { LinkTo } from "../reusable/LinkTo";
 
 export const MainCardsGames = styled.div`
   border-radius: 0.75rem;
-  max-width: 300px;
+  width: 90%;
+  margin: 0 auto;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;

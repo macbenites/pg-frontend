@@ -19,6 +19,7 @@ import { SignUpBusiness } from "./Components/Auth/SignUpBusiness";
 import { LayoutAuth } from "./Components/Auth/LayoutAuth";
 import Chat from "./Components/Chat";
 import DataUserGoogle from "./Components/Auth/DataUserGoogle";
+import FailureMp from "./Components/FailureMp";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="signin" element={<SignIn />} />
               <Route path="login" element={<Login />} />
               <Route path="business" element={<SignUpBusiness />} />
+
               <Route path="resetPassword" element={<Password />} />
             </Route>
             <Route path="reserveCourt/:name" element={<ReserveCourt />} />
@@ -45,6 +47,7 @@ function App() {
               <Route path="joinMatch/:id" element={<JoinMatch />} />
               <Route path="players" element={<Players />} />
               <Route path="canchas" element={<Fields />} />
+              <Route path="failure" element={<FailureMp />} />
             </Route>
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>

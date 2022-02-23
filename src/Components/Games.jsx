@@ -12,24 +12,23 @@ import { useSelector } from "react-redux";
 import {
   TitleStyle,
   CardsGamesStyle,
-  SelectDate,
-  SelectSearch,
   BtnCreateGame,
-  Search,
+  Filters,
 } from "../Styles/component/Games";
+import { Select } from "../Styles/reusable/Select";
 import { FaSearch } from "react-icons/fa";
 import { TopFields } from "../Styles/component/Fields";
+import { Search } from "../Styles/component/Players";
+import { Label } from "../Styles/reusable/Input";
 
 function Games() {
   const allMatches = useSelector((state) => state.matches);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
-  console.log(allMatches);
 
   useEffect(() => {
     dispatch(getMatches());
   }, [dispatch]);
-
 
   const handleChange = (e) => {
     dispatch(orderByDateTime(e.target.value));
@@ -57,9 +56,6 @@ function Games() {
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
-      <BtnCreateGame onClick={()=> dispatch(getMatches())} >
-        Quitar Filtros
-      </BtnCreateGame>
       <TopFields>
         <Search>
           <FaSearch onClick={onClickSearch} />
@@ -72,17 +68,27 @@ function Games() {
             autoComplete="off"
           />
         </Search>
+        <BtnCreateGame onClick={() => dispatch(getMatches())}>
+          Quitar Filtros
+        </BtnCreateGame>
       </TopFields>
-
-      <SelectDate onChange={handleChange}>
-        <option value="latest">Reciente</option>
-        <option value="oldest">Antiguo</option>
-      </SelectDate>
-      <SelectSearch onChange={handleOrderByPlayers}>
-        <option value="">Cantidad Jugadores</option>
-        <option value="decreciente">Menos Jugadores anotados</option>
-        <option value="incremental">Mas Jugadores anotados</option>
-      </SelectSearch>
+      <Filters>
+        <div>
+          <Label>Ordenar por:</Label>
+          <Select onChange={handleChange}>
+            <option value="latest">Reciente</option>
+            <option value="oldest">Antiguo</option>
+          </Select>
+        </div>
+        <div>
+          <Label>Ordenar por:</Label>
+          <Select onChange={handleOrderByPlayers}>
+            <option value="">Cantidad Jugadores</option>
+            <option value="decreciente">Menos Jugadores anotados</option>
+            <option value="incremental">Mas Jugadores anotados</option>
+          </Select>
+        </div>
+      </Filters>
       <CardsGamesStyle>
         {allMatches &&
           allMatches.map((el, index) => (
