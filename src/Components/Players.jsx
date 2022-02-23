@@ -14,9 +14,9 @@ import { FaSearch } from "react-icons/fa";
 import {
   filterPlayersByPosition,
   filterPlayersByNeighborhoods,
-  resetPlayersFilter
+  resetPlayersFilter,
 } from "../Redux/Actions";
-import {BtnCreateGame} from "../Styles/component/Games";
+import { BtnCreateGame, TitleStyle } from "../Styles/component/Games";
 
 const Players = () => {
   const dispatch = useDispatch();
@@ -49,9 +49,9 @@ const Players = () => {
   };
 
   const resetFilters = () => {
-    console.log("asdasd")
-    dispatch(resetPlayersFilter())
-  }
+    console.log("asdasd");
+    dispatch(resetPlayersFilter());
+  };
 
   useEffect(() => {
     dispatch(showUsers());
@@ -60,8 +60,8 @@ const Players = () => {
 
   return (
     <div>
+      <TitleStyle>Jugadores</TitleStyle>
       <TopFields>
-        <h2>Jugadores</h2>
         <Search>
           <FaSearch onClick={onClickSearch} />
           <input
@@ -73,6 +73,7 @@ const Players = () => {
             autoComplete="off"
           />
         </Search>
+        <BtnCreateGame onClick={resetFilters}>Resetear filtros</BtnCreateGame>
       </TopFields>
       <Filter>
         <div>
@@ -96,10 +97,7 @@ const Players = () => {
             ))}
           </Select>
         </div>
-        <BtnCreateGame onClick={resetFilters}>
-              <h6>Resetear filtros</h6>
-        </BtnCreateGame>
-      </Filter> 
+      </Filter>
       <PlayersDiv>
         {users.length > 0 ? (
           users.map((obj) => <Player key={obj.id} data={obj} />)

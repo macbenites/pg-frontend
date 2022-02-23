@@ -257,8 +257,9 @@ export const authState = () => {
               user_name: obj.user_name,
               name: obj.user_name,
               id: obj.id,
+              role: obj.role,
             };
-            console.log(moreData);
+            console.log("moreData", moreData);
             return dispatch({
               payload: moreData,
               type: "USER_LOGGED",
