@@ -13,7 +13,7 @@ const initialState = {
   neighborhoods: [],
   displayName: "",
   removePlayer: [],
-
+  allUsers : []
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -99,6 +99,7 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         users: payload,
+        allUsers : payload
       };
 
     case "POST_BUY":
