@@ -39,17 +39,18 @@ const Players = () => {
   };
 
   const handleFilterByPosition = (e) => {
-    console.log(e.target.value);
-    dispatch(filterPlayersByPosition(e.target.value));
+    e.target.value === "todos"
+      ? dispatch(resetPlayersFilter())
+      : dispatch(filterPlayersByPosition(e.target.value));
   };
 
   const handleFilterByNeighborhood = (e) => {
-    console.log(e.target.value);
-    dispatch(filterPlayersByNeighborhoods(e.target.value));
+    e.target.value === "todos"
+      ? dispatch(resetPlayersFilter())
+      : dispatch(filterPlayersByNeighborhoods(e.target.value));
   };
 
   const resetFilters = () => {
-    console.log("asdasd");
     dispatch(resetPlayersFilter());
   };
 
