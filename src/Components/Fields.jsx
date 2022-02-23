@@ -36,8 +36,8 @@ const Fields = () => {
           <Label>Filtrar por barrio:</Label>
           <Select name="neighborhood" onChange={handleFilter}>
             <option value="">Todos</option>
-            {neighborhoods?.map((element) => (
-              <option key={element.id} value={element.name}>
+            {neighborhoods?.map((element, index) => (
+              <option key={index} value={element.name}>
                 {element.name}
               </option>
             ))}
@@ -47,7 +47,9 @@ const Fields = () => {
       </TopFields>
       <CardStyles>
         {tenFields &&
-          tenFields?.map((obj) => <CardsCourt key={obj.id} props={obj} />)}
+          tenFields?.map((obj, index) => (
+            <CardsCourt key={index} props={obj} />
+          ))}
       </CardStyles>
     </div>
   );

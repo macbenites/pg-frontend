@@ -79,7 +79,7 @@ const Players = () => {
       <Filter>
         <div>
           <Label>Filtrar por posición: </Label>
-          <Select name="" id="" onChange={handleFilterByPosition}>
+          <Select name="position" onChange={handleFilterByPosition}>
             <option value="todos">Todas las posiciones</option>
             <option value="delantero">Delantero</option>
             <option value="mediocampista">Mediocampista</option>
@@ -91,8 +91,8 @@ const Players = () => {
           <Label>Filtrar por ubicación:</Label>
           <Select name="neighborhood" onChange={handleFilterByNeighborhood}>
             <option value="todos">Todos los barrios</option>
-            {neighborhoods.map((element) => (
-              <option key={element.id} value={element.name}>
+            {neighborhoods.map((element, index) => (
+              <option key={index} value={element.name}>
                 {element.name}
               </option>
             ))}
@@ -101,7 +101,7 @@ const Players = () => {
       </Filter>
       <PlayersDiv>
         {users.length > 0 ? (
-          users.map((obj) => <Player key={obj.id} data={obj} />)
+          users.map((obj, index) => <Player key={index} data={obj} />)
         ) : (
           <h4>Cargando...</h4>
         )}
