@@ -4,17 +4,18 @@ import { LinkTo } from "../reusable/LinkTo";
 
 export const MainCardsGames = styled.div`
   border-radius: 0.75rem;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  padding: 1rem 0;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
-  margin: 1rem;
+  
   :hover {
     background-color: #f9bc60;
   }
+ 
 `;
 
 export const DateStyle = styled.div`
@@ -41,22 +42,6 @@ export const NameCenter = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-export const ButtonJoinCardsGames = styled(Button)`
-  background-color: #004643;
-  width: 80px;
-  height: 30px;
-  display: flex;
-  margin-left: 15px;
-`;
-
-export const BtnInviteCardsGames = styled(Button)`
-  background-color: #004643;
-  width: 80px;
-  height: 30px;
-  display: flex;
-  margin-left: 100px;
-  margin-top: -40px;
-`;
 
 export const BtnGames = styled(Button)`
   background-color: #004643;
@@ -71,6 +56,7 @@ export const BtnDiv = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  padding: 0 1rem;
 `;
 
 export const Title = styled(LinkTo)`
@@ -81,5 +67,5 @@ export const Title = styled(LinkTo)`
 export const Text = styled.p`
   font-size: 20px;
   text-align: center;
-  margin : 2px
-`
+  margin: 2px;
+`;
