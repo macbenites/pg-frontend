@@ -109,7 +109,7 @@ export default function GamesCreate() {
   function handleBackClick() {
     navigate("/home/games");
   }
-  console.log(input);
+
   return (
     <div>
       <Logo />

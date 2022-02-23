@@ -8,7 +8,6 @@ export default function DetailCourt() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const detail = useSelector((state) => state.detailsCourt);
-  console.log(detail)
   useEffect(() => {
     dispatch(getDetailsCourt(id));
   }, [dispatch, id]);

@@ -61,7 +61,7 @@ function DataUserGoogle() {
             <InputForm
               type="text"
               autoComplete="off"
-              placeholder="Eliga un userName"
+              placeholder="Elija un nombre de usuario"
               name="name"
               {...register("name", {
                 required: {

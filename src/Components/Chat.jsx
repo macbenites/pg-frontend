@@ -6,15 +6,12 @@ import {authState , getDetailsUser} from "../Redux/Actions/index"
 import { useParams } from "react-router-dom";
 
 function Chat () {
-
-
     const [mensajes , setMensajes] = useState();
     const [inputMensaje , setInputMensaje] = useState();
     const user = useSelector(obj => obj.userState);
     const userReceptor = useSelector(obj => obj.detailsUser);
     const params = useParams();
     const dispatch = useDispatch();
-    console.log("asdasd")
     
     
     const submitForm = (e) => {

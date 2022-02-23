@@ -4,7 +4,7 @@ export const PlayerDiv = styled.div`
   background-color: #abd1c6;
   border-radius: 0.75rem;
   color: #004643;
-  width: 100%;
+  max-width: 300px;
   margin: 0 auto;
   :hover {
     background-color: #f9bc60;

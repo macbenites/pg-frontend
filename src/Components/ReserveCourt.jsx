@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { postBuy } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import { InputForm } from "../Styles/reusable/Input";
+import { InputForm, Label } from "../Styles/reusable/Input";
+//import { DateTimePicker } from '@material-ui/pickers';
 import Logo from "./Logo";
 import {
   CreateDiv,
@@ -16,6 +17,7 @@ export default function ReserveCourt() {
   const navigate = useNavigate();
   const { name } = useParams();
   const { userState } = useSelector((state) => state);
+  //const [dateSelected, setDateSelected] =  useState(new Date());
   const [input, setInput] = useState({
     title: name,
   });
@@ -27,7 +29,6 @@ export default function ReserveCourt() {
     localStorage.setItem("user", userState.user_name);
   };
 
-  console.log(input);
   const handleChange = (e) => {
     setInput({
       ...input,
@@ -48,25 +49,36 @@ export default function ReserveCourt() {
     navigate("/home/canchas");
   }
 
+  //const date = new Date();
+
   return (
     <div>
       <Logo />
       <CreateDiv>
-        <h4>Reservar</h4>
+        <h4>Haz tu Reserva</h4>
         <BtnBack onClick={(e) => handleBackClick(e)}>Volver</BtnBack>
         <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
+            <Label>Lugar</Label>
             <InputForm type="text" value={name} name="title" readOnly />
           </Name>
           <User>
+            <Label>Precio</Label>
             <InputForm
               type="number"
-              placeholder="Precio"
               name="price"
               onChange={(e) => handleChange(e)}
             />
           </User>
           <Barrio>
+            {/*<Label>Fecha y Hora</Label>
+            <DateTimePicker
+              value={dateSelected}
+              onChange={setDateSelected}
+              minDate={dateSelected}
+              format='dd/MM/yyyy - hh:mm'
+            />*/}
+            <Label>Fecha y Hora</Label>
             <InputForm
               type="datetime-local"
               placeholder="Fecha y Hora"
@@ -76,7 +88,7 @@ export default function ReserveCourt() {
           </Barrio>
           <Btn>
             <BtnCreateGame primary type="submit">
-              Rerservar
+              Reservar
             </BtnCreateGame>
           </Btn>
         </form>

@@ -72,7 +72,7 @@ export const signUpWithMail = (email, password, data, callback) => {
         };
       })
       .then((obj) => {
-        fetch("https://futbolapp-henry.herokuapp.com/register", {
+        fetch("https://sejuega-henry.herokuapp.com/register", {
           method: "POST",
           body: JSON.stringify({
             name: obj.name,
@@ -134,7 +134,7 @@ export const logInWithGoogle = () => {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
         console.log(obj);
-        fetch("https://futbolapp-henry.herokuapp.com/register", {
+        fetch("https://sejuega-henry.herokuapp.com/register", {
           method: "POST",
           body: JSON.stringify({
             user_name: obj.user.displayName,
@@ -161,7 +161,7 @@ export const logInWithFacebook = () => {
     signInWithPopup(auth, new FacebookAuthProvider())
       .then((obj) => {
         console.log(obj);
-        fetch("https://futbolapp-henry.herokuapp.com/register", {
+        fetch("https://sejuega-henry.herokuapp.com/register", {
           method: "POST",
           body: JSON.stringify({
             user_name: obj.user.displayName,
@@ -190,7 +190,7 @@ export const resetPassword = (email) => {
 export function postMatch(payload) {
   return async function (dispatch) {
     const newMatch = await axios.post(
-      "https://futbolapp-henry.herokuapp.com/match",
+      "https://sejuega-henry.herokuapp.com/match",
       payload
     );
     return newMatch;
@@ -199,7 +199,7 @@ export function postMatch(payload) {
 
 export function getFields() {
   return function (dispatch) {
-    fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
+    fetch("https://sejuega-henry.herokuapp.com/sportcenters")
       .then((obj) => obj.json())
       .then((obj) =>
         dispatch({
@@ -214,7 +214,7 @@ export function getMatches() {
   return async function (dispatch) {
     try {
       const getGames = await axios.get(
-        "https://futbolapp-henry.herokuapp.com/matches"
+        "https://sejuega-henry.herokuapp.com/matches"
       );
       console.log("Se ejecuto getGames");
       return dispatch({
@@ -232,7 +232,7 @@ export function joinMatch(id_match, user_name) {
     try {
       console.log({ id_match, user_name });
       const joinGame = await axios.put(
-        `https://futbolapp-henry.herokuapp.com/matches/${id_match}`,
+        `https://sejuega-henry.herokuapp.com/matches/${id_match}`,
         { user: user_name }
       );
       return dispatch({
@@ -249,7 +249,7 @@ export const authState = () => {
   return (dispatch) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetch("https://futbolapp-henry.herokuapp.com/users/email/" + user.email)
+        fetch("https://sejuega-henry.herokuapp.com/users/email/" + user.email)
           .then((obj) => obj.json())
           .then((obj) => {
             const moreData = {
@@ -279,7 +279,7 @@ export function getDetailsUser(id) {
   return async function (distpach) {
     try {
       const userId = await axios.get(
-        `https://futbolapp-henry.herokuapp.com/users/${id}`
+        `https://sejuega-henry.herokuapp.com/users/${id}`
       );
       return distpach({
         type: GET_DETAILS_USER,
@@ -293,7 +293,7 @@ export function getDetailsUser(id) {
 
 export const showUsers = () => {
   return (dispatch) => {
-    fetch("https://futbolapp-henry.herokuapp.com/users")
+    fetch("https://sejuega-henry.herokuapp.com/users")
       .then((obj) => obj.json())
       .then((obj) => {
         dispatch({
@@ -307,7 +307,7 @@ export const showUsers = () => {
 export function postBuy(payload) {
   return async function (dispatch) {
     const newBuy = await axios.post(
-      "https://futbolapp-henry.herokuapp.com/buy",
+      "https://sejuega-henry.herokuapp.com/buy",
       payload
     );
     const { data } = newBuy;
@@ -339,7 +339,7 @@ export const signUpBusiness = (email, password, data, callback) => {
         };
       })
       .then((obj) => {
-        fetch("https://futbolapp-henry.herokuapp.com/sportcenter", {
+        fetch("https://sejuega-henry.herokuapp.com/sportcenter", {
           method: "POST",
           body: JSON.stringify({
             name: obj.name,
@@ -374,7 +374,7 @@ export function getDetailsCourt(id) {
   return async function (distpach) {
     try {
       const courtId = await axios.get(
-        `https://futbolapp-henry.herokuapp.com/sportcenters/${id}`
+        `https://sejuega-henry.herokuapp.com/sportcenters/${id}`
       );
       return distpach({
         type: GET_DETAILS_COURT,
@@ -390,7 +390,7 @@ export function getDetailsMatch(id_match) {
   return async function (distpach) {
     try {
       const matchId = await axios.get(
-        `https://futbolapp-henry.herokuapp.com/matches/${id_match}`
+        `https://sejuega-henry.herokuapp.com/matches/${id_match}`
       );
       return distpach({
         type: GET_DETAILS_MATCH,
@@ -406,7 +406,7 @@ export function getNeighborhoods() {
   return async function (dispatch) {
     try {
       const neighborhoods = await axios.get(
-        "https://futbolapp-henry.herokuapp.com/hoods"
+        "https://sejuega-henry.herokuapp.com/hoods"
       );
       return dispatch({
         type: GET_NEIGHBORHOODS,
@@ -420,7 +420,7 @@ export function getNeighborhoods() {
 
 export const filterByNameUser = (name) => async (dispatch) => {
   await axios
-    .get(`https://futbolapp-henry.herokuapp.com/users/name/${name}`)
+    .get(`https://sejuega-henry.herokuapp.com/users/name/${name}`)
     .then((response) => {
       dispatch({
         type: USER_BY_NAME,
@@ -439,7 +439,7 @@ export const filterByNameUser = (name) => async (dispatch) => {
 export function filterPlayersByPosition(position) {
   if (position === "todos") {
     return function (dispatch) {
-      fetch("https://futbolapp-henry.herokuapp.com/users")
+      fetch("https://sejuega-henry.herokuapp.com/users")
         .then((obj) => obj.json())
         .then((obj) => {
           dispatch({
@@ -450,7 +450,7 @@ export function filterPlayersByPosition(position) {
     };
   } else {
     return function (dispatch) {
-      fetch(`https://futbolapp-henry.herokuapp.com/users/position/${position}`)
+      fetch(`https://sejuega-henry.herokuapp.com/users/position/${position}`)
         .then((obj) => obj.json())
         .then((obj) => {
           dispatch({
@@ -465,7 +465,7 @@ export function filterPlayersByPosition(position) {
 export function filterPlayersByNeighborhoods(neighborhood) {
   if (neighborhood === "todos") {
     return function (dispatch) {
-      fetch("https://futbolapp-henry.herokuapp.com/users")
+      fetch("https://sejuega-henry.herokuapp.com/users")
         .then((obj) => obj.json())
         .then((obj) => {
           dispatch({
@@ -477,7 +477,7 @@ export function filterPlayersByNeighborhoods(neighborhood) {
   } else {
     return function (dispatch) {
       fetch(
-        `https://futbolapp-henry.herokuapp.com/users/neighborhood/${neighborhood}`
+        `https://sejuega-henry.herokuapp.com/users/neighborhood/${neighborhood}`
       )
         .then((obj) => obj.json())
         .then((obj) => {
@@ -495,7 +495,7 @@ export function removeMatchPlayer(id_match, user_name) {
     try {
       console.log({ id_match, user_name });
       const removePlayer = axios.put(
-        `https://futbolapp-henry.herokuapp.com/exitMatches/${id_match}`,
+        `https://sejuega-henry.herokuapp.com/exitMatches/${id_match}`,
         { user: user_name }
       );
       return dispatch({
@@ -516,7 +516,7 @@ export const orderByDateTime = (payload) => {
   return async function (dispatch) {
     try {
       const orderDate = await axios.get(
-        `https://futbolapp-henry.herokuapp.com/recentMatches/${payload}`
+        `https://sejuega-henry.herokuapp.com/recentMatches/${payload}`
       );
       return dispatch({
         type: ORDER_BY_DATE,
@@ -536,7 +536,7 @@ export const orderByPlayers = (payload) => {
   return async function (dispatch) {
     try {
       const orderPlayers = await axios.get(
-        `https://futbolapp-henry.herokuapp.com/orderMAtches/${payload}`
+        `https://sejuega-henry.herokuapp.com/orderMAtches/${payload}`
       );
       return dispatch({
         type: ORDER_BY_PLAYERS,
@@ -554,7 +554,7 @@ export const orderByPlayers = (payload) => {
 
 export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
   await axios
-    .get(`https://futbolapp-henry.herokuapp.com/matches?name=${nameCenter}`)
+    .get(`https://sejuega-henry.herokuapp.com/matches?name=${nameCenter}`)
     .then((response) => {
       dispatch({
         type: MATCH_BY_NAME_SPORTCENTER,
@@ -573,15 +573,12 @@ export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
 export function updateData(id, newData) {
   return async function (dispatch) {
     try {
-      await axios.put(
-        `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
-        {
-          name: newData.name,
-          neighborhood: newData.neighborhood,
-          player_position: newData.position,
-          image: newData.img,
-        }
-      );
+      await axios.put(`https://sejuega-henry.herokuapp.com/user/update/${id}`, {
+        name: newData.name,
+        neighborhood: newData.neighborhood,
+        player_position: newData.position,
+        image: newData.img,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -590,7 +587,7 @@ export function updateData(id, newData) {
 
 export function resetPlayersFilter() {
   return async function (dispatch) {
-    fetch("https://futbolapp-henry.herokuapp.com/users")
+    fetch("https://sejuega-henry.herokuapp.com/users")
       .then((obj) => obj.json())
       .then((obj) => {
         dispatch({
@@ -604,7 +601,7 @@ export function resetPlayersFilter() {
 export function filterSportCentersByDistrict(payload) {
   if (payload === "") {
     return function (dispatch) {
-      fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
+      fetch("https://sejuega-henry.herokuapp.com/sportcenters")
         .then((obj) => obj.json())
         .then((obj) => {
           dispatch({
@@ -615,7 +612,7 @@ export function filterSportCentersByDistrict(payload) {
     };
   } else {
     return function (dispatch) {
-      fetch(`https://futbolapp-henry.herokuapp.com/sportcenter/${payload}`)
+      fetch(`https://sejuega-henry.herokuapp.com/sportcenter/${payload}`)
         .then((obj) => obj.json())
         .then((obj) => {
           dispatch({
@@ -624,34 +621,34 @@ export function filterSportCentersByDistrict(payload) {
           });
         });
     };
-  };
-};
-
-export function deleteMatch(id_match){
-  return async function(dispatch){
-    try{
-      const matchDelete = await axios.delete(`http://futbolapp-henry.herokuapp.com/matches/${id_match}`);
-      return dispatch({
-        type: DELETE_MATCH,
-        payload: matchDelete
-      });
-    }catch(e){
-      console.log('error');
-    };
-  };
-};
-
-
-export function showYourMatch (id) {
-  return function (dispatch) {
-    fetch("https://futbolapp-henry.herokuapp.com/users/" + id)
-      .then(obj => obj.json())
-      .then(obj => {
-        dispatch({
-          payload : obj.matches,
-          type : SHOW_YOUR_MATCHES
-        })
-      })
   }
 }
 
+export function deleteMatch(id_match) {
+  return async function (dispatch) {
+    try {
+      const matchDelete = await axios.delete(
+        `http://futbolapp-henry.herokuapp.com/matches/${id_match}`
+      );
+      return dispatch({
+        type: DELETE_MATCH,
+        payload: matchDelete,
+      });
+    } catch (e) {
+      console.log("error");
+    }
+  };
+}
+
+export function showYourMatch(id) {
+  return function (dispatch) {
+    fetch("https://sejuega-henry.herokuapp.com/users/" + id)
+      .then((obj) => obj.json())
+      .then((obj) => {
+        dispatch({
+          payload: obj.matches,
+          type: SHOW_YOUR_MATCHES,
+        });
+      });
+  };
+}
