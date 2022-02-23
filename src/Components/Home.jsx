@@ -18,7 +18,7 @@ function Home() {
     dispatch(authState());
   }, [dispatch]); // con la data de user podemos maquillar el home con la foto y data del usuario
 
-  console.log(users);
+  const userLogeado = users.find(obj => obj.id === userState?.id)
 
   if (!userState) return <h1>Cargando...</h1>;
 
@@ -28,8 +28,8 @@ function Home() {
       <IntroStyle>
         <div>
           <Link to="/home/profile">
-            {userState?.photoURL ? (
-              <img src={userState?.photoURL} alt="img perfil" />
+            {userLogeado ? (
+              <img src={userLogeado.image} alt="img perfil" />
             ) : (
               <img
                 alt="img perfil"
@@ -39,9 +39,9 @@ function Home() {
           </Link>
           <h5>
             Hola,{" "}
-            {userState?.displayName
-              ? userState?.displayName
-              : userState?.email?.split("@")[0]}{" "}
+            {userLogeado?
+               userLogeado?.user_name
+              : userLogeado?.email?.split("@")[0]}{" "}
             👋
             <br />
             <span>Bienvenido a SeJuega!</span>
