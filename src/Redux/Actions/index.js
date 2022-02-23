@@ -437,29 +437,39 @@ export const filterByNameUser = (name) => async (dispatch) => {
 };
 
 export function filterPlayersByPosition(position) {
-  if (position === "todos") {
-    return function (dispatch) {
-      fetch("https://sejuega-henry.herokuapp.com/users")
-        .then((obj) => obj.json())
-        .then((obj) => {
-          dispatch({
-            payload: obj,
-            type: FILTER_BY_POSITION,
+  try {
+    
+    if (position === "todos") {
+      return function (dispatch) {
+        fetch("https://sejuega-henry.herokuapp.com/users")
+          .then((obj) => obj.json())
+          .then((obj) => {
+            dispatch({
+              payload: obj,
+              type: FILTER_BY_POSITION,
+            });
           });
-        });
-    };
-  } else {
-    return function (dispatch) {
-      fetch(`https://sejuega-henry.herokuapp.com/users/position/${position}`)
-        .then((obj) => obj.json())
-        .then((obj) => {
-          dispatch({
-            payload: obj,
-            type: FILTER_BY_POSITION,
+      };
+    } else {
+      return function (dispatch) {
+        fetch(`https://sejuega-henry.herokuapp.com/users/position/${position}`)
+          .then((obj) => obj.json())
+          .then((obj) => {
+            dispatch({
+              payload: obj,
+              type: FILTER_BY_POSITION,
+            });
           });
-        });
-    };
-  }
+      };
+    }
+
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `${error.response.data.error}`,
+  })
+}
 }
 
 export function filterPlayersByNeighborhoods(neighborhood) {
