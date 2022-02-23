@@ -10,6 +10,7 @@ export const MainCardsGames = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
+  margin: 1rem;
   :hover {
     background-color: #f9bc60;
   }
@@ -75,3 +76,9 @@ export const Title = styled(LinkTo)`
   color: var(--primary);
   text-align: center;
 `;
+
+export const Text = styled.p`
+  font-size: 20px;
+  text-align: center;
+  margin : 2px
+`
