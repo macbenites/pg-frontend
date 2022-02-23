@@ -34,6 +34,7 @@ import {
   MATCH_BY_NAME_SPORTCENTER,
   FILTER_SPORTCENTER,
   DELETE_MATCH,
+  SHOW_YOUR_MATCHES,
 } from "./types";
 import axios from "axios";
 
@@ -186,7 +187,7 @@ export const resetPassword = (email) => {
   };
 };
 
-export function postMatch(payload, ) {
+export function postMatch(payload) {
   return async function (dispatch) {
     const newMatch = await axios.post(
       "https://futbolapp-henry.herokuapp.com/match",
@@ -215,6 +216,7 @@ export function getMatches() {
       const getGames = await axios.get(
         "https://futbolapp-henry.herokuapp.com/matches"
       );
+      console.log("Se ejecuto getGames");
       return dispatch({
         type: GET_MATCHES,
         payload: getGames.data,
@@ -549,8 +551,7 @@ export const orderByPlayers = (payload) => {
   };
 };
 
-
- export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
+export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
   await axios
     .get(`https://futbolapp-henry.herokuapp.com/matches?name=${nameCenter}`)
     .then((response) => {
@@ -574,10 +575,10 @@ export function updateData(id, newData) {
       await axios.put(
         `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
         {
-          name : newData.name,
-          neighborhood : newData.neighborhood,
-          player_position : newData.position,
-          image : newData.img
+          name: newData.name,
+          neighborhood: newData.neighborhood,
+          player_position: newData.position,
+          image: newData.img,
         }
       );
     } catch (error) {
@@ -586,22 +587,22 @@ export function updateData(id, newData) {
   };
 }
 
-export function resetPlayersFilter () {
+export function resetPlayersFilter() {
   return async function (dispatch) {
     fetch("https://futbolapp-henry.herokuapp.com/users")
-      .then(obj => obj.json())
-      .then(obj => {
+      .then((obj) => obj.json())
+      .then((obj) => {
         dispatch({
           payload: obj,
           type: RESET_PLAYERS_FILTER,
-        })
-      })
-  }
+        });
+      });
+  };
 }
 
-export function filterSportCentersByDistrict(payload){
-  if(payload === ""){
-    return function(dispatch){
+export function filterSportCentersByDistrict(payload) {
+  if (payload === "") {
+    return function (dispatch) {
       fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
         .then((obj) => obj.json())
         .then((obj) => {
@@ -612,7 +613,7 @@ export function filterSportCentersByDistrict(payload){
         });
     };
   } else {
-    return function(dispatch){
+    return function (dispatch) {
       fetch(`https://futbolapp-henry.herokuapp.com/sportcenter/${payload}`)
         .then((obj) => obj.json())
         .then((obj) => {
@@ -639,4 +640,17 @@ export function deleteMatch(id_match){
   };
 };
 
+
+export function showYourMatch (id) {
+  return function (dispatch) {
+    fetch("https://futbolapp-henry.herokuapp.com/users/" + id)
+      .then(obj => obj.json())
+      .then(obj => {
+        dispatch({
+          payload : obj.matches,
+          type : SHOW_YOUR_MATCHES
+        })
+      })
+  }
+}
 

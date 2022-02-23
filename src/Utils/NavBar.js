@@ -18,8 +18,8 @@ export const NavHome = [
     icon: <MdSportsSoccer />,
   },
   {
-    name: "Payment",
-    link: "/payment",
+    name: "Mis Reservas",
+    link: "yourMatches",
     icon: <MdOutlinePayments />,
   },
 ];
