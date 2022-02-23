@@ -57,7 +57,6 @@ function Games() {
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
-
       <BtnCreateGame onClick={()=> dispatch(getMatches())} >
         Quitar Filtros
       </BtnCreateGame>
