@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { getDetailsMatch, removeMatchPlayer } from "../Redux/Actions/index";
+import { getDetailsMatch, removeMatchPlayer, deleteMatch } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
 
@@ -14,17 +14,23 @@ export default function DetailMatch() {
     dispatch(getDetailsMatch(id_match));
   }, [dispatch, id_match]);
 
-  function handleClick(e) {
-    // e.preventDefault();
+  const handleClick = (e) => {
+    e.preventDefault();
     dispatch(removeMatchPlayer(id_match, e.target.value));
-    navigate(`/matches/${id_match}`);
-  }
+  };
+
+  const handleDelete = (e) => {
+      dispatch(deleteMatch(id_match));
+      e.preventDefault();
+      navigate('/home/games');
+  };
 
   return (
     <div>
       <Logo />
       {detail ? (
         <div>
+          <button onClick={handleDelete}>Eliminar Partido</button>
           <p>
             <strong>Lugar:</strong> {detail.nameCenter}
           </p>
@@ -39,7 +45,7 @@ export default function DetailMatch() {
             <strong>Descripción:</strong> {detail.note}
           </p>
 
-          <p>
+          <div>
             <strong>Jugadores:</strong>
             {detail.matchPlayers?.map((element, index) => (
               <ul key={index}>
@@ -47,14 +53,14 @@ export default function DetailMatch() {
                   {element.name} - {element.position}
                   <button
                     value={element.user_name}
-                    onClick={(e) => handleClick(e)}
+                    onClick={handleClick}
                   >
                     Sacar
                   </button>
                 </li>
               </ul>
             ))}
-          </p>
+          </div>
         </div>
       ) : (
         <p>Cargando...</p>
@@ -64,4 +70,4 @@ export default function DetailMatch() {
       </Link>
     </div>
   );
-}
+};
