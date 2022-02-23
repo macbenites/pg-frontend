@@ -33,6 +33,7 @@ import {
   RESET_PLAYERS_FILTER,
   MATCH_BY_NAME_SPORTCENTER,
   FILTER_SPORTCENTER,
+  DELETE_MATCH,
 } from "./types";
 import axios from "axios";
 
@@ -620,6 +621,20 @@ export function filterSportCentersByDistrict(payload){
             type: FILTER_SPORTCENTER,
           });
         });
+    };
+  };
+};
+
+export function deleteMatch(id_match){
+  return async function(dispatch){
+    try{
+      const matchDelete = await axios.delete(`http://futbolapp-henry.herokuapp.com/matches/${id_match}`);
+      return dispatch({
+        type: DELETE_MATCH,
+        payload: matchDelete
+      });
+    }catch(e){
+      console.log('error');
     };
   };
 };

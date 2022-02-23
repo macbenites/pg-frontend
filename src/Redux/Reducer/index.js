@@ -172,6 +172,10 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };  
+    case "DELETE_MATCH":
+      return {
+        ...state
+      };
       
     default:
       return { ...state };
