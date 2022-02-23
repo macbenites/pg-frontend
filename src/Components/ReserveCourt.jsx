@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { postBuy } from "../Redux/Actions/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { InputForm } from "../Styles/reusable/Input";
 import Logo from "./Logo";
 import {
@@ -15,7 +15,7 @@ export default function ReserveCourt() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { name } = useParams();
-
+  const { userState } = useSelector((state) => state);
   const [input, setInput] = useState({
     title: name,
   });
@@ -24,6 +24,7 @@ export default function ReserveCourt() {
     localStorage.setItem("title", input.title);
     localStorage.setItem("price", input.price);
     localStorage.setItem("datetime", input.datetime);
+    localStorage.setItem("user", userState.user_name);
   };
 
   console.log(input);

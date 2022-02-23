@@ -62,7 +62,6 @@ function Games() {
   return (
     <div>
       <TitleStyle>Partidos</TitleStyle>
-
       <BtnCreateGame onClick={(e) => handleClick(e)}>
         Crear partido
       </BtnCreateGame>
