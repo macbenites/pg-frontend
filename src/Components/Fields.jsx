@@ -1,15 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getFields, getNeighborhoods } from "../Redux/Actions";
+import { getFields, getNeighborhoods, filterSportCentersByDistrict } from "../Redux/Actions";
 import { CardStyles, TopFields } from "../Styles/component/Fields";
 import CardsCourt from "./CardsCourt";
 import { Select } from "../Styles/reusable/Select";
 import { Label } from "../Styles/reusable/Input";
+
 const Fields = () => {
+
   const fields = useSelector((obj) => obj.fields);
   const tenFields = fields.slice(0, 10);
   const dispatch = useDispatch();
   const neighborhoods = useSelector((state) => state.neighborhoods);
+  
+  const handleFilter = (e) => {
+    e.preventDefault();
+    dispatch(filterSportCentersByDistrict(e.target.value));
+    console.log(e.target.value);
+  };
 
   useEffect(() => {
     dispatch(getFields());
@@ -21,11 +29,11 @@ const Fields = () => {
       <TopFields>
         <h2>Canchas de Capital Federal</h2>
         <div>
-          <Label>Filtrar por:</Label>
-          <Select name="neighborhood">
-            <option value="">Barrio</option>
+          <Label>Filtrar por barrio:</Label>
+          <Select name="neighborhood" onChange={handleFilter}>
+            <option value="">Todos</option>
             {neighborhoods.map((element) => (
-              <option key={element.id} value={element.name}>
+              <option key={element.id} value={element.name} >
                 {element.name}
               </option>
             ))}

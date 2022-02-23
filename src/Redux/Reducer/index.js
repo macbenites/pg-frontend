@@ -143,6 +143,11 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
+    case "FILTER_SPORTCENTER":
+      return {
+        ...state,
+        fields: payload,
+      };
 
     case "ORDER_BY_DATE":
       return {
@@ -155,10 +160,22 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };
+      
+    case "RESET_PLAYERS_FILTER":
+      return {
+        ...state,
+        users : payload
+      }
 
+    case "MATCH_BY_NAME_SPORTCENTER":
+      return {
+        ...state,
+        matches: payload,
+      };  
+      
     default:
       return { ...state };
-  }
-}
+  };
+};
 
 export default rootReducer;

@@ -30,7 +30,9 @@ import {
   REMOVE_PLAYER,
   ORDER_BY_PLAYERS,
   ORDER_BY_DATE,
-  POST_BUY_COURT,
+  RESET_PLAYERS_FILTER,
+  MATCH_BY_NAME_SPORTCENTER,
+  FILTER_SPORTCENTER,
 } from "./types";
 import axios from "axios";
 
@@ -183,7 +185,7 @@ export const resetPassword = (email) => {
   };
 };
 
-export function postMatch(payload) {
+export function postMatch(payload, ) {
   return async function (dispatch) {
     const newMatch = await axios.post(
       "https://futbolapp-henry.herokuapp.com/match",
@@ -546,15 +548,35 @@ export const orderByPlayers = (payload) => {
   };
 };
 
+
+ export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
+  await axios
+    .get(`https://futbolapp-henry.herokuapp.com/matches?name=${nameCenter}`)
+    .then((response) => {
+      dispatch({
+        type: MATCH_BY_NAME_SPORTCENTER,
+        payload: response.data,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    });
+};
+
 export function updateData(id, newData) {
   return async function (dispatch) {
     try {
       await axios.put(
         `https://futbolapp-henry.herokuapp.com/user/update/${id}`,
         {
-          name: newData.name,
-          neighborhood: newData.neighborhood,
-          player_position: newData.position,
+          name : newData.name,
+          neighborhood : newData.neighborhood,
+          player_position : newData.position,
+          image : newData.img
         }
       );
     } catch (error) {
@@ -562,3 +584,44 @@ export function updateData(id, newData) {
     }
   };
 }
+
+export function resetPlayersFilter () {
+  return async function (dispatch) {
+    fetch("https://futbolapp-henry.herokuapp.com/users")
+      .then(obj => obj.json())
+      .then(obj => {
+        dispatch({
+          payload: obj,
+          type: RESET_PLAYERS_FILTER,
+        })
+      })
+  }
+}
+
+export function filterSportCentersByDistrict(payload){
+  if(payload === ""){
+    return function(dispatch){
+      fetch("https://futbolapp-henry.herokuapp.com/sportcenters")
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_SPORTCENTER,
+          });
+        });
+    };
+  } else {
+    return function(dispatch){
+      fetch(`https://futbolapp-henry.herokuapp.com/sportcenter/${payload}`)
+        .then((obj) => obj.json())
+        .then((obj) => {
+          dispatch({
+            payload: obj,
+            type: FILTER_SPORTCENTER,
+          });
+        });
+    };
+  };
+};
+
+
