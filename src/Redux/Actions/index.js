@@ -33,6 +33,7 @@ import {
   RESET_PLAYERS_FILTER,
   MATCH_BY_NAME_SPORTCENTER,
   FILTER_SPORTCENTER,
+  SHOW_YOUR_MATCHES
 } from "./types";
 import axios from "axios";
 
@@ -625,3 +626,15 @@ export function filterSportCentersByDistrict(payload){
 };
 
 
+export function showYourMatch (id) {
+  return function (dispatch) {
+    fetch("https://futbolapp-henry.herokuapp.com/users/" + id)
+      .then(obj => obj.json())
+      .then(obj => {
+        dispatch({
+          payload : obj.matches,
+          type : SHOW_YOUR_MATCHES
+        })
+      })
+  }
+}

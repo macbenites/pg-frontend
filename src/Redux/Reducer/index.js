@@ -4,6 +4,7 @@ const initialState = {
   error: [],
   fields: [],
   matches: [],
+  yourMatchesCreated: [],
   userState: {},
   detailsUser: {},
   players: [],
@@ -12,6 +13,7 @@ const initialState = {
   neighborhoods: [],
   displayName: "",
   removePlayer: [],
+
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -172,6 +174,12 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };  
+
+    case "SHOW_YOUR_MATCHES":
+      return {
+        ...state,
+        yourMatchesCreated : payload
+      }
       
     default:
       return { ...state };
