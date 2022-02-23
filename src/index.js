@@ -4,17 +4,17 @@ import App from "./App";
 import { GlobalStyles } from "./GlobalStyles";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-import esLocale from 'date-fns/locale/es';
+//import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+//import DateFnsUtils from '@date-io/date-fns';
+//import esLocale from 'date-fns/locale/es';
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <GlobalStyles />
-      <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+      {/*<MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>*/}
         <App />
-      </MuiPickersUtilsProvider>
+      {/*</MuiPickersUtilsProvider>*/}
     </React.StrictMode>
   </Provider>,
 
