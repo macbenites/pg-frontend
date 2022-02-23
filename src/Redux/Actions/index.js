@@ -253,7 +253,7 @@ export const authState = () => {
               ...user,
               user_name: obj.user_name,
               name: obj.user_name,
-              id : obj.id
+              id: obj.id,
             };
             console.log(moreData);
             return dispatch({
@@ -308,6 +308,9 @@ export function postBuy(payload) {
     );
     const { data } = newBuy;
     window.location.replace(data.response.sandbox_init_point);
+    //console.log(data);
+    //console.log(data.response.items[0])
+
     // return newBuy;
   };
 }
@@ -503,35 +506,18 @@ export function removeMatchPlayer(id_match, user_name) {
       });
     }
   };
-
-};
+}
 
 export const orderByDateTime = (payload) => {
- return async function (dispatch) {
-   try {
-     const orderDate = await axios.get(`https://futbolapp-henry.herokuapp.com/recentMatches/${payload}`)
-     return dispatch({
-      type: ORDER_BY_DATE,
-      payload: orderDate.data   
-    });
-   } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `${error.response.data.error}`,
-    });
-   }
- };
-};
-
-export const orderByPlayers = (payload) => {
   return async function (dispatch) {
     try {
-      const orderPlayers = await axios.get(`https://futbolapp-henry.herokuapp.com/orderMAtches/${payload}`)
+      const orderDate = await axios.get(
+        `https://futbolapp-henry.herokuapp.com/recentMatches/${payload}`
+      );
       return dispatch({
-       type: ORDER_BY_PLAYERS,
-       payload: orderPlayers.data   
-     });
+        type: ORDER_BY_DATE,
+        payload: orderDate.data,
+      });
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -540,7 +526,28 @@ export const orderByPlayers = (payload) => {
       });
     }
   };
- };
+};
+
+export const orderByPlayers = (payload) => {
+  return async function (dispatch) {
+    try {
+      const orderPlayers = await axios.get(
+        `https://futbolapp-henry.herokuapp.com/orderMAtches/${payload}`
+      );
+      return dispatch({
+        type: ORDER_BY_PLAYERS,
+        payload: orderPlayers.data,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    }
+  };
+};
+
 
  export const filterMatchBySportcenter = (nameCenter) => async (dispatch) => {
   await axios
@@ -560,8 +567,7 @@ export const orderByPlayers = (payload) => {
     });
 };
 
-
-export function updateData (id , newData) {
+export function updateData(id, newData) {
   return async function (dispatch) {
     try {
       await axios.put(
@@ -572,11 +578,11 @@ export function updateData (id , newData) {
           player_position : newData.position,
           image : newData.img
         }
-      )
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 }
 
 export function resetPlayersFilter () {
@@ -617,4 +623,5 @@ export function filterSportCentersByDistrict(payload){
     };
   };
 };
+
 

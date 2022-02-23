@@ -9,12 +9,10 @@ export const TitleStyle = styled.h2`
 `;
 
 export const CardsGamesStyle = styled.div`
-  display:flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 0px;
-
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: minmax(min-content, max-content);
 `;
 
 export const InputGamesStyle = styled.form`
@@ -50,7 +48,7 @@ export const BtnCreateGame = styled(Button)`
 `;
 
 export const CreateGame = styled.h2`
-  color:#abd1c6;
+  color: #abd1c6;
   margin-top: 100px;
   font-size: 40px;
 `;
@@ -64,18 +62,18 @@ export const SelectLocation = styled.select`
   padding-left: 20px;
   border-radius: 10px;
   border: none;
-  background-color: #206F6C;
-  color: #abd1c6
+  background-color: #206f6c;
+  color: #abd1c6;
 `;
 
 export const SelectDate = styled.select`
   height: 40px;
   width: 336px;
-  margin:20px;
+  margin: 20px;
   padding-left: 20px;
   border-radius: 10px;
   border: none;
-  background-color: #206F6C;
+  background-color: #206f6c;
   color: #abd1c6;
 `;
 
@@ -86,8 +84,8 @@ export const SelectSearch = styled.select`
   padding-left: 20px;
   border-radius: 10px;
   border: none;
-  background-color: #206F6C;
-  color: #abd1c6
+  background-color: #206f6c;
+  color: #abd1c6;
 `;
 
 export const Search = styled.div`

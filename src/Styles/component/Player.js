@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const PlayerDiv = styled.div`
   background-color: #abd1c6;
   border-radius: 0.75rem;
-  max-width: 100%;
   color: #004643;
   :hover {
     background-color: #f9bc60;
@@ -12,7 +11,7 @@ export const PlayerDiv = styled.div`
   img {
     max-width: 100%;
     height: 100%;
-    border-radius: 100%;
+    border-radius: 50%;
   }
   h3 {
     text-align: center;
@@ -33,6 +32,10 @@ export const PlayerDiv = styled.div`
 `;
 
 export const ImgDiv = styled.div`
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
   padding: 1rem;
 `;
 
