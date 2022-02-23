@@ -10,6 +10,7 @@ export const CardsGamesStyle = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1rem 0;
 `;
 
 export const Filters = styled.div`
