@@ -149,7 +149,7 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };
-      
+
     case "ORDER_BY_PLAYERS":
       return {
         ...state,

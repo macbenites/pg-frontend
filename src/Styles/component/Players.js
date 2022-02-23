@@ -10,7 +10,7 @@ export const Filter = styled.div`
 export const PlayersDiv = styled.div`
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   margin: 1rem 0;
 `;
 
