@@ -35,6 +35,7 @@ import {
   FILTER_SPORTCENTER,
   DELETE_MATCH,
   SHOW_YOUR_MATCHES,
+  MATCHES_COMPANY,
 } from "./types";
 import axios from "axios";
 
@@ -111,6 +112,7 @@ export const logInWithMail = (email, password, callback) => {
           payload: obj,
           type: LOG_IN_WHIT_EMAIL,
         });
+
         callback();
       })
       .catch((error) => {
@@ -118,6 +120,7 @@ export const logInWithMail = (email, password, callback) => {
       });
   };
 };
+
 export const logOut = () => {
   return function (dispatch) {
     signOut(auth).then(() => {
@@ -216,7 +219,6 @@ export function getMatches() {
       const getGames = await axios.get(
         "https://sejuega-henry.herokuapp.com/matches"
       );
-      console.log("Se ejecuto getGames");
       return dispatch({
         type: GET_MATCHES,
         payload: getGames.data,
@@ -249,13 +251,16 @@ export const authState = () => {
   return (dispatch) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetch("https://sejuega-henry.herokuapp.com/users/email/" + user.email)
+        fetch(
+          "https://sejuega-henry.herokuapp.com/users/emailusercompany/" +
+            user.email
+        )
           .then((obj) => obj.json())
           .then((obj) => {
             const moreData = {
               ...user,
               user_name: obj.user_name,
-              name: obj.user_name,
+              name: obj.user_name ? obj.user_name : obj.name,
               id: obj.id,
               role: obj.role,
             };
@@ -306,18 +311,22 @@ export const showUsers = () => {
 
 export function postBuy(payload) {
   return async function (dispatch) {
-    const newBuy = await axios.post(
-      "https://sejuega-henry.herokuapp.com/buy",
-      payload
-    );
-    const { data } = newBuy;
-    window.location.replace(data.response.sandbox_init_point);
-    //console.log(data);
-    //console.log(data.response.items[0])
-
-    // return newBuy;
+    try {
+      const newBuy = await axios.post(
+        "https://sejuega-henry.herokuapp.com/buy",
+        payload
+      );
+      const { data } = newBuy;
+      window.location.replace(data.response.sandbox_init_point);
+    }catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    }    
   };
-}
+};
 
 export const signUpBusiness = (email, password, data, callback) => {
   return async (dispatch) => {
@@ -637,3 +646,9 @@ export function showYourMatch(id) {
       });
   };
 }
+
+export const matchesCompany = (name) => (dispatch) =>
+  dispatch({
+    type: MATCHES_COMPANY,
+    payload: name,
+  });

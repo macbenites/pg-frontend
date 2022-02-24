@@ -59,3 +59,32 @@ export const Text = styled.p`
   text-align: center;
   margin: 2px;
 `;
+
+export const BtnDeleteMatch = styled(Button)`
+  margin-left: 70px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  height: 10px;
+`;
+
+export const DateStyleDet = styled.div`
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 1.6rem;
+  color: var(--primary);
+  svg {
+    margin-right: 1rem;
+  }
+`;
+
+export const MainCardsGamesDet =styled.div`
+  border-radius: 0.75rem;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;

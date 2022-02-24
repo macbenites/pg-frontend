@@ -23,7 +23,7 @@ function NavBar({ items, portal }) {
 
   const handleLogOut = () => {
     dispatch(logOut());
-    navigate("/auth/login");
+    navigate("/");
   };
   return (
     <Wrapper>

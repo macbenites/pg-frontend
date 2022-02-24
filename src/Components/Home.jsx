@@ -8,18 +8,17 @@ import {
 import { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { authState , showUsers } from "../Redux/Actions/index";
+import { authState, showUsers } from "../Redux/Actions/index";
 
 function Home() {
-  const { userState, users } = useSelector((state) => state);
+  const { userState, allUsers } = useSelector((state) => state);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authState());
-    dispatch(showUsers())
+    dispatch(showUsers());
   }, [dispatch]); // con la data de user podemos maquillar el home con la foto y data del usuario
-
-  const userLogeado = users?.find(obj => obj.id === userState?.id)
+  const userLogeado = allUsers?.find((obj) => obj.id === userState?.id);
 
   if (!userState) return <h1>Cargando...</h1>;
 
@@ -40,8 +39,8 @@ function Home() {
           </Link>
           <h5>
             Hola,{" "}
-            {userLogeado?
-               userLogeado?.user_name
+            {userLogeado
+              ? userLogeado?.user_name
               : userLogeado?.email?.split("@")[0]}{" "}
             👋
             <br />

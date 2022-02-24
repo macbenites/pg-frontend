@@ -3,7 +3,14 @@ import { db } from "../firebase";
 import { collection, setDoc , getDocs , doc , onSnapshot , /* updateDoc */ } from "firebase/firestore"
 import { useSelector , useDispatch } from "react-redux";
 import {authState , getDetailsUser} from "../Redux/Actions/index"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import{
+    BtnSend,
+    BtnShowUpdate,
+    BtnBack,
+    DivChat,
+    InputFormChat
+} from "../Styles/component/Chat";
 
 function Chat () {
     const [mensajes , setMensajes] = useState();
@@ -11,6 +18,7 @@ function Chat () {
     const user = useSelector(obj => obj.userState);
     const userReceptor = useSelector(obj => obj.detailsUser);
     const params = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     
     
@@ -47,7 +55,7 @@ function Chat () {
         mensajesCifrados.forEach(element => {
             arrayEnviados.push(element.data());
         });
-
+        console.log(arrayEnviados)
         const arrayEnviadosFiltrados = arrayEnviados.filter(obj =>
             obj.receptor === userReceptor.email)
 
@@ -90,6 +98,10 @@ function Chat () {
         getMensajes()
     }
 
+    const handleClick = () => {
+        navigate(`/users/${params.id}`);
+    };
+
     /* useEffect(()=>{
         getMensajes()
     },[]) */
@@ -102,7 +114,9 @@ function Chat () {
     },[dispatch , params.id])
 
     return (
-        <div>
+        <DivChat>
+            <BtnBack onClick={handleClick}>Volver</BtnBack>
+            <BtnShowUpdate onClick={showMensajes}>{ mensajes ?  "Actualizar chat" : "Mostrar historial de chat"}</BtnShowUpdate>
             {
                 mensajes ? mensajes.map((obj)=>{
                     return <div key={obj.id}>
@@ -112,15 +126,14 @@ function Chat () {
                 }) : null
             }
             <form onSubmit={submitForm}>
-                <input 
+                <InputFormChat 
                     type="text" 
                     placeholder="Esriba su mensaje"
                     value={inputMensaje}
                     onChange={handleChange} />
-                <button>Enviar</button>
+                <BtnSend>Enviar</BtnSend>
             </form>
-                <button onClick={showMensajes}>{ mensajes ?  "Actualizar chat" : "Mostrar historial de chat"}</button>
-        </div>
+        </DivChat>
     )
 }
 
