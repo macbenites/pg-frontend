@@ -10,6 +10,7 @@ import { updateData, resetStateError, getNeighborhoods } from "../../Redux/Actio
 import Swal from "sweetalert2";
 import { collection , getDocs /* updateDoc */ } from "firebase/firestore"
 import { db } from "../../firebase";
+import { BtnAnswer, DivMessages } from "../../Styles/component/DetailUser";
 
 import {
   SignInDiv,
@@ -213,14 +214,14 @@ function DataUserGoogle() {
         mensajes?.length > 0 ? 
           mensajes[0]?.map(obj => {
             return (
-              <div key={obj.id}>
+              <DivMessages key={obj.id}>
                 <p>Tienes mensajes con {obj.emisor !== userLogueado.email ? obj.emisor : obj.receptor}</p>
-              </div>
+              </DivMessages>
             )
           })
           : "no hay mensajes"
       }
-        <button onClick={goAnswer}>Responder</button>
+        <BtnAnswer onClick={goAnswer}>Responder</BtnAnswer>
     </div>
   );
 }
