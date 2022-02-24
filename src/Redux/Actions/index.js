@@ -216,7 +216,6 @@ export function getMatches() {
       const getGames = await axios.get(
         "https://sejuega-henry.herokuapp.com/matches"
       );
-      console.log("Se ejecuto getGames");
       return dispatch({
         type: GET_MATCHES,
         payload: getGames.data,
@@ -306,18 +305,22 @@ export const showUsers = () => {
 
 export function postBuy(payload) {
   return async function (dispatch) {
-    const newBuy = await axios.post(
-      "https://sejuega-henry.herokuapp.com/buy",
-      payload
-    );
-    const { data } = newBuy;
-    window.location.replace(data.response.sandbox_init_point);
-    //console.log(data);
-    //console.log(data.response.items[0])
-
-    // return newBuy;
+    try {
+      const newBuy = await axios.post(
+        "https://sejuega-henry.herokuapp.com/buy",
+        payload
+      );
+      const { data } = newBuy;
+      window.location.replace(data.response.sandbox_init_point);
+    }catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
+    }    
   };
-}
+};
 
 export const signUpBusiness = (email, password, data, callback) => {
   return async (dispatch) => {
