@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDetailsCourt } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
