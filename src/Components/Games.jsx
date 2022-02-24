@@ -77,8 +77,8 @@ function Games() {
         <div>
           <Label>Ordenar por:</Label>
           <Select onChange={handleChange}>
-            <option value="latest">Reciente</option>
-            <option value="oldest">Antiguo</option>
+            <option value="latest">Proximos a jugarse</option>
+            <option value="oldest">Últimos en jugarse</option>
           </Select>
         </div>
         <div>

@@ -11,15 +11,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { authState, showUsers } from "../Redux/Actions/index";
 
 function Home() {
-  const { userState, users } = useSelector((state) => state);
+  const { userState, allUsers } = useSelector((state) => state);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authState());
     dispatch(showUsers());
   }, [dispatch]); // con la data de user podemos maquillar el home con la foto y data del usuario
+  const userLogeado = allUsers?.find((obj) => obj.id === userState?.id);
 
-  const userLogeado = users?.find((obj) => obj.id === userState?.id);
+  if (!userState) return <h1>Cargando...</h1>;
 
   return (
     <HomeContainer>
