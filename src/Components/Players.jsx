@@ -17,6 +17,7 @@ import {
   resetPlayersFilter,
 } from "../Redux/Actions";
 import { BtnCreateGame, TitleStyle } from "../Styles/component/Games";
+import Swal from "sweetalert2";
 
 const Players = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,11 @@ const Players = () => {
   const onClickSearch = (e) => {
     e.preventDefault();
     if (!search) {
-      alert("Ingresar nombre a buscar");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Ingresar el nombre a buscar!",
+      });
     } else {
       dispatch(filterByNameUser(search));
       setSearch("");
