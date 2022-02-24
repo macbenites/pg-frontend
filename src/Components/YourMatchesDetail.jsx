@@ -18,6 +18,7 @@ function YourMatchesDetail ({props}) {
     const handleDelete = (e) => {
         e.preventDefault();
         dispatch(deleteMatch(props.users_matches.matchIdMatch));
+        console.log(props.users_matches.matchIdMatch)
         Swal.fire({
             icon: "success",
             title: "Partido eliminado!",

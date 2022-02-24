@@ -622,17 +622,17 @@ export function deleteMatch(id_match) {
   return async function (dispatch) {
     try {
       const matchDelete = await axios.delete(
-        `http://futbolapp-henry.herokuapp.com/matches/${id_match}`
+        `http://sejuega-henry.herokuapp.com/matches/${id_match}`
       );
       return dispatch({
         type: DELETE_MATCH,
-        payload: matchDelete,
+        payload: matchDelete.data,
       });
     } catch (e) {
       console.log("error");
-    }
+    };
   };
-}
+};
 
 export function showYourMatch(id) {
   return function (dispatch) {
