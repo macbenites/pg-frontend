@@ -1,8 +1,9 @@
 import { 
     MainCardsGames,
-    DateStyle,
+    DateStyleDet,
     NameCenter,
-    Text
+    Text,
+    BtnDeleteMatch
 } from "../Styles/component/CardsGames";
 import { deleteMatch } from '../Redux/Actions';
 import { useDispatch } from "react-redux";
@@ -30,9 +31,9 @@ function YourMatchesDetail ({props}) {
 
     return (
         <MainCardsGames>
-            <button value={props.id_match} onClick={handleDelete}>Eliminar</button>
+            <BtnDeleteMatch value={props.id_match} onClick={handleDelete}>Eliminar</BtnDeleteMatch>
             <NameCenter>{props.nameCenter}</NameCenter>
-            <DateStyle>{props.date}</DateStyle>
+            <DateStyleDet>{props.date}</DateStyleDet>
             <Text>{props.note}</Text>
         </MainCardsGames>
     );
