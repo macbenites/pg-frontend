@@ -1,8 +1,13 @@
 import { useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDetailsMatch, removeMatchPlayer } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
+import {
+  BtnBack,
+  BtnRemovePlayer,
+  DivMatchDetail
+} from "../Styles/component/DetailMatch";
 
 export default function DetailMatch() {
   const dispatch = useDispatch();
@@ -20,13 +25,17 @@ export default function DetailMatch() {
     navigate("/home/games");
   };
 
+  const handleClickBack = () => {
+    navigate("/home/games");
+  };
+
   return (
     <div>
       <Logo />
       {detail ? (
-        <div>
+        <DivMatchDetail>
           <p>
-            <strong>Lugar:</strong> {detail.nameCenter}
+            <strong>Cancha:</strong> {detail.nameCenter}
           </p>
           <p>
             <strong>Fecha y hora:</strong> {detail.date}
@@ -40,23 +49,21 @@ export default function DetailMatch() {
               <ul key={index}>
                 <li>
                   {element.name} - {element.position}
-                  <button
+                  <BtnRemovePlayer
                     value={element.user_name}
                     onClick={handleClick}
                   >
                     Sacar
-                  </button>
+                  </BtnRemovePlayer>
                 </li>
               </ul>
             ))}
           </div>
-        </div>
+        </DivMatchDetail>
       ) : (
         <p>Cargando...</p>
       )}
-      <Link to="/home/games">
-        <button>Volver</button>
-      </Link>
+      <BtnBack onClick={handleClickBack}>Volver</BtnBack>
     </div>
   );
 };
