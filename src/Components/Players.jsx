@@ -79,7 +79,7 @@ const Players = () => {
       <Filter>
         <div>
           <Label>Filtrar por posición: </Label>
-          <Select name="" id="" onChange={handleFilterByPosition}>
+          <Select name="position" onChange={handleFilterByPosition}>
             <option value="todos">Todas las posiciones</option>
             <option value="delantero">Delantero</option>
             <option value="mediocampista">Mediocampista</option>

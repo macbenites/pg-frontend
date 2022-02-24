@@ -1,38 +1,47 @@
 import { useEffect } from "react";
-import { useDispatch , useSelector } from "react-redux";
-import { showYourMatch } from "../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getMatches, matchesCompany, showYourMatch } from "../Redux/Actions";
 import YourMatchesDetail from "./YourMatchesDetail";
-import { MainCardsGames , Text } from "../Styles/component/CardsGames";
+import { MainCardsGames, Text } from "../Styles/component/CardsGames";
 
-function YourMatches () {
+function YourMatches() {
+  const { userState, yourMatchesCreated, matchesBusiness } = useSelector(
+    (state) => state
+  );
+  const dispatch = useDispatch();
 
-    const userLogueado = useSelector(obj => obj.userState);
-    const matches = useSelector(obj => obj.yourMatchesCreated);
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(showYourMatch(userState.id));
+    dispatch(getMatches());
+    dispatch(matchesCompany(userState.name));
+  }, [dispatch, userState.id, userState.name]);
 
-    useEffect(()=>{
-        dispatch(showYourMatch(userLogueado.id));
-    },[dispatch , userLogueado.id]);
-
-    return(
-        <div>
-            {
-                matches.length > 0 ? 
-                matches.map(obj => {
-                   return (<YourMatchesDetail 
-                            key={obj.users_matches.matchIdMatch}
-                            props={obj}>
-                          </YourMatchesDetail>)
-                })
-                : 
-                <MainCardsGames>
-                    <Text>
-                        "No hay partidos creados"
-                    </Text>
-                </MainCardsGames>
-            }
-        </div>
-    );
-};
+  return (
+    <div>
+      {userState.role === "user" ? (
+        userState.role === "user" && yourMatchesCreated?.length > 0 ? (
+          yourMatchesCreated.map((obj) => (
+            <YourMatchesDetail
+              key={obj.users_matches.matchIdMatch}
+              props={obj}
+            ></YourMatchesDetail>
+          ))
+        ) : (
+          <MainCardsGames>
+            <Text>"No tienes partidos creados"</Text>
+          </MainCardsGames>
+        )
+      ) : userState.role === "company" && matchesBusiness?.length > 0 ? (
+        matchesBusiness.map((obj, index) => (
+          <YourMatchesDetail key={index} props={obj} />
+        ))
+      ) : (
+        <MainCardsGames>
+          <Text>"No tienes partidos creados"</Text>
+        </MainCardsGames>
+      )}
+    </div>
+  );
+}
 
 export default YourMatches;

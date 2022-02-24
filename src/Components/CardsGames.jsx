@@ -8,9 +8,11 @@ import {
   BtnDiv,
   Title,
 } from "../Styles/component/CardsGames";
+import { useSelector } from "react-redux";
 
 function CardsGames({ nameCenter, date, players, id }) {
   const navigate = useNavigate();
+  const { userState } = useSelector((state) => state);
 
   function handleClick() {
     navigate(`/home/joinMatch/${id}`);
@@ -33,10 +35,14 @@ function CardsGames({ nameCenter, date, players, id }) {
           (players = "PARTIDO COMPLETO")
         )}
       </DateStyle>
-      <BtnDiv>
-        <BtnGames primary onClick={(e) => handleClick(e)}>Unirse</BtnGames>
-        <BtnGames onClick={(e) => handleCLickInvite(e)}>Invitar</BtnGames>
-      </BtnDiv>
+      {userState?.role === "user" ? (
+        <BtnDiv>
+          <BtnGames primary onClick={(e) => handleClick(e)}>
+            Unirse
+          </BtnGames>
+          <BtnGames onClick={(e) => handleCLickInvite(e)}>Invitar</BtnGames>
+        </BtnDiv>
+      ) : null}
     </MainCardsGames>
   );
 }

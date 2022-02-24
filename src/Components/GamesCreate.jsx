@@ -153,6 +153,7 @@ export default function GamesCreate() {
               value={input.date}
               placeholder="Fecha y Hora"
               name="date"
+              readOnly
             />
             <ErrorMessage>
               {errors.date && (

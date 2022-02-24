@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   CardContainer,
   ImgCard,
@@ -10,29 +11,32 @@ import {
 // import web from "../Assets/img/web.svg";
 import { LinkTo } from "../Styles/reusable/LinkTo";
 const CardsCourt = ({ props }) => {
+  const { userState } = useSelector((state) => state);
   return (
-    <LinkCourt to={`/sportcenters/${props.id}`} key={props.id}>
-      <CardContainer>
-        <ImgCard>
-          <img
-            src="https://user-images.githubusercontent.com/59841113/153101175-a51d1d35-d901-47b7-a8dd-dd82e2f3285b.jpg"
-            alt="img"
-          />
-        </ImgCard>
-        <Content>
-          <div>
+    <CardContainer>
+      <ImgCard>
+        <img
+          src="https://user-images.githubusercontent.com/59841113/153101175-a51d1d35-d901-47b7-a8dd-dd82e2f3285b.jpg"
+          alt="img"
+        />
+      </ImgCard>
+      <Content>
+        <div>
+          <LinkCourt to={`/sportcenters/${props.id}`}>
             <h3>
               {props.name.length > 20 ? props.name.slice(0, 20) : props.name}
             </h3>
-            <p>{props.district}</p>
-            <p>{props.street}</p>
-          </div>
+          </LinkCourt>
+          <p>{props.district}</p>
+          <p>{props.street}</p>
+        </div>
+        {userState?.role === "user" ? (
           <LinkTo to={`/reserveCourt/${props.name}`}>
             <BtnReserve>Reservar</BtnReserve>
           </LinkTo>
-        </Content>
-      </CardContainer>
-    </LinkCourt>
+        ) : null}
+      </Content>
+    </CardContainer>
   );
 };
 // const IconsCity = () => {
