@@ -47,7 +47,7 @@ function Chat () {
         mensajesCifrados.forEach(element => {
             arrayEnviados.push(element.data());
         });
-
+        console.log(arrayEnviados)
         const arrayEnviadosFiltrados = arrayEnviados.filter(obj =>
             obj.receptor === userReceptor.email)
 
