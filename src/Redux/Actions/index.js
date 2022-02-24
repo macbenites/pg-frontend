@@ -622,7 +622,7 @@ export function deleteMatch(id_match) {
   return async function (dispatch) {
     try {
       const matchDelete = await axios.delete(
-        `http://sejuega-henry.herokuapp.com/matches/${id_match}`
+        `https://sejuega-henry.herokuapp.com/matches/${id_match}`
       );
       return dispatch({
         type: DELETE_MATCH,
