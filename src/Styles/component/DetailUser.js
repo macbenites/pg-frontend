@@ -18,9 +18,9 @@ export const DivUserDetail = styled.div`
 
 export const ButtonMessage = styled(Button)`
     display: flex;
-    margin-top: -150px;
+    margin-top: -130px;
     margin-left: 270px;
-    margin-bottom: 600px;
+    /* margin-bottom: 600px; */
     background-color: #f9bc60;
     color: var(--primary);
     :hover{
@@ -30,7 +30,7 @@ export const ButtonMessage = styled(Button)`
 
 export const ButtonBack = styled(Button)`
     display: flex;
-    margin-top: -570px;
+    margin-top: 20px;
     margin-left: 270px;
     margin-bottom: 600px;
 `;
