@@ -34,3 +34,19 @@ export const ButtonBack = styled(Button)`
     margin-left: 270px;
     margin-bottom: 600px;
 `;
+
+export const BtnAnswer = styled(Button)`
+    background-color: var(--secondary);
+    color: var(--primary);
+    margin-top: 40px;
+    margin-left: 500px;
+    :hover{
+        background-color: #f9bc80;
+    };
+`;
+
+export const DivMessages = styled.div`
+    color: var(--secondary);
+    margin-top: 30px;
+    text-align: center;
+`;
