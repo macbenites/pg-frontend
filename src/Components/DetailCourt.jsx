@@ -1,22 +1,36 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDetailsCourt } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
+import{
+  DivCourtDetail,
+  BtnBack,
+  BtnReserve,
+} from "../Styles/component/DetailCourt";
 
 export default function DetailCourt() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   const detail = useSelector((state) => state.detailsCourt);
   useEffect(() => {
     dispatch(getDetailsCourt(id));
   }, [dispatch, id]);
+
+  const handleBackClick = () => {
+    navigate("/home/canchas");
+  };
+
+  const handleClick = () => {
+    navigate("/reserveCourt");
+  };
  
   return (
     <div>
       <Logo />
       {detail ? (
-        <div>
+        <DivCourtDetail>
           <p><strong>Nombre:</strong> {detail.name}</p>          
           <p><strong>Dirección:</strong> {detail.street}</p>
           <p><strong>Barrio:</strong> {detail.district}</p>
@@ -25,16 +39,12 @@ export default function DetailCourt() {
           <p><strong>Horario:</strong> {detail.availableHours}</p>
           <p><strong>Tipo de suelo:</strong> {detail.typeFloor}</p>
           <p><strong>Descripción:</strong> {detail.note}</p>          
-        </div>
+        </DivCourtDetail>
       ) : (
         <p>Cargando...</p>
       )}
-      <Link to="/home/canchas">
-        <button>Volver</button>
-      </Link>
-      <Link to="/reserveCourt">
-        <button>Reservar</button>
-      </Link>
+      <BtnBack onClick={handleBackClick}>Volver</BtnBack>
+      <BtnReserve onClick={handleClick}>Reservar</BtnReserve>
     </div>
   );
 }
