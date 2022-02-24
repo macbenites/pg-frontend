@@ -48,6 +48,10 @@ export const TextLanding = styled.div`
     font-size: 1.1rem;
   }
 
+  h2{
+    color: #f9bc60;
+  }
+
   @media (min-width: 768px) {
     padding-right: 2rem;
   }

@@ -28,12 +28,14 @@ function LandingPage() {
             <br />
             está por comenzar.
           </h4>
+          <h2>Queres jugar?</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-            purus sit amet luctus venenatis, lectus magna fringilla urna,
-            porttitor rhoncus dolor purus non enim praesent elementum facilisis
-            leo, vel fringilla est ullamcorper eget nulla facilisi etiam
-            dignissim.
+            Encontrá partidos de futbol para jugar en capital Federal creados por otros usuarios de la aplicación. 
+            Podes ver las canchas registradas y hacer tus reservas online por fecha y hora, para que puedas crear un partido y esperar a que se complete con distintos usuarios.
+          </p>
+          <h2>Sos un Centro Deportivo?</h2>
+          <p>
+            Registrá tu cancha para que los usuarios puedan hacer sus reservas.
           </p>
           <LinkTo to="/auth/signin">
             <Button>Registrarse</Button>
