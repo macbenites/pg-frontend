@@ -40,29 +40,22 @@ function DataUserGoogle() {
   const users = useSelector((state) => state.users);
   const userLogueado = useSelector((state) => state.userState)
   /* users.map(obj => getMensajes(obj)) */
-  //getMensajes(users)
-  console.log(mensajes[0]);
-
-  
+  //getMensajes(users)  
   
   
   useEffect(() => {
 
-    function getMensajes (user) {
-      
+    function getMensajes (user) {      
       let mensajesLimpios = [];
       let viendoMensajes = [];
       const arr = user.map(async (obj) => {
   
         const collectionRef = collection(db,"mensajes/chat/" + obj.email);
-        //console.log(collectionRef)
         const mensajesCifrados = await getDocs(collectionRef)
-        //console.log(mensajesCifrados)
         mensajesCifrados.forEach((obj2) => {
           let data = obj2.data()
           return viendoMensajes.push(data)
         })
-        //console.log(viendoMensajes)
         if(viendoMensajes.length === 0) return undefined
         console.log(viendoMensajes)
         //const mensajesFiltrados = viendoMensajes.filter(obj3 => obj3.receptor === userLogueado.email || obj3.emisor ===  userLogueado.email )
@@ -77,9 +70,7 @@ function DataUserGoogle() {
       arr.map(obj =>  Promise.all([obj]).then(obj2 => setMensajes(obj2)))
            
       /* if(mensajesCifrados === null) return
-      mensajesCifrados.map(obj => viendoMensajes.push(obj => obj.data()));
-      console.log(viendoMensajes) */
-    }
+      mensajesCifrados.map(obj => viendoMensajes.push(obj => obj.data()));*/}
     getMensajes(users)
     
     dispatch(getNeighborhoods());
@@ -90,7 +81,6 @@ function DataUserGoogle() {
   }
 
   const onSubmit = (input) => {
-    console.log(input)
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
       dispatch(updateData(currentUser.id , input))

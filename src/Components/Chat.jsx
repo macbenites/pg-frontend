@@ -19,8 +19,7 @@ function Chat () {
     const userReceptor = useSelector(obj => obj.detailsUser);
     const params = useParams();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    
+    const dispatch = useDispatch();    
     
     const submitForm = (e) => {
         e.preventDefault();
@@ -45,17 +44,12 @@ function Chat () {
     
     
     async function getMensajes  ()  {
-
         const arrayEnviados = [];
-
         const collectionRef = collection(db,"mensajes/chat/" + user.email);
-        console.log(collectionRef)
         const mensajesCifrados = await getDocs(collectionRef);
-        console.log(mensajesCifrados)
         mensajesCifrados.forEach(element => {
             arrayEnviados.push(element.data());
         });
-        console.log(arrayEnviados)
         const arrayEnviadosFiltrados = arrayEnviados.filter(obj =>
             obj.receptor === userReceptor.email)
 
@@ -63,7 +57,6 @@ function Chat () {
         
         const collectionRecibidos = collection(db,"mensajes/chat/" + userReceptor.email);
         const mensajesRecibidos = await getDocs(collectionRecibidos)
-        console.log(mensajesRecibidos)
 
         mensajesRecibidos.forEach(element => {
             arrayRecibidos.push(element.data());
@@ -72,12 +65,7 @@ function Chat () {
         const arrayRecibidosFiltrados = arrayRecibidos.filter(obj =>
             obj.receptor === user.email)
 
-        console.log(arrayEnviadosFiltrados);
-        console.log(arrayRecibidosFiltrados)
-
-        const array = arrayEnviadosFiltrados.concat(arrayRecibidosFiltrados)
-
-            
+        const array = arrayEnviadosFiltrados.concat(arrayRecibidosFiltrados)            
     
         const newArray = array.filter(obj => 
             obj.receptor ===  user.email || obj.emisor ===  user.email 
@@ -87,11 +75,7 @@ function Chat () {
         newArray.sort((a,b)=>{
             return (a.id - b.id)
         })
-
-        console.log(newArray)
-        setMensajes(newArray); 
-   
-        
+        setMensajes(newArray);         
     }
 
     const showMensajes = () => {
@@ -107,10 +91,8 @@ function Chat () {
     },[]) */
 
     useEffect(()=>{
-
         dispatch(authState())  
-        dispatch(getDetailsUser(params.id))   
-
+        dispatch(getDetailsUser(params.id))
     },[dispatch , params.id])
 
     return (
