@@ -15,7 +15,7 @@ const Player = ({ data }) => {
               {data.player_position
                 ? data.player_position
                 : "Posición no definida"}
-            </p>
+            </p>            
           </div>
           <div>
             {/* <h4>
@@ -26,6 +26,7 @@ const Player = ({ data }) => {
             <p>
               {data.neighborhood ? data.neighborhood : "Barrio desconocido"}
             </p>
+            <h5>{data.email ? data.email : "Email no definido"}</h5>
           </div>
         </ContentDiv>
       </PlayerDiv>

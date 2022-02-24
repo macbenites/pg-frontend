@@ -23,6 +23,11 @@ export const PlayerDiv = styled.div`
   h4 {
     margin: 0;
   }
+
+  h5 {
+    text-align: center;
+    margin: 0;
+  }
   p {
     text-align: center;
     text-transform: lowercase;
