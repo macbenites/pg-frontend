@@ -136,7 +136,6 @@ export const logInWithGoogle = () => {
   return function (dispatch) {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((obj) => {
-        console.log(obj);
         fetch("https://sejuega-henry.herokuapp.com/register", {
           method: "POST",
           body: JSON.stringify({
@@ -163,7 +162,6 @@ export const logInWithFacebook = () => {
   return function (dispatch) {
     signInWithPopup(auth, new FacebookAuthProvider())
       .then((obj) => {
-        console.log(obj);
         fetch("https://sejuega-henry.herokuapp.com/register", {
           method: "POST",
           body: JSON.stringify({
@@ -224,7 +222,11 @@ export function getMatches() {
         payload: getGames.data,
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -232,7 +234,6 @@ export function getMatches() {
 export function joinMatch(id_match, user_name) {
   return async function (dispatch) {
     try {
-      console.log({ id_match, user_name });
       const joinGame = await axios.put(
         `https://sejuega-henry.herokuapp.com/matches/${id_match}`,
         { user: user_name }
@@ -242,7 +243,11 @@ export function joinMatch(id_match, user_name) {
         payload: joinGame.data,
       });
     } catch (error) {
-      console.log("error");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -264,7 +269,6 @@ export const authState = () => {
               id: obj.id,
               role: obj.role,
             };
-            console.log("moreData", moreData);
             return dispatch({
               payload: moreData,
               type: "USER_LOGGED",
@@ -291,7 +295,11 @@ export function getDetailsUser(id) {
         payload: userId.data,
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -390,7 +398,11 @@ export function getDetailsCourt(id) {
         payload: courtId.data,
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -406,7 +418,11 @@ export function getDetailsMatch(id_match) {
         payload: matchId.data,
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -422,7 +438,11 @@ export function getNeighborhoods() {
         payload: neighborhoods.data,
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -484,10 +504,10 @@ export function filterPlayersByNeighborhoods(neighborhood) {
       });
   };
 }
+
 export function removeMatchPlayer(id_match, user_name) {
   return async function (dispatch) {
     try {
-      console.log({ id_match, user_name });
       const removePlayer = axios.put(
         `https://sejuega-henry.herokuapp.com/exitMatches/${id_match}`,
         { user: user_name }
@@ -574,7 +594,11 @@ export function updateData(id, newData) {
         image: newData.img,
       });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     }
   };
 }
@@ -628,8 +652,12 @@ export function deleteMatch(id_match) {
         type: DELETE_MATCH,
         payload: matchDelete.data,
       });
-    } catch (e) {
-      console.log("error");
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.response.data.error}`,
+      });
     };
   };
 };

@@ -12,11 +12,11 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../Redux/Actions";
 import { useDispatch } from "react-redux";
 import { LinkTo } from "../Styles/reusable/LinkTo";
-
 import Logo from "./Logo";
+
+
 function NavBar({ items, portal }) {
   const [isOpen, setIsOpen] = useState(false);
-
   const showSidebar = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -82,7 +82,6 @@ export default function GamesCreate() {
       input.note &&
       !Object.keys(errors).length
     ) {
-      console.log("input", input);
       dispatch(postMatch(input));
       localStorage.clear();
       Swal.fire({
