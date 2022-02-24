@@ -59,3 +59,20 @@ export const Text = styled.p`
   text-align: center;
   margin: 2px;
 `;
+
+export const BtnDeleteMatch = styled(Button)`
+  margin-left: 70px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  height: 10px;
+`;
+
+export const DateStyleDet = styled.div`
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 1.6rem;
+  color: var(--primary);
+  svg {
+    margin-right: 1rem;
+  }
+`;
