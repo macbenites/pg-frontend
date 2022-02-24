@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
 import{
   DivCourtDetail,
-  BtnBack,
-  BtnReserve,
+  BtnBack
 } from "../Styles/component/DetailCourt";
 
 export default function DetailCourt() {
@@ -22,9 +21,6 @@ export default function DetailCourt() {
     navigate("/home/canchas");
   };
 
-  const handleClick = () => {
-    navigate("/reserveCourt");
-  };
  
   return (
     <div>
@@ -44,7 +40,6 @@ export default function DetailCourt() {
         <p>Cargando...</p>
       )}
       <BtnBack onClick={handleBackClick}>Volver</BtnBack>
-      <BtnReserve onClick={handleClick}>Reservar</BtnReserve>
     </div>
   );
 }
