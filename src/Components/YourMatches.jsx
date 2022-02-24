@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch , useSelector } from "react-redux"
+import { useDispatch , useSelector } from "react-redux";
 import { showYourMatch } from "../Redux/Actions";
 import YourMatchesDetail from "./YourMatchesDetail";
 import { MainCardsGames , Text } from "../Styles/component/CardsGames";
@@ -7,15 +7,12 @@ import { MainCardsGames , Text } from "../Styles/component/CardsGames";
 function YourMatches () {
 
     const userLogueado = useSelector(obj => obj.userState);
-    const matches = useSelector(obj => obj.yourMatchesCreated)
-    const dispatch = useDispatch()
+    const matches = useSelector(obj => obj.yourMatchesCreated);
+    const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(showYourMatch(userLogueado.id))
-    },[dispatch , userLogueado.id])
-
-    console.log(userLogueado);
-    console.log(matches)
+        dispatch(showYourMatch(userLogueado.id));
+    },[dispatch , userLogueado.id]);
 
     return(
         <div>
@@ -28,7 +25,6 @@ function YourMatches () {
                           </YourMatchesDetail>)
                 })
                 : 
-                
                 <MainCardsGames>
                     <Text>
                         "No hay partidos creados"
@@ -36,7 +32,7 @@ function YourMatches () {
                 </MainCardsGames>
             }
         </div>
-    )
-}
+    );
+};
 
-export default YourMatches
+export default YourMatches;

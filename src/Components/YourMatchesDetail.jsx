@@ -1,5 +1,5 @@
 import { 
-    MainCardsGames,
+    MainCardsGamesDet,
     DateStyleDet,
     NameCenter,
     Text,
@@ -15,8 +15,6 @@ function YourMatchesDetail ({props}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    console.log(props);
-
     const handleDelete = (e) => {
         e.preventDefault();
         dispatch(deleteMatch(props.users_matches.matchIdMatch));
@@ -30,12 +28,12 @@ function YourMatchesDetail ({props}) {
     };
 
     return (
-        <MainCardsGames>
+        <MainCardsGamesDet>
             <BtnDeleteMatch value={props.id_match} onClick={handleDelete}>Eliminar</BtnDeleteMatch>
             <NameCenter>{props.nameCenter}</NameCenter>
             <DateStyleDet>{props.date}</DateStyleDet>
             <Text>{props.note}</Text>
-        </MainCardsGames>
+        </MainCardsGamesDet>
     );
 };
 

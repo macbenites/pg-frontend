@@ -76,3 +76,15 @@ export const DateStyleDet = styled.div`
     margin-right: 1rem;
   }
 `;
+
+export const MainCardsGamesDet =styled.div`
+  border-radius: 0.75rem;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;

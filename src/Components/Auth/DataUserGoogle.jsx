@@ -1,5 +1,6 @@
 import { FaExclamationCircle } from "react-icons/fa";
 import { InputForm } from "../../Styles/reusable/Input";
+import { Select } from "../../Styles/reusable/Select";
 import { ErrorMessage } from "../../Styles/Login.js";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -99,7 +100,7 @@ function DataUserGoogle() {
           />   
           </User>
           <Barrio>
-            <select
+            <Select
               name="neighborhood"
               {...register("neighborhood", {
                 required: {
@@ -112,10 +113,10 @@ function DataUserGoogle() {
               }}
             >
               <option value= ''>Barrio</option>
-                {neighborhoods.map((element) =>(
-                  <option key= {element.id} value = {element.name}>{element.name}</option>
+                {neighborhoods.map((element, index) =>(
+                  <option key= {index} value = {element.name}>{element.name}</option>
                 ))}  
-            </select>
+            </Select>
             <ErrorMessage>
               {errors.neighborhood && (
                 <small>
@@ -125,7 +126,7 @@ function DataUserGoogle() {
             </ErrorMessage>
           </Barrio>
           <Position>
-            <select
+            <Select
               name="position"             
               {...register("position", {
                 required: {
@@ -142,7 +143,7 @@ function DataUserGoogle() {
               <option value="defensor">Defensor</option>
               <option value="mediocampista">Mediocampista</option>
               <option value="delantero">Delantero</option>
-            </select>
+            </Select>
             <ErrorMessage>
               {errors.position && (
                 <small>
