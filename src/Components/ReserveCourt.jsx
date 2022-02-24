@@ -44,12 +44,12 @@ export default function ReserveCourt() {
       datetime: "",
     });
   };
+  console.log(input)
+  
 
   function handleBackClick() {
     navigate("/home/canchas");
   }
-
-  //const date = new Date();
 
   return (
     <div>
