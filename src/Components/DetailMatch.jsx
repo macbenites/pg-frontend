@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getDetailsMatch, removeMatchPlayer } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
 
 export default function DetailMatch() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id_match } = useParams();
   const detail = useSelector((state) => state.detailsMatch);
 
@@ -16,6 +17,7 @@ export default function DetailMatch() {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(removeMatchPlayer(id_match, e.target.value));
+    navigate("/home/games");
   };
 
   return (

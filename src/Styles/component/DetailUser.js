@@ -24,7 +24,7 @@ export const ButtonMessage = styled(Button)`
     background-color: #f9bc60;
     color: var(--primary);
     :hover{
-        background-color: white;
+        background-color: #f9bc80;
     };
 `;
 
