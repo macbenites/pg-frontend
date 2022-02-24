@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   CardContainer,
   ImgCard,
@@ -10,6 +11,7 @@ import {
 // import web from "../Assets/img/web.svg";
 import { LinkTo } from "../Styles/reusable/LinkTo";
 const CardsCourt = ({ props }) => {
+  const { userState } = useSelector((state) => state);
   return (
     <CardContainer>
       <ImgCard>
@@ -18,7 +20,6 @@ const CardsCourt = ({ props }) => {
           alt="img"
         />
       </ImgCard>
-
       <Content>
         <div>
           <LinkCourt to={`/sportcenters/${props.id}`}>
@@ -29,9 +30,11 @@ const CardsCourt = ({ props }) => {
           <p>{props.district}</p>
           <p>{props.street}</p>
         </div>
-        <LinkTo to={`/reserveCourt/${props.name}`}>
-          <BtnReserve>Reservar</BtnReserve>
-        </LinkTo>
+        {userState?.role === "user" ? (
+          <LinkTo to={`/reserveCourt/${props.name}`}>
+            <BtnReserve>Reservar</BtnReserve>
+          </LinkTo>
+        ) : null}
       </Content>
     </CardContainer>
   );

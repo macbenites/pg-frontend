@@ -22,7 +22,6 @@ import DataUserGoogle from "./Components/Auth/DataUserGoogle";
 import FailureMp from "./Components/FailureMp";
 import YourMatches from "./Components/YourMatches";
 
-
 function App() {
   return (
     <Container>
@@ -34,7 +33,6 @@ function App() {
               <Route path="signin" element={<SignIn />} />
               <Route path="login" element={<Login />} />
               <Route path="business" element={<SignUpBusiness />} />
-
               <Route path="resetPassword" element={<Password />} />
             </Route>
             <Route path="reserveCourt/:name" element={<ReserveCourt />} />
@@ -42,7 +40,7 @@ function App() {
             <Route path="/users/:id" element={<DetailUser />} />
             <Route path="/users/:id/chat" element={<Chat />} />
             <Route path="/sportcenters/:id" element={<DetailCourt />} />
-            <Route path="/matches/:id_match" element={<DetailMatch />} />
+            <Route path="/matches/:id_match" element={<DetailMatch />} />           
             <Route path="home" element={<Home />}>
               <Route path="yourMatches" element={<YourMatches />} />
               <Route path="profile" element={<DataUserGoogle />} />

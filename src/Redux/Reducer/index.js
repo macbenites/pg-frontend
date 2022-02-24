@@ -13,7 +13,7 @@ const initialState = {
   neighborhoods: [],
   displayName: "",
   removePlayer: [],
-
+  matchesBusiness: [],
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -134,7 +134,7 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
-      
+
     case "REMOVE_PLAYER":
       return {
         ...state,
@@ -164,33 +164,43 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         matches: payload,
       };
-      
+
     case "RESET_PLAYERS_FILTER":
       return {
         ...state,
-        users : payload
-      }
+        users: payload,
+      };
 
     case "MATCH_BY_NAME_SPORTCENTER":
       return {
         ...state,
         matches: payload,
-      };  
+      };
 
     case "DELETE_MATCH":
       return {
-        ...state
+        ...state,
       };
 
     case "SHOW_YOUR_MATCHES":
       return {
         ...state,
-        yourMatchesCreated : payload
-      }
-      
+        yourMatchesCreated: payload,
+      };
+
+    case "MATCHES_COMPANY":
+      const allMatches = state.matches;
+      const allMatchesFilter = allMatches.filter(
+        (item) => item.nameCenter === payload
+      );
+
+      return {
+        ...state,
+        matchesBusiness: allMatchesFilter,
+      };
     default:
       return { ...state };
-  };
-};
+  }
+}
 
 export default rootReducer;

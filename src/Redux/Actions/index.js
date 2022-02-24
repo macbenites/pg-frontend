@@ -35,6 +35,7 @@ import {
   FILTER_SPORTCENTER,
   DELETE_MATCH,
   SHOW_YOUR_MATCHES,
+  MATCHES_COMPANY,
 } from "./types";
 import axios from "axios";
 
@@ -111,6 +112,7 @@ export const logInWithMail = (email, password, callback) => {
           payload: obj,
           type: LOG_IN_WHIT_EMAIL,
         });
+
         callback();
       })
       .catch((error) => {
@@ -118,6 +120,7 @@ export const logInWithMail = (email, password, callback) => {
       });
   };
 };
+
 export const logOut = () => {
   return function (dispatch) {
     signOut(auth).then(() => {
@@ -249,13 +252,16 @@ export const authState = () => {
   return (dispatch) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetch("https://sejuega-henry.herokuapp.com/users/email/" + user.email)
+        fetch(
+          "https://sejuega-henry.herokuapp.com/users/emailusercompany/" +
+            user.email
+        )
           .then((obj) => obj.json())
           .then((obj) => {
             const moreData = {
               ...user,
               user_name: obj.user_name,
-              name: obj.user_name,
+              name: obj.user_name ? obj.user_name : obj.name,
               id: obj.id,
               role: obj.role,
             };
@@ -637,3 +643,9 @@ export function showYourMatch(id) {
       });
   };
 }
+
+export const matchesCompany = (name) => (dispatch) =>
+  dispatch({
+    type: MATCHES_COMPANY,
+    payload: name,
+  });
