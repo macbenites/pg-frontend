@@ -2,27 +2,41 @@ import styled from "styled-components";
 import { Button } from "../reusable/Button";
 
 export const DivMatchDetail = styled.div`
-    color: var(--secondary);
-    font-size: 28px;
-    text-align: center;
+  color: var(--secondary);
+  h1 {
+    font-size: 2.2rem;
+  }
+  p {
+    font-size: 1.1rem;
+  }
 `;
 
-export const BtnBack = styled(Button)`
-    display: flex;
-    margin-top: -300px;
-    margin-bottom: 700px;
-    margin-left: 40px;
+export const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  svg {
+    right: 0;
+    fill: var(--Links);
+    font-size: 2.2rem;
+  }
+`;
+export const BtnBack = styled(Button)``;
+
+export const ContainerMatch = styled.div`
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
 `;
 
-export const BtnRemovePlayer = styled(Button)`
-    width: 100px;
-    height: 40px;
-    display: flex;
-    margin-left: 100px;
-    margin-top: -35px;
-    background-color: #f9bc60;
-    color: var(--primary);
-    :hover{
-        background-color: #f9bc80;
-    };
+export const Item = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border-radius: 0.75rem;
+  background-color: var(--primary-light);
+  font-weight: 900;
 `;

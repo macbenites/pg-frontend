@@ -18,7 +18,7 @@ export const NavHome = [
     icon: <MdSportsSoccer />,
   },
   {
-    name: "Mis Reservas",
+    name: "Reservas",
     link: "yourMatches",
     icon: <MdOutlinePayments />,
   },

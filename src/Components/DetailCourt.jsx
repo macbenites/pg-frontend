@@ -3,11 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getDetailsCourt } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./Logo";
-import{
+import {
   DivCourtDetail,
-  BtnBack,
-  BtnReserve,
+  ContentBtn,
+  ContainerCourt,
 } from "../Styles/component/DetailCourt";
+import { Button } from "../Styles/reusable/Button";
 
 export default function DetailCourt() {
   const dispatch = useDispatch();
@@ -25,26 +26,47 @@ export default function DetailCourt() {
   const handleClick = () => {
     navigate("/reserveCourt");
   };
- 
+
   return (
     <div>
       <Logo />
-      {detail ? (
-        <DivCourtDetail>
-          <p><strong>Nombre:</strong> {detail.name}</p>          
-          <p><strong>Dirección:</strong> {detail.street}</p>
-          <p><strong>Barrio:</strong> {detail.district}</p>
-          <p><strong>Teléfono:</strong> {detail.phone}</p>
-          <p><strong>Email:</strong> {detail.email}</p>
-          <p><strong>Horario:</strong> {detail.availableHours}</p>
-          <p><strong>Tipo de suelo:</strong> {detail.typeFloor}</p>
-          <p><strong>Descripción:</strong> {detail.note}</p>          
-        </DivCourtDetail>
-      ) : (
-        <p>Cargando...</p>
-      )}
-      <BtnBack onClick={handleBackClick}>Volver</BtnBack>
-      <BtnReserve onClick={handleClick}>Reservar</BtnReserve>
+      <ContainerCourt>
+        {detail ? (
+          <DivCourtDetail>
+            <h1>{detail.name}</h1>
+
+            <p>
+              <strong>Dirección:</strong> {detail.street}
+            </p>
+            <p>
+              <strong>Barrio:</strong> {detail.district}
+            </p>
+            <p>
+              <strong>Teléfono:</strong> {detail.phone}
+            </p>
+            <p>
+              <strong>Email:</strong> {detail.email}
+            </p>
+            <p>
+              <strong>Horario:</strong> {detail.availableHours}
+            </p>
+            <p>
+              <strong>Tipo de suelo:</strong> {detail.typeFloor}
+            </p>
+            <p>
+              <strong>Descripción:</strong> {detail.note}
+            </p>
+          </DivCourtDetail>
+        ) : (
+          <p>Cargando...</p>
+        )}
+        <ContentBtn>
+          <Button onClick={handleBackClick}>Volver</Button>
+          <Button primary onClick={handleClick}>
+            Reservar
+          </Button>
+        </ContentBtn>
+      </ContainerCourt>
     </div>
   );
 }

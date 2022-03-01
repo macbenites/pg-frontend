@@ -3,11 +3,10 @@ import { LinkTo } from "../reusable/LinkTo";
 import { Button } from "../reusable/Button";
 
 export const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   grid-gap: 1rem;
+  flex-direction: column;
   background-color: var(--secondary);
-  margin: 1rem;
   padding: 0.7rem;
   border-radius: 1.8rem;
 
@@ -21,10 +20,6 @@ export const CardContainer = styled.div`
   }
   p::first-letter {
     text-transform: capitalize;
-  }
-
-  @media (min-width: 568px) {
-    grid-template-columns: 1fr 1fr;
   }
 `;
 
