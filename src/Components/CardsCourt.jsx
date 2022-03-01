@@ -11,7 +11,7 @@ import {
 // import web from "../Assets/img/web.svg";
 import { LinkTo } from "../Styles/reusable/LinkTo";
 const CardsCourt = ({ props }) => {
-  const { userState } = useSelector((state) => state);
+const { userState } = useSelector((state) => state);
   return (
     <CardContainer>
       <ImgCard>

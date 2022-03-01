@@ -16,7 +16,7 @@ export default function DetailUser() {
   const navigate = useNavigate();
   const { id } = useParams();
   const detail = useSelector((state) => state.detailsUser);
-  console.log(detail);
+
   useEffect(() => {
     dispatch(getDetailsUser(id));
   }, [dispatch, id]);

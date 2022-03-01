@@ -25,7 +25,6 @@ function Games() {
   const allMatches = useSelector((state) => state.matches);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
-  console.log(allMatches);
 
   useEffect(() => {
     dispatch(getMatches());

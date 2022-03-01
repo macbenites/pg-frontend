@@ -38,8 +38,7 @@ export default function ReserveCourt() {
     e.preventDefault();
     dispatch(postBuy(input));
     handle();
-  };
-  
+  };  
 
   function handleBackClick() {
     navigate("/home/canchas");

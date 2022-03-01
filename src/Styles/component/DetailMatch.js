@@ -20,6 +20,7 @@ export const Title = styled.div`
     right: 0;
     fill: var(--Links);
     font-size: 2.2rem;
+    cursor: pointer;
   }
 `;
 export const BtnBack = styled(Button)``;
