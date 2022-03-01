@@ -55,16 +55,13 @@ export const Title = styled(LinkTo)`
 `;
 
 export const Text = styled.p`
-  font-size: 20px;
-  text-align: center;
-  margin: 2px;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+  color: var(--primary);
 `;
 
 export const BtnDeleteMatch = styled(Button)`
-  margin-left: 70px;
-  margin-top: -20px;
-  margin-bottom: 20px;
-  height: 10px;
+  width: 100%;
 `;
 
 export const DateStyleDet = styled.div`
@@ -77,14 +74,28 @@ export const DateStyleDet = styled.div`
   }
 `;
 
-export const MainCardsGamesDet =styled.div`
+export const MainCardsGamesDet = styled.div`
   border-radius: 0.75rem;
   max-width: 300px;
   margin: 0 auto;
-  margin-top: 1rem;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  h1 {
+    font-size: 1.7rem;
+    color: var(--primary);
+    text-align: center;
+    margin: 0;
+  }
+
+  h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    color: var(--primary);
+  }
 `;

@@ -1,26 +1,23 @@
 import styled from "styled-components";
-import { Button } from "../reusable/Button";
 
+export const ContainerCourt = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+`;
 export const DivCourtDetail = styled.div`
-    color: var(--secondary);
-    font-size: 28px;
-    margin-left: 150px;
+  color: var(--secondary);
+  font-size: 1rem;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  p {
+    margin: 0.5rem 0;
+  }
 `;
 
-export const BtnBack = styled(Button)`
-    display: flex;
-    margin-left: 900px;
-    margin-top: -480px;
-`;
-
-export const BtnReserve = styled(Button)`
-    display: flex;
-    margin-left: 900px;
-    margin-bottom: 500px;
-    margin-top: 20px;
-    background-color: #f9bc60;
-    color: var(--primary);
-    :hover{
-        background-color: #f9bc80;
-    };
+export const ContentBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
 `;
