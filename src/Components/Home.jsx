@@ -4,6 +4,7 @@ import {
   IntroStyle,
   HomeContent,
   HomeContainer,
+  Loader,
 } from "../Styles/component/Home";
 import { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
@@ -20,7 +21,7 @@ function Home() {
   }, [dispatch]); // con la data de user podemos maquillar el home con la foto y data del usuario
   const userLogeado = allUsers?.find((obj) => obj.id === userState?.id);
 
-  if (!userState) return <h1>Cargando...</h1>;
+  if (!userState) return <Loader>Cargando...</Loader>;
 
   return (
     <HomeContainer>
