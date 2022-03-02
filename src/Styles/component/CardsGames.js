@@ -77,7 +77,7 @@ export const DateStyleDet = styled.div`
 export const MainCardsGamesDet = styled.div`
   border-radius: 0.75rem;
   max-width: 300px;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 1rem;
   background-color: var(--secondary);
   display: flex;
