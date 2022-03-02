@@ -35,7 +35,7 @@ function App() {
               <Route path="business" element={<SignUpBusiness />} />
               <Route path="resetPassword" element={<Password />} />
             </Route>
-            <Route path="reserveCourt/:name" element={<ReserveCourt />} />
+            <Route path="/reserveCourt" element={<ReserveCourt />} />
             <Route path="gamesCreate" element={<GamesCreate />} />
             <Route path="/users/:id" element={<DetailUser />} />
             <Route path="/users/:id/chat" element={<Chat />} />

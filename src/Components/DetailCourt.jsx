@@ -19,6 +19,7 @@ export default function DetailCourt() {
     dispatch(getDetailsCourt(id));
   }, [dispatch, id]);
 
+  console.log(detail);
   const handleBackClick = () => {
     navigate("/home/canchas");
   };
@@ -34,7 +35,6 @@ export default function DetailCourt() {
         {detail ? (
           <DivCourtDetail>
             <h1>{detail.name}</h1>
-
             <p>
               <strong>Dirección:</strong> {detail.street}
             </p>
@@ -46,6 +46,9 @@ export default function DetailCourt() {
             </p>
             <p>
               <strong>Email:</strong> {detail.email}
+            </p>
+            <p>
+              <strong>Price:</strong> {detail.price}
             </p>
             <p>
               <strong>Horario:</strong> {detail.availableHours}
