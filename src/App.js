@@ -40,7 +40,7 @@ function App() {
             <Route path="/users/:id" element={<DetailUser />} />
             <Route path="/users/:id/chat" element={<Chat />} />
             <Route path="/sportcenters/:id" element={<DetailCourt />} />
-            <Route path="/matches/:id_match" element={<DetailMatch />} />           
+            <Route path="/matches/:id_match" element={<DetailMatch />} />
             <Route path="home" element={<Home />}>
               <Route path="yourMatches" element={<YourMatches />} />
               <Route path="profile" element={<DataUserGoogle />} />

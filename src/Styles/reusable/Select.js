@@ -16,3 +16,13 @@ export const Select = styled.select`
 
   border-radius: 0.75rem;
 `;
+
+export const Paragraph = styled.p`
+  text-align: center;
+  text-transform: lowercase;
+  margin: 0;
+
+  ::first-letter {
+    text-transform: capitalize;
+  }
+`;

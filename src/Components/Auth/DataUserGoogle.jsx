@@ -6,27 +6,29 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateData, resetStateError, getNeighborhoods } from "../../Redux/Actions";
-import Swal from "sweetalert2";
-import { collection , getDocs /* updateDoc */ } from "firebase/firestore"
-import { db } from "../../firebase";
-import { BtnAnswer, DivMessages } from "../../Styles/component/DetailUser";
-
+import { MdOutlineMarkEmailUnread, MdPerson, MdSend } from "react-icons/md";
 import {
-  SignInDiv,
-  BtnSignIn,
-} from "../../Styles/component/SignIn";
+  updateData,
+  resetStateError,
+  getNeighborhoods,
+} from "../../Redux/Actions";
+import Swal from "sweetalert2";
+import { collection, getDocs /* updateDoc */ } from "firebase/firestore";
+import { db } from "../../firebase";
+import { SignInDiv, BtnSignIn } from "../../Styles/component/SignIn";
 
 import {
   Name,
   Barrio,
   Position,
   Btn,
-  User
+  User,
 } from "../../Styles/reusable/Containers";
+import styled from "styled-components";
 
 function DataUserGoogle() {
-  const [mensajes , setMensajes] = useState([])
+  const [mensajes, setMensajes] = useState([]);
+  const [active, setActive] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -38,53 +40,52 @@ function DataUserGoogle() {
   const neighborhoods = useSelector((state) => state.neighborhoods);
   const currentUser = useSelector((state) => state.userState);
   const users = useSelector((state) => state.users);
-  const userLogueado = useSelector((state) => state.userState)
-  /* users.map(obj => getMensajes(obj)) */
-  //getMensajes(users)  
-  
-  
+  const userLogueado = useSelector((state) => state.userState);
   useEffect(() => {
-
-    function getMensajes (user) {      
+    function getMensajes(user) {
       let mensajesLimpios = [];
       let viendoMensajes = [];
       const arr = user.map(async (obj) => {
-  
-        const collectionRef = collection(db,"mensajes/chat/" + obj.email);
-        const mensajesCifrados = await getDocs(collectionRef)
+        const collectionRef = collection(db, "mensajes/chat/" + obj.email);
+        const mensajesCifrados = await getDocs(collectionRef);
         mensajesCifrados.forEach((obj2) => {
-          let data = obj2.data()
-          return viendoMensajes.push(data)
-        })
-        if(viendoMensajes.length === 0) return undefined
-        console.log(viendoMensajes)
+          let data = obj2.data();
+          return viendoMensajes.push(data);
+        });
+        if (viendoMensajes.length === 0) return undefined;
+        console.log(viendoMensajes);
         //const mensajesFiltrados = viendoMensajes.filter(obj3 => obj3.receptor === userLogueado.email || obj3.emisor ===  userLogueado.email )
-        mensajesLimpios = viendoMensajes.filter(obj3 => obj3.receptor === userLogueado.email || obj3.emisor ===  userLogueado.email )
+        mensajesLimpios = viendoMensajes.filter(
+          (obj3) =>
+            obj3.receptor === userLogueado.email ||
+            obj3.emisor === userLogueado.email
+        );
         /* setMensajes({
           ...mensajes,
           mensajesFiltrados
         })  */
-        return mensajesLimpios
-        
-      })
-      arr.map(obj =>  Promise.all([obj]).then(obj2 => setMensajes(obj2)))
-           
+        return mensajesLimpios;
+      });
+      arr.map((obj) => Promise.all([obj]).then((obj2) => setMensajes(obj2)));
+
       /* if(mensajesCifrados === null) return
-      mensajesCifrados.map(obj => viendoMensajes.push(obj => obj.data()));*/}
-    getMensajes(users)
-    
+
+      mensajesCifrados.map(obj => viendoMensajes.push(obj => obj.data()));*/
+    }
+    getMensajes(users);
+
     dispatch(getNeighborhoods());
-  }, [dispatch , userLogueado.email , users]);
+  }, [dispatch, userLogueado.email, users]);
 
   const goAnswer = () => {
-    navigate("/home/players")
-  }
+    navigate("/home/players");
+  };
 
   const onSubmit = (input) => {
     if (Object.entries(errors).length === 0) {
       dispatch(resetStateError());
-      dispatch(updateData(currentUser.id , input))
-      navigate("/home/canchas")
+      dispatch(updateData(currentUser.id, input));
+      navigate("/home/canchas");
     } else {
       Swal.fire({
         icon: "error",
@@ -97,7 +98,14 @@ function DataUserGoogle() {
   return (
     <div>
       <SignInDiv>
-        <h4>Completá tu perfil</h4>
+        <Title>
+          <h4>Completá tu perfil</h4>
+          <MdOutlineMarkEmailUnread
+            onClick={() => {
+              setActive(!active);
+            }}
+          />
+        </Title>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Name>
             <InputForm
@@ -132,13 +140,13 @@ function DataUserGoogle() {
             </ErrorMessage>
           </Name>
           <User>
-          <InputForm
+            <InputForm
               type="text"
               autoComplete="off"
               placeholder="URL nueva imagen perfil"
               name="img"
               {...register("img")}
-          />   
+            />
           </User>
           <Barrio>
             <Select
@@ -153,10 +161,12 @@ function DataUserGoogle() {
                 trigger("neighborhood");
               }}
             >
-              <option value= ''>Barrio</option>
-                {neighborhoods.map((element, index) =>(
-                  <option key= {index} value = {element.name}>{element.name}</option>
-                ))}  
+              <option value="">Barrio</option>
+              {neighborhoods.map((element, index) => (
+                <option key={index} value={element.name}>
+                  {element.name}
+                </option>
+              ))}
             </Select>
             <ErrorMessage>
               {errors.neighborhood && (
@@ -168,7 +178,7 @@ function DataUserGoogle() {
           </Barrio>
           <Position>
             <Select
-              name="position"             
+              name="position"
               {...register("position", {
                 required: {
                   value: true,
@@ -199,21 +209,71 @@ function DataUserGoogle() {
             </BtnSignIn>
           </Btn>
         </form>
+        {/* <hr /> */}
+        {active && (
+          <Message>
+            <Top>
+              <MdOutlineMarkEmailUnread />
+              <p>Bandeja</p>
+              <MdSend onClick={goAnswer} />
+            </Top>
+            {mensajes?.length > 0
+              ? mensajes[0]?.map((obj) => {
+                  return (
+                    <Notification key={obj.id}>
+                      <MdPerson />
+                      <p>
+                        {obj.emisor !== userLogueado.email
+                          ? obj.emisor
+                          : obj.receptor}
+                      </p>
+                    </Notification>
+                  );
+                })
+              : "no hay mensajes"}
+          </Message>
+        )}
       </SignInDiv>
-      {
-        mensajes?.length > 0 ? 
-          mensajes[0]?.map(obj => {
-            return (
-              <DivMessages key={obj.id}>
-                <p>Tienes mensajes con {obj.emisor !== userLogueado.email ? obj.emisor : obj.receptor}</p>
-              </DivMessages>
-            )
-          })
-          : "no hay mensajes"
-      }
-        <BtnAnswer onClick={goAnswer}>Responder</BtnAnswer>
     </div>
   );
 }
 
 export default DataUserGoogle;
+
+export const Message = styled.div`
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary);
+  svg {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+`;
+
+export const Notification = styled.div`
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+`;
+
+export const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--primary);
+  svg {
+    cursor: pointer;
+    font-size: 2rem;
+  }
+`;
+
+export const Title = styled(Top)`
+  svg {
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--secondary);
+  }
+`;

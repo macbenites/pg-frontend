@@ -8,7 +8,7 @@ export const TitleStyle = styled.h2`
 
 export const CardsGamesStyle = styled.div`
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 1rem 0;
 `;

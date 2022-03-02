@@ -1,52 +1,34 @@
 import styled from "styled-components";
-import { Button } from "../reusable/Button";
 
 export const DivUserDetail = styled.div`
-    color: var(--secondary);
-    font-size: 40px;
-    text-align: left;
-    margin-left: 100px;
-    img{
-        display: flex;
-        margin-left: 600px;
-        margin-top: -300px;
-        width: 30rem;
-        height: 30rem;
-        border-radius: 15px;
-    };
+  color: var(--primary);
 `;
 
-export const ButtonMessage = styled(Button)`
-    display: flex;
-    margin-top: -130px;
-    margin-left: 270px;
-    /* margin-bottom: 600px; */
-    background-color: #f9bc60;
-    color: var(--primary);
-    :hover{
-        background-color: #f9bc80;
-    };
+export const ContentDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+  }
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
-export const ButtonBack = styled(Button)`
-    display: flex;
-    margin-top: 20px;
-    margin-left: 270px;
-    margin-bottom: 600px;
-`;
-
-export const BtnAnswer = styled(Button)`
-    background-color: var(--secondary);
-    color: var(--primary);
-    margin-top: 40px;
-    margin-left: 500px;
-    :hover{
-        background-color: #f9bc80;
-    };
-`;
-
-export const DivMessages = styled.div`
-    color: var(--secondary);
-    margin-top: 30px;
-    text-align: center;
+export const ContainerDetail = styled.div`
+  max-width: 600px;
+  margin: 2rem;
+  color: var(--primary);
+  background-color: var(--secondary);
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  @media (min-width: 700px) {
+    margin: 2rem auto;
+  }
 `;
