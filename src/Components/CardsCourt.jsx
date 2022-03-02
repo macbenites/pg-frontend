@@ -6,12 +6,20 @@ import {
   LinkCourt,
   BtnReserve,
 } from "../Styles/component/CardsCity";
+import { useNavigate } from "react-router-dom";
 // import phone from "../Assets/img/phone.svg";
 // import schedule from "../Assets/img/shedule.svg";
 // import web from "../Assets/img/web.svg";
-import { LinkTo } from "../Styles/reusable/LinkTo";
+
 const CardsCourt = ({ props }) => {
-const { userState } = useSelector((state) => state);
+  const { userState } = useSelector((state) => state);
+  const navigate = useNavigate();
+  const addParams = () => {
+    navigate({
+      pathname: "/reserveCourt",
+      search: `?nameCenter=${props.name}&price=${props.price}`,
+    });
+  };
   return (
     <CardContainer>
       <ImgCard>
@@ -31,10 +39,10 @@ const { userState } = useSelector((state) => state);
           <p>{props.street}</p>
         </div>
         {userState?.role === "user" ? (
-          <LinkTo to={`/reserveCourt/${props.name}`}>
-            <BtnReserve>Reservar</BtnReserve>
-          </LinkTo>
-        ) : null}
+          // <LinkTo to={`/reserveCourt/${params}`} onClick={addParams}>
+          <BtnReserve onClick={addParams}>Reservar</BtnReserve>
+        ) : // </LinkTo>
+        null}
       </Content>
     </CardContainer>
   );

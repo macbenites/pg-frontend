@@ -326,15 +326,15 @@ export function postBuy(payload) {
       );
       const { data } = newBuy;
       window.location.replace(data.response.sandbox_init_point);
-    }catch (error) {
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: `${error.response.data.error}`,
       });
-    }    
+    }
   };
-};
+}
 
 export const signUpBusiness = (email, password, data, callback) => {
   return async (dispatch) => {
@@ -348,6 +348,7 @@ export const signUpBusiness = (email, password, data, callback) => {
           phone: data.phone,
           street: data.street,
           district: data.district,
+          price: data.price,
           availableHours: data.availableHours,
           typeFloor: data.typeFloor,
           cantPlayers: data.cantPlayers,
@@ -365,6 +366,7 @@ export const signUpBusiness = (email, password, data, callback) => {
             phone: obj.phone,
             street: obj.street,
             district: obj.district,
+            price: obj.price,
             availableHours: obj.availableHours,
             typeFloor: obj.typeFloor,
             cantPlayers: obj.cantPlayers,
@@ -658,9 +660,9 @@ export function deleteMatch(id_match) {
         title: "Oops...",
         text: `${error.response.data.error}`,
       });
-    };
+    }
   };
-};
+}
 
 export function showYourMatch(id) {
   return function (dispatch) {
