@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authState } from "../../Redux/Actions/index";
+import { Loader } from "../../Styles/component/Home";
 
 import Logo from "../Logo";
 export const LayoutAuth = () => {
@@ -24,7 +25,7 @@ export const LayoutAuth = () => {
   return (
     <div>
       {loader ? (
-        <div>Loading...</div>
+        <Loader>Loading...</Loader>
       ) : (
         <div>
           <Logo />

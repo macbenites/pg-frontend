@@ -36,3 +36,8 @@ export const IntroStyle = styled.div`
 `;
 
 export const HomeContent = styled.div``;
+
+export const Loader = styled.h1`
+  color: var(--secondary);
+  margin: 2rem;
+`;
