@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { postBuy } from "../Redux/Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { InputForm, Label } from "../Styles/reusable/Input";
@@ -14,10 +14,14 @@ import { Name, User, Barrio, Btn } from "../Styles/reusable/Containers";
 export default function ReserveCourt() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { name } = useParams();
+  const [params] = useSearchParams();
+  const nameCenter = params.get("nameCenter");
+  const price = params.get("price");
+
   const { userState } = useSelector((state) => state);
   const [input, setInput] = useState({
-    title: name,
+    title: nameCenter,
+    price: price,
   });
 
   const handle = () => {
@@ -38,7 +42,7 @@ export default function ReserveCourt() {
     e.preventDefault();
     dispatch(postBuy(input));
     handle();
-  };  
+  };
 
   function handleBackClick() {
     navigate("/home/canchas");
@@ -53,13 +57,14 @@ export default function ReserveCourt() {
         <form onSubmit={(e) => handleSubmit(e)}>
           <Name>
             <Label>Lugar</Label>
-            <InputForm type="text" value={name} name="title" readOnly />
+            <InputForm type="text" value={nameCenter} name="title" readOnly />
           </Name>
           <User>
             <Label>Precio</Label>
             <InputForm
               type="number"
               name="price"
+              value={price}
               onChange={(e) => handleChange(e)}
             />
           </User>
