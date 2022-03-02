@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { MdOutlineMarkEmailUnread, MdPerson, MdSend } from "react-icons/md";
 import {
   updateData,
   resetStateError,
@@ -14,7 +15,6 @@ import {
 import Swal from "sweetalert2";
 import { collection, getDocs /* updateDoc */ } from "firebase/firestore";
 import { db } from "../../firebase";
-
 import { SignInDiv, BtnSignIn } from "../../Styles/component/SignIn";
 
 import {
@@ -24,9 +24,11 @@ import {
   Btn,
   User,
 } from "../../Styles/reusable/Containers";
+import styled from "styled-components";
 
 function DataUserGoogle() {
   const [mensajes, setMensajes] = useState([]);
+  const [active, setActive] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -96,7 +98,14 @@ function DataUserGoogle() {
   return (
     <div>
       <SignInDiv>
-        <h4>Completá tu perfil</h4>
+        <Title>
+          <h4>Completá tu perfil</h4>
+          <MdOutlineMarkEmailUnread
+            onClick={() => {
+              setActive(!active);
+            }}
+          />
+        </Title>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Name>
             <InputForm
@@ -200,26 +209,71 @@ function DataUserGoogle() {
             </BtnSignIn>
           </Btn>
         </form>
-        <div>
-          {mensajes?.length > 0
-            ? mensajes[0]?.map((obj) => {
-                return (
-                  <div key={obj.id}>
-                    <p>
-                      Tienes mensajes con{" "}
-                      {obj.emisor !== userLogueado.email
-                        ? obj.emisor
-                        : obj.receptor}
-                    </p>
-                  </div>
-                );
-              })
-            : "no hay mensajes"}
-          <button onClick={goAnswer}>Responder</button>
-        </div>
+        {/* <hr /> */}
+        {active && (
+          <Message>
+            <Top>
+              <MdOutlineMarkEmailUnread />
+              <p>Bandeja</p>
+              <MdSend onClick={goAnswer} />
+            </Top>
+            {mensajes?.length > 0
+              ? mensajes[0]?.map((obj) => {
+                  return (
+                    <Notification key={obj.id}>
+                      <MdPerson />
+                      <p>
+                        {obj.emisor !== userLogueado.email
+                          ? obj.emisor
+                          : obj.receptor}
+                      </p>
+                    </Notification>
+                  );
+                })
+              : "no hay mensajes"}
+          </Message>
+        )}
       </SignInDiv>
     </div>
   );
 }
 
 export default DataUserGoogle;
+
+export const Message = styled.div`
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary);
+  svg {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+`;
+
+export const Notification = styled.div`
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+`;
+
+export const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--primary);
+  svg {
+    cursor: pointer;
+    font-size: 2rem;
+  }
+`;
+
+export const Title = styled(Top)`
+  svg {
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--secondary);
+  }
+`;
